@@ -1,0 +1,16 @@
+.heading {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 1.25;
+  font-family: 'Roboto', sans-serif;
+  color: $clr-gray-100;
+
+  &_h2 {
+    font-size: 19px;
+  }
+
+  &_h3 {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+  }
+}

@@ -1,0 +1,20 @@
+extends ../templates/_base.pug
+
+block vars
+  - var keywords = 'важные, ключевые, слова'
+  - var description = 'краткое описание'
+  - var title = 'Карта сайта'
+
+block content
+  +heading(1, 'Карта сайта')
+  ul
+    li
+      a(href='main.html') Главная страница
+    li
+      a(href='search.html') Поиск номеров
+    li
+      a(href='room.html') Сведения о номере
+    li
+      a(href='reg.html') Регистрация аккаунта
+    li
+      a(href='login.html') Войти

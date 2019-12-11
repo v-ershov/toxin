@@ -1,0 +1,12 @@
+build/
+dist/
+prod/
+node_modules/
+
+.idea/
+.vscode/
+
+*.log
+*.sublime-*
+*.rar
+*.zip

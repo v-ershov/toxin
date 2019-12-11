@@ -1,0 +1,58 @@
+{
+  "name": "static-starter-kit",
+  "version": "0.0.1",
+  "description": "Starter kit for quick start of developing projects with Webpack, Pug, Sass and BEM methodology",
+  "keywords": [
+    "boilerplate",
+    "starter",
+    "starter-kit",
+    "starter-project",
+    "webpack",
+    "webpack-boilerplate",
+    "webpack-starter",
+    "webpack-starter-kit",
+    "webpack-starter-project",
+    "babel",
+    "pug",
+    "sass",
+    "postcss"
+  ],
+  "homepage": "https://github.com/owner/project",
+  "bugs": "https://github.com/owner/project/issues",
+  "license": "MIT",
+  "person": "Vladimir Ershov <email@email.com> (https://site.site)",
+  "repository": "github:user/repo",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./webpack/webpack.dev.js",
+    "prod": "webpack --config ./webpack/webpack.prod.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "autoprefixer": "^9.7.3",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.1",
+    "css-mqpacker": "^7.0.0",
+    "cssnano": "^4.1.10",
+    "file-loader": "^5.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "import-glob-loader": "^1.1.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "postcss-loader": "^3.0.0",
+    "pug": "^2.0.4",
+    "pug-lint": "^2.6.0",
+    "pug-loader": "^2.4.0",
+    "sass-loader": "^8.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0"
+  }
+}

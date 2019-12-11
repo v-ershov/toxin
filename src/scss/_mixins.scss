@@ -1,0 +1,30 @@
+// Responsive Design
+@mixin scrn-xl {
+  @media screen and (max-width: $scrn-xl) {
+    @content;
+  }
+}
+
+@mixin scrn-lg {
+  @media screen and (max-width: $scrn-lg) {
+    @content;
+  }
+}
+
+@mixin scrn-md {
+  @media screen and (max-width: $scrn-md) {
+    @content;
+  }
+}
+
+@mixin scrn-sm {
+  @media screen and (max-width: $scrn-sm) {
+    @content;
+  }
+}
+
+@mixin scrn-xs {
+  @media screen and (max-width: $scrn-xs) {
+    @content;
+  }
+}
