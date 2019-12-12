@@ -1,17 +1,31 @@
 // Breakpoints
-$scrn-xl : 1280px;
-$scrn-lg : 980px;
-$scrn-md : 768px;
-$scrn-sm : 480px;
-$scrn-xs : 320px;
+$screen-xl : 1280px;
+$screen-lg : 980px;
+$screen-md : 768px;
+$screen-sm : 480px;
+$screen-xs : 320px;
+
+// Font-family
+$font-family-primary   : 'Montserrat', sans-serif;
+$font-family-secondary : 'Roboto', sans-serif;
 
 // Grayscale colors
-$clr-gray-100 : #1f2041;
-$clr-gray-75  : rgba($clr-gray-100, 0.75);
-$clr-gray-50  : rgba($clr-gray-100, 0.50);
-$clr-gray-25  : rgba($clr-gray-100, 0.25);
-$clr-gray-5   : rgba($clr-gray-100, 0.05);
+$color-black    : #000000;
+$color-gray-100 : #1f2041;
+$color-gray-75  : rgba($color-gray-100, 0.75);
+$color-gray-50  : rgba($color-gray-100, 0.50);
+$color-gray-25  : rgba($color-gray-100, 0.25);
+$color-gray-5   : rgba($color-gray-100, 0.05);
+$color-white    : #ffffff;
 
 // Brand colors
-$clr-primary   : #bc9cff;
-$clr-secondary : #6fcf97;
+$color-primary   : #bc9cff;
+$color-secondary : #8ba4f9;
+$color-success   : #6fcf97;
+
+// Transitions
+$transition-fastest : 0.15s;
+$transition-fast    : 0.3s;
+$transition-medium  : 0.45s;
+$transition-slow    : 0.6s;
+$transition-slowest : 0.75s;
