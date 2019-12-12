@@ -22,7 +22,7 @@
   "requireSpecificAttributes": [ { "img": [ "src", "alt" ] } ],
   "requireStrictEqualityOperators": true,
   "validateAttributeQuoteMarks": "'",
-  "validateAttributeSeparator": { "separator": " ", "multiLineSeparator": "\n " },
+  "validateAttributeSeparator": { "separator": ", ", "multiLineSeparator": "\n " },
   "validateDivTags": true,
   "validateExtensions": true,
   "validateIndentation": 2,
