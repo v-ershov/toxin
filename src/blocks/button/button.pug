@@ -1,0 +1,15 @@
+mixin button(text, ...modifiers)
+  -
+    var mods = '';
+    if (modifiers) {
+      modifiers.forEach(function(mod) {
+        mods = `${mods}button_${mod} `
+      });
+    }
+
+  if (attributes.href)
+    a.button(class=mods)&attributes(attributes)
+      | #{text}
+  else
+    button.button(class=mods)&attributes(attributes)
+      | #{text}
