@@ -10,3 +10,4 @@ node_modules/
 *.sublime-*
 *.rar
 *.zip
+_blocks.pug
