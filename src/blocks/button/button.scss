@@ -10,8 +10,6 @@
   line-height: 1;
   text-transform: uppercase;
   color: $color-primary;
-  border: 2px solid transparent;
-  border-radius: 22px;
   background-color: transparent;
   background-image:
     linear-gradient($color-white, $color-white),
@@ -22,6 +20,8 @@
   background-clip:
     padding-box,
     border-box;
+  border: 2px solid transparent;
+  border-radius: 22px;
 
   &::before {
     content: '';
@@ -31,14 +31,14 @@
     z-index: -5;
     display: inline-block;
     width: calc(100% + 4px);
-    height: calc(100% + 4px); 
-    border: inherit;
-    border-radius: inherit;
+    height: calc(100% + 4px);
     background-image:
       linear-gradient($color-white, $color-white),
       linear-gradient(rgba($color-white, 0.5), rgba($color-white, 0.5));
     background-origin: inherit;
     background-clip: inherit;
+    border: inherit;
+    border-radius: inherit;
     opacity: 0;
     transition: opacity $transition-fast;
     transform: translate(-50%, -50%);
@@ -82,7 +82,7 @@
     padding: 0;
     color: $color-primary;
     background-image: none;
-    border: none;
+    border: 0;
     border-radius: 0;
     transition: color $transition-fast;
 
