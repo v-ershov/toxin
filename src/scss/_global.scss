@@ -2,14 +2,23 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: $font-family-primary;
 }
 
 html,
 body {
-  width: 100%;
   height: 100%;
   font-size: 14px;
-  line-height: 24px;
-  font-family: $font-family-primary;
+  line-height: 1.714;
   color: $color-gray-75;
+  background-color: $color-white;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a:visited {
+  color: inherit;
 }
