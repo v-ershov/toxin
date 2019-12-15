@@ -1,8 +1,8 @@
-mixin heading(level, title)
+mixin heading(level, text)
   case level
     when 1
-      h1.heading= title
+      h1.heading= text
     when 2
-      h2.heading.heading_middle= title
+      h2.heading.heading_middle= text
     when 3
-      h3.heading.heading_small= title
+      h3.heading.heading_small= text
