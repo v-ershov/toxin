@@ -1,0 +1,6 @@
+mixin field-checkbox(name, text, isChecked=false)
+  .field-checkbox
+    input.field-checkbox__input(id=name, type='checkbox', name=name, checked=isChecked)
+    label.field-checkbox__label(for=name)
+      span.field-checkbox__box
+      | #{text}
