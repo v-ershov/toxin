@@ -1,11 +1,20 @@
-mixin button(text, ...modifiers)
-  -
-    var mods = '';
-    if (modifiers) {
-      modifiers.forEach(function(mod) {
-        mods = `${mods}button_${mod} `;
-      });
-    };
+//- Parameters:
+//- string   text         - текст кнопки
+//- string[] modifiers=[] - модификаторы блока
+
+//- Examples:
+//- +button('Sign Up')(href='#')
+//- +button('Sign Up')
+//- +button('Sign In', ['fill', 'compact'])(href='#')
+//- +button('Sign In', ['fill', 'compact'])
+
+mixin button(text, modifiers=[])
+  - var mods = '';
+  - if (modifiers.length !== 0) {
+  -   modifiers.forEach(function(mod) {
+  -     mods = `${mods}button_${mod} `;
+  -   });
+  - };
 
   if (attributes.href)
     a.button(class=mods)&attributes(attributes)
