@@ -1,8 +1,20 @@
+//- Parameters:
+//- int    level - уровень заголовка (от 1 до 3)
+//- string text  - текст заголовка
+
+//- Examples:
+//- +heading(1, 'Title')
+//- +heading(2, 'Chapter')
+//- +heading(3, 'Part')
+
 mixin heading(level, text)
   case level
     when 1
-      h1.heading= text
+      h1.heading
+        | #{text}
     when 2
-      h2.heading.heading_middle= text
+      h2.heading.heading_middle
+        | #{text}
     when 3
-      h3.heading.heading_small= text
+      h3.heading.heading_small
+        | #{text}
