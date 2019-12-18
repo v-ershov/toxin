@@ -1,4 +1,12 @@
-mixin list(...items)
+//- Parameters:
+//- string[] items - элементы списка
+
+//- Examples:
+//- +list(['Milk', 'Cheese'])
+//- +list(['Car', 'Bike', 'Scooty'])
+
+mixin list(items)
   ul.list
     each item in items
-      li.list__item= item
+      li.list__item
+        | #{item}
