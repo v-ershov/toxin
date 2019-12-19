@@ -1,0 +1,15 @@
+//- Parameters:
+//- string name - имя переключателя
+//- string text - текст переключателя
+
+//- Examples:
+//- +field-toggle('news', 'Subscribe to newsletter')(checked)
+//- +field-toggle('news', 'Subscribe to newsletter')
+
+mixin field-toggle(name, text)
+  .field-toggle
+    label.field-toggle__label
+      input.field-toggle__input(type='checkbox', name=name)&attributes(attributes)
+      span.field-toggle__box
+      span.field-toggle__text
+        | #{text}
