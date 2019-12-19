@@ -1,32 +1,31 @@
 .field-checkbox {
-  &__input {
-    display: none;
-
-    &:checked + .field-checkbox__label {
-      .field-checkbox__box {
-        background-position-x: 15px;
-        border-color: $color-primary;
-        transition:
-          background-position-x $transition-slow 0.15s,
-          border-color $transition-fast;
-        
-        &::before {
-          opacity: 1;
-        }
-      }
-    }
-  }
+  padding: 7px 0;
+  line-height: 1.285;
 
   &__label {
     position: relative;
     z-index: 5;
     display: inline-block;
     padding-left: 30px;
-    line-height: 1.285;
-    color: $color-gray-50;
     cursor: pointer;
   }
 
+  &__input {
+    display: none;
+  }
+
+  &__input:checked + &__box {
+    background-position-x: 15px;
+    border-color: $color-primary;
+    transition:
+      background-position-x $transition-medium 0.15s,
+      border-color $transition-fast;
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
   &__box {
     position: absolute;
     top: -1px;
@@ -35,6 +34,7 @@
     width: 20px;
     height: 20px;
     background-image: linear-gradient($color-white, $color-white);
+    background-position-x: 0;
     background-repeat: no-repeat;
     border: 1px solid $color-gray-25;
     border-radius: 20%;
@@ -47,7 +47,7 @@
     &::after {
       content: '';
       position: absolute;
-      top: 45%;
+      top: 42.5%;
       left: 50%;
       z-index: -5;
       width: 33.5%;
@@ -64,9 +64,13 @@
     }
 
     &::after {
-      top: 29.5%;
+      top: 27.5%;
       background-color: $color-white;
       background-image: none;
     }
+  }
+
+  &__text {
+    color: $color-gray-50;
   }
 }

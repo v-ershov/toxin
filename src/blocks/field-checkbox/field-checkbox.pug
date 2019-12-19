@@ -1,6 +1,15 @@
-mixin field-checkbox(name, text, isChecked=false)
+//- Parameters:
+//- string name - имя чекбокса
+//- string text - текст чекбокса
+
+//- Examples:
+//- +field-checkbox('news', 'Subscribe to newsletter')(checked)
+//- +field-checkbox('news', 'Subscribe to newsletter')
+
+mixin field-checkbox(name, text)
   .field-checkbox
-    input.field-checkbox__input(id=name, type='checkbox', name=name, checked=isChecked)
-    label.field-checkbox__label(for=name)
+    label.field-checkbox__label
+      input.field-checkbox__input(type='checkbox', name=name)&attributes(attributes)
       span.field-checkbox__box
-      | #{text}
+      span.field-checkbox__text
+        | #{text}
