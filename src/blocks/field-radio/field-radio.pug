@@ -1,0 +1,18 @@
+//- Parameters:
+//- string name  - имя радиокнопки
+//- string value - значение радиокнопки
+//- string text  - текст радиокнопки
+
+//- Examples:
+//- +field-radio('gender', 'm', 'Male')(checked)
+//- +field-radio('gender', 'f', 'Female')
+//- +field-radio('color', 'black', 'Black color')(required)
+//- +field-radio('color', 'white', 'White color')
+
+mixin field-radio(name, value, text)
+  .field-radio
+    label.field-radio__label
+      input.field-radio__input(type='radio', name=name, value=value)&attributes(attributes)
+      span.field-radio__box
+      span.field-radio__text
+        | #{text}
