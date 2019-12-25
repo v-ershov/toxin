@@ -98,6 +98,11 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    alias: {
+      '~': PATHS.input
+    }
+  },
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
