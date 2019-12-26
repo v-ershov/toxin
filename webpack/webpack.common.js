@@ -20,7 +20,7 @@ const PAGES = fs.readdirSync(PATHS.pugPages).filter(filename => filename.endsWit
 (function(){
   let pathsToBlocks = '';
   fs.readdirSync(PATHS.blocks).forEach(function(block) {
-    pathsToBlocks += `include ../blocks/${block}/${block}.pug\n`;
+    pathsToBlocks += `include /blocks/${block}/${block}.pug\n`;
   });
   fs.writeFileSync(PATHS.pugBlocksFile, pathsToBlocks);
 })();

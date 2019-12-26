@@ -19,7 +19,8 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         loader: 'pug-loader',
         options: {
-          pretty: true
+          pretty: true,
+          root: common.externals.paths.input
         }
       }
     ]

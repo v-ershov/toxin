@@ -9,8 +9,11 @@ module.exports = merge(common, {
       {
         test: /\.pug$/,
         exclude: /node_modules/,
-        loader: 'pug-loader'
+        loader: 'pug-loader',
+        options: {
+          root: common.externals.paths.input
+        }
       }
     ]
-  },
+  }
 });
