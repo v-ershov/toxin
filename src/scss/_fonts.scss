@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Montserrat';
   src: local('Montserrat'),
-       url('../fonts/Montserrat-Regular.woff') format('woff'),
-       url('../fonts/Montserrat-Regular.ttf') format('truetype'),
-       url('../fonts/Montserrat-Regular.svg#Montserrat-Regular') format('svg');
+       url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+       url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'),
+       url('../fonts/Montserrat/Montserrat-Regular.svg#Montserrat-Regular') format('svg');
   font-style: normal;
   font-weight: normal;
 }
@@ -11,9 +11,9 @@
 @font-face {
   font-family: 'Montserrat';
   src: local('Montserrat'),
-       url('../fonts/Montserrat-Bold.woff') format('woff'),
-       url('../fonts/Montserrat-Bold.ttf') format('truetype'),
-       url('../fonts/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
+       url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff'),
+       url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype'),
+       url('../fonts/Montserrat/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
   font-style: normal;
   font-weight: bold;
 }
@@ -21,9 +21,9 @@
 @font-face {
   font-family: 'Roboto';
   src: local('Roboto'),
-       url('../fonts/Roboto-Bold.woff') format('woff'),
-       url('../fonts/Roboto-Bold.ttf') format('truetype'),
-       url('../fonts/Roboto-Bold.svg#Roboto-Bold') format('svg');
+       url('../fonts/Roboto/Roboto-Bold.woff') format('woff'),
+       url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype'),
+       url('../fonts/Roboto/Roboto-Bold.svg#Roboto-Bold') format('svg');
   font-style: normal;
   font-weight: bold;
 }
