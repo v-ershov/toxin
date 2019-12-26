@@ -22,3 +22,7 @@ button {
 a:visited {
   color: inherit;
 }
+
+.material-icons {
+  @include material-icons;
+}

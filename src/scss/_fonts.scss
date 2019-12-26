@@ -27,3 +27,13 @@
   font-style: normal;
   font-weight: bold;
 }
+
+@font-face {
+  font-family: 'Material Icons';
+  src: local('Material Icons'),
+       url('../fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
+       url('../fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype'),
+       url('../fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');
+  font-style: normal;
+  font-weight: normal;
+}
