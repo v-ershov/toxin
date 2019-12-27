@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
@@ -11,9 +10,9 @@ module.exports = merge(common, {
         exclude: /node_modules/,
         loader: 'pug-loader',
         options: {
-          root: common.externals.paths.input
-        }
-      }
-    ]
-  }
+          root: common.externals.paths.input,
+        },
+      },
+    ],
+  },
 });

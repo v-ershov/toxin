@@ -9,7 +9,7 @@ module.exports = merge(common, {
     open: true,
     overlay: true,
     port: 8095,
-    writeToDisk: true
+    writeToDisk: true,
   },
   devtool: 'cheap-module-eval-source-map',
   module: {
@@ -20,14 +20,14 @@ module.exports = merge(common, {
         loader: 'pug-loader',
         options: {
           pretty: true,
-          root: common.externals.paths.input
-        }
-      }
-    ]
+          root: common.externals.paths.input,
+        },
+      },
+    ],
   },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
-      filename: '[file].map'
-    })
-  ]
+      filename: '[file].map',
+    }),
+  ],
 });

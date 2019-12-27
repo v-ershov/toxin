@@ -9,12 +9,12 @@
 //- +button('Sign In', ['fill', 'compact'])
 
 mixin button(text, modifiers=[])
-  - var mods = '';
+  - let mods = '';
   - if (modifiers.length !== 0) {
-  -   modifiers.forEach(function(mod) {
+  -   modifiers.forEach((mod) => {
   -     mods = `${mods}button_${mod} `;
   -   });
-  - };
+  - }
 
   if (attributes.href)
     a.button(class=mods)&attributes(attributes)
