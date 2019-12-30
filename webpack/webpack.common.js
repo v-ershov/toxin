@@ -17,7 +17,7 @@ const PATHS = {
 
 const PAGES = fs.readdirSync(PATHS.pugPages).filter((filename) => filename.endsWith('.pug'));
 
-function writePugBlocksFile() {
+(function writePugBlocksFile() {
   let pathsToBlocks = '';
 
   fs.readdirSync(PATHS.blocks).forEach((block) => {
@@ -25,9 +25,7 @@ function writePugBlocksFile() {
   });
 
   fs.writeFileSync(PATHS.pugBlocksFile, pathsToBlocks);
-}
-
-writePugBlocksFile();
+}());
 
 module.exports = {
   entry: {
