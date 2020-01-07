@@ -1,0 +1,19 @@
+//- Parameters:
+//- int[] number - число, обозначающее рейтинг (от 0 до 5)
+
+//- Examples:
+//- +rating(0)
+//- +rating(5)
+
+mixin rating(number)
+  - let count = 0;
+
+  .rating
+    while count < 5
+      if count < number
+        i.material-icons.rating__icon
+          | star
+      else
+        i.material-icons.rating__icon
+          | star_border
+      - count++;

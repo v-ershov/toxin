@@ -1,0 +1,12 @@
+.rating {
+  display: inline-block;
+  user-select: none;
+  cursor: default;
+
+  &__icon {
+    font-size: 24px;
+    color: transparent;
+    background-image: linear-gradient($color-primary, $color-secondary);;
+    background-clip: text;
+  }
+}
