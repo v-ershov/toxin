@@ -1,0 +1,75 @@
+.like-button {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  font-size: 10px;
+  line-height: 1;
+  color: $color-gray-25;
+  background-image:
+    linear-gradient($color-white, $color-white),
+    linear-gradient($color-primary, $color-secondary);
+  background-origin:
+    padding-box,
+    border-box;
+  background-clip:
+    padding-box,
+    border-box;
+  border: 1px solid $color-gray-25;
+  border-radius: 25% / 50%;
+  overflow: hidden;
+  transition: color $transition-fast, border-color $transition-fast;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 10.5%;
+    @include material-icons(10px, $color-gray-25);
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    content: 'favorite_border';
+  }
+
+  &::after {
+    content: 'favorite';
+    color: $color-primary;
+    opacity: 0;
+    transition: opacity $transition-fast;
+  }
+
+  &_active {
+    color: $color-primary;
+    border-color: transparent;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &__numbers {
+    position: absolute;
+    top: 23.5%;
+    left: 63.5%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 155%;
+    transform: translateX(-50%);
+
+    &_increase {
+      top: -76.5%;
+    }
+
+    &_anim-increase {
+      top: 23.5%;
+      transition: top $transition-fast;
+    }
+
+    &_anim-reduce {
+      top: -76.5%;
+      transition: top $transition-fast;
+    }
+  }
+}
