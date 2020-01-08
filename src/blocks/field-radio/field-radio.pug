@@ -11,8 +11,8 @@
 
 mixin field-radio(name, value, text)
   .field-radio
-    label.field-radio__label
-      input.field-radio__input(type='radio', name=name, value=value)&attributes(attributes)
-      span.field-radio__box
-      span.field-radio__text
+    label._label
+      input._input(type='radio', name=name, value=value)&attributes(attributes)
+      span._box
+      span._text
         | #{text}

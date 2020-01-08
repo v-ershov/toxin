@@ -12,19 +12,6 @@ module.exports = merge(common, {
     writeToDisk: true,
   },
   devtool: 'cheap-module-eval-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.pug$/,
-        exclude: /node_modules/,
-        loader: 'pug-loader',
-        options: {
-          pretty: true,
-          root: common.externals.paths.input,
-        },
-      },
-    ],
-  },
   plugins: [
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',

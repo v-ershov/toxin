@@ -6,7 +6,7 @@
   let isClickable = true; // если true, то кнопка доступна для клика
 
   const classButton = 'like-button'; // основной класс кнопки
-  const classButtonActive = `${classButton}_active`; // класс модификатора кнопки, обозначающий, что кнопка активна
+  const classButtonActive = `${classButton}--active`; // класс модификатора кнопки, обозначающий, что кнопка активна
   const classNumbers = `${classButton}__numbers`; // класс элемента кнопки, обозначающий контейнер для числовых значений
 
   const animTime = 300; // продолжительность анимации в миллисекундах
@@ -28,8 +28,8 @@
     elemNumber.innerHTML = parseInt(elemNumber.innerHTML, 10) + 1;
     elemNumbers.insertAdjacentHTML('afterbegin', elemNumber.outerHTML);
 
-    const classIncrease = `${classNumbers}_increase`;
-    const classAnimIncrease = `${classNumbers}_anim-increase`;
+    const classIncrease = `${classNumbers}--increase`;
+    const classAnimIncrease = `${classNumbers}--anim-increase`;
 
     elemNumbers.classList.add(classIncrease);
 
@@ -57,7 +57,7 @@
     elemNumber.innerHTML = parseInt(elemNumber.innerHTML, 10) - 1;
     elemNumbers.insertAdjacentHTML('beforeend', elemNumber.outerHTML);
 
-    const classAnimReduce = `${classNumbers}_anim-reduce`;
+    const classAnimReduce = `${classNumbers}--anim-reduce`;
 
     setTimeout(() => {
       elemNumbers.classList.add(classAnimReduce);

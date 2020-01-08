@@ -9,11 +9,11 @@ mixin like-button(number, modifiers=[])
   - let mods = '';
   - if (modifiers.length !== 0) {
   -   modifiers.forEach((mod) => {
-  -     mods = `${mods}like-button_${mod} `;
+  -     mods = `${mods}like-button--${mod} `;
   -   });
   - }
 
   button.like-button(class=mods)&attributes(attributes)
-    span.like-button__numbers
-      span.like-button__number
+    span._numbers
+      span._number
         | #{number}

@@ -39,7 +39,7 @@
     transition: opacity $transition-fast;
   }
 
-  &_active {
+  &--active {
     color: $color-primary;
     border-color: transparent;
 
@@ -58,16 +58,16 @@
     height: 155%;
     transform: translateX(-50%);
 
-    &_increase {
+    &--increase {
       top: -76.5%;
     }
 
-    &_anim-increase {
+    &--anim-increase {
       top: 23.5%;
       transition: top $transition-fast;
     }
 
-    &_anim-reduce {
+    &--anim-reduce {
       top: -76.5%;
       transition: top $transition-fast;
     }

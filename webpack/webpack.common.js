@@ -10,6 +10,7 @@ const PATHS = {
   input: path.resolve('./src'),
   output: path.resolve('./dist'),
   blocks: path.resolve('./src/blocks'),
+  fonts: path.resolve('./src/fonts'),
   pugPages: path.resolve('./src/pug/pages'),
   pugBlocksFile: path.resolve('./src/pug/_blocks.pug'),
   postcssConfigFile: path.resolve('./postcss.config.js'),
@@ -36,19 +37,24 @@ module.exports = {
     path: PATHS.output,
     publicPath: '/',
   },
-  externals: {
-    paths: PATHS,
-  },
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
+        test: /\.pug$/,
+        use: [
+          {
+            loader: 'pug-loader',
+          },
+          {
+            loader: 'pug-bem-plain-loader',
+            options: {
+              basedir: PATHS.input,
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
-        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -76,8 +82,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff2|woff|ttf|svg|eot|otf)$/,
-        exclude: [/icons/, /images/],
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.(woff(2)?|ttf|svg|eot|otf)$/,
+        include: PATHS.fonts,
         loader: 'file-loader',
         options: {
           name: './fonts/[name].[ext]',
@@ -85,7 +96,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        exclude: /fonts/,
+        include: PATHS.blocks,
         loader: 'file-loader',
         options: {
           name: './icons/[name].[ext]',
@@ -93,17 +104,13 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|gif)$/,
+        include: PATHS.blocks,
         loader: 'file-loader',
         options: {
           name: './images/[name].[ext]',
         },
       },
     ],
-  },
-  resolve: {
-    alias: {
-      '~': PATHS.input,
-    },
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -116,4 +123,12 @@ module.exports = {
       template: `${PATHS.pugPages}/${page}`,
     })),
   ],
+  externals: {
+    paths: PATHS,
+  },
+  resolve: {
+    alias: {
+      '~': PATHS.input,
+    },
+  },
 };

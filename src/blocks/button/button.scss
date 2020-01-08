@@ -53,7 +53,7 @@
     }
   }
 
-  &_fill {
+  &--fill {
     color: $color-white;
     background-image: linear-gradient($color-primary, $color-secondary);
     background-origin: border-box;
@@ -64,20 +64,20 @@
     }
   }
 
-  &_compact {
+  &--compact {
     min-width: auto;
     min-height: auto;
     padding-top: 9px;
     padding-bottom: 9px;
   }
 
-  &_wide {
+  &--wide {
     width: 100%;
     padding-right: 50px;
     padding-left: 50px;
   }
 
-  &_bodyless {
+  &--bodyless {
     width: auto;
     min-width: auto;
     min-height: auto;
