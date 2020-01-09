@@ -3,11 +3,11 @@
 //- string text - текст переключателя
 
 //- Examples:
-//- +field-toggle('news', 'Subscribe to newsletter')(checked)
-//- +field-toggle('news', 'Subscribe to newsletter')
+//- +input-toggle('news', 'Subscribe to newsletter')(checked)
+//- +input-toggle('news', 'Subscribe to newsletter')
 
-mixin field-toggle(name, text)
-  .field-toggle
+mixin input-toggle(name, text)
+  .input-toggle
     label._label
       input._input(type='checkbox', name=name)&attributes(attributes)
       span._box

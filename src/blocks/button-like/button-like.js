@@ -5,11 +5,11 @@
 
   let isClickable = true; // если true, то кнопка доступна для клика
 
-  const classButton = 'like-button'; // основной класс кнопки
+  const classButton = 'button-like'; // основной класс кнопки
   const classButtonActive = `${classButton}--active`; // класс модификатора кнопки, обозначающий, что кнопка активна
   const classNumbers = `${classButton}__numbers`; // класс элемента кнопки, обозначающий контейнер для числовых значений
 
-  const animTime = 300; // продолжительность анимации в миллисекундах
+  const animTime = 300; // продолжительность css-анимации в миллисекундах
 
   // ---------------
   // ---FUNCTIONS---

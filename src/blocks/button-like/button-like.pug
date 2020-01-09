@@ -2,18 +2,18 @@
 //- string[] modifiers=[] - модификаторы блока
 
 //- Examples:
-//- +like-button(4)
-//- +like-button(4, ['active'])
+//- +button-like(4)
+//- +button-like(4, ['active'])
 
-mixin like-button(number, modifiers=[])
+mixin button-like(number, modifiers=[])
   - let mods = '';
   - if (modifiers.length !== 0) {
   -   modifiers.forEach((mod) => {
-  -     mods = `${mods}like-button--${mod} `;
+  -     mods = `${mods}button-like--${mod} `;
   -   });
   - }
 
-  button.like-button(class=mods)&attributes(attributes)
+  button.button-like(class=mods)&attributes(attributes)
     span._numbers
       span._number
         | #{number}

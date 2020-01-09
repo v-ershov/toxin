@@ -3,11 +3,11 @@
 //- string text - текст чекбокса
 
 //- Examples:
-//- +field-checkbox('news', 'Subscribe to newsletter')(checked)
-//- +field-checkbox('news', 'Subscribe to newsletter')
+//- +input-checkbox('news', 'Subscribe to newsletter')(checked)
+//- +input-checkbox('news', 'Subscribe to newsletter')
 
-mixin field-checkbox(name, text)
-  .field-checkbox
+mixin input-checkbox(name, text)
+  .input-checkbox
     label._label
       input._input(type='checkbox', name=name)&attributes(attributes)
       span._box

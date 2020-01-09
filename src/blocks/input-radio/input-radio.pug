@@ -4,13 +4,13 @@
 //- string text  - текст радиокнопки
 
 //- Examples:
-//- +field-radio('gender', 'm', 'Male')(checked)
-//- +field-radio('gender', 'f', 'Female')
-//- +field-radio('color', 'black', 'Black color')(required)
-//- +field-radio('color', 'white', 'White color')
+//- +input-radio('gender', 'm', 'Male')(checked)
+//- +input-radio('gender', 'f', 'Female')
+//- +input-radio('color', 'black', 'Black color')(required)
+//- +input-radio('color', 'white', 'White color')
 
-mixin field-radio(name, value, text)
-  .field-radio
+mixin input-radio(name, value, text)
+  .input-radio
     label._label
       input._input(type='radio', name=name, value=value)&attributes(attributes)
       span._box
