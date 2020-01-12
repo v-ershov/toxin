@@ -1,0 +1,35 @@
+//- Parameters:
+//- string   name         - имя кнопки
+//- string   value        - значение кнопки
+//- string   text         - текст кнопки
+//- string[] modifiers=[] - модификаторы блока
+
+//- Examples:
+//- +button-option('news', 'news', 'Subscribe to newsletter')(checked)
+//- +button-option('news', 'news', 'Subscribe to newsletter')
+//- +button-option('news', 'news', 'Subscribe to newsletter', ['switch'])(checked)
+//- +button-option('news', 'news', 'Subscribe to newsletter', ['switch'])
+//- +button-option('gender', 'm', 'Male', ['radio'])(checked)
+//- +button-option('gender', 'f', 'Female', ['radio'])
+
+mixin button-option(name, value, text, modifiers=[])
+  - let mods = '';
+  - if (modifiers.length !== 0) {
+  -   modifiers.forEach((mod) => {
+  -     mods = `${mods}button-option--${mod} `;
+  -   });
+  - }
+
+  - let type = '';
+  - if (modifiers.includes('radio')) {
+  -   type = 'radio';
+  - } else {
+  -   type = 'checkbox';
+  - }
+
+  .button-option(class=mods)
+    label._label
+      input._input(type=type, name=name, value=value)&attributes(attributes)
+      ._box
+      ._text
+        | #{text}
