@@ -19,7 +19,7 @@
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    background-image: linear-gradient($color-white, $color-white);
+    background-image: $gradient-white;
     background-position-x: 0;
     background-repeat: no-repeat;
     border: 1px solid $color-gray-25;
@@ -37,14 +37,14 @@
       z-index: -5;
       width: 33.5%;
       height: 43.5%;
-      background-image: linear-gradient($color-white, $color-white);
+      background-image: $gradient-white;
       transform:
         translate(-50%, -50%)
         rotate(45deg);
     }
 
     &::before {
-      background-image: linear-gradient($color-primary, $color-secondary);
+      background-image: $gradient-primary;
       opacity: 0;
       transition: opacity $transition-fast;
     }
@@ -90,7 +90,7 @@
       z-index: auto;
       width: 12px;
       height: 12px;
-      background-image: linear-gradient($color-gray-25, $color-gray-25);
+      background-image: $gradient-gray-25;
       border-radius: 50%;
       transform: translateY(-50%);
       transition:
@@ -103,7 +103,7 @@
     }
 
     &::after {
-      background-image: linear-gradient($color-primary, $color-secondary);
+      background-image: $gradient-primary;
       opacity: 0;
     }
   }

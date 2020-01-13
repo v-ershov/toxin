@@ -6,8 +6,8 @@
   line-height: 1;
   color: $color-gray-25;
   background-image:
-    linear-gradient($color-white, $color-white),
-    linear-gradient($color-primary, $color-secondary);
+    $gradient-white,
+    $gradient-primary;
   background-origin:
     padding-box,
     border-box;

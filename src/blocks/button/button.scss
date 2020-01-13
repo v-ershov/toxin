@@ -14,8 +14,8 @@
   color: $color-primary;
   background-color: transparent;
   background-image:
-    linear-gradient($color-white, $color-white),
-    linear-gradient($color-primary, $color-secondary);
+    $gradient-white,
+    $gradient-primary;
   background-origin:
     padding-box,
     border-box;
@@ -35,8 +35,8 @@
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     background-image:
-      linear-gradient($color-white, $color-white),
-      linear-gradient(rgba($color-white, 0.5), rgba($color-white, 0.5));
+      $gradient-white,
+      $gradient-white-trans;
     background-origin: inherit;
     background-clip: inherit;
     border: inherit;
@@ -55,12 +55,12 @@
 
   &--fill {
     color: $color-white;
-    background-image: linear-gradient($color-primary, $color-secondary);
+    background-image: $gradient-primary;
     background-origin: border-box;
     background-clip: border-box;
 
     &::before {
-      background-image: linear-gradient(rgba($color-white, 0.5), rgba($color-white, 0.5));
+      background-image: $gradient-white-trans;
     }
   }
 
