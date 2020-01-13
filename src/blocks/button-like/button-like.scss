@@ -17,7 +17,9 @@
   border: 1px solid $color-gray-25;
   border-radius: 25% / 50%;
   overflow: hidden;
-  transition: color $transition-fast, border-color $transition-fast;
+  transition:
+    color $transition-fast,
+    border-color $transition-fast;
 
   &::before,
   &::after {
