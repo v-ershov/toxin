@@ -5,7 +5,7 @@
 
   &__item {
     position: relative;
-    margin-top: 11px;
+    margin-bottom: 11px;
 
     &::before {
       content: '';
@@ -18,8 +18,8 @@
       border-radius: 50%;
     }
 
-    &:first-child {
-      margin-top: 0;
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
