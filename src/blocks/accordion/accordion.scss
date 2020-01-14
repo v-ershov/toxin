@@ -1,0 +1,51 @@
+.accordion {
+  line-height: 1;
+  
+  &__input {
+    display: none;
+  }
+
+  &__label {
+    position: relative;
+    display: block;
+    padding-right: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &::before {
+      content: 'expand_more';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      @include material-icons(24px, $color-gray-50);
+      transform: translateY(-50%);
+      transition: transform $transition-slow;
+    }
+  }
+
+  &__input:checked + &__label {
+    &::before {
+      transform:
+        translateY(-50%)
+        rotate(180deg);
+    }
+  }
+
+  &__content {
+    box-sizing: content-box;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      max-height $transition-slow,
+      padding $transition-slow,
+      opacity $transition-slow;
+  }
+
+  &__input:checked ~ &__content {
+    max-height: 100vh;
+    padding: 15px 0;
+    opacity: 1;
+  }
+}
