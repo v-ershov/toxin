@@ -1,0 +1,22 @@
+.advantage {
+  display: flex;
+  padding: 20px 0;
+  border-bottom: 1px solid $color-gray-10;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-right: 10px;
+    font-size: 48px;
+    color: transparent;
+    background-image: $gradient-primary;
+    background-clip: text;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+}
