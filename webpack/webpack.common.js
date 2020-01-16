@@ -12,20 +12,18 @@ const PATHS = {
   blocks: path.resolve('./src/blocks'),
   fonts: path.resolve('./src/fonts'),
   pugPages: path.resolve('./src/pug/pages'),
-  pugBlocksFile: path.resolve('./src/pug/_blocks.pug'),
-  postcssConfigFile: path.resolve('./postcss.config.js'),
+  pugBlocks: path.resolve('./src/pug/_blocks.pug'),
+  postcss: path.resolve('./postcss.config.js'),
 };
 
-const PAGES = fs.readdirSync(PATHS.pugPages).filter((filename) => filename.endsWith('.pug'));
-
-(function writePugBlocksFile() {
+(function writePugBlocks() {
   let pathsToBlocks = '';
 
   fs.readdirSync(PATHS.blocks).forEach((block) => {
     pathsToBlocks += `include /blocks/${block}/${block}.pug\n`;
   });
 
-  fs.writeFileSync(PATHS.pugBlocksFile, pathsToBlocks);
+  fs.writeFileSync(PATHS.pugBlocks, pathsToBlocks);
 }());
 
 module.exports = {
@@ -67,7 +65,7 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: PATHS.postcssConfigFile,
+                path: PATHS.postcss,
               },
               sourceMap: true,
             },
@@ -118,7 +116,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: './css/[name].css',
     }),
-    ...PAGES.map((page) => new HtmlWebpackPlugin({
+    ...fs.readdirSync(PATHS.pugPages).map((page) => new HtmlWebpackPlugin({
       filename: `./${page.replace(/\.pug/, '.html')}`,
       template: `${PATHS.pugPages}/${page}`,
     })),
