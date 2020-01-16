@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
+const pugBem = require('pug-bem');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -42,11 +43,9 @@ module.exports = {
         use: [
           {
             loader: 'pug-loader',
-          },
-          {
-            loader: 'pug-bem-plain-loader',
             options: {
-              basedir: PATHS.input,
+              plugins: [pugBem],
+              root: PATHS.input,
             },
           },
         ],
