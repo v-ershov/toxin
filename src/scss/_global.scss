@@ -23,6 +23,13 @@ a:visited {
   color: inherit;
 }
 
+img {
+  display: flex;
+	max-width: 100%;
+  max-height: 100%;
+  border: 0;
+}
+
 .material-icons {
   @include material-icons;
 }
