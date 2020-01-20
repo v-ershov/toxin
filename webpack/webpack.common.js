@@ -8,13 +8,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
-  input: path.resolve('./src'),
-  output: path.resolve('./dist'),
-  blocks: path.resolve('./src/blocks'),
-  fonts: path.resolve('./src/fonts'),
-  pugPages: path.resolve('./src/pug/pages'),
-  pugBlocks: path.resolve('./src/pug/_blocks.pug'),
-  postcss: path.resolve('./postcss.config.js'),
+  input: path.resolve('src'),
+  output: path.resolve('dist'),
+  blocks: path.resolve('src/blocks'),
+  fonts: path.resolve('src/fonts'),
+  pugPages: path.resolve('src/pug/pages'),
+  pugBlocks: path.resolve('src/pug/_blocks.pug'),
+  postcss: path.resolve('postcss.config.js'),
 };
 
 (function writePugBlocks() {
@@ -32,7 +32,7 @@ module.exports = {
     app: `${PATHS.input}/js/index.js`,
   },
   output: {
-    filename: './js/[name].js',
+    filename: 'js/[name].js',
     path: PATHS.output,
     publicPath: '/',
   },
@@ -88,7 +88,7 @@ module.exports = {
         include: PATHS.fonts,
         loader: 'file-loader',
         options: {
-          name: './fonts/[name].[ext]',
+          name: 'fonts/[name].[ext]',
         },
       },
       {
@@ -96,7 +96,7 @@ module.exports = {
         include: PATHS.blocks,
         loader: 'file-loader',
         options: {
-          name: './icons/[name].[ext]',
+          name: 'icons/[name].[ext]',
         },
       },
       {
@@ -104,7 +104,7 @@ module.exports = {
         include: PATHS.blocks,
         loader: 'file-loader',
         options: {
-          name: './images/[name].[ext]',
+          name: 'images/[name].[ext]',
         },
       },
     ],
@@ -113,10 +113,10 @@ module.exports = {
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: './css/[name].css',
+      filename: 'css/[name].css',
     }),
     ...fs.readdirSync(PATHS.pugPages).map((page) => new HtmlWebpackPlugin({
-      filename: `./${page.replace(/\.pug/, '.html')}`,
+      filename: `${page.replace(/\.pug/, '.html')}`,
       template: `${PATHS.pugPages}/${page}`,
     })),
   ],
