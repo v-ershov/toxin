@@ -1,21 +1,21 @@
-module.exports = { 
-  "extends": 'airbnb-base',
-  'rules': {
+module.exports = {
+  extends: 'airbnb-base',
+  rules: {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        'devDependencies': true,
+        devDependencies: true,
       },
     ],
   },
-  'env': {
-    "browser": true,
-    "node": true
+  env: {
+    browser: true,
+    node: true,
   },
-  'settings': {
+  settings: {
     'import/resolver': {
-      'webpack': {
-        'config': 'webpack/webpack.common.js',
+      webpack: {
+        config: 'webpack/webpack.common.js',
       },
     },
   },
