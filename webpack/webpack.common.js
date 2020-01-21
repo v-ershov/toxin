@@ -1,83 +1,42 @@
 const webpack = require('webpack');
-const path = require('path');
 const fs = require('fs');
-const pugBem = require('pug-bem');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const PATHS = {
-  input: path.resolve('src'),
-  output: path.resolve('dist'),
-  blocks: path.resolve('src/blocks'),
-  fonts: path.resolve('src/fonts'),
-  pugPages: path.resolve('src/pug/pages'),
-  pugBlocks: path.resolve('src/pug/_blocks.pug'),
-  postcss: path.resolve('postcss.config.js'),
-};
+const paths = require('./paths.js');
 
 (function writePugBlocks() {
   let pathsToBlocks = '';
-
-  fs.readdirSync(PATHS.blocks).forEach((block) => {
+  fs.readdirSync(paths.src.blocks).forEach((block) => {
     pathsToBlocks += `include /blocks/${block}/${block}.pug\n`;
   });
-
-  fs.writeFileSync(PATHS.pugBlocks, pathsToBlocks);
+  fs.writeFileSync(`${paths.src.pug}/_blocks.pug`, pathsToBlocks);
 }());
 
 module.exports = {
   entry: {
-    app: `${PATHS.input}/js/index.js`,
+    app: [
+      '@babel/polyfill',
+      `${paths.context.src}/index.js`,
+    ],
   },
   output: {
-    filename: 'js/[name].js',
-    path: PATHS.output,
+    path: paths.context.dist,
     publicPath: '/',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  resolve: {
+    alias: {
+      '~': paths.context.src,
+    },
   },
   module: {
     rules: [
-      {
-        test: /\.pug$/,
-        use: [
-          {
-            loader: 'pug-loader',
-            options: {
-              plugins: [pugBem],
-              root: PATHS.input,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              config: {
-                path: PATHS.postcss,
-              },
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          'import-glob-loader',
-        ],
-      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -85,26 +44,38 @@ module.exports = {
       },
       {
         test: /\.(woff(2)?|ttf|svg|eot|otf)$/,
-        include: PATHS.fonts,
+        include: paths.src.fonts,
         loader: 'file-loader',
         options: {
-          name: 'fonts/[name].[ext]',
+          name: '[name].[ext]',
+          outputPath: 'fonts',
         },
       },
       {
         test: /\.svg$/,
-        include: PATHS.blocks,
+        include: paths.src.blocks,
         loader: 'file-loader',
         options: {
-          name: 'icons/[name].[ext]',
+          name: '[name].[ext]',
+          outputPath: 'icons',
         },
       },
       {
         test: /\.(jpg|png|gif)$/,
-        include: PATHS.blocks,
+        include: paths.src.blocks,
         loader: 'file-loader',
         options: {
-          name: 'images/[name].[ext]',
+          name: '[name].[ext]',
+          outputPath: 'images',
+        },
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
+        include: paths.src.content,
+        loader: 'file-loader',
+        options: {
+          name: '[folder]/[name].[ext]',
+          outputPath: 'images',
         },
       },
     ],
@@ -112,20 +83,9 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-    }),
-    ...fs.readdirSync(PATHS.pugPages).map((page) => new HtmlWebpackPlugin({
+    ...fs.readdirSync(paths.src.pugPages).map((page) => new HtmlWebpackPlugin({
       filename: `${page.replace(/\.pug/, '.html')}`,
-      template: `${PATHS.pugPages}/${page}`,
+      template: `${paths.src.pugPages}/${page}`,
     })),
   ],
-  externals: {
-    paths: PATHS,
-  },
-  resolve: {
-    alias: {
-      '~': PATHS.input,
-    },
-  },
 };
