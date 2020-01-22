@@ -1,0 +1,40 @@
+//- Parameters:
+//- string author       - имя автора отзыва
+//- string image        - название файла с изображением автора отзыва
+//- string time         - время отзыва в свободной форме
+//- string datetime     - время отзыва в международном формате ISO 8601
+//- string text         - текст отзыва
+//- int    likes        - количество лайков у кнопки отзыва
+                          (взаимодействует с параметром number блока button-like)
+//- bool   isLike=false - если true, то кнопка отзыва активна
+                          (взаимодействует с параметром modifiers блока button-like)
+
+//- Examples:
+//- +feedback(
+      'Darth Vader',
+      'darth-vader.jpg',
+      'Yesterday',
+      '2015-12-17',
+      'I hate The Force Awakens so much!',
+      1977, true)
+
+include /blocks/button-like/button-like.pug
+
+mixin feedback(author, image, time, datetime, text, likes, isLike=false)
+  article.feedback
+    header._section
+      ._cell.-small
+        img._image(src=require(`~/content/feedback/${image}`).default, alt=author)
+      ._cell
+        ._author
+          | #{author}
+        time._time(datetime=datetime)
+          | #{time}
+    section._section
+      ._cell.-small
+        if isLike
+          +button-like(likes, ['active'])
+        else
+          +button-like(likes)
+      ._cell
+        | #{text}
