@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const merge = require('webpack-merge');
 const pugBem = require('pug-bem');
 
@@ -61,9 +60,6 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new webpack.SourceMapDevToolPlugin({
-      filename: '[file].map',
-    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
     }),
