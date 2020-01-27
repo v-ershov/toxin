@@ -44,7 +44,7 @@
   }
 
   &__input:checked ~ &__content {
-    max-height: 100vh;
+    max-height: var(--height);
     padding: 15px 0;
     opacity: 1;
   }
