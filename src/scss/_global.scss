@@ -3,6 +3,7 @@
 *::after {
   box-sizing: border-box;
   font-family: $font-family-primary;
+  outline: 0;
 }
 
 html,
@@ -25,7 +26,7 @@ a:visited {
 
 img {
   display: flex;
-	max-width: 100%;
+  max-width: 100%;
   max-height: 100%;
   border: 0;
 }
