@@ -20,7 +20,7 @@
       right: 0;
       @include material-icons(24px, $color-gray-50);
       transform: translateY(-50%);
-      transition: transform $transition-slow;
+      transition: transform $transition-medium;
     }
   }
 
@@ -33,14 +33,13 @@
   }
 
   &__content {
-    box-sizing: content-box;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     transition:
-      max-height $transition-slow,
-      padding $transition-slow,
-      opacity $transition-slow;
+      max-height $transition-medium,
+      padding $transition-medium,
+      opacity $transition-medium;
   }
 
   &__input:checked ~ &__content {
