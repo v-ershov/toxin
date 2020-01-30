@@ -58,7 +58,7 @@
     background-position-x: 15px;
     border-color: $color-primary;
     transition:
-      background-position-x $transition-medium 0.15s,
+      background-position-x $transition-medium,
       border-color $transition-fast;
     
     &::before {
