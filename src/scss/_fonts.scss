@@ -1,39 +1,43 @@
 @font-face {
-  font-family: 'Montserrat';
-  src: local('Montserrat'),
-       url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
-       url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'),
-       url('../fonts/Montserrat/Montserrat-Regular.svg#Montserrat-Regular') format('svg');
-  font-style: normal;
   font-weight: normal;
-}
-
-@font-face {
-  font-family: 'Montserrat';
-  src: local('Montserrat'),
-       url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff'),
-       url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype'),
-       url('../fonts/Montserrat/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
   font-style: normal;
-  font-weight: bold;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat'),
+    url('../fonts/Montserrat/Montserrat-Regular.woff') format('woff'),
+    url('../fonts/Montserrat/Montserrat-Regular.ttf') format('truetype'),
+    url('../fonts/Montserrat/Montserrat-Regular.svg#Montserrat-Regular') format('svg');
 }
 
 @font-face {
+  font-weight: bold;
+  font-style: normal;
+  font-family: 'Montserrat';
+  src:
+    local('Montserrat'),
+    url('../fonts/Montserrat/Montserrat-Bold.woff') format('woff'),
+    url('../fonts/Montserrat/Montserrat-Bold.ttf') format('truetype'),
+    url('../fonts/Montserrat/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
+}
+
+@font-face {
+  font-weight: bold;
+  font-style: normal;
   font-family: 'Roboto';
-  src: local('Roboto'),
-       url('../fonts/Roboto/Roboto-Bold.woff') format('woff'),
-       url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype'),
-       url('../fonts/Roboto/Roboto-Bold.svg#Roboto-Bold') format('svg');
-  font-style: normal;
-  font-weight: bold;
+  src:
+    local('Roboto'),
+    url('../fonts/Roboto/Roboto-Bold.woff') format('woff'),
+    url('../fonts/Roboto/Roboto-Bold.ttf') format('truetype'),
+    url('../fonts/Roboto/Roboto-Bold.svg#Roboto-Bold') format('svg');
 }
 
 @font-face {
-  font-family: 'Material Icons';
-  src: local('Material Icons'),
-       url('../fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
-       url('../fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype'),
-       url('../fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');
-  font-style: normal;
   font-weight: normal;
+  font-style: normal;
+  font-family: 'Material Icons';
+  src:
+    local('Material Icons'),
+    url('../fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
+    url('../fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype'),
+    url('../fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');
 }

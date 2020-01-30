@@ -11,26 +11,25 @@
   &__input {
     display: none;
   }
-  
+
   &__box {
     position: relative;
     top: -2px;
     flex-shrink: 0;
+    margin-right: 10px;
     width: 20px;
     height: 20px;
-    margin-right: 10px;
+    border: 1px solid $color-gray-25;
+    border-radius: 20%;
     background-image: $gradient-white;
     background-position-x: 0;
     background-repeat: no-repeat;
-    border: 1px solid $color-gray-25;
-    border-radius: 20%;
     transition:
       background-position-x 0.01s $transition-fast,
       border-color $transition-fast;
 
     &::before,
     &::after {
-      content: '';
       position: absolute;
       top: 42.5%;
       left: 50%;
@@ -38,6 +37,7 @@
       width: 33.5%;
       height: 43.5%;
       background-image: $gradient-white;
+      content: '';
       transform:
         translate(-50%, -50%)
         rotate(45deg);
@@ -55,20 +55,20 @@
   }
 
   &__input:checked + &__box {
-    background-position-x: 15px;
     border-color: $color-primary;
+    background-position-x: 15px;
     transition:
       background-position-x $transition-medium,
       border-color $transition-fast;
-    
+
     &::before {
       opacity: 1;
     }
   }
 
   &__text {
-    line-height: 1.285;
     color: $color-gray-50;
+    line-height: 1.285;
   }
 
   &--switch &__label,
@@ -79,8 +79,8 @@
 
   &--switch &__box {
     width: 40px;
-    background-image: none;
     border-radius: 25% / 50%;
+    background-image: none;
     transition: border-color $transition-fast;
 
     &::before,
@@ -90,12 +90,12 @@
       z-index: auto;
       width: 12px;
       height: 12px;
-      background-image: $gradient-gray-25;
       border-radius: 50%;
-      transform: translateY(-50%);
+      background-image: $gradient-gray-25;
       transition:
         left $transition-fast,
         opacity $transition-fast;
+      transform: translateY(-50%);
     }
 
     &::before {
@@ -121,14 +121,14 @@
       opacity: 1;
     }
   }
-  
+
   &--switch &__text {
     color: $color-gray-75;
   }
 
   &--radio &__box {
-    background-image: none;
     border-radius: 50%;
+    background-image: none;
     transition: border-color $transition-fast;
 
     &::before {
@@ -137,11 +137,11 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      transform: translate(-50%, -50%);
       transition:
         width $transition-fast,
         height $transition-fast,
         opacity $transition-fast;
+      transform: translate(-50%, -50%);
     }
 
     &::after {
@@ -169,5 +169,5 @@
 
   &--radio &__input:checked ~ &__text {
     color: $color-gray-75;
-  }  
+  }
 }

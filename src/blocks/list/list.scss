@@ -8,14 +8,14 @@
     margin-bottom: 11px;
 
     &::before {
-      content: '';
       position: absolute;
       top: 6px;
       left: -20px;
       width: 10px;
       height: 10px;
-      background-color: $color-gray-25;
       border-radius: 50%;
+      background-color: $color-gray-25;
+      content: '';
     }
 
     &:last-child {

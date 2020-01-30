@@ -1,22 +1,22 @@
 .button-like {
   position: relative;
+  overflow: hidden;
   width: 40px;
   height: 20px;
-  font-size: 10px;
-  line-height: 1;
-  color: $color-gray-25;
+  border: 1px solid $color-gray-25;
+  border-radius: 25% / 50%;
   background-image:
     $gradient-white,
     $gradient-primary;
-  background-origin:
-    padding-box,
-    border-box;
   background-clip:
     padding-box,
     border-box;
-  border: 1px solid $color-gray-25;
-  border-radius: 25% / 50%;
-  overflow: hidden;
+  background-origin:
+    padding-box,
+    border-box;
+  color: $color-gray-25;
+  font-size: 10px;
+  line-height: 1;
   transition:
     color $transition-fast,
     border-color $transition-fast;
@@ -26,8 +26,9 @@
     position: absolute;
     top: 50%;
     left: 10.5%;
-    @include material-icons(10px, $color-gray-25);
     transform: translateY(-50%);
+
+    @include material-icons(10px, $color-gray-25);
   }
 
   &::before {
@@ -35,15 +36,15 @@
   }
 
   &::after {
-    content: 'favorite';
     color: $color-primary;
+    content: 'favorite';
     opacity: 0;
     transition: opacity $transition-fast;
   }
 
   &--active {
-    color: $color-primary;
     border-color: transparent;
+    color: $color-primary;
 
     &::after {
       opacity: 1;

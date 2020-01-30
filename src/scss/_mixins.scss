@@ -31,21 +31,25 @@
 
 // Material Design Icons Font
 @mixin material-icons($font-size: $font-size-xl, $color: $color-primary) {
-  font-family: 'Material Icons';
+  display: inline-block;
+  color: $color;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  letter-spacing: normal;
   font-weight: normal;
   font-style: normal;
   font-size: $font-size;
-  display: inline-block;
+  font-family: 'Material Icons', sans-serif;
   line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
   direction: ltr;
-  color: $color;
+
+  /* My extra properties */
+  user-select: none;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
+
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
 
@@ -54,7 +58,4 @@
 
   /* Support for IE. */
   font-feature-settings: 'liga';
-
-  /* My extra properties */
-  user-select: none;
 }

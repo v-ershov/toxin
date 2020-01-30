@@ -10,10 +10,10 @@
   &__icon {
     flex-shrink: 0;
     margin-right: 10px;
-    font-size: 48px;
-    color: transparent;
     background-image: $gradient-primary;
     background-clip: text;
+    color: transparent;
+    font-size: 48px;
   }
 
   &__title {
