@@ -10,7 +10,7 @@
   "disallowSpacesInsideAttributeBrackets": true,
   "disallowStringConcatenation": true,
   "disallowTrailingSpaces": true,
-  "maximumLineLength": 100,
+  "maximumLineLength": 125,
   "maximumNumberOfLines": 100,
   "requireClassLiteralsBeforeAttributes": true,
   "requireClassLiteralsBeforeIdLiterals": true,
