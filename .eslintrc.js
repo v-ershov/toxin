@@ -2,9 +2,13 @@ module.exports = {
   extends: 'airbnb-base',
   rules: {
     'import/no-extraneous-dependencies': [
-      'error',
-      {
+      'error', {
         devDependencies: true,
+      },
+    ],
+    'no-underscore-dangle': [
+      'error', {
+        allowAfterThis: true,
       },
     ],
   },
