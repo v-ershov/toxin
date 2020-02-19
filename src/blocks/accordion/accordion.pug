@@ -1,17 +1,15 @@
 //- Parameters:
-//- string name   - имя аккордеона
-//- string text   - текст аккордеона
-//- string height - высота контейнера для контента аккордеона
-//-                 (значение кастомного css-свойства)
+//- string name - имя аккордеона
+//- string text - текст аккордеона
 
 //- Examples:
-//- +accordion('services', 'Additional services', '300px')
+//- +accordion('services', 'Additional services')
 //-   content...
 
-mixin accordion(name, text, height)
+mixin accordion(name, text)
   .accordion
     input._input(id=name, type='checkbox', name=name)
     label._label(for=name)
       | #{text}
-    ._content(style=`--height: ${height}`)
+    ._content(style='--height: 100vh')
       block
