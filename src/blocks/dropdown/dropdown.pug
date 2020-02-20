@@ -1,0 +1,58 @@
+//- Parameters:
+//- string     name            - имя дропдауна
+//- string     text            - текст дропдауна по умолчанию
+//- string[[]] items           - пункты меню дропдауна со следующими данными:
+//-                              - мин. допустимое количество
+//-                              - макс. допустимое количество
+//-                              - название пункта (в единственном числе)
+//-                              - название пункта (во множественном числе)
+//-                              - название пункта в род. падеже (когда последняя цифра количества входит в диапазон 2-4)
+//-                              - название пункта в род. падеже (когда последняя цифра количества равна 0,
+//-                                либо последняя цифра количества входит в диапазон 5-9,
+//-                                либо последние две цифры количества входят в диапазон 10-19)
+//- string[]   words=[]        - общее обозначение всех пунктов меню дропдауна:
+//-                              - обозначение пунктов (в единственном числе)
+//-                              - обозначение пунктов (когда последняя цифра общего количества входит в диапазон 2-4)
+//-                              - обозначение пунктов (когда последняя цифра общего количества равна 0,
+//-                                либо последняя цифра общего количества входит в диапазон 5-9,
+//-                                либо последние две цифры общего количества входят в диапазон 10-19)
+//- bool       isButtons=false - если true, то у дропдауна доступны кнопки "Очистить" и "Применить"
+
+//- Examples:
+//- +dropdown('guests', 'Сколько гостей', [
+//-     [0, 5, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+//-     [0, 5, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+//-     [0, 5, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+//-   ], ['гость', 'гостя', гостей'], true)
+
+include /blocks/button/button.pug
+
+mixin dropdown(name, text, items, words=[], isButtons=false)
+  - let isWords = words.length !== 0;
+
+  .dropdown
+    input._input(id=name, type='checkbox', name=name)
+    if isWords
+      label._label(for=name, data-text=text, data-words=`${words[0]}, ${words[1]}, ${words[2]}`)
+        | #{text}
+    else
+      label._label(for=name, data-text=text)
+        | #{text}
+    ._content(style='--height: 100vh')
+      ._items
+        each item in items
+          ._item(data-words=`${item[2]}, ${item[4]}, ${item[5]}`)
+            span._title
+              | #{item[3]}
+            span._controls
+              button._spinner(name='decrement', disabled)
+                | &minus;
+              input._quantity(type='number', value='0', min=item[0], max=item[1], readonly)
+              button._spinner(name='increment')
+                | +
+      if isButtons
+        ._buttons
+          ._button.-reset.-hide
+            +button('Очистить', ['bodyless', 'gray-text'])(name='reset')
+          ._button
+            +button('Применить', ['bodyless'])(name='apply')
