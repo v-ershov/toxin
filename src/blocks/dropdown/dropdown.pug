@@ -28,11 +28,9 @@
 include /blocks/button/button.pug
 
 mixin dropdown(name, text, items, words=[], isButtons=false)
-  - let isWords = words.length !== 0;
-
   .dropdown
     input._input(id=name, type='checkbox', name=name)
-    if isWords
+    if words.length !== 0
       label._label(for=name, data-text=text, data-words=`${words[0]}, ${words[1]}, ${words[2]}`)
         | #{text}
     else
