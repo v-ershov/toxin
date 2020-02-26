@@ -5,12 +5,12 @@
 //- string[] modifiers=[] - модификаторы блока
 
 //- Examples:
-//- +button-option('news', 'news', 'Subscribe to newsletter')(checked)
 //- +button-option('news', 'news', 'Subscribe to newsletter')
-//- +button-option('news', 'news', 'Subscribe to newsletter', ['switch'])(checked)
+//- +button-option('news', 'news', 'Subscribe to newsletter')(checked)
 //- +button-option('news', 'news', 'Subscribe to newsletter', ['switch'])
-//- +button-option('gender', 'm', 'Male', ['radio'])(checked)
-//- +button-option('gender', 'f', 'Female', ['radio'])
+//- +button-option('news', 'news', 'Subscribe to newsletter', ['switch'])(checked)
+//- +button-option('gender', 'm', 'Male', ['radio'])
+//- +button-option('gender', 'f', 'Female', ['radio'])(checked)
 
 mixin button-option(name, value, text, modifiers=[])
   - let mods = '';
