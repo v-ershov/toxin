@@ -10,8 +10,8 @@ const SRC = {
   blocks: `${CONTEXT.src}\\blocks`,
   content: `${CONTEXT.src}\\content`,
   fonts: `${CONTEXT.src}\\fonts`,
+  pages: `${CONTEXT.src}\\pages`,
   pug: `${CONTEXT.src}\\pug`,
-  pugPages: `${CONTEXT.src}\\pug\\pages`,
 };
 
 const POSTCSS = {

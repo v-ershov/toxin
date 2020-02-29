@@ -83,9 +83,9 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
-    ...fs.readdirSync(paths.src.pugPages).map((page) => new HtmlWebpackPlugin({
-      filename: `${page.replace(/\.pug/, '.html')}`,
-      template: `${paths.src.pugPages}/${page}`,
+    ...fs.readdirSync(paths.src.pages).map((page) => new HtmlWebpackPlugin({
+      filename: `${page}.html`,
+      template: `${paths.src.pages}/${page}/${page}.pug`,
     })),
   ],
 };

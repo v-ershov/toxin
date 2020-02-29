@@ -1,0 +1,33 @@
+extends /pug/templates/_base.pug
+
+block vars
+  - var keywords = 'important, keywords';
+  - var description = 'short description';
+  - var title = 'Sitemap';
+
+block content
+  h1 Sitemap
+  section
+    h2 UI-Kit
+    ul
+      li
+        a(href='ui-colors-type.html') Colors & Type
+      li
+        a(href='ui-form-elements.html') Form Elements
+      li
+        a(href='ui-cards.html') Cards
+      li
+        a(href='ui-headers-footers.html') Headers & Footers
+  section
+    h2 Website Pages
+    ul
+      li
+        a(href='landing.html') Landing Page
+      li
+        a(href='search.html') Search Room
+      li
+        a(href='room.html') Room Details
+      li
+        a(href='sign-up.html') Sign Up
+      li
+        a(href='sign-in.html') Sign In
