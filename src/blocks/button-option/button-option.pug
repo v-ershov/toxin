@@ -20,16 +20,9 @@ mixin button-option(name, value, text, modifiers=[])
   -   });
   - }
 
-  - let type = '';
-  - if (modifiers.includes('radio')) {
-  -   type = 'radio';
-  - } else {
-  -   type = 'checkbox';
-  - }
-
   .button-option(class=mods)
     label._label
-      input._input(type=type, name=name, value=value)&attributes(attributes)
+      input._input(type=modifiers.includes('radio') ? 'radio' : 'checkbox', name=name, value=value)&attributes(attributes)
       ._box
       ._text
         | #{text}
