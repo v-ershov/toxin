@@ -11,7 +11,7 @@
     display: block;
     overflow: hidden;
     padding: 14px 50px 14px 14px;
-    border: 1px solid $color-gray-25;
+    border: 1px solid $color-gray-25p;
     border-radius: 4px 4px 0 0;
     background-color: $color-white;
     text-overflow: ellipsis;
@@ -29,12 +29,12 @@
       transition: transform $transition-medium;
       transform: translateY(-50%);
 
-      @include material-icons(24px, $color-gray-75);
+      @include material-icons(24px, $color-gray-75p);
     }
   }
 
   &__input:checked + &__label {
-    border-color: $color-gray-50;
+    border-color: $color-gray-50p;
     box-shadow: $shadow-secondary;
 
     &::before {
@@ -53,7 +53,7 @@
     overflow: hidden;
     max-height: 0;
     width: 100%;
-    border: 1px solid $color-gray-25;
+    border: 1px solid $color-gray-25p;
     border-bottom-width: 0;
     border-radius: 0 0 4px 4px;
     background-color: $color-white;
@@ -66,7 +66,7 @@
 
   &__input:checked ~ &__content {
     max-height: var(--height);
-    border-color: $color-gray-50;
+    border-color: $color-gray-50p;
     border-bottom-width: 1px;
     box-shadow: $shadow-secondary;
     transition:
@@ -76,7 +76,7 @@
 
   &:hover > &__label,
   &:hover > &__content {
-    border-color: $color-gray-50;
+    border-color: $color-gray-50p;
   }
 
   &__items {
@@ -96,7 +96,7 @@
 
   &__title,
   &__quantity {
-    color: $color-gray-100;
+    color: $color-gray-100p;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 12px;
@@ -122,16 +122,16 @@
   &__spinner {
     width: 30px;
     height: 30px;
-    border: 1px solid $color-gray-25;
+    border: 1px solid $color-gray-25p;
     border-radius: 50%;
     background-color: transparent;
-    color: $color-gray-50;
+    color: $color-gray-50p;
     font-size: 18px;
     transition: border-color $transition-fast;
 
     &:hover,
     &:active {
-      border-color: $color-gray-50;
+      border-color: $color-gray-50p;
     }
   }
 
@@ -140,7 +140,7 @@
 
     &:hover,
     &:active {
-      border-color: $color-gray-25;
+      border-color: $color-gray-25p;
     }
   }
 

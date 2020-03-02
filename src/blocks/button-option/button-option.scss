@@ -19,7 +19,7 @@
     margin-right: 10px;
     width: 20px;
     height: 20px;
-    border: 1px solid $color-gray-25;
+    border: 1px solid $color-gray-25p;
     border-radius: 20%;
     background-image: $gradient-white;
     background-position-x: 0;
@@ -55,7 +55,7 @@
   }
 
   &__input:checked + &__box {
-    border-color: $color-primary;
+    border-color: $color-primary-1;
     background-position-x: 15px;
     transition:
       background-position-x $transition-medium,
@@ -67,7 +67,7 @@
   }
 
   &__text {
-    color: $color-gray-50;
+    color: $color-gray-50p;
     line-height: 1.285;
   }
 
@@ -91,7 +91,7 @@
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-image: $gradient-gray-25;
+      background-image: $gradient-gray-25p;
       transition:
         left $transition-fast,
         opacity $transition-fast;
@@ -123,7 +123,7 @@
   }
 
   &--switch &__text {
-    color: $color-gray-75;
+    color: $color-gray-75p;
   }
 
   &--radio &__box {
@@ -168,6 +168,6 @@
   }
 
   &--radio &__input:checked ~ &__text {
-    color: $color-gray-75;
+    color: $color-gray-75p;
   }
 }

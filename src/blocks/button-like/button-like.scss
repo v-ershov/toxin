@@ -3,7 +3,7 @@
   overflow: hidden;
   width: 40px;
   height: 20px;
-  border: 1px solid $color-gray-25;
+  border: 1px solid $color-gray-25p;
   border-radius: 25% / 50%;
   background-image:
     $gradient-white,
@@ -14,7 +14,7 @@
   background-origin:
     padding-box,
     border-box;
-  color: $color-gray-25;
+  color: $color-gray-25p;
   font-size: 10px;
   line-height: 1;
   transition:
@@ -28,7 +28,7 @@
     left: 10.5%;
     transform: translateY(-50%);
 
-    @include material-icons(10px, $color-gray-25);
+    @include material-icons(10px, $color-gray-25p);
   }
 
   &::before {
@@ -36,7 +36,7 @@
   }
 
   &::after {
-    color: $color-primary;
+    color: $color-primary-1;
     content: 'favorite';
     opacity: 0;
     transition: opacity $transition-fast;
@@ -44,7 +44,7 @@
 
   &--active {
     border-color: transparent;
-    color: $color-primary;
+    color: $color-primary-1;
 
     &::after {
       opacity: 1;

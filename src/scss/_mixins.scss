@@ -30,7 +30,7 @@
 }
 
 // Material Design Icons Font
-@mixin material-icons($font-size: $font-size-xl, $color: $color-primary) {
+@mixin material-icons($font-size: $font-size-xl, $color: $color-primary-1) {
   display: inline-block;
   color: $color;
   text-transform: none;

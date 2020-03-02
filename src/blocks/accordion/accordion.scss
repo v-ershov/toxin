@@ -21,7 +21,7 @@
       transition: transform $transition-medium;
       transform: translateY(-50%);
 
-      @include material-icons(24px, $color-gray-50);
+      @include material-icons(24px, $color-gray-50p);
     }
   }
 

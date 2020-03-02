@@ -15,7 +15,7 @@
   background-origin:
     padding-box,
     border-box;
-  color: $color-primary;
+  color: $color-primary-1;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -72,7 +72,7 @@
     border: 0;
     border-radius: 0;
     background-image: none;
-    color: $color-primary;
+    color: $color-primary-1;
 
     &::before {
       content: none;
@@ -80,11 +80,11 @@
 
     &:hover,
     &:active {
-      color: $color-gray-50;
+      color: $color-gray-50p;
     }
   }
 
   &--text-gray {
-    color: $color-gray-50;
+    color: $color-gray-50p;
   }
 }
