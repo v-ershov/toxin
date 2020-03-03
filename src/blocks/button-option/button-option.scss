@@ -2,8 +2,6 @@
   padding: 8px 0;
 
   &__label {
-    position: relative;
-    z-index: 5;
     display: inline-flex;
     cursor: pointer;
   }
@@ -14,12 +12,58 @@
 
   &__box {
     position: relative;
-    top: -2px;
+    top: -1px;
     flex-shrink: 0;
     margin-right: 10px;
-    width: 20px;
+    width: 40px;
     height: 20px;
     border: 1px solid $color-gray-25p;
+    border-radius: 25% / 50%;
+    transition: border-color $transition-fast;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 3px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-image: $gradient-gray-25p;
+      content: '';
+      transition:
+        left $transition-fast,
+        opacity $transition-fast;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      background-image: $gradient-primary;
+      opacity: 0;
+    }
+  }
+
+  &__input:checked + &__box {
+    border-color: $color-primary-1;
+
+    &::before,
+    &::after {
+      left: 23px;
+    }
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &__text {
+    color: $color-gray-75p;
+    line-height: 1.285;
+    transition: color $transition-fast;
+  }
+
+  &--checkbox &__box {
+    width: 20px;
     border-radius: 20%;
     background-image: $gradient-white;
     background-position-x: 0;
@@ -28,115 +72,52 @@
       background-position-x 0.01s $transition-fast,
       border-color $transition-fast;
 
-    &::before,
-    &::after {
-      position: absolute;
+    &::before {
       top: 42.5%;
       left: 50%;
       z-index: -5;
       width: 33.5%;
       height: 43.5%;
-      background-image: $gradient-white;
-      content: '';
+      border-radius: 0;
+      background-image: $gradient-primary;
+      opacity: 0;
       transform:
         translate(-50%, -50%)
         rotate(45deg);
-    }
-
-    &::before {
-      background-image: $gradient-primary;
-      opacity: 0;
-      transition: opacity $transition-fast;
+      clip-path: polygon(0 100%, 100% 100%, 100% 0, 66.66% 0, 66.66% 75%, 0 75%);
     }
 
     &::after {
-      top: 27.5%;
+      content: none;
     }
   }
 
-  &__input:checked + &__box {
-    border-color: $color-primary-1;
+  &--checkbox &__input:checked + &__box {
     background-position-x: 15px;
     transition:
       background-position-x $transition-medium,
       border-color $transition-fast;
 
     &::before {
+      left: 50%;
       opacity: 1;
     }
   }
 
-  &__text {
+  &--checkbox &__text {
     color: $color-gray-50p;
-    line-height: 1.285;
-  }
-
-  &--switch &__label,
-  &--radio &__label {
-    position: static;
-    z-index: auto;
-  }
-
-  &--switch &__box {
-    width: 40px;
-    border-radius: 25% / 50%;
-    background-image: none;
-    transition: border-color $transition-fast;
-
-    &::before,
-    &::after {
-      top: 50%;
-      left: 3px;
-      z-index: auto;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-image: $gradient-gray-25p;
-      transition:
-        left $transition-fast,
-        opacity $transition-fast;
-      transform: translateY(-50%);
-    }
-
-    &::before {
-      opacity: 1;
-    }
-
-    &::after {
-      background-image: $gradient-primary;
-      opacity: 0;
-    }
-  }
-
-  &--switch &__input:checked + &__box {
-    background-position-x: 0;
-    transition: border-color $transition-fast;
-
-    &::before,
-    &::after {
-      left: calc(100% - 15px);
-    }
-
-    &::after {
-      opacity: 1;
-    }
-  }
-
-  &--switch &__text {
-    color: $color-gray-75p;
   }
 
   &--radio &__box {
+    width: 20px;
     border-radius: 50%;
-    background-image: none;
-    transition: border-color $transition-fast;
 
     &::before {
-      top: 50%;
-      z-index: auto;
+      left: 50%;
       width: 0;
       height: 0;
-      border-radius: 50%;
+      background-image: $gradient-primary;
+      opacity: 0;
       transition:
         width $transition-fast,
         height $transition-fast,
@@ -150,12 +131,11 @@
   }
 
   &--radio &__input:checked + &__box {
-    background-position-x: 0;
-    transition: border-color $transition-fast;
-
     &::before {
+      left: 50%;
       width: 12px;
       height: 12px;
+      opacity: 1;
       transition:
         width $transition-fast,
         height $transition-fast,
@@ -164,7 +144,7 @@
   }
 
   &--radio &__text {
-    transition: color $transition-fast;
+    color: $color-gray-50p;
   }
 
   &--radio &__input:checked ~ &__text {
