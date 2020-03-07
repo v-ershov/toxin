@@ -15,9 +15,7 @@
 extends /pug/_functions.pug
 
 mixin button-option(name, value, text, modifiers=[])
-  - let mods = getModifiers('button-option', modifiers);
-
-  .button-option(class=mods)
+  .button-option(class=getModifiers('button-option', modifiers))
     label._label
       input._input(type=modifiers.includes('radio') ? 'radio' : 'checkbox', name=name, value=value)&attributes(attributes)
       ._box

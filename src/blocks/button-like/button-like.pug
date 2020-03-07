@@ -9,9 +9,7 @@
 extends /pug/_functions.pug
 
 mixin button-like(number, modifiers=[])
-  - let mods = getModifiers('button-like', modifiers);
-
-  button.button-like(class=mods)&attributes(attributes)
+  button.button-like(class=getModifiers('button-like', modifiers))&attributes(attributes)
     span._numbers
       span._number
         | #{number}

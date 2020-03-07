@@ -11,11 +11,9 @@
 extends /pug/_functions.pug
 
 mixin button(text, modifiers=[])
-  - let mods = getModifiers('button', modifiers);
-
   if (attributes.href)
-    a.button(class=mods)&attributes(attributes)
+    a.button(class=getModifiers('button', modifiers))&attributes(attributes)
       | #{text}
   else
-    button.button(class=mods)&attributes(attributes)
+    button.button(class=getModifiers('button', modifiers))&attributes(attributes)
       | #{text}
