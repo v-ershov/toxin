@@ -6,13 +6,10 @@
 //- +button-like(4)
 //- +button-like(4, ['active'])
 
+extends /pug/_functions.pug
+
 mixin button-like(number, modifiers=[])
-  - let mods = '';
-  - if (modifiers.length !== 0) {
-  -   modifiers.forEach((mod) => {
-  -     mods = `${mods}button-like--${mod} `;
-  -   });
-  - }
+  - let mods = getModifiers('button-like', modifiers);
 
   button.button-like(class=mods)&attributes(attributes)
     span._numbers

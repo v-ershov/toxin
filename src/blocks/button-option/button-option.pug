@@ -12,13 +12,10 @@
 //- +button-option('gender', 'm', 'Male', ['radio'])
 //- +button-option('gender', 'f', 'Female', ['radio'])(checked)
 
+extends /pug/_functions.pug
+
 mixin button-option(name, value, text, modifiers=[])
-  - let mods = '';
-  - if (modifiers.length !== 0) {
-  -   modifiers.forEach((mod) => {
-  -     mods = `${mods}button-option--${mod} `;
-  -   });
-  - }
+  - let mods = getModifiers('button-option', modifiers);
 
   .button-option(class=mods)
     label._label
