@@ -1,0 +1,23 @@
+//- Parameters:
+//- string[[]] items - элементы списка
+
+//- Examples:
+//- +list-bullet([
+//-   ['Milk'],
+//-   ['Cheese'],
+//- ])
+//- +list-bullet([
+//-   ['Car', '/car.html'],
+//-   ['Bike', '/bike.html'],
+//-   ['Scooty', '/scooty.html'],
+//- ])
+
+mixin list-bullet(items)
+  ul.list-bullet
+    each item in items
+      li._item
+        if item[1]
+          a._link(href=item[1])
+            | #{item[0]}
+        else
+          | #{item[0]}
