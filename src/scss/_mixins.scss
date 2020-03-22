@@ -29,6 +29,13 @@
   }
 }
 
+// Container
+@mixin container {
+  margin: 0 auto;
+  padding: 0 30px;
+  width: 1220px;
+}
+
 // Material Design Icons Font
 @mixin material-icons($font-size: $font-size-xl, $color: $color-primary-1) {
   display: inline-block;
