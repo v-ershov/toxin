@@ -8,8 +8,6 @@
 //- +button('Sign In', ['fill', 'compact'])
 //- +button('Sign In', ['fill', 'compact'])(href='#')
 
-extends /pug/_functions.pug
-
 mixin button(text, modifiers=[])
   if (attributes.href)
     a.button(class=getModifiers('button', modifiers))&attributes(attributes)

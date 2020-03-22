@@ -6,8 +6,6 @@
 //- +button-like(4)
 //- +button-like(4, ['active'])
 
-extends /pug/_functions.pug
-
 mixin button-like(number, modifiers=[])
   button.button-like(class=getModifiers('button-like', modifiers))&attributes(attributes)
     span._numbers

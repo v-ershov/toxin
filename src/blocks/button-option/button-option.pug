@@ -12,8 +12,6 @@
 //- +button-option('gender', 'm', 'Male', ['radio'])
 //- +button-option('gender', 'f', 'Female', ['radio'])(checked)
 
-extends /pug/_functions.pug
-
 mixin button-option(name, value, text, modifiers=[])
   .button-option(class=getModifiers('button-option', modifiers))
     label._label
