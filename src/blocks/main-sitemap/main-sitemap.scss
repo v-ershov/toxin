@@ -1,0 +1,21 @@
+.sitemap {
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    margin-bottom: 20px;
+  }
+
+  &__section {
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

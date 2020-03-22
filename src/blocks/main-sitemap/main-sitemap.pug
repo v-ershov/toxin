@@ -1,0 +1,29 @@
+//- Examples:
+//- +sitemap
+
+mixin sitemap
+  main.sitemap
+    ._container
+      h1._title
+        | TOXIN Sitemap
+      section._section
+        h2._subtitle
+          | UI-Kit
+        ._list
+          +list-bullet([
+            ['Colors & Type', '/ui-colors-type.html'],
+            ['Form Elements', '/ui-form-elements.html'],
+            ['Cards', '/ui-cards.html'],
+            ['Headers & Footers', '/ui-headers-footers.html'],
+          ])
+      section._section
+        h2._subtitle
+          | Website Pages
+        ._list
+          +list-bullet([
+            ['Landing Page', '/landing.html'],
+            ['Search Room', '/search.html'],
+            ['Room Details', '/room.html'],
+            ['Sign Up', '/sign-up.html'],
+            ['Sign In', '/sign-in.html'],
+          ])
