@@ -3,7 +3,8 @@ extends /pug/templates/_base.pug
 block vars
   - var keywords = 'important, keywords';
   - var description = 'short description';
-  - var title = 'UI Form Elements';
+  - var title = 'UI Headers & Footers';
 
-block content
-  h1 UI Form Elements
+block body
+  +wrapper(['ui', 'gray'])
+    h1 UI Headers & Footers
