@@ -6,13 +6,12 @@
   font-family: $font-family-primary;
 }
 
-html,
 body {
-  height: 100%;
-  background-color: $color-white;
-  color: $color-gray-75p;
-  font-size: $font-size-xl;
-  line-height: 1.714;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
 }
 
 a,
@@ -20,13 +19,10 @@ button {
   cursor: pointer;
 }
 
-a:visited {
-  color: inherit;
-}
-
 h1,
 h2,
 h3 {
+  margin: 0;
   color: $color-gray-100p;
   font-weight: bold;
   font-size: 24px;
@@ -48,10 +44,8 @@ h3 {
 }
 
 img {
-  display: flex;
   max-width: 100%;
   max-height: 100%;
-  border: 0;
 }
 
 .material-icons {
