@@ -27,14 +27,12 @@ $color-gray-5p   : #f3f4f5;
 $color-white     : #ffffff;
 
 // Brand colors
-$color-primary-1   : #bc9cff;
-$color-primary-2   : #8ba4f9;
-$color-secondary-1 : #6fcf97;
-$color-secondary-2 : #66d2ea;
+$color-primary   : #bc9cff;
+$color-secondary : #6fcf97;
 
 // Gradients
-$gradient-primary   : linear-gradient($color-primary-1, $color-primary-2);
-$gradient-secondary : linear-gradient($color-secondary-1, $color-secondary-2);
+$gradient-primary   : linear-gradient($color-primary, #8ba4f9);
+$gradient-secondary : linear-gradient($color-secondary, #66d2ea);
 $gradient-gray-25p  : linear-gradient($color-gray-25p, $color-gray-25p);
 $gradient-white     : linear-gradient($color-white, $color-white);
 

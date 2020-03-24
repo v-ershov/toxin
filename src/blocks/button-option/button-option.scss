@@ -44,7 +44,7 @@
   }
 
   &__input:checked + &__box {
-    border-color: $color-primary-1;
+    border-color: $color-primary;
 
     &::before,
     &::after {
