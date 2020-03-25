@@ -36,6 +36,29 @@
   width: 1220px;
 }
 
+// Heading
+@mixin heading($size) {
+  @if $size == 'h1' {
+    font-size: 24px;
+    font-family: $font-family-secondary;
+  }
+
+  @if $size == 'h2' {
+    font-size: 19px;
+    font-family: $font-family-secondary;
+  }
+
+  @if $size == 'h3' {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: $font-family-primary;
+  }
+
+  color: $color-gray-100p;
+  font-weight: bold;
+  line-height: 1.25;
+}
+
 // Material Design Icons Font
 @mixin material-icons($font-size: $font-size-xl, $color: $color-primary) {
   display: inline-block;
