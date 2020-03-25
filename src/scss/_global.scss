@@ -3,11 +3,14 @@
 *::after {
   box-sizing: border-box;
   outline: 0;
-  font-family: $font-family-primary;
 }
 
 body {
   margin: 0;
+  color: $color-gray-75p;
+  font-size: $font-size-xl;
+  font-family: $font-family-primary;
+  line-height: 1.71;
 }
 
 a {
@@ -41,11 +44,6 @@ h2 {
 
 h3 {
   font-size: 12px;
-}
-
-img {
-  max-width: 100%;
-  max-height: 100%;
 }
 
 .material-icons {
