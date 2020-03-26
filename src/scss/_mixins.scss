@@ -41,22 +41,24 @@
   @if $size == 'h1' {
     font-size: 24px;
     font-family: $font-family-secondary;
+    line-height: 1.25;
   }
 
   @if $size == 'h2' {
     font-size: 19px;
     font-family: $font-family-secondary;
+    line-height: 1.265;
   }
 
   @if $size == 'h3' {
     text-transform: uppercase;
     font-size: 12px;
     font-family: $font-family-primary;
+    line-height: 1.25;
   }
 
   color: $color-gray-100p;
   font-weight: bold;
-  line-height: 1.25;
 }
 
 // Material Design Icons Font
