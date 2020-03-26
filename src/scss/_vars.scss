@@ -5,14 +5,9 @@ $screen-md : 768px;
 $screen-sm : 480px;
 $screen-xs : 320px;
 
-// Font-size
-$font-size-xl : 14px;
-$font-size-lg : 13px;
-$font-size-md : 12px;
-$font-size-sm : 11px;
-$font-size-xs : 10px;
-
-// Font-family
+// Fonts
+$font-size-primary     : 14px;
+$line-height-primary   : 1.71;
 $font-family-primary   : 'Montserrat', sans-serif;
 $font-family-secondary : 'Quicksand', 'Open Sans', sans-serif;
 

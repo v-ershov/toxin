@@ -8,9 +8,9 @@
 body {
   margin: 0;
   color: $color-gray-75p;
-  font-size: $font-size-xl;
+  font-size: $font-size-primary;
   font-family: $font-family-primary;
-  line-height: 1.71;
+  line-height: $line-height-primary;
 }
 
 a {
