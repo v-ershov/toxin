@@ -6,11 +6,27 @@
   background-color: $color-white;
 
   &--ui {
-    padding: 150px 0;
+    padding: rem(140) 0;
     background-image: url('../blocks/wrapper/img/logo-ui.svg');
-    background-position: 30px 30px;
-    background-size: 48px 48px;
+    background-position: rem(30) rem(30);
+    background-size: rem(48) rem(48);
     background-repeat: no-repeat;
+
+    @include screen-lg {
+      padding: rem(132) 0;
+    }
+
+    @include screen-md {
+      padding: rem(124) 0;
+    }
+
+    @include screen-sm {
+      padding: rem(116) 0;
+    }
+
+    @include screen-xs {
+      padding: rem(108) 0;
+    }
   }
 
   &--gray {
