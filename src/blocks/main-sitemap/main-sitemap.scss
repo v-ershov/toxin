@@ -4,15 +4,15 @@
   }
 
   &__title {
-    margin-bottom: 40px;
+    margin-bottom: rem(40);
   }
 
   &__subtitle {
-    margin-bottom: 20px;
+    margin-bottom: rem(20);
   }
 
   &__section {
-    margin-bottom: 30px;
+    margin-bottom: rem(30);
 
     &:last-child {
       margin-bottom: 0;
