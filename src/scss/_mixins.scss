@@ -32,27 +32,27 @@
 // Container
 @mixin container {
   margin: 0 auto;
-  padding: 0 30px;
-  width: 1220px;
+  padding: 0 rem(30);
+  max-width: rem(1220);
 }
 
 // Heading
 @mixin heading($size) {
   @if $size == 'h1' {
-    font-size: 24px;
+    font-size: rem(24);
     font-family: $font-family-secondary;
     line-height: 1.25;
   }
 
   @if $size == 'h2' {
-    font-size: 19px;
+    font-size: rem(19);
     font-family: $font-family-secondary;
     line-height: 1.265;
   }
 
   @if $size == 'h3' {
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: rem(12);
     font-family: $font-family-primary;
     line-height: 1.25;
   }
