@@ -13,19 +13,19 @@
     background-repeat: no-repeat;
 
     @include screen-lg {
-      padding: rem(132) 0;
+      padding: rem(134) 0;
     }
 
     @include screen-md {
-      padding: rem(124) 0;
+      padding: rem(128) 0;
     }
 
     @include screen-sm {
-      padding: rem(116) 0;
+      padding: rem(122) 0;
     }
 
     @include screen-xs {
-      padding: rem(108) 0;
+      padding: rem(116) 0;
     }
   }
 
