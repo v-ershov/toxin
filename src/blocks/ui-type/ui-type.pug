@@ -1,0 +1,14 @@
+//- Parameters:
+//- string tag  - имя тега
+//- string text - пример текста, к которому будут применены стили указанного тега
+
+//- Examples:
+//- +ui-type('h1', 'Main heading text')
+//- +ui-type('body', 'Body text')
+
+mixin ui-type(tag, text)
+  .ui-type
+    ._tag(class=`ui-type__tag--${tag}`)
+      | #{tag}
+    ._text(class=`ui-type__text--${tag}`)
+      | #{text}

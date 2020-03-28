@@ -1,0 +1,41 @@
+.ui-type {
+  display: flex;
+
+  &__tag {
+    flex-shrink: 0;
+    margin-right: rem(30);
+    min-width: rem(70);
+    color: $color-gray-25p;
+    text-align: right;
+    text-transform: capitalize;
+
+    &--h1 {
+      font-size: rem(24);
+      line-height: 1.25;
+    }
+
+    &--h2 {
+      font-size: rem(19);
+      line-height: 1.265;
+    }
+
+    &--h3 {
+      font-size: rem(12);
+      line-height: 1.25;
+    }
+  }
+
+  &__text {
+    &--h1 {
+      @include heading('h1');
+    }
+
+    &--h2 {
+      @include heading('h2');
+    }
+
+    &--h3 {
+      @include heading('h3');
+    }
+  }
+}
