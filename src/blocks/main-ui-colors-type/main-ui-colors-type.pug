@@ -1,0 +1,30 @@
+//- Examples:
+//- +main-ui-colors-type
+
+mixin main-ui-colors-type
+  main.ui-colors-type
+    ._container
+      ul._colors
+        li._color
+          +ui-color('gray-100p', 'Dark Shade 100%', '#1f2041')
+        li._color
+          +ui-color('gray-75p', 'Dark Shade 75%', '#1f2041')
+        li._color
+          +ui-color('gray-50p', 'Dark Shade 50%', '#1f2041')
+        li._color
+          +ui-color('gray-25p', 'Dark Shade 25%', '#1f2041')
+        li._color
+          +ui-color('gray-5p', 'Dark Shade 5%', '#1f2041')
+        li._color
+          +ui-color('primary', 'Purple', '#bc9cff')
+        li._color
+          +ui-color('secondary', 'Green', '#6fcf97')
+      ul._types
+        li._type
+          +ui-type('h1', 'This one is the sub-section or widget title')
+        li._type
+          +ui-type('h2', 'Next one is the item title inside widgets')
+        li._type
+          +ui-type('h3', 'This is a label or CTA text')
+        li._type
+          +ui-type('body', 'This is the body text which is used for most of the design, like paragraphs, lists, etc.')
