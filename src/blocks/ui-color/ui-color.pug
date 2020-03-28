@@ -1,0 +1,17 @@
+//- Parameters:
+//- string color - имя оттенка из палитры (в формате модификатора)
+//- string name  - имя оттенка в произвольной форме
+//- string hex   - код оттенка (в формате HEX)
+
+//- Examples:
+//- +ui-color('primary', 'Purple', '#bc9cff')
+//- +ui-color('secondary', 'Green', '#6fcf97')
+
+mixin ui-color(color, name, hex)
+  .ui-color
+    ._box(class=`ui-color__box--${color}`)
+    ._info
+      ._name
+        | #{name}
+      ._hex
+        | #{hex}

@@ -1,0 +1,61 @@
+.ui-color {
+  display: flex;
+  align-items: center;
+
+  &__box {
+    flex-shrink: 0;
+    margin-right: rem(40);
+    width: rem(70);
+    height: rem(70);
+    border-radius: rem(6);
+    background-color: $color-black;
+
+    @include screen-md {
+      margin-right: rem(30);
+    }
+
+    &--gray-100p {
+      background-color: $color-gray-100p;
+    }
+
+    &--gray-75p {
+      background-color: $color-gray-75p;
+    }
+
+    &--gray-50p {
+      background-color: $color-gray-50p;
+    }
+
+    &--gray-25p {
+      background-color: $color-gray-25p;
+    }
+
+    &--gray-5p {
+      background-color: $color-gray-5p;
+    }
+
+    &--primary {
+      background-color: $color-primary;
+    }
+
+    &--secondary {
+      background-color: $color-secondary;
+    }
+  }
+
+  &__info {
+    color: $color-gray-100p;
+    white-space: nowrap;
+    font-size: rem(19);
+    font-family: $font-family-secondary;
+    line-height: 1.53;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__hex {
+    text-transform: uppercase;
+  }
+}
