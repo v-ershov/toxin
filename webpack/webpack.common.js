@@ -50,15 +50,6 @@ module.exports = {
         },
       },
       {
-        test: /\.svg$/,
-        include: paths.src.blocks,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'icons',
-        },
-      },
-      {
         test: /\.(jpg|png|gif)$/,
         include: paths.src.blocks,
         loader: 'file-loader',

@@ -76,6 +76,15 @@ module.exports = merge(common, {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        exclude: paths.src.fonts,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'icons',
+        },
+      },
     ],
   },
   plugins: [

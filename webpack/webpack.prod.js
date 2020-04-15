@@ -51,6 +51,25 @@ module.exports = merge(common, {
           },
         ],
       },
+      {
+        test: /\.svg$/,
+        exclude: paths.src.fonts,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'icons',
+            },
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              externalConfig: '.svgo',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
