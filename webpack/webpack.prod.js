@@ -36,6 +36,21 @@ module.exports = merge(common, {
           'import-glob-loader',
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: paths.postcss.prod,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
