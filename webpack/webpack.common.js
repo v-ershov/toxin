@@ -79,6 +79,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     ...fs.readdirSync(paths.src.pages).map((page) => new HtmlWebpackPlugin({
