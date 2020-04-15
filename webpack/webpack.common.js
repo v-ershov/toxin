@@ -1,12 +1,10 @@
 const webpack = require('webpack');
 const fs = require('fs');
-
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const paths = require('./paths.js');
 
-(function writePugBlocks() {
+(function createBlocksFile() {
   let pathsToBlocks = '';
   fs.readdirSync(paths.src.blocks).forEach((block) => {
     pathsToBlocks += `include /blocks/${block}/${block}.pug\n`;
