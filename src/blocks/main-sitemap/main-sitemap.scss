@@ -7,15 +7,11 @@
     margin: 0 0 rem(40) 0;
   }
 
-  &__subtitle {
-    margin: 0 0 rem(20) 0;
+  &__section:not(:last-child) {
+    margin-bottom: rem(30);
   }
 
-  &__section {
-    margin-bottom: rem(30);
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+  &__subtitle {
+    margin: 0 0 rem(20) 0;
   }
 }
