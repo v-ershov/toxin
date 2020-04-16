@@ -12,41 +12,39 @@
     }
   }
 
-  &__colors,
-  &__types {
-    margin: 0;
+  &__list {
+    margin: 0 rem(20) 0 0;
     padding: 0;
     max-width: rem(410);
     width: 100%;
     list-style-type: none;
-  }
-
-  &__colors {
-    margin-right: rem(20);
 
     @include screen-md {
-      margin-right: 0;
-      margin-bottom: rem(70);
+      margin: 0 0 rem(70) 0;
+    }
+
+    &:last-child {
+      margin: 0 7.5% 0 0;
+
+      @include screen-lg {
+        margin: 0 5% 0 0;
+      }
+
+      @include screen-md {
+        margin: 0;
+      }
     }
   }
 
-  &__types {
-    margin-right: 7.5%;
-
-    @include screen-lg {
-      margin-right: 5%;
-    }
-
-    @include screen-md {
-      margin-right: 0;
-    }
-  }
-
-  &__color:not(:last-child) {
+  &__item {
     margin-bottom: rem(20);
-  }
 
-  &__type:not(:last-child) {
-    margin-bottom: rem(50);
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--type {
+      margin-bottom: rem(50);
+    }
   }
 }
