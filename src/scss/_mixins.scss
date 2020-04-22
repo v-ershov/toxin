@@ -31,8 +31,10 @@
 
 // Container
 @mixin container {
-  margin: 0 auto;
-  padding: 0 rem(30);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: rem(30);
+  padding-left: rem(30);
   max-width: rem(1220);
 }
 
