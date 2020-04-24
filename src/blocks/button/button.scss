@@ -2,9 +2,9 @@
   position: relative;
   z-index: 5;
   display: block;
-  padding: 14px 17px;
+  padding: rem(14) rem(17);
   border: 2px solid transparent;
-  border-radius: 22px;
+  border-radius: rem(22);
   background-color: transparent;
   background-image:
     $gradient-white,
@@ -20,7 +20,7 @@
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 12px;
+  font-size: rem(12);
   font-family: $font-family-primary;
   line-height: 1.25;
   transition: color $transition-fast;
@@ -57,25 +57,25 @@
   }
 
   &--compact {
-    padding-top: 9px;
-    padding-bottom: 9px;
+    padding-top: rem(9);
+    padding-bottom: rem(9);
   }
 
   &--wide {
-    padding-right: 44px;
-    padding-left: 44px;
+    padding-right: rem(44);
+    padding-left: rem(44);
     width: 100%;
 
     &::after {
       position: absolute;
       top: 50%;
-      right: 10px;
+      right: rem(10);
       background-image: $gradient-primary;
       background-clip: text;
       content: 'arrow_forward';
       transform: translateY(-50%);
 
-      @include material-icons(24px, transparent);
+      @include material-icons(rem(24), transparent);
     }
   }
 
