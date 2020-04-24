@@ -1,17 +1,18 @@
 //- Parameters:
 //- string   text         - текст кнопки
 //- string[] modifiers=[] - модификаторы блока
+//- object   attrs={}     - атрибуты кнопки
 
 //- Examples:
 //- +button('Sign Up')
-//- +button('Sign Up')(href='#')
+//- +button('Sign Up', {href: '#'})
 //- +button('Sign In', ['fill', 'compact'])
-//- +button('Sign In', ['fill', 'compact'])(href='#')
+//- +button('Sign In', ['fill', 'compact'], {href: '#'})
 
-mixin button(text, modifiers=[])
-  if (attributes.href)
-    a.button(class=getModifiers('button', modifiers))&attributes(attributes)
+mixin button(text, modifiers=[], attrs={})
+  if (attrs.href)
+    a.button(class=getModifiers('button', modifiers))&attributes(attrs)
       | #{text}
   else
-    button.button(class=getModifiers('button', modifiers))&attributes(attributes)
+    button.button(class=getModifiers('button', modifiers))&attributes(attrs)
       | #{text}
