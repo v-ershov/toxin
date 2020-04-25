@@ -1,0 +1,25 @@
+//- Parameters:
+//- string primary=''   - лейбл (первичный)
+//- string secondary='' - лейбл (вторичный)
+
+//- Examples:
+//- +label
+//- +label('Text Field')
+//- +label('Text Field', 'Default')
+//- +label('Text Field', 'Hover / Focus')
+
+mixin label(primary='', secondary='')
+  if primary !== ''
+    label.label
+      if secondary !== ''
+        span._container
+          span._primary
+            | #{primary}
+          span._secondary
+            | #{secondary}
+      else
+        span._primary
+          | #{primary}
+      block
+  else
+    block

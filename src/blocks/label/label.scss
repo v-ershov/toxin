@@ -1,0 +1,26 @@
+.label {
+  display: block;
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__primary,
+  &__secondary {
+    display: inline-block;
+    margin-bottom: rem(5);
+  }
+
+  &__primary {
+    @include heading('h3');
+  }
+
+  &__secondary {
+    color: $color-gray-50p;
+    text-transform: uppercase;
+    font-size: rem(12);
+    line-height: 1.25;
+  }
+}
