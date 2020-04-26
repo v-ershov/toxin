@@ -66,6 +66,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
-    "jquery": "^3.5.0"
+    "jquery": "^3.5.0",
+    "jquery-mask-plugin": "^1.14.16"
   }
 }

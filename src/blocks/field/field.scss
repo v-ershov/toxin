@@ -1,0 +1,51 @@
+.field {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+
+  &--dropdown {
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: rem(10);
+      content: 'expand_more';
+      cursor: pointer;
+      transform: translateY(-50%);
+
+      @include material-icons(rem(24), $color-gray-50p);
+    }
+  }
+
+  &__input {
+    padding: rem(13) rem(44) rem(13) rem(15);
+    width: inherit;
+    border: 1px solid $color-gray-25p;
+    border-radius: rem(4);
+    background-color: transparent;
+    color: $color-gray-75p;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: rem(14);
+    font-family: $font-family-primary;
+    line-height: 1.18;
+    transition: border-color $transition-fast;
+
+    &::placeholder {
+      color: $color-gray-25p;
+    }
+
+    &:hover,
+    &:focus {
+      border-color: $color-gray-50p;
+    }
+  }
+
+  &--dropdown > &__input {
+    cursor: pointer;
+
+    &::placeholder {
+      color: $color-gray-75p;
+    }
+  }
+}

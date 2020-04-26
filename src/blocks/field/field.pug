@@ -1,0 +1,22 @@
+//- Parameters:
+//- string   labelPrimary=''   - лейбл поля (первичный)
+//- string   labelSecondary='' - лейбл поля (вторичный)
+//- string[] modifiers=[]      - модификаторы блока
+//- object   attrs={}          - атрибуты поля
+
+//- Examples:
+//- +field
+//- +field('Text Field', 'Default')
+//- +field('Email', '', [], {
+//-     'type': 'email',
+//-     'placeholder': 'Enter your email',
+//-   })
+//- +field('Date', '', [], {
+//-     'placeholder': 'DD.MM.YYYY',
+//-     'data-mask': '00.00.0000',
+//-   })
+
+mixin field(labelPrimary='', labelSecondary='', modifiers=[], attrs={})
+  +label(labelPrimary, labelSecondary)
+    span.field(class=getModifiers('field', modifiers))
+      input._input&attributes(attrs)
