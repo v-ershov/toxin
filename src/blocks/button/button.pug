@@ -5,14 +5,18 @@
 
 //- Examples:
 //- +button('Sign Up')
-//- +button('Sign Up', {href: '#'})
+//- +button('Sign Up', {
+//-   'href': '#',
+//- })
 //- +button('Sign In', ['fill', 'compact'])
-//- +button('Sign In', ['fill', 'compact'], {href: '#'})
+//- +button('Sign In', ['fill', 'compact'], {
+//-   'href': '#',
+//- })
 
 mixin button(text, modifiers=[], attrs={})
   if (attrs.href)
     a.button(class=getModifiers('button', modifiers))&attributes(attrs)
       | #{text}
   else
-    button.button(class=getModifiers('button', modifiers))&attributes(attrs)
+    button.button(class=getModifiers('button', modifiers), type='button')&attributes(attrs)
       | #{text}
