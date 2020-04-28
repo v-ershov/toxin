@@ -1,0 +1,15 @@
+//- Examples:
+//- +calendar
+
+mixin calendar
+  .calendar
+    ._datepicker
+    ._buttons
+      ._button
+        +button('очистить', ['bodyless', 'text-gray'], {
+          'name': 'reset',
+        })
+      ._button
+        +button('применить', ['bodyless'], {
+          'name': 'apply',
+        })
