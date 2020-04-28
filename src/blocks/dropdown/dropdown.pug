@@ -1,54 +1,59 @@
 //- Parameters:
-//- string     name            - имя дропдауна
-//- string     text            - текст дропдауна по умолчанию
-//- string[[]] items           - пункты меню дропдауна со следующими данными:
-//-                              - мин. допустимое количество
-//-                              - макс. допустимое количество
-//-                              - название пункта (в единственном числе)
-//-                              - название пункта (во множественном числе)
-//-                              - название пункта в род. падеже (когда последняя цифра количества входит в диапазон 2-4)
-//-                              - название пункта в род. падеже (когда последняя цифра количества равна 0,
-//-                                либо последняя цифра количества входит в диапазон 5-9,
-//-                                либо последние две цифры количества входят в диапазон 10-19)
-//- string[]   words=[]        - общее обозначение всех пунктов меню дропдауна:
-//-                              - обозначение пунктов (в единственном числе)
-//-                              - обозначение пунктов (когда последняя цифра общего количества входит в диапазон 2-4)
-//-                              - обозначение пунктов (когда последняя цифра общего количества равна 0,
-//-                                либо последняя цифра общего количества входит в диапазон 5-9,
-//-                                либо последние две цифры общего количества входят в диапазон 10-19)
-//- bool       isButtons=false - если true, то у дропдауна доступны кнопки "Очистить" и "Применить"
+//- string     labelPrimary=''   - лейбл поля дропдауна (первичный)
+//- string     labelSecondary='' - лейбл поля дропдауна (вторичный)
+//- object     attrsField={}     - атрибуты поля дропдауна
+//- string[]   words=[]          - общие обозначения для всех пунктов меню дропдауна:
+//-                                - обозначение (в единственном числе)
+//-                                - обозначение (когда последняя цифра общего количества входит в диапазон 2-4)
+//-                                - обозначение (когда последняя цифра общего количества равна 0,
+//-                                  либо последняя цифра общего количества входит в диапазон 5-9,
+//-                                  либо последние две цифры общего количества входят в диапазон 10-19)
+//- string[[]] list              - пункты меню дропдауна, каждый из которых содержит следующие данные:
+//-                                - мин. допустимое количество
+//-                                - макс. допустимое количество
+//-                                - название пункта (в единственном числе)
+//-                                - название пункта (во множественном числе)
+//-                                - название пункта (когда последняя цифра количества входит в диапазон 2-4)
+//-                                - название пункта (когда последняя цифра количества равна 0,
+//-                                  либо последняя цифра количества входит в диапазон 5-9,
+//-                                  либо последние две цифры количества входят в диапазон 10-19)
+//- bool       isButtons=false   - если true, то у дропдауна доступны кнопки "Очистить" и "Применить"
+//- string[]   modifiers=[]      - модификаторы блока
 
 //- Examples:
-//- +dropdown('guests', 'Сколько гостей', [
-//-   [0, 5, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
-//-   [0, 5, 'ребёнок', 'дети', 'ребёнка', 'детей'],
-//-   [0, 5, 'младенец', 'младенцы', 'младенца', 'младенцев'],
-//- ], ['гость', 'гостя', 'гостей'], true)
+//- +dropdown('Гости', '', {
+//-   'placeholder': 'Сколько гостей',
+//- }, ['гость', 'гостя', 'гостей'], [
+//-   [0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+//-   [0, 2, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+//-   [0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+//- ], true, ['expanded'])
 
-mixin dropdown(name, text, items, words=[], isButtons=false)
-  .dropdown
-    input._input(id=name, type='checkbox', name=name)
-    if words.length !== 0
-      label._label(for=name, data-text=text, data-words=`${words[0]}, ${words[1]}, ${words[2]}`)
-        | #{text}
-    else
-      label._label(for=name, data-text=text)
-        | #{text}
+mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list, isButtons=false, modifiers=[])
+  .dropdown(class=getModifiers('dropdown', modifiers))
+    +field(labelPrimary, labelSecondary, ['dropdown'], Object.assign(attrsField, {
+      'readonly': true,
+      'data-words': words.length !== 0 ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
+    }))
     ._content(style='--height: 100vh')
-      ._items
-        each item in items
-          ._item(data-words=`${item[2]}, ${item[4]}, ${item[5]}`)
+      ul._list
+        each item in list
+          li._item(data-words=`${item[2]}, ${item[4]}, ${item[5]}`)
             span._title
               | #{item[3]}
             span._controls
-              button._spinner(name='decrement', disabled)
+              button._spinner(type='button', name='decrement', disabled)
                 | &minus;
-              input._quantity(type='number', value='0', min=item[0], max=item[1], readonly)
-              button._spinner(name='increment')
+              input._number(type='number', value=item[0], min=item[0], max=item[1], readonly)
+              button._spinner(type='button', name='increment')
                 | +
       if isButtons
         ._buttons
-          ._button.-reset.-hide
-            +button('Очистить', ['bodyless', 'gray-text'])(name='reset')
+          ._button.-reset.-hidden
+            +button('Очистить', ['bodyless', 'text-gray'], {
+              'name': 'reset',
+            })
           ._button
-            +button('Применить', ['bodyless'])(name='apply')
+            +button('Применить', ['bodyless'], {
+              'name': 'apply',
+            })

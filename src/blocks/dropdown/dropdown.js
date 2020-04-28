@@ -1,43 +1,61 @@
 class Dropdown {
   constructor(node) {
     this.node = node;
-    this.input = node.querySelector('.dropdown__input');
-    this.label = node.querySelector('.dropdown__label');
-    this.content = node.querySelector('.dropdown__content');
-    this.items = node.querySelectorAll('.dropdown__item');
-    this.increments = node.querySelectorAll('.dropdown__spinner[name="increment"]');
-    this.decrements = node.querySelectorAll('.dropdown__spinner[name="decrement"]');
-    this.quantityAll = node.querySelectorAll('.dropdown__quantity');
-    this.buttons = node.querySelector('.dropdown__buttons');
-    this.buttonResetContainer = node.querySelector('.dropdown__button--reset');
-    this.buttonReset = node.querySelector('.button[name="reset"]');
-    this.buttonApply = node.querySelector('.button[name="apply"]');
-    this.classButtonHide = 'dropdown__button--hide';
-    this._addEventListeners();
+    this._findNodes();
     this._setHeight();
+    this._addEventListeners();
+  }
+
+  // находит указанные дочерние элементы корневого элемента
+  _findNodes() {
+    this.input = this.node.querySelector('.field__input');
+    this.content = this.node.querySelector('.dropdown__content');
+    this.items = this.node.querySelectorAll('.dropdown__item');
+    this.increments = this.node.querySelectorAll('.dropdown__spinner[name="increment"]');
+    this.decrements = this.node.querySelectorAll('.dropdown__spinner[name="decrement"]');
+    this.numbers = this.node.querySelectorAll('.dropdown__number');
+    this.buttonResetWrapper = this.node.querySelector('.dropdown__button--reset');
+    this.buttonReset = this.node.querySelector('.button[name="reset"]');
+    this.buttonApply = this.node.querySelector('.button[name="apply"]');
+  }
+
+  // устанавливает максимальную высоту контейнера для контента
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
+  _setHeight() {
+    this.content.style.setProperty('justify-content', 'flex-start');
+
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const heightRem = this.content.scrollHeight / fontSize;
+
+    this.content.style.setProperty('--height', ` ${heightRem}rem`);
+    this.content.style.removeProperty('justify-content');
   }
 
   // регистрирует обработчики событий
   _addEventListeners() {
     document.addEventListener('click', (event) => {
       if (event.target.closest('.dropdown') !== this.node) {
-        this._collapse();
+        this._collapseDropdown();
       }
+    });
+
+    this.input.addEventListener('click', () => {
+      this._switchDropdown();
     });
 
     this.items.forEach((_item, i) => {
       this.increments[i].addEventListener('click', () => {
-        this._setQuantity(i, parseInt(this.quantityAll[i].value, 10) + 1);
+        this._setNumber(i, parseInt(this.numbers[i].value, 10) + 1);
       });
 
       this.decrements[i].addEventListener('click', () => {
-        this._setQuantity(i, parseInt(this.quantityAll[i].value, 10) - 1);
+        this._setNumber(i, parseInt(this.numbers[i].value, 10) - 1);
       });
 
-      this.quantityAll[i].addEventListener('input', () => {
+      this.numbers[i].addEventListener('input', () => {
         this._switchSpinners(i);
 
-        if (this.buttons) {
+        if (this.buttonReset) {
           this._switchButtonReset();
         } else {
           this._setText();
@@ -45,140 +63,46 @@ class Dropdown {
       });
     });
 
-    if (this.buttons) {
+    if (this.buttonReset) {
       this.buttonReset.addEventListener('click', () => {
-        this._reset();
+        this._resetDropdown();
       });
 
       this.buttonApply.addEventListener('click', () => {
         this._setText();
-        this._collapse();
+        this._collapseDropdown();
       });
     }
   }
 
-  // схлопывает контейнер для контента
-  _collapse() {
-    this.input.checked = false;
+  // схлопывает дропдаун
+  _collapseDropdown() {
+    this.node.classList.remove('dropdown--active');
   }
 
-  // возвращает текст дропдауна, если требуется описать все пункты меню общим обозначением
-  _getTextForAllItems() {
-    let text = '';
-
-    const quantityTotal = this._getQuantityTotal();
-    const lastDigit = parseInt(quantityTotal, 10) % 10;
-    const lastTwoDigits = parseInt(quantityTotal, 10) % 100;
-    const words = this.label.dataset.words.split(', ');
-
-    if (lastDigit === 0
-      || (lastDigit >= 5 && lastDigit <= 9)
-      || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
-      text = `${quantityTotal} ${words[2]}`;
-    } else if (lastDigit >= 2 && lastDigit <= 4) {
-      text = `${quantityTotal} ${words[1]}`;
-    } else {
-      text = `${quantityTotal} ${words[0]}`;
-    }
-
-    return quantityTotal !== 0
-      ? text
-      : this.label.dataset.text;
-  }
-
-  // возвращает текст дропдауна, если требуется описать все пункты меню по отдельности
-  _getTextForEachItem() {
-    const text = [];
-
-    this.items.forEach((item, i) => {
-      const quantity = this.quantityAll[i];
-
-      if (quantity.value === '0') {
-        return;
-      }
-
-      const lastDigit = parseInt(quantity.value, 10) % 10;
-      const lastTwoDigits = parseInt(quantity.value, 10) % 100;
-      const words = item.dataset.words.split(', ');
-
-      if (lastDigit === 0
-        || (lastDigit >= 5 && lastDigit <= 9)
-        || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
-        text.push(`${quantity.value} ${words[2]}`);
-      } else if (lastDigit >= 2 && lastDigit <= 4) {
-        text.push(`${quantity.value} ${words[1]}`);
-      } else {
-        text.push(`${quantity.value} ${words[0]}`);
-      }
-    });
-
-    return text.length !== 0
-      ? text.join(', ')
-      : this.label.dataset.text;
-  }
-
-  // возвращает общее количество всех пунктов меню
-  _getQuantityTotal() {
-    let quantityTotal = 0;
-
-    this.quantityAll.forEach((quantity) => {
-      quantityTotal += parseInt(quantity.value, 10);
-    });
-
-    return quantityTotal;
-  }
-
-  // сбрасывает дропдаун в состояние по умолчанию
-  _reset() {
-    this.items.forEach((_item, i) => {
-      this._setQuantity(i, 0);
-    });
-
-    this.label.textContent = this.label.dataset.text;
-  }
-
-  // устанавливает максимальную высоту контейнера для контента
-  _setHeight() {
-    // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
-    this.content.style.setProperty('justify-content', 'flex-start');
-    this.content.style.setProperty('--height', ` ${this.content.scrollHeight}px`);
-    this.content.style.removeProperty('justify-content');
+  // переключает состояние дропдауна
+  _switchDropdown() {
+    this.node.classList.toggle('dropdown--active');
   }
 
   // устанавливает количество указанного пункта меню
-  _setQuantity(itemNumber, value) {
-    this.quantityAll[itemNumber].value = value;
-    this.quantityAll[itemNumber].dispatchEvent(new Event('input'));
+  _setNumber(itemIndex, value) {
+    this.numbers[itemIndex].value = value;
+    this.numbers[itemIndex].dispatchEvent(new Event('input'));
   }
 
-  // устанавливает текст дропдауна
-  _setText() {
-    this.label.textContent = this.label.dataset.words
-      ? this._getTextForAllItems()
-      : this._getTextForEachItem();
-  }
+  // переключает состояние кнопки указанного пункта меню в зависимости от количества
+  _switchSpinners(itemIndex) {
+    const number = this.numbers[itemIndex];
+    const increment = this.increments[itemIndex];
+    const decrement = this.decrements[itemIndex];
 
-  // отображает или скрывает кнопку "Очистить" в зависимости от общего количества
-  _switchButtonReset() {
-    if (this._getQuantityTotal() === 0) {
-      this.buttonResetContainer.classList.add(this.classButtonHide);
-    } else {
-      this.buttonResetContainer.classList.remove(this.classButtonHide);
-    }
-  }
-
-  // включает или выключает кнопки указанного пункта меню в зависимости от количества
-  _switchSpinners(itemNumber) {
-    const quantity = this.quantityAll[itemNumber];
-    const increment = this.increments[itemNumber];
-    const decrement = this.decrements[itemNumber];
-
-    switch (quantity.value) {
-      case quantity.min:
+    switch (number.value) {
+      case number.min:
         increment.disabled = false;
         decrement.disabled = true;
         break;
-      case quantity.max:
+      case number.max:
         increment.disabled = true;
         decrement.disabled = false;
         break;
@@ -187,6 +111,93 @@ class Dropdown {
         decrement.disabled = false;
         break;
     }
+  }
+
+  // возвращает общее количество всех пунктов меню
+  _getTotalNumber() {
+    let total = 0;
+
+    this.numbers.forEach((number) => {
+      total += parseInt(number.value, 10);
+    });
+
+    return total;
+  }
+
+  // возвращает текст для поля дропдауна, если требуется описать все пункты меню общим обозначением
+  _getTextForAllItems() {
+    let text = '';
+
+    const totalNumber = this._getTotalNumber();
+    const lastDigit = parseInt(totalNumber, 10) % 10;
+    const lastTwoDigits = parseInt(totalNumber, 10) % 100;
+    const words = this.input.dataset.words.split(', ');
+
+    if (lastDigit === 0
+      || (lastDigit >= 5 && lastDigit <= 9)
+      || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
+      text = `${totalNumber} ${words[2]}`;
+    } else if (lastDigit >= 2 && lastDigit <= 4) {
+      text = `${totalNumber} ${words[1]}`;
+    } else {
+      text = `${totalNumber} ${words[0]}`;
+    }
+
+    return totalNumber !== 0 ? text : '';
+  }
+
+  // возвращает текст для поля дропдауна, если требуется описать все пункты меню по отдельности
+  _getTextForEachItem() {
+    const text = [];
+
+    this.items.forEach((item, i) => {
+      const number = this.numbers[i];
+
+      if (number.value === '0') {
+        return;
+      }
+
+      const lastDigit = parseInt(number.value, 10) % 10;
+      const lastTwoDigits = parseInt(number.value, 10) % 100;
+      const words = item.dataset.words.split(', ');
+
+      if (lastDigit === 0
+        || (lastDigit >= 5 && lastDigit <= 9)
+        || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
+        text.push(`${number.value} ${words[2]}`);
+      } else if (lastDigit >= 2 && lastDigit <= 4) {
+        text.push(`${number.value} ${words[1]}`);
+      } else {
+        text.push(`${number.value} ${words[0]}`);
+      }
+    });
+
+    return text.length !== 0 ? text.join(', ') : '';
+  }
+
+  // устанавливает текст для поля дропдауна
+  _setText() {
+    this.input.value = this.input.dataset.words
+      ? this._getTextForAllItems()
+      : this._getTextForEachItem();
+  }
+
+  // переключает состояние кнопки "Очистить" в зависимости от общего количества всех пунктов меню
+  _switchButtonReset() {
+    if (this._getTotalNumber() === 0) {
+      this.buttonResetWrapper.classList.add('dropdown__button--hidden');
+    } else {
+      this.buttonResetWrapper.classList.remove('dropdown__button--hidden');
+    }
+  }
+
+  // сбрасывает дропдаун в состояние по умолчанию
+  _resetDropdown() {
+    this.items.forEach((_item, i) => {
+      this._setNumber(i, 0);
+    });
+
+    this.input.value = '';
   }
 }
 
