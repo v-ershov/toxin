@@ -1,15 +1,29 @@
+//- Parameters:
+//- string type='inline'  - тип календаря (inline / field / fields)
+//- string labelFirst=''  - лейбл первого поля календаря
+//- string labelSecond='' - лейбл второго поля календаря
+
 //- Examples:
 //- +calendar
+//- +calendar('field', 'Period')
+//- +calendar('fields', 'Arrival', 'Departure')
 
-mixin calendar
-  .calendar
-    ._datepicker
-    ._buttons
-      ._button
-        +button('очистить', ['bodyless', 'text-gray'], {
-          'name': 'reset',
-        })
-      ._button
-        +button('применить', ['bodyless'], {
-          'name': 'apply',
-        })
+mixin calendar(type='inline', labelFirst='', labelSecond='')
+  .calendar(data-type=type)
+    if type === 'field'
+      +field(labelFirst, '', ['dropdown'], {
+        'placeholder': 'ДД.ММ.ГГГГ',
+        'readonly': true,
+      })
+    else if type === 'fields'
+      ._fields
+        ._field
+          +field(labelFirst, '', ['dropdown'], {
+            'placeholder': 'ДД.ММ.ГГГГ',
+            'readonly': true,
+          })
+        ._field
+          +field(labelSecond, '', ['dropdown'], {
+            'placeholder': 'ДД.ММ.ГГГГ',
+            'readonly': true,
+          })
