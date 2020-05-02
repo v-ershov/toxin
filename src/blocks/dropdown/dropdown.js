@@ -33,8 +33,8 @@ class Dropdown {
 
   // регистрирует обработчики событий
   _addEventListeners() {
-    document.addEventListener('click', (event) => {
-      if (event.target.closest('.dropdown') !== this.node) {
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.dropdown') !== this.node) {
         this._collapseDropdown();
       }
     });
