@@ -53,6 +53,15 @@ h3 {
   @include heading('h3');
 }
 
+.visually-hidden {
+  position: absolute;
+  visibility: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+}
+
 .material-icons {
   @include material-icons;
 }
