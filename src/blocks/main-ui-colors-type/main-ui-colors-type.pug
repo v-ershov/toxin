@@ -4,27 +4,35 @@
 mixin main-ui-colors-type
   main.ui-colors-type
     ._container
-      ul._list
-        li._item
-          +ui-color('gray-100p', 'Dark Shade 100%', '#1f2041')
-        li._item
-          +ui-color('gray-75p', 'Dark Shade 75%', '#1f2041')
-        li._item
-          +ui-color('gray-50p', 'Dark Shade 50%', '#1f2041')
-        li._item
-          +ui-color('gray-25p', 'Dark Shade 25%', '#1f2041')
-        li._item
-          +ui-color('gray-5p', 'Dark Shade 5%', '#1f2041')
-        li._item
-          +ui-color('primary', 'Purple', '#bc9cff')
-        li._item
-          +ui-color('secondary', 'Green', '#6fcf97')
-      ul._list
-        li._item.-type
-          +ui-type('h1', 'This one is the sub-section or widget title')
-        li._item.-type
-          +ui-type('h2', 'Next one is the item title inside widgets')
-        li._item.-type
-          +ui-type('h3', 'This is a label or CTA text')
-        li._item.-type
-          +ui-type('body', 'This is the body text which is used for most of the design, like paragraphs, lists, etc.')
+      h1._title.visually-hidden
+        | Colors & Type
+      section._section
+        h2._subtitle.visually-hidden
+          | Colors
+        ul._list
+          li._item
+            +ui-color('gray-100p', 'Dark Shade 100%', '#1f2041')
+          li._item
+            +ui-color('gray-75p', 'Dark Shade 75%', '#1f2041')
+          li._item
+            +ui-color('gray-50p', 'Dark Shade 50%', '#1f2041')
+          li._item
+            +ui-color('gray-25p', 'Dark Shade 25%', '#1f2041')
+          li._item
+            +ui-color('gray-5p', 'Dark Shade 5%', '#1f2041')
+          li._item
+            +ui-color('primary', 'Purple', '#bc9cff')
+          li._item
+            +ui-color('secondary', 'Green', '#6fcf97')
+      section._section
+        h2._subtitle.visually-hidden
+          | Type
+        ul._list
+          li._item.-type
+            +ui-type('H1', 'This one is the sub-section or widget title')
+          li._item.-type
+            +ui-type('H2', 'Next one is the item title inside widgets')
+          li._item.-type
+            +ui-type('H3', 'This is a label or CTA text')
+          li._item.-type
+            +ui-type('Body', 'This is the body text which is used for most of the design, like paragraphs, lists, etc.')

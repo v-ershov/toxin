@@ -12,12 +12,10 @@
     }
   }
 
-  &__list {
+  &__section {
     margin: 0 rem(20) 0 0;
-    padding: 0;
     max-width: rem(410);
     width: 100%;
-    list-style-type: none;
 
     @include screen-md {
       margin: 0 0 rem(70) 0;
@@ -34,6 +32,12 @@
         margin: 0;
       }
     }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
   }
 
   &__item {
