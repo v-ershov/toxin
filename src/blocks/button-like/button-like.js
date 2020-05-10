@@ -1,15 +1,15 @@
 class ButtonLike {
   constructor(node) {
     this.node = node;
-    this.numbers = node.querySelector('.button-like__numbers');
-    this.number = node.querySelector('.button-like__number');
-    this.classActive = 'button-like--active';
-    this.classIncrease = 'button-like__numbers--increase';
-    this.classAnimIncrease = 'button-like__numbers--anim-increase';
-    this.classAnimDecrease = 'button-like__numbers--anim-decrease';
     this.animTime = 300;
-    this.isClickable = true;
+    this.isReady = true;
+    this._findNodes();
     this._addEventListeners();
+  }
+
+  // находит указанные дочерние элементы корневого элемента
+  _findNodes() {
+    this.numbers = this.node.querySelector('.button-like__numbers');
   }
 
   // регистрирует обработчики событий
@@ -19,56 +19,60 @@ class ButtonLike {
     });
   }
 
-  // уменьшает количество лайков на единицу
-  _decrease() {
-    const newNumber = this.numbers.lastChild.cloneNode(true);
-    newNumber.textContent = parseInt(newNumber.textContent, 10) - 1;
+  // устанавливает заданное значение лайков в кнопке
+  _setNumber(value) {
+    if (value === parseInt(this.numbers.firstChild.textContent, 10)) {
+      return;
+    }
 
-    this.numbers.appendChild(newNumber);
-
-    setTimeout(() => {
-      this.numbers.classList.add(this.classAnimDecrease);
-    }, 1);
-
-    setTimeout(() => {
-      this.numbers.classList.remove(this.classAnimDecrease);
-      this.numbers.firstChild.remove();
-    }, this.animTime);
-  }
-
-  // увеличивает количество лайков на единицу
-  _increase() {
+    const isIncrease = value > this.numbers.firstChild.textContent;
     const newNumber = this.numbers.firstChild.cloneNode(true);
-    newNumber.textContent = parseInt(newNumber.textContent, 10) + 1;
+    newNumber.textContent = value;
 
-    this.numbers.insertBefore(newNumber, this.numbers.firstChild);
-    this.numbers.classList.add(this.classIncrease);
+    if (isIncrease) {
+      this.numbers.prepend(newNumber);
+      this.numbers.classList.add('button-like__numbers--increase');
+    } else {
+      this.numbers.append(newNumber);
+    }
 
     setTimeout(() => {
-      this.numbers.classList.add(this.classAnimIncrease);
-    }, 1);
+      if (isIncrease) {
+        this.numbers.classList.add('button-like__numbers--anim-increase');
+      } else {
+        this.numbers.classList.add('button-like__numbers--anim-decrease');
+      }
+    }, 25);
 
     setTimeout(() => {
-      this.numbers.classList.remove(this.classIncrease, this.classAnimIncrease);
-      this.numbers.lastChild.remove();
+      if (isIncrease) {
+        this.numbers.classList.remove(
+          'button-like__numbers--increase',
+          'button-like__numbers--anim-increase',
+        );
+        this.numbers.lastChild.remove();
+      } else {
+        this.numbers.classList.remove('button-like__numbers--anim-decrease');
+        this.numbers.firstChild.remove();
+      }
     }, this.animTime);
   }
 
-  // активирует или деактивирует кнопку в зависимости от текущего состояния
+  // переключает состояние кнопки
   _switchState() {
-    if (this.isClickable) {
-      this.isClickable = false;
+    if (this.isReady) {
+      this.isReady = false;
 
-      if (this.node.classList.contains(this.classActive)) {
-        this.node.classList.remove(this.classActive);
-        this._decrease();
+      if (!this.node.classList.contains('button-like--active')) {
+        this.node.classList.add('button-like--active');
+        this._setNumber(parseInt(this.numbers.firstChild.textContent, 10) + 1);
       } else {
-        this.node.classList.add(this.classActive);
-        this._increase();
+        this.node.classList.remove('button-like--active');
+        this._setNumber(parseInt(this.numbers.firstChild.textContent, 10) - 1);
       }
 
       setTimeout(() => {
-        this.isClickable = true;
+        this.isReady = true;
       }, this.animTime);
     }
   }

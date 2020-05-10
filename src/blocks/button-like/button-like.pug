@@ -7,7 +7,7 @@
 //- +button-like(4, ['active'])
 
 mixin button-like(number, modifiers=[])
-  button.button-like(class=getModifiers('button-like', modifiers))&attributes(attributes)
+  button.button-like(class=getModifiers('button-like', modifiers), type='button')
     span._numbers
       span._number
         | #{number}

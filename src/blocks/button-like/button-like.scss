@@ -1,8 +1,8 @@
 .button-like {
   position: relative;
   overflow: hidden;
-  width: 40px;
-  height: 20px;
+  width: rem(40);
+  height: rem(20);
   border: 1px solid $color-gray-25p;
   border-radius: 25% / 50%;
   background-image:
@@ -15,20 +15,20 @@
     padding-box,
     border-box;
   color: $color-gray-25p;
-  font-size: 10px;
+  font-size: rem(10);
   line-height: 1;
   transition:
-    color $transition-fast,
-    border-color $transition-fast;
+    border-color $transition-fast,
+    color $transition-fast;
 
   &::before,
   &::after {
     position: absolute;
     top: 50%;
-    left: 10.5%;
+    left: rem(4);
     transform: translateY(-50%);
 
-    @include material-icons(10px, $color-gray-25p);
+    @include material-icons(rem(10), $color-gray-25p);
   }
 
   &::before {
@@ -62,7 +62,7 @@
     transform: translateX(-50%);
 
     &--increase {
-      top: -76.5%;
+      top: -74%;
     }
 
     &--anim-increase {
@@ -71,7 +71,7 @@
     }
 
     &--anim-decrease {
-      top: -76.5%;
+      top: -74%;
       transition: top $transition-fast;
     }
   }
