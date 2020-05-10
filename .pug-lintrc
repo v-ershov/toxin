@@ -19,10 +19,18 @@
   "requireLowerCaseAttributes": true,
   "requireLowerCaseTags": true,
   "requireSpaceAfterCodeOperator": true,
-  "requireSpecificAttributes": [ { "img": [ "src", "alt" ] } ],
+  "requireSpecificAttributes": [
+    {
+      "img": ["src", "alt"],
+      "button": ["type"]
+    }
+  ],
   "requireStrictEqualityOperators": true,
   "validateAttributeQuoteMarks": "'",
-  "validateAttributeSeparator": { "separator": ", ", "multiLineSeparator": "\n " },
+  "validateAttributeSeparator": {
+    "separator": ", ",
+    "multiLineSeparator": "\n "
+  },
   "validateDivTags": true,
   "validateExtensions": true,
   "validateIndentation": 2,
