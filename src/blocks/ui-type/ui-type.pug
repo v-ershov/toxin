@@ -8,7 +8,7 @@
 
 mixin ui-type(tag, text)
   .ui-type
-    ._tag(class=`ui-type__tag--${tag}`)
+    ._tag(class=`ui-type__tag--${tag.toLowerCase()}`)
       | #{tag}
-    ._text(class=`ui-type__text--${tag}`)
+    ._text(class=`ui-type__text--${tag.toLowerCase()}`)
       | #{text}
