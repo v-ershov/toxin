@@ -1,0 +1,103 @@
+.pagination {
+  display: block;
+  max-width: fit-content;
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(13);
+  }
+
+  &__button {
+    position: relative;
+    z-index: 5;
+    padding: 0;
+    width: rem(40);
+    height: rem(40);
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    color: $color-gray-50p;
+    font-weight: normal;
+    font-size: rem(12);
+    font-family: $font-family-primary;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-gray-100p;
+    }
+
+    &--prev,
+    &--next {
+      background-image: $gradient-secondary;
+      color: transparent;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: -5;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background-color: $color-white;
+        content: '';
+        opacity: 0;
+        transition: opacity $transition-fast;
+        transform: translate(-50%, -50%);
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        @include material-icons(rem(24), $color-white);
+      }
+
+      &:hover {
+        color: transparent;
+
+        &::before {
+          opacity: 0.5;
+        }
+      }
+    }
+
+    &--prev {
+      &::after {
+        content: 'arrow_back';
+      }
+    }
+
+    &--next {
+      &::after {
+        content: 'arrow_forward';
+      }
+    }
+
+    &--current {
+      background-image: $gradient-primary;
+      color: $color-white;
+      font-weight: bold;
+      cursor: not-allowed;
+
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    &--dots {
+      cursor: not-allowed;
+
+      &:hover {
+        color: $color-gray-50p;
+      }
+    }
+  }
+
+  &__text {
+    text-align: center;
+  }
+}
