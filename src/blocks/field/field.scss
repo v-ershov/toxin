@@ -1,8 +1,9 @@
 .field {
   position: relative;
   z-index: 5;
-  display: inline-block;
+  display: block;
   width: 100%;
+  line-height: 1;
 
   &--dropdown {
     &::before {
@@ -11,7 +12,6 @@
       right: rem(10);
       z-index: -5;
       content: 'expand_more';
-      cursor: pointer;
       transform: translateY(-50%);
 
       @include material-icons(rem(24), $color-gray-50p);
