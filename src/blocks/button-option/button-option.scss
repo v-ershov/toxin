@@ -12,7 +12,6 @@
 
   &__box {
     position: relative;
-    top: -1px;
     flex-shrink: 0;
     margin-right: rem(10);
     width: rem(40);
@@ -58,7 +57,7 @@
 
   &__text {
     color: $color-gray-75p;
-    line-height: 1.285;
+    line-height: 1.45;
   }
 
   &--checkbox &__box {
