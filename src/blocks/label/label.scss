@@ -1,6 +1,5 @@
 .label {
   display: block;
-  line-height: 1;
 
   &__container {
     display: flex;
@@ -10,7 +9,7 @@
 
   &__primary,
   &__secondary {
-    display: inline-block;
+    display: block;
     margin-bottom: rem(5);
   }
 
