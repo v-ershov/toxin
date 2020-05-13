@@ -1,0 +1,17 @@
+//- Parameters:
+//- string   labelPrimary=''   - лейбл поля (первичный)
+//- string   labelSecondary='' - лейбл поля (вторичный)
+//- object   attrsField={}     - атрибуты поля
+
+//- Examples:
+//- +form-field('Subscription Text Field', '', {
+//-   'type': 'email',
+//-   'placeholder': 'Email',
+//- })
+
+mixin form-field(labelPrimary='', labelSecondary='', attrsField={})
+  form.form-field(action='')
+    +field(labelPrimary, labelSecondary, [], attrsField)
+    button._button(type='submit')
+      i._icon.material-icons
+        | arrow_forward

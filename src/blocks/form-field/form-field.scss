@@ -1,0 +1,30 @@
+.form-field {
+  position: relative;
+
+  &__button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: rem(44);
+    height: rem(44);
+    border: 0;
+    background-color: transparent;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &__icon {
+    background-image: $gradient-primary;
+    background-clip: text;
+    color: transparent;
+    font-size: rem(24);
+  }
+}
