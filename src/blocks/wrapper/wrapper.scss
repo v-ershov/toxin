@@ -1,4 +1,5 @@
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -7,10 +8,6 @@
 
   &--ui {
     padding: rem(140) 0;
-    background-image: url('../blocks/wrapper/img/logo-ui.svg');
-    background-position: rem(30) rem(30);
-    background-size: rem(48) rem(48);
-    background-repeat: no-repeat;
 
     @include screen-lg {
       padding: rem(134) 0;
@@ -31,5 +28,19 @@
 
   &--gray {
     background-color: $color-gray-5p;
+  }
+
+  &__link {
+    position: absolute;
+    top: rem(30);
+    left: rem(30);
+    display: block;
+    width: rem(48);
+    height: rem(48);
+    background-image: url('../blocks/wrapper/img/logo-ui.svg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: transparent;
+    opacity: 0.25;
   }
 }

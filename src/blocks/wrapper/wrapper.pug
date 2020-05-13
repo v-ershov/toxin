@@ -7,4 +7,7 @@
 
 mixin wrapper(modifiers=[])
   .wrapper(class=getModifiers('wrapper', modifiers))
+    if modifiers.includes('ui')
+      a._link(href='/')
+        | На главную
     block
