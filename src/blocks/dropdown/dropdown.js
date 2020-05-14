@@ -2,8 +2,17 @@ class Dropdown {
   constructor(node) {
     this.node = node;
     this._findNodes();
-    this._setHeight();
     this._addEventListeners();
+    this._setHeight();
+    this._setText();
+
+    this.items.forEach((_item, i) => {
+      this._switchSpinners(i);
+    });
+
+    if (this.buttonReset) {
+      this._switchButtonReset();
+    }
   }
 
   // находит указанные дочерние элементы корневого элемента
@@ -17,18 +26,6 @@ class Dropdown {
     this.buttonResetWrapper = this.node.querySelector('.dropdown__button--reset');
     this.buttonReset = this.node.querySelector('.button[name="reset"]');
     this.buttonApply = this.node.querySelector('.button[name="apply"]');
-  }
-
-  // устанавливает максимальную высоту контейнера для контента
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
-  _setHeight() {
-    this.content.style.setProperty('justify-content', 'flex-start');
-
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const heightRem = this.content.scrollHeight / fontSize;
-
-    this.content.style.setProperty('--height', ` ${heightRem}rem`);
-    this.content.style.removeProperty('justify-content');
   }
 
   // регистрирует обработчики событий
@@ -75,23 +72,26 @@ class Dropdown {
     }
   }
 
-  // схлопывает дропдаун
-  _collapseDropdown() {
-    this.node.classList.remove('dropdown--active');
+  // устанавливает максимальную высоту контейнера для контента
+  // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
+  _setHeight() {
+    this.content.style.setProperty('justify-content', 'flex-start');
+
+    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const heightRem = this.content.scrollHeight / fontSize;
+
+    this.content.style.setProperty('--height', ` ${heightRem}rem`);
+    this.content.style.removeProperty('justify-content');
   }
 
-  // переключает состояние дропдауна
-  _switchDropdown() {
-    this.node.classList.toggle('dropdown--active');
+  // устанавливает текст для поля дропдауна
+  _setText() {
+    this.input.value = this.input.dataset.words
+      ? this._getTextForAllItems()
+      : this._getTextForEachItem();
   }
 
-  // устанавливает количество указанного пункта меню
-  _setNumber(itemIndex, value) {
-    this.numbers[itemIndex].value = value;
-    this.numbers[itemIndex].dispatchEvent(new Event('input'));
-  }
-
-  // переключает состояние кнопки указанного пункта меню в зависимости от количества
+  // переключает состояния кнопок указанного пункта меню в зависимости от текущего количества
   _switchSpinners(itemIndex) {
     const number = this.numbers[itemIndex];
     const increment = this.increments[itemIndex];
@@ -111,6 +111,31 @@ class Dropdown {
         decrement.disabled = false;
         break;
     }
+  }
+
+  // переключает состояние кнопки "Очистить" в зависимости от общего количества всех пунктов меню
+  _switchButtonReset() {
+    if (this._getTotalNumber() === 0) {
+      this.buttonResetWrapper.classList.add('dropdown__button--hidden');
+    } else {
+      this.buttonResetWrapper.classList.remove('dropdown__button--hidden');
+    }
+  }
+
+  // схлопывает дропдаун
+  _collapseDropdown() {
+    this.node.classList.remove('dropdown--active');
+  }
+
+  // переключает состояние дропдауна
+  _switchDropdown() {
+    this.node.classList.toggle('dropdown--active');
+  }
+
+  // устанавливает количество указанного пункта меню
+  _setNumber(itemIndex, value) {
+    this.numbers[itemIndex].value = value;
+    this.numbers[itemIndex].dispatchEvent(new Event('input'));
   }
 
   // возвращает общее количество всех пунктов меню
@@ -173,22 +198,6 @@ class Dropdown {
     });
 
     return text.length !== 0 ? text.join(', ') : '';
-  }
-
-  // устанавливает текст для поля дропдауна
-  _setText() {
-    this.input.value = this.input.dataset.words
-      ? this._getTextForAllItems()
-      : this._getTextForEachItem();
-  }
-
-  // переключает состояние кнопки "Очистить" в зависимости от общего количества всех пунктов меню
-  _switchButtonReset() {
-    if (this._getTotalNumber() === 0) {
-      this.buttonResetWrapper.classList.add('dropdown__button--hidden');
-    } else {
-      this.buttonResetWrapper.classList.remove('dropdown__button--hidden');
-    }
   }
 
   // сбрасывает дропдаун в состояние по умолчанию

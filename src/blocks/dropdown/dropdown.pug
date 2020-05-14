@@ -9,6 +9,7 @@
 //-                                  либо последняя цифра общего количества входит в диапазон 5-9,
 //-                                  либо последние две цифры общего количества входят в диапазон 10-19)
 //- string[[]] list              - пункты меню дропдауна, каждый из которых содержит следующие данные:
+//-                                - текущее количество
 //-                                - мин. допустимое количество
 //-                                - макс. допустимое количество
 //-                                - название пункта (в единственном числе)
@@ -24,9 +25,9 @@
 //- +dropdown('Гости', '', {
 //-   'placeholder': 'Сколько гостей',
 //- }, ['гость', 'гостя', 'гостей'], [
-//-   [0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
-//-   [0, 2, 'ребёнок', 'дети', 'ребёнка', 'детей'],
-//-   [0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+//-   [0, 0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+//-   [0, 0, 2, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+//-   [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
 //- ], true, ['expanded'])
 
 mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list, isButtons=false, modifiers=[])
@@ -38,13 +39,13 @@ mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list
     ._content(style='--height: 100vh')
       ul._list
         each item in list
-          li._item(data-words=`${item[2]}, ${item[4]}, ${item[5]}`)
+          li._item(data-words=`${item[3]}, ${item[5]}, ${item[6]}`)
             span._title
-              | #{item[3]}
+              | #{item[4]}
             span._controls
               button._spinner(type='button', name='decrement', disabled)
                 | &minus;
-              input._number(type='number', value=item[0], min=item[0], max=item[1], readonly)
+              input._number(type='number', value=item[0], min=item[1], max=item[2], readonly)
               button._spinner(type='button', name='increment')
                 | +
       if isButtons

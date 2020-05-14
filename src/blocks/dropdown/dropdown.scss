@@ -65,6 +65,11 @@
       box-shadow $transition-fast;
   }
 
+  &--expanded &__content {
+    position: relative;
+    z-index: 5;
+  }
+
   &:hover .field__input,
   &:hover &__content {
     border-color: $color-gray-50p;
@@ -93,7 +98,6 @@
     text-transform: uppercase;
     font-weight: bold;
     font-size: rem(12);
-    line-height: 1.25;
     cursor: default;
   }
 
