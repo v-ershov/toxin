@@ -1,5 +1,5 @@
 .button-option {
-  line-height: 1;
+  display: block;
 
   &__label {
     display: flex;
@@ -57,10 +57,19 @@
 
   &__text {
     color: $color-gray-75p;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
-  &--checkbox &__box {
+  &__text-rich {
+    margin: rem(5) 0 0 0;
+    padding-left: rem(30);
+    color: $color-gray-50p;
+    font-size: rem(12);
+    line-height: 1.17;
+  }
+
+  &--checkbox &__box,
+  &--checkbox-rich &__box {
     width: rem(20);
     border-radius: 20%;
 
@@ -84,7 +93,8 @@
     }
   }
 
-  &--checkbox &__input:checked + &__box {
+  &--checkbox &__input:checked + &__box,
+  &--checkbox-rich &__input:checked + &__box {
     &::before {
       left: 50%;
       opacity: 1;
@@ -97,6 +107,10 @@
 
   &--checkbox &__text {
     color: $color-gray-50p;
+  }
+
+  &--checkbox-rich &__text {
+    font-weight: bold;
   }
 
   &--radio &__box {

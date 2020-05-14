@@ -1,29 +1,37 @@
 //- Parameters:
 //- string   text         - текст кнопки
+//- string   textRich=''  - дополнительный текст кнопки (если указан модификатор 'checkbox-rich')
 //- string[] modifiers=[] - модификаторы блока
 //- object   attrs={}     - атрибуты кнопки
 
 //- Examples:
 //- +button-option('Subscribe to newsletter')
-//- +button-option('Subscribe to newsletter', [], {
+//- +button-option('Subscribe to newsletter', '', [], {
 //-   'checked': true,
 //- })
-//- +button-option('Subscribe to newsletter', ['checkbox'])
-//- +button-option('Subscribe to newsletter', ['checkbox'], {
+//- +button-option('Subscribe to newsletter', '', ['checkbox'])
+//- +button-option('Subscribe to newsletter', '', ['checkbox'], {
 //-   'checked': true,
 //- })
-//- +button-option('Male', ['radio'], {
+//- +button-option('Subscribe to newsletter', 'Receive news every day to your email address', ['checkbox-rich'])
+//- +button-option('Subscribe to newsletter', 'Receive news every day to your email address', ['checkbox-rich'], {
+//-   'checked': true,
+//- })
+//- +button-option('Male', '', ['radio'], {
 //-   'name': 'gender',
 //- })
-//- +button-option('Female', ['radio'], {
+//- +button-option('Female', '', ['radio'], {
 //-   'name': 'gender',
 //-   'checked': true,
 //- })
 
-mixin button-option(text, modifiers=[], attrs={})
+mixin button-option(text, textRich='', modifiers=[], attrs={})
   .button-option(class=getModifiers('button-option', modifiers))
     label._label
       input._input(type=modifiers.includes('radio') ? 'radio' : 'checkbox')&attributes(attrs)
       span._box
       span._text
         | #{text}
+    if modifiers.includes('checkbox-rich')
+      p._text-rich
+        | #{textRich}
