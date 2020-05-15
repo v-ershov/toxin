@@ -1,0 +1,25 @@
+//- Parameters:
+//- string     text         - текст кнопки списка чекбоксов
+//- string[[]] list         - пункты меню списка чекбоксов, каждый из которых содержит следующие данные:
+//-                           - текст кнопки
+//-                           - если true, то кнопка отмечена
+//- string[]   modifiers=[] - модификаторы блока
+
+//- Examples:
+//- +ecl('Hotel Amenities', [
+//-   ['Crib'],
+//-   ['TV', true],
+//-   ['Shampoo'],
+//- ])
+
+mixin ecl(text, list, modifiers=[])
+  .ecl(class=getModifiers('ecl', modifiers))
+    button._button(type='button')
+      | #{text}
+    ._content(style='--height: 100vh')
+      ul._list
+        each item in list
+          li._item
+            +button-option(item[0], '', ['checkbox'], {
+              'checked': item[1],
+            })
