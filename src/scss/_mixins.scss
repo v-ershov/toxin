@@ -63,6 +63,11 @@
   font-weight: bold;
 }
 
+// Hidden Text
+@mixin hidden-text {
+  font-size: 0;
+}
+
 // Material Design Icons Font
 @mixin material-icons($font-size: $font-size-primary, $color: $color-primary) {
   display: inline-block;
