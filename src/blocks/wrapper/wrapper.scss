@@ -38,9 +38,9 @@
     width: rem(48);
     height: rem(48);
     background-image: url('../blocks/wrapper/img/logo-ui.svg');
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    color: transparent;
+    background-size: cover;
     opacity: 0.25;
+
+    @include hidden-text;
   }
 }
