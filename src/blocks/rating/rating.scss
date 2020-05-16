@@ -1,10 +1,21 @@
 .rating {
-  display: inline-block;
+  display: flex;
 
-  &__icon {
-    background-image: $gradient-primary;
-    background-clip: text;
-    color: transparent;
-    font-size: 24px;
+  &__star {
+    @include hidden-text;
+
+    &::before {
+      background-image: $gradient-primary;
+      background-clip: text;
+      content: 'star';
+
+      @include material-icons(rem(24), transparent);
+    }
+
+    &--border {
+      &::before {
+        content: 'star_border';
+      }
+    }
   }
 }

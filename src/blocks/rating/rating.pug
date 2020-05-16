@@ -10,9 +10,10 @@ mixin rating(number)
 
   .rating
     while count < 5
-      i.material-icons._icon
-        if count < number
-          | star
-        else
-          | star_border
+      if count < number
+        span._star
+          | ★
+      else
+        span._star.-border
+          | ☆
       - count++;
