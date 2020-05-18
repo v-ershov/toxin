@@ -1,0 +1,39 @@
+.advantages {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    margin-bottom: rem(18);
+    padding: rem(2) 0 rem(20);
+    border-bottom: 1px solid $color-gray-10p;
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+  }
+
+  &--ui &__item {
+    &:last-child {
+      padding-bottom: rem(20);
+      border-bottom: 1px solid $color-gray-10p;
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    margin-right: rem(10);
+    background-image: $gradient-primary;
+    background-clip: text;
+    color: transparent;
+    font-size: rem(48);
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+}
