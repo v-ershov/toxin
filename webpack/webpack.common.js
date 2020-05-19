@@ -51,6 +51,15 @@ module.exports = {
       },
       {
         test: /\.(jpg|png|gif)$/,
+        include: /node_modules/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'images/plugins',
+        },
+      },
+      {
+        test: /\.(jpg|png|gif)$/,
         include: paths.src.blocks,
         loader: 'file-loader',
         options: {
@@ -64,7 +73,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[folder]/[name].[ext]',
-          outputPath: 'images',
+          outputPath: 'images/content',
         },
       },
     ],
