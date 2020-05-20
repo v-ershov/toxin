@@ -10,22 +10,6 @@ html {
   font-size: $font-size-primary;
   font-family: $font-family-primary;
   line-height: $line-height-primary;
-
-  @include screen-lg {
-    font-size: 13px;
-  }
-
-  @include screen-md {
-    font-size: 12px;
-  }
-
-  @include screen-sm {
-    font-size: 11px;
-  }
-
-  @include screen-xs {
-    font-size: 10px;
-  }
 }
 
 body {
