@@ -1,0 +1,37 @@
+//- Parameters:
+//- string author       - имя автора отзыва
+//- string time         - время отзыва (в свободной форме)
+//- string datetime     - время отзыва (в формате ISO 8601)
+//- string text         - текст отзыва
+//- int    likes        - количество лайков у кнопки отзыва
+//- bool   isLike=false - если true, то кнопка отзыва активна
+//- string image=''     - имя файла с изображением автора отзыва
+
+//- Examples:
+//- +review('Darth Vader', 'Yesterday', '2015-12-17',
+//-   'I hate The Force Awakens so much!',
+//-   1977, true, 'darth-vader.jpg')
+
+mixin review(author, time, datetime, text, likes, isLike=false, image='')
+  .review
+    ._row
+      ._cell.-small
+        if image !== ''
+          img._image(src=require(`~/content/reviewers/${image}`).default, alt=author)
+        else
+          img._image(src=require('~/blocks/review/img/avatar.svg').default, alt='Иконка «Аватар»')
+      ._cell
+        ._author
+          | #{author}
+        time._time(datetime=datetime)
+          | #{time}
+    ._row
+      ._cell.-small.-button
+        if isLike
+          +button-like(likes, ['active'])
+        else
+          +button-like(likes)
+      ._cell
+        blockquote._blockquote
+          p._text
+            | #{text}

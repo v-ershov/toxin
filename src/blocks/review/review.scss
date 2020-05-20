@@ -1,0 +1,43 @@
+.review {
+  &__row {
+    display: flex;
+    margin-bottom: rem(10);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__cell {
+    &--small {
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      margin-right: rem(10);
+      width: rem(48);
+      height: rem(48);
+    }
+
+    &--button {
+      margin-top: 1px;
+    }
+  }
+
+  &__image {
+    width: inherit;
+    height: inherit;
+    border: 2px solid $color-white;
+    border-radius: 50%;
+    box-shadow: $shadow-primary;
+    object-fit: cover;
+  }
+
+  &__author {
+    font-weight: bold;
+  }
+
+  &__blockquote,
+  &__text {
+    margin: 0;
+  }
+}
