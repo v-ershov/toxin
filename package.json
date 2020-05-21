@@ -68,6 +68,7 @@
     "@babel/polyfill": "^7.8.7",
     "air-datepicker": "^2.2.3",
     "jquery": "^3.5.0",
-    "jquery-mask-plugin": "^1.14.16"
+    "jquery-mask-plugin": "^1.14.16",
+    "jquery-ui": "^1.12.1"
   }
 }
