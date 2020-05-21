@@ -80,7 +80,6 @@
       background-image: $gradient-primary;
       color: $color-white;
       font-weight: bold;
-      cursor: not-allowed;
 
       &:hover {
         color: $color-white;
@@ -88,8 +87,6 @@
     }
 
     &--dots {
-      cursor: not-allowed;
-
       &:hover {
         color: $color-gray-50p;
       }
