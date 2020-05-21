@@ -3,7 +3,6 @@
   z-index: 5;
   display: block;
   width: 100%;
-  line-height: 1;
 
   &--dropdown {
     &::before {
@@ -19,7 +18,7 @@
   }
 
   &__input {
-    padding: rem(13) rem(44) rem(13) rem(14);
+    padding: rem(12) rem(44) rem(12) rem(14);
     width: inherit;
     border: 1px solid $color-gray-25p;
     border-radius: rem(4);
@@ -30,7 +29,6 @@
     font-weight: normal;
     font-size: rem(14);
     font-family: $font-family-primary;
-    line-height: 1.19;
     transition: border-color $transition-fast;
 
     &::placeholder {
