@@ -1,10 +1,13 @@
 .button-like {
   position: relative;
+  display: block;
   overflow: hidden;
+  padding: 0;
   width: rem(40);
   height: rem(20);
   border: 1px solid $color-gray-25p;
   border-radius: 25% / 50%;
+  background-color: transparent;
   background-image:
     $gradient-white,
     $gradient-primary;
@@ -15,11 +18,14 @@
     padding-box,
     border-box;
   color: $color-gray-25p;
+  font-weight: normal;
   font-size: rem(10);
+  font-family: $font-family-primary;
   line-height: 1;
   transition:
     border-color $transition-fast,
     color $transition-fast;
+  user-select: none;
 
   &::before,
   &::after {
@@ -55,7 +61,7 @@
     position: absolute;
     top: 23.5%;
     left: 63.5%;
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 155%;
