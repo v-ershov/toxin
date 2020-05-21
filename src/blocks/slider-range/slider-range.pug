@@ -1,0 +1,19 @@
+//- Parameters:
+//- string labelPrimary - лейбл поля слайдера (первичный)
+//- int    min          - мин. допустимое значение слайдера
+//- int    max          - макс. допустимое значение слайдера
+//- int    start        - начальное значение слайдера
+//- int    end          - конечное значение слайдера
+//- int    step         - шаг ползунков слайдера
+//- string unit=''      - единица измерения значений слайдера
+
+//- Examples:
+//- +slider-range('Price Range', 0, 100000, 5000, 50000, 100, '$')
+
+mixin slider-range(labelPrimary, min, max, start, end, step, unit='')
+  - const labelSecondary = `${start.toLocaleString('ru')}${unit} - ${end.toLocaleString('ru')}${unit}`;
+
+  .slider-range
+    +label(labelPrimary, labelSecondary)
+      input._input(type='hidden', value=labelSecondary)
+    ._slider(data-min=min, data-max=max, data-start=start, data-end=end, data-step=step, data-unit=unit)
