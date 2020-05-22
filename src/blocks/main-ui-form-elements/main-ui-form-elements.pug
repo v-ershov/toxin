@@ -1,0 +1,266 @@
+//- Examples:
+//- +main-ui-form-elements
+
+mixin main-ui-form-elements
+  main.ui-form-elements
+    ._container
+      h1._title.visually-hidden
+        | Form Elements
+      section._section
+        h2._section-title.visually-hidden
+          | Fields
+        section._subsection
+          h3._subsection-title.visually-hidden
+            | Text Fields
+          ul._list
+            li._item
+              +field('Text Field', 'Default', [], {
+                'type': 'email',
+                'placeholder': 'Email',
+              })
+            li._item
+              +field('Text Field', 'Hover / Focus', [], {
+                'placeholder': 'Enter text',
+                'value': 'This is pretty awesome',
+              })
+            li._item
+              +dropdown('Dropdown', 'Default', {
+                'placeholder': 'Сколько гостей',
+              }, ['гость', 'гостя', 'гостей'], [
+                [0, 0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+                [0, 0, 3, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+                [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+              ])
+            li._item
+              +field('Masked Text Field', 'Default', [], {
+                'placeholder': 'ДД.ММ.ГГГГ',
+                'data-mask': '00.00.0000',
+              })
+        section._subsection
+          h3._subsection-title.visually-hidden
+            | Date Dropdowns
+          ul._list
+            li._item.-margin-40
+              +calendar('fields', 'Date Dropdown', 'Date Dropdown')
+            li._item.-width-260
+              +calendar('field', 'Filter Date Dropdown')
+        section._subsection
+          h3._subsection-title.visually-hidden
+            | One Field Forms
+          ul._list
+            li._item.-width-260
+              +form-field('Subscription Text Field', '', {
+                'type': 'email',
+                'placeholder': 'Email',
+              })
+      section._section
+        h2._section-title.visually-hidden
+          | Buttons (Checkbox, Radio, Toggle, Like, Rate)
+        section._subsection
+          h3._subsection-title
+            | Checkbox Buttons
+          ul._list
+            li._item.-width-230.-margin-10
+              +button-option('Можно курить', '', ['checkbox'])
+            li._item.-width-230.-margin-10
+              +button-option('Можно с питомцами', '', ['checkbox'], {
+                'checked': true,
+              })
+            li._item.-width-230
+              +button-option('Можно пригласить гостей (до 10 человек)', '', ['checkbox'], {
+                'checked': true,
+              })
+        section._subsection
+          h3._subsection-title
+            | Radio Buttons
+          ul._list.-flex
+            li._item.-flex
+              +button-option('Мужчина', '', ['radio'], {
+                'name': 'gender',
+                'value': 'm',
+                'checked': true,
+              })
+            li._item.-flex
+              +button-option('Женщина', '', ['radio'], {
+                'name': 'gender',
+                'value': 'f',
+              })
+        section._subsection
+          h3._subsection-title
+            | Toggle
+          ul._list
+            li._item.-margin-10
+              +button-option('Получать спецпредложения', '', [], {
+                'checked': true,
+              })
+            li._item
+              +button-option('Получать спецпредложения')
+        section._subsection
+          h3._subsection-title
+            | Like Button
+          ul._list.-flex
+            li._item.-button-like
+              +button-like(2)
+            li._item.-button-like
+              +button-like(12, ['active'])
+        section._subsection
+          h3._subsection-title
+            | Rate Button
+          ul._list.-flex
+            li._item.-flex
+              +rating(4)
+            li._item.-flex
+              +rating(5)
+      section._section
+        h2._section-title.visually-hidden
+          | Sliders, Buttons, Pagination
+        section._subsection
+          h3._subsection-title.visually-hidden
+            | Sliders
+          ul._list
+            li._item.-width-260
+              +slider-range('Range Slider', 0, 16000, 5000, 10000, 100, 'Р')
+        section._subsection
+          h3._subsection-title
+            | Buttons
+          ul._list
+            li._item.-margin-30
+              ul._list.-flex
+                li._item.-flex
+                  +button('Click Me', ['fill'])
+                li._item.-flex
+                  +button('Click Me', ['fill', 'hover'])
+            li._item.-margin-30
+              ul._list.-flex
+                li._item.-flex
+                  +button('Click Me')
+                li._item.-flex
+                  +button('Click Me', ['hover'])
+            li._item.-margin-30
+              ul._list.-flex
+                li._item.-flex
+                  +button('Click Me', ['bodyless'])
+                li._item.-flex
+                  +button('Click Me', ['bodyless', 'text-gray', 'hover'])
+            li._item
+              +button('Перейти к оплате', ['fill', 'wide'])
+        section._subsection
+          h3._subsection-title
+            | Pagination
+          ul._list
+            li._item
+              +pagination
+      section._section.-dropdowns
+        h2._section-title.visually-hidden
+          | Dropdowns
+        section._subsection.-dropdowns
+          h3._subsection-title.visually-hidden
+            | Dropdown (Default)
+          ul._list
+            li._item.-width-260
+              +dropdown('Dropdown', 'Default', {
+                'placeholder': 'Какие удобства',
+              }, [], [
+                [2, 0, 3, 'спальня', 'спальни', 'спальни', 'спален'],
+                [2, 0, 3, 'кровать', 'кровати', 'кровати', 'кроватей'],
+                [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
+              ])
+            li._item.-width-260
+              +dropdown('Dropdown', 'Expanded', {
+                'placeholder': 'Какие удобства',
+              }, [], [
+                [2, 0, 3, 'спальня', 'спальни', 'спальни', 'спален'],
+                [2, 0, 3, 'кровать', 'кровати', 'кровати', 'кроватей'],
+                [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
+              ], false, ['expanded'])
+        section._subsection.-dropdowns
+          h3._subsection-title.visually-hidden
+            | Dropdown (Buttons)
+          ul._list
+            li._item
+              +dropdown('Dropdown', '', {
+                'placeholder': 'Сколько гостей',
+              }, ['гость', 'гостя', 'гостей'], [
+                [0, 0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+                [0, 0, 3, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+                [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+              ], true, ['expanded'])
+        section._subsection.-dropdowns
+          h3._subsection-title.visually-hidden
+            | Dropdown (Buttons / Filled)
+          ul._list
+            li._item
+              +dropdown('Dropdown', '', {
+                'placeholder': 'Сколько гостей',
+              }, ['гость', 'гостя', 'гостей'], [
+                [2, 0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+                [1, 0, 3, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+                [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+              ], true, ['expanded'])
+      section._section
+        h2._section-title.visually-hidden
+          | Expandable Checkbox List
+        ul._list
+          li._item.-width-260.-margin-50
+            +ecl('Expandable Checkbox List', [
+              ['Завтрак'],
+              ['Письменный стол', true],
+              ['Стул для кормления', true],
+              ['Кроватка', true],
+              ['Телевизор'],
+              ['Шампунь'],
+              ['Телевизор'],
+              ['Шампунь'],
+            ])
+          li._item.-width-260
+            +ecl('Expandable Checkbox List', [
+              ['Завтрак'],
+              ['Письменный стол', true],
+              ['Стул для кормления', true],
+              ['Кроватка', true],
+              ['Телевизор'],
+              ['Шампунь'],
+              ['Телевизор'],
+              ['Шампунь'],
+            ], ['active'])
+      section._section
+        h2._section-title.visually-hidden
+          | Additional Buttons
+        section._subsection
+          h3._subsection-title
+            | Rich Checkbox Buttons
+          ul._list
+            li._item.-width-260.-margin-10
+              +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
+            li._item.-width-260
+              +button-option('Помощник для инвалидов', 'На 1 этаже вас встретит специалист и проводит до номера.', ['checkbox-rich'])
+      section._section
+        h2._section-title.visually-hidden
+          | Lists
+        section._subsection
+          h3._subsection-title
+            | Bullet List
+          ul._list
+            li._item.-width-260
+              +list-bullet([
+                ['Нельзя с питомцами'],
+                ['Без вечеринок и мероприятий'],
+                ['Время прибытия — после 13:00, а выезд до 12:00'],
+              ])
+      section._section
+        h2._section-title.visually-hidden
+          | Advantages
+        ul._list
+          li._item.-width-280
+            +advantages([
+              ['insert_emoticon', 'Комфорт', 'Шумопоглощающие стены'],
+              ['location_city', 'Удобство', 'Окно в каждой из спален'],
+            ], ['ui'])
+      section._section.-reviews
+        h2._section-title.visually-hidden
+          | Reviews
+        ul._list
+          li._item
+            +review('Мурад Сарафанов', '5 дней назад', '2019-12-17',
+              'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+              12, true)
