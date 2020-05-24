@@ -63,6 +63,13 @@
   font-weight: bold;
 }
 
+// Form
+@mixin form {
+  padding: rem(40) rem(30) rem(30);
+  background-color: $color-white;
+  box-shadow: $shadow-form;
+}
+
 // Hidden Text
 @mixin hidden-text {
   font-size: 0;
