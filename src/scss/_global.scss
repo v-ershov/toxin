@@ -25,16 +25,8 @@ button {
   cursor: pointer;
 }
 
-h1 {
-  @include heading('h1');
-}
-
-h2 {
-  @include heading('h2');
-}
-
-h3 {
-  @include heading('h3');
+button[disabled] {
+  cursor: not-allowed;
 }
 
 .visually-hidden {
