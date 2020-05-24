@@ -3,15 +3,19 @@
     @include container;
   }
 
-  &__title {
-    margin: 0 0 rem(40) 0;
+  &__h1 {
+    margin: 0 0 rem(40);
+
+    @include heading('h1');
   }
 
-  &__section:not(:last-child) {
-    margin-bottom: rem(30);
+  &__section {
+    margin-top: rem(30);
   }
 
-  &__subtitle {
-    margin: 0 0 rem(20) 0;
+  &__h2 {
+    margin: 0 0 rem(20);
+
+    @include heading('h2');
   }
 }

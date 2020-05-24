@@ -4,26 +4,24 @@
 mixin main-sitemap
   main.sitemap
     ._container
-      h1._title
+      h1._h1
         | TOXIN Sitemap
       section._section
-        h2._subtitle
+        h2._h2
           | UI-Kit
-        ._list
-          +list-bullet([
-            ['Colors & Type', '/ui-colors-type.html'],
-            ['Form Elements', '/ui-form-elements.html'],
-            ['Cards', '/ui-cards.html'],
-            ['Headers & Footers', '/ui-headers-footers.html'],
-          ])
+        +list-bullet([
+          ['Colors & Type', '/ui-colors-type.html'],
+          ['Form Elements', '/ui-form-elements.html'],
+          ['Cards', '/ui-cards.html'],
+          ['Headers & Footers', '/ui-headers-footers.html'],
+        ])
       section._section
-        h2._subtitle
+        h2._h2
           | Website Pages
-        ._list
-          +list-bullet([
-            ['Landing Page', '/landing.html'],
-            ['Search Room', '/search.html'],
-            ['Room Details', '/room.html'],
-            ['Sign Up', '/sign-up.html'],
-            ['Sign In', '/sign-in.html'],
-          ])
+        +list-bullet([
+          ['Landing Page', '/landing.html'],
+          ['Search Room', '/search.html'],
+          ['Room Details', '/room.html'],
+          ['Sign Up', '/sign-up.html'],
+          ['Sign In', '/sign-in.html'],
+        ])
