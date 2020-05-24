@@ -4,13 +4,13 @@
 mixin main-ui-form-elements
   main.ui-form-elements
     ._container
-      h1._title.visually-hidden
+      h1._h1.visually-hidden
         | Form Elements
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Fields
         section._subsection
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | Text Fields
           ul._list
             li._item
@@ -37,15 +37,15 @@ mixin main-ui-form-elements
                 'data-mask': '00.00.0000',
               })
         section._subsection
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | Date Dropdowns
           ul._list
-            li._item.-margin-40
+            li._item
               +calendar('fields', 'Date Dropdown', 'Date Dropdown')
-            li._item.-width-260
+            li._item.-width-260.-margin-40
               +calendar('field', 'Filter Date Dropdown')
         section._subsection
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | One Field Forms
           ul._list
             li._item.-width-260
@@ -54,24 +54,24 @@ mixin main-ui-form-elements
                 'placeholder': 'Email',
               })
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Buttons (Checkbox, Radio, Toggle, Like, Rate)
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Checkbox Buttons
           ul._list
-            li._item.-width-230.-margin-10
+            li._item.-width-230
               +button-option('Можно курить', '', ['checkbox'])
             li._item.-width-230.-margin-10
               +button-option('Можно с питомцами', '', ['checkbox'], {
                 'checked': true,
               })
-            li._item.-width-230
+            li._item.-width-230.-margin-10
               +button-option('Можно пригласить гостей (до 10 человек)', '', ['checkbox'], {
                 'checked': true,
               })
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Radio Buttons
           ul._list.-flex
             li._item.-flex
@@ -86,17 +86,17 @@ mixin main-ui-form-elements
                 'value': 'f',
               })
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Toggle
           ul._list
-            li._item.-margin-10
+            li._item
               +button-option('Получать спецпредложения', '', [], {
                 'checked': true,
               })
-            li._item
+            li._item.-margin-10
               +button-option('Получать спецпредложения')
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Like Button
           ul._list.-flex
             li._item.-button-like
@@ -104,7 +104,7 @@ mixin main-ui-form-elements
             li._item.-button-like
               +button-like(12, ['active'])
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Rate Button
           ul._list.-flex
             li._item.-flex
@@ -112,19 +112,19 @@ mixin main-ui-form-elements
             li._item.-flex
               +rating(5)
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Sliders, Buttons, Pagination
         section._subsection
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | Sliders
           ul._list
             li._item.-width-260
               +slider-range('Range Slider', 0, 16000, 5000, 10000, 100, 'Р')
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Buttons
           ul._list
-            li._item.-margin-30
+            li._item
               ul._list.-flex
                 li._item.-flex
                   +button('Click Me', ['fill'])
@@ -142,19 +142,19 @@ mixin main-ui-form-elements
                   +button('Click Me', ['bodyless'])
                 li._item.-flex
                   +button('Click Me', ['bodyless', 'text-gray', 'hover'])
-            li._item
+            li._item.-margin-30
               +button('Перейти к оплате', ['fill', 'wide'])
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Pagination
           ul._list
             li._item
               +pagination
       section._section.-dropdowns
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Dropdowns
         section._subsection.-dropdowns
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | Dropdown (Default)
           ul._list
             li._item.-width-260
@@ -174,7 +174,7 @@ mixin main-ui-form-elements
                 [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
               ], false, ['expanded'])
         section._subsection.-dropdowns
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | Dropdown (Buttons)
           ul._list
             li._item
@@ -186,7 +186,7 @@ mixin main-ui-form-elements
                 [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
               ], true, ['expanded'])
         section._subsection.-dropdowns
-          h3._subsection-title.visually-hidden
+          h3._h3.visually-hidden
             | Dropdown (Buttons / Filled)
           ul._list
             li._item
@@ -198,10 +198,10 @@ mixin main-ui-form-elements
                 [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
               ], true, ['expanded'])
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Expandable Checkbox List
         ul._list
-          li._item.-width-260.-margin-50
+          li._item.-width-260
             +ecl('Expandable Checkbox List', [
               ['Завтрак'],
               ['Письменный стол', true],
@@ -212,7 +212,7 @@ mixin main-ui-form-elements
               ['Телевизор'],
               ['Шампунь'],
             ])
-          li._item.-width-260
+          li._item.-width-260.-margin-50
             +ecl('Expandable Checkbox List', [
               ['Завтрак'],
               ['Письменный стол', true],
@@ -224,21 +224,21 @@ mixin main-ui-form-elements
               ['Шампунь'],
             ], ['active'])
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Additional Buttons
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Rich Checkbox Buttons
           ul._list
-            li._item.-width-260.-margin-10
-              +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
             li._item.-width-260
+              +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
+            li._item.-width-260.-margin-10
               +button-option('Помощник для инвалидов', 'На 1 этаже вас встретит специалист и проводит до номера.', ['checkbox-rich'])
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Lists
         section._subsection
-          h3._subsection-title
+          h3._h3
             | Bullet List
           ul._list
             li._item.-width-260
@@ -248,7 +248,7 @@ mixin main-ui-form-elements
                 ['Время прибытия — после 13:00, а выезд до 12:00'],
               ])
       section._section
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Advantages
         ul._list
           li._item.-width-280
@@ -257,7 +257,7 @@ mixin main-ui-form-elements
               ['location_city', 'Удобство', 'Окно в каждой из спален'],
             ], ['ui'])
       section._section.-reviews
-        h2._section-title.visually-hidden
+        h2._h2.visually-hidden
           | Reviews
         ul._list
           li._item
