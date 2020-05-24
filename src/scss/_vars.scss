@@ -32,8 +32,9 @@ $gradient-gray-25p  : linear-gradient($color-gray-25p, $color-gray-25p);
 $gradient-white     : linear-gradient($color-white, $color-white);
 
 // Shadows
-$shadow-primary   : 0 10px 20px rgba(31, 32, 65, 0.1);
-$shadow-secondary : 0 10px 20px rgba(31, 32, 65, 0.05);
+$shadow-primary   : 0 10px 20px rgba($color-gray-100p, 0.1);
+$shadow-secondary : 0 10px 20px rgba($color-gray-100p, 0.05);
+$shadow-form      : 0 0 25px rgba($color-black, 0.2);
 
 // Transitions
 $transition-fastest : 0.15s;
