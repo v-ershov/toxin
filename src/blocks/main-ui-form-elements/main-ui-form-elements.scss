@@ -27,18 +27,22 @@
   &__section {
     max-width: rem(320);
 
-    @include screen-md {
-      margin: 0;
-    }
-
     &:nth-of-type(3) {
       @include screen-lg {
         margin: rem(60) 0 rem(15);
+      }
+
+      @include screen-md {
+        margin: 0;
       }
     }
 
     &:nth-of-type(4) {
       margin: rem(60) 0 rem(15);
+
+      @include screen-md {
+        margin: 0;
+      }
     }
 
     &--dropdowns {
