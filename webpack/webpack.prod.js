@@ -15,7 +15,7 @@ module.exports = merge(common, {
         test: /\.pug$/,
         loader: 'pug-loader',
         options: {
-          plugins: [pugBem],
+          plugins: pugBem,
           root: paths.context.src,
         },
       },
@@ -52,23 +52,15 @@ module.exports = merge(common, {
         ],
       },
       {
+        test: /\.(jpg|jpeg|png|gif)$/,
+        loader: 'image-webpack-loader',
+      },
+      {
         test: /\.svg$/,
-        exclude: paths.src.fonts,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'icons',
-            },
-          },
-          {
-            loader: 'svgo-loader',
-            options: {
-              externalConfig: '.svgo',
-            },
-          },
-        ],
+        loader: 'svgo-loader',
+        options: {
+          externalConfig: '.svgo',
+        },
       },
     ],
   },

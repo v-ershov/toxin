@@ -22,7 +22,7 @@ module.exports = merge(common, {
         test: /\.pug$/,
         loader: 'pug-loader',
         options: {
-          plugins: [pugBem],
+          plugins: pugBem,
           pretty: true,
           root: paths.context.src,
         },
@@ -75,15 +75,6 @@ module.exports = merge(common, {
             },
           },
         ],
-      },
-      {
-        test: /\.svg$/,
-        exclude: paths.src.fonts,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'icons',
-        },
       },
     ],
   },

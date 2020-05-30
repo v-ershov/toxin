@@ -1,26 +1,26 @@
 const path = require('path');
 
-const CONTEXT = {
+const context = {
   src: path.resolve('src'),
   dist: path.resolve('dist'),
   postcss: path.resolve('postcss'),
 };
 
-const SRC = {
-  blocks: `${CONTEXT.src}\\blocks`,
-  content: `${CONTEXT.src}\\content`,
-  fonts: `${CONTEXT.src}\\fonts`,
-  pug: `${CONTEXT.src}\\pug`,
-  pages: `${CONTEXT.src}\\pug\\pages`,
+const src = {
+  blocks: `${context.src}\\blocks`,
+  content: `${context.src}\\content`,
+  fonts: `${context.src}\\fonts`,
+  pug: `${context.src}\\pug`,
+  pages: `${context.src}\\pug\\pages`,
 };
 
-const POSTCSS = {
-  dev: `${CONTEXT.postcss}\\dev`,
-  prod: `${CONTEXT.postcss}\\prod`,
+const postcss = {
+  dev: `${context.postcss}\\dev`,
+  prod: `${context.postcss}\\prod`,
 };
 
 module.exports = {
-  context: CONTEXT,
-  src: SRC,
-  postcss: POSTCSS,
+  context,
+  src,
+  postcss,
 };

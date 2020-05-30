@@ -3,14 +3,9 @@ const fs = require('fs');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./paths.js');
+const helpers = require('./helpers.js');
 
-(function createBlocksFile() {
-  let pathsToBlocks = '';
-  fs.readdirSync(paths.src.blocks).forEach((block) => {
-    pathsToBlocks += `include /blocks/${block}/${block}.pug\n`;
-  });
-  fs.writeFileSync(`${paths.src.pug}/_blocks.pug`, pathsToBlocks);
-}());
+helpers.createBlocksFile();
 
 module.exports = {
   entry: {
@@ -45,21 +40,12 @@ module.exports = {
         include: paths.src.fonts,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
+          name: '[folder]/[name].[ext]',
           outputPath: 'fonts',
         },
       },
       {
-        test: /\.(jpg|png|gif)$/,
-        include: /node_modules/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'images/plugins',
-        },
-      },
-      {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(jpg|jpeg|png|gif|svg)$/,
         include: paths.src.blocks,
         loader: 'file-loader',
         options: {
@@ -68,12 +54,24 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpg|png|gif)$/,
+        test: /\.(jpg|jpeg|png|gif|svg)$/,
         include: paths.src.content,
         loader: 'file-loader',
         options: {
           name: '[folder]/[name].[ext]',
           outputPath: 'images/content',
+        },
+      },
+      {
+        test: /\.(woff(2)?|ttf|svg|eot|otf|jpg|jpeg|png|gif)$/,
+        include: /node_modules/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: (url, resourcePath) => {
+            const path = resourcePath.split('\\');
+            return `plugin-files/${path[path.indexOf('node_modules') + 1]}/${url}`;
+          },
         },
       },
     ],
