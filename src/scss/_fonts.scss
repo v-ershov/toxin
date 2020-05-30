@@ -1,78 +1,100 @@
 // https://google-webfonts-helper.herokuapp.com/fonts
+// https://github.com/google/material-design-icons/tree/master/iconfont
 
 @font-face {
+  $name: 'montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-regular';
+
   font-weight: normal;
   font-style: normal;
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url('../fonts/Montserrat/montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-regular.woff') format('woff'),
-    url('../fonts/Montserrat/montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-regular.ttf') format('truetype'),
-    url('../fonts/Montserrat/montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-regular.svg#Montserrat') format('svg');
+    url('../fonts/montserrat/#{$name}.woff2') format('woff2'),
+    url('../fonts/montserrat/#{$name}.woff') format('woff'),
+    url('../fonts/montserrat/#{$name}.ttf') format('truetype'),
+    url('../fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
 @font-face {
+  $name: 'montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-700';
+
   font-weight: bold;
   font-style: normal;
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url('../fonts/Montserrat/montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-700.woff') format('woff'),
-    url('../fonts/Montserrat/montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-700.ttf') format('truetype'),
-    url('../fonts/Montserrat/montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-700.svg#Montserrat') format('svg');
+    url('../fonts/montserrat/#{$name}.woff2') format('woff2'),
+    url('../fonts/montserrat/#{$name}.woff') format('woff'),
+    url('../fonts/montserrat/#{$name}.ttf') format('truetype'),
+    url('../fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
 @font-face {
+  $name: 'quicksand-v20-latin-ext_latin-regular';
+
   font-weight: normal;
   font-style: normal;
   font-family: 'Quicksand';
   src:
     local('Quicksand'),
-    url('../fonts/Quicksand/quicksand-v20-latin-ext_latin-regular.woff') format('woff'),
-    url('../fonts/Quicksand/quicksand-v20-latin-ext_latin-regular.ttf') format('truetype'),
-    url('../fonts/Quicksand/quicksand-v20-latin-ext_latin-regular.svg#Quicksand') format('svg');
+    url('../fonts/quicksand/#{$name}.woff2') format('woff2'),
+    url('../fonts/quicksand/#{$name}.woff') format('woff'),
+    url('../fonts/quicksand/#{$name}.ttf') format('truetype'),
+    url('../fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
 @font-face {
+  $name: 'quicksand-v20-latin-ext_latin-700';
+
   font-weight: bold;
   font-style: normal;
   font-family: 'Quicksand';
   src:
     local('Quicksand'),
-    url('../fonts/Quicksand/quicksand-v20-latin-ext_latin-700.woff') format('woff'),
-    url('../fonts/Quicksand/quicksand-v20-latin-ext_latin-700.ttf') format('truetype'),
-    url('../fonts/Quicksand/quicksand-v20-latin-ext_latin-700.svg#Quicksand') format('svg');
+    url('../fonts/quicksand/#{$name}.woff2') format('woff2'),
+    url('../fonts/quicksand/#{$name}.woff') format('woff'),
+    url('../fonts/quicksand/#{$name}.ttf') format('truetype'),
+    url('../fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
 @font-face {
+  $name: 'open-sans-v17-cyrillic-ext_cyrillic-regular';
+
   font-weight: normal;
   font-style: normal;
   font-family: 'Open Sans';
   src:
     local('Open Sans'),
-    url('../fonts/OpenSans/open-sans-v17-cyrillic-ext_cyrillic-regular.woff') format('woff'),
-    url('../fonts/OpenSans/open-sans-v17-cyrillic-ext_cyrillic-regular.ttf') format('truetype'),
-    url('../fonts/OpenSans/open-sans-v17-cyrillic-ext_cyrillic-regular.svg#OpenSans') format('svg');
+    url('../fonts/open-sans/#{$name}.woff2') format('woff2'),
+    url('../fonts/open-sans/#{$name}.woff') format('woff'),
+    url('../fonts/open-sans/#{$name}.ttf') format('truetype'),
+    url('../fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
 @font-face {
+  $name: 'open-sans-v17-cyrillic-ext_cyrillic-700';
+
   font-weight: bold;
   font-style: normal;
   font-family: 'Open Sans';
   src:
     local('Open Sans'),
-    url('../fonts/OpenSans/open-sans-v17-cyrillic-ext_cyrillic-700.woff') format('woff'),
-    url('../fonts/OpenSans/open-sans-v17-cyrillic-ext_cyrillic-700.ttf') format('truetype'),
-    url('../fonts/OpenSans/open-sans-v17-cyrillic-ext_cyrillic-700.svg#OpenSans') format('svg');
+    url('../fonts/open-sans/#{$name}.woff2') format('woff2'),
+    url('../fonts/open-sans/#{$name}.woff') format('woff'),
+    url('../fonts/open-sans/#{$name}.ttf') format('truetype'),
+    url('../fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
 @font-face {
+  $name: 'MaterialIcons-Regular';
+
   font-weight: normal;
   font-style: normal;
   font-family: 'Material Icons';
   src:
     local('Material Icons'),
-    url('../fonts/MaterialIcons/MaterialIcons-Regular.woff') format('woff'),
-    url('../fonts/MaterialIcons/MaterialIcons-Regular.ttf') format('truetype'),
-    url('../fonts/MaterialIcons/MaterialIcons-Regular.svg#MaterialIcons-Regular') format('svg');
+    url('../fonts/material-icons/#{$name}.woff2') format('woff2'),
+    url('../fonts/material-icons/#{$name}.woff') format('woff'),
+    url('../fonts/material-icons/#{$name}.ttf') format('truetype'),
+    url('../fonts/material-icons/#{$name}.svg#MaterialIcons-Regular') format('svg');
 }
