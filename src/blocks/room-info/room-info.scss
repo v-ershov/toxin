@@ -1,0 +1,21 @@
+.room-info {
+  color: $color-black;
+  font-weight: bold;
+  font-family: $font-family-secondary;
+  line-height: 1.25;
+
+  &__number {
+    font-size: rem(24);
+  }
+
+  &--small &__number {
+    font-size: rem(19);
+  }
+
+  &__tag {
+    color: $color-primary;
+    text-transform: uppercase;
+    font-size: rem(12);
+    font-family: $font-family-primary;
+  }
+}
