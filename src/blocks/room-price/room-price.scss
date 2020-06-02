@@ -1,0 +1,10 @@
+.room-price {
+  color: $color-gray-50p;
+  font-size: rem(12);
+  line-height: 1.25;
+
+  &__price {
+    font-weight: bold;
+    font-size: rem(14);
+  }
+}

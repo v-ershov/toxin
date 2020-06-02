@@ -1,0 +1,11 @@
+//- Parameters:
+//- string price - цена комнаты за сутки
+
+//- Examples:
+//- room-price('200$')
+
+mixin room-price(price)
+  .room-price
+    span._price
+      | #{price}
+    | &nbsp;в&nbsp;сутки
