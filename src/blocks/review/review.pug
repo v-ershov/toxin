@@ -19,7 +19,7 @@ mixin review(author, time, datetime, text, likes, isLike=false, image='')
         if image !== ''
           img._image(src=require(`~/content/reviewers/${image}`).default, alt=author)
         else
-          img._image(src=require('~/blocks/review/img/avatar.svg').default, alt='Иконка «Аватар»')
+          img._image(src=require('~/blocks/review/img/review-avatar.svg').default, alt='Иконка «Аватар»')
       ._cell
         ._author
           | #{author}
