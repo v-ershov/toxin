@@ -3,6 +3,7 @@
   z-index: 5;
   display: block;
   padding: rem(13) rem(17);
+  min-width: rem(99);
   border: 2px solid transparent;
   border-radius: rem(22);
   background-color: transparent;
@@ -59,6 +60,7 @@
   &--compact {
     padding-top: rem(9);
     padding-bottom: rem(9);
+    min-width: auto;
   }
 
   &--wide {
@@ -87,6 +89,7 @@
 
   &--bodyless {
     padding: 0;
+    min-width: auto;
     width: auto;
     border: 0;
     border-radius: 0;
