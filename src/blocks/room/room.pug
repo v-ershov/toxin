@@ -1,0 +1,43 @@
+//- Parameters:
+//- string[[]] list     - список изображений комнаты, где каждый пункт списка содержит следующие данные:
+//-                       - имя файла с изображением комнаты
+//-                       - значение атрибута «alt» у изображения
+//- string     number   - номер комнаты
+//- string     tag      - тег комнаты
+//- string     price    - цена комнаты за сутки
+//- int        rating   - значение рейтинга (от 0 до 5)
+//- string     reviews  - количество отзывов
+//- string     isArrows - если true, то у слайдера есть стрелки «Вперёд / Назад»
+
+//- Examples:
+//- +room([
+//-   ['888-1.jpg', 'Room 888 (1)'],
+//-   ['888-2.jpg', 'Room 888 (2)'],
+//-   ['888-3.jpg', 'Room 888 (3)'],
+//-   ['888-4.jpg', 'Room 888 (4)'],
+//- ], '888', 'Люкс', '9 990₽', 5, '145', 'true')
+//- +room([
+//-   ['840-1.jpg', 'Room 840 (1)'],
+//-   ['840-2.jpg', 'Room 840 (2)'],
+//-   ['840-3.jpg', 'Room 840 (3)'],
+//-   ['840-4.jpg', 'Room 840 (4)'],
+//- ], '840', '', '9 900₽', 4, '65')
+
+mixin room(list, number, tag, price, rating, reviews, isArrows='false')
+  .room
+    ._slider(data-arrows=isArrows)
+      each item in list
+        img._slide(src=require(`~/content/rooms/${item[0]}`).default, alt=item[1])
+    ._info
+      ._row.-baseline
+        ._cell
+          +room-info(number, tag, ['small'])
+        ._cell
+          +room-price(price)
+      ._row
+        ._cell
+          +rating(rating)
+        ._cell
+          span._reviews
+            | #{reviews}
+          | &nbsp;Отзывов

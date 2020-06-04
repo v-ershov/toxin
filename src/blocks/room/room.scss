@@ -1,0 +1,115 @@
+.room {
+  overflow: hidden;
+  min-width: rem(270);
+  border-radius: rem(4);
+  background-color: $color-white;
+  box-shadow: $shadow-secondary;
+
+  &__slide {
+    height: rem(150);
+    object-fit: cover;
+  }
+
+  &__info {
+    padding: rem(20);
+    color: $color-gray-50p;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: rem(11);
+    padding-top: rem(8);
+    border-top: 1px solid $color-gray-10p;
+
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    &--baseline {
+      align-items: baseline;
+    }
+  }
+
+  &__cell:not(:first-child) {
+    margin-left: rem(20);
+  }
+
+  &__reviews {
+    font-weight: bold;
+  }
+}
+
+.slick-prev,
+.slick-next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 5;
+  display: block;
+  padding: 0;
+  width: rem(42);
+  border: 0;
+  background: linear-gradient(90deg, rgba($color-black, 0.5) 0%, rgba($color-black, 0) 100%);
+
+  @include hidden-text;
+
+  &::before {
+    content: 'expand_more';
+    transition: transform $transition-fast;
+    transform: rotate(90deg);
+
+    @include material-icons(rem(24), $color-white);
+  }
+
+  &:hover {
+    &::before {
+      transform: rotate(90deg) scale(1.5);
+    }
+  }
+}
+
+.slick-prev {
+  left: 0;
+}
+
+.slick-next {
+  right: 0;
+  transform: scale(-1);
+}
+
+.slick-dots {
+  position: absolute;
+  right: rem(15);
+  bottom: rem(15);
+  z-index: 10;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    margin-left: rem(3.75);
+
+    button {
+      display: block;
+      padding: 0;
+      width: rem(7.5);
+      height: rem(7.5);
+      border: 1px solid $color-white;
+      border-radius: 50%;
+      background-color: transparent;
+      box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
+      transition: border-width $transition-fast;
+
+      @include hidden-text;
+    }
+
+    &.slick-active button {
+      border-width: rem(3.75);
+    }
+  }
+}
