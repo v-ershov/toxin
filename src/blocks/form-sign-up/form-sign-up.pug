@@ -1,0 +1,58 @@
+//- Examples:
+//- +form-sign-up
+
+mixin form-sign-up
+  form.form-sign-up
+    header._header
+      h2._h2
+        | Регистрация аккаунта
+    ._row
+      +field('', '', [], {
+        'placeholder': 'Имя',
+        'required': true,
+      })
+    ._row
+      +field('', '', [], {
+        'placeholder': 'Фамилия',
+        'required': true,
+      })
+    ._row.-flex
+      ._radio
+        +button-option('Мужчина', '', ['radio'], {
+          'name': 'gender',
+          'checked': true,
+        })
+      ._radio
+        +button-option('Женщина', '', ['radio'], {
+          'name': 'gender',
+        })
+    ._row.-margin-20
+      +field('Дата рождения', '', [], {
+        'placeholder': 'ДД.ММ.ГГГГ',
+        'data-mask': '00.00.0000',
+        'required': true,
+      })
+    ._row.-margin-20
+      +field('Данные для входа в сервис', '', [], {
+        'type': 'email',
+        'placeholder': 'Email',
+        'required': true,
+      })
+    ._row
+      +field('', '', [], {
+        'type': 'password',
+        'placeholder': 'Пароль',
+        'required': true,
+      })
+    ._row
+      +button-option('Получать спецпредложения')
+    ._button
+      +button('Перейти к оплате', ['fill', 'wide'], {
+        'type': 'submit',
+      })
+    footer._footer
+      | Уже есть аккаунт на Toxin
+      ._button.-flex
+        +button('Войти', [], {
+          'href': '/',
+        })
