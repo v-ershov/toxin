@@ -1,29 +1,39 @@
 //- Parameters:
-//- string type='inline'  - тип календаря (inline / field / fields)
-//- string labelFirst=''  - лейбл первого поля календаря
-//- string labelSecond='' - лейбл второго поля календаря
+//- string type='inline'       - тип календаря (inline / field / fields)
+//- string labelFirst=''       - лейбл первого поля календаря
+//- string labelSecond=''      - лейбл второго поля календаря
+//- object attrsFieldFirst={}  - атрибуты первого поля календаря
+//- object attrsFieldSecond={} - атрибуты второго поля календаря
 
 //- Examples:
 //- +calendar
 //- +calendar('field', 'Period')
+//- +calendar('field', 'Period', '', {
+//-   'required': true,
+//- })
 //- +calendar('fields', 'Arrival', 'Departure')
+//- +calendar('fields', 'Arrival', 'Departure', {
+//-   'required': true,
+//- }, {
+//-   'required': true,
+//- })
 
-mixin calendar(type='inline', labelFirst='', labelSecond='')
+mixin calendar(type='inline', labelFirst='', labelSecond='', attrsFieldFirst={}, attrsFieldSecond={})
   .calendar(data-type=type)
     if type === 'field'
-      +field(labelFirst, '', ['dropdown'], {
+      +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
         'placeholder': 'ДД.ММ.ГГГГ',
         'readonly': true,
-      })
+      }))
     else if type === 'fields'
       ._fields
         ._field
-          +field(labelFirst, '', ['dropdown'], {
+          +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
             'placeholder': 'ДД.ММ.ГГГГ',
             'readonly': true,
-          })
+          }))
         ._field
-          +field(labelSecond, '', ['dropdown'], {
+          +field(labelSecond, '', ['dropdown'], Object.assign(attrsFieldSecond, {
             'placeholder': 'ДД.ММ.ГГГГ',
             'readonly': true,
-          })
+          }))
