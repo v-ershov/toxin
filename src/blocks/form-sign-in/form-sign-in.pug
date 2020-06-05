@@ -10,13 +10,13 @@ mixin form-sign-in
       +field('', '', [], {
         'type': 'email',
         'placeholder': 'Email',
-        'required': 'true',
+        'required': true,
       })
     ._row
       +field('', '', [], {
         'type': 'password',
         'placeholder': 'Пароль',
-        'required': 'true',
+        'required': true,
       })
     ._button
       +button('Войти', ['fill', 'wide'], {
