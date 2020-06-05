@@ -1,0 +1,30 @@
+//- Examples:
+//- +form-sign-in
+
+mixin form-sign-in
+  form.form-sign-in
+    header._header
+      h2._h2
+        | Войти
+    ._row
+      +field('', '', [], {
+        'type': 'email',
+        'placeholder': 'Email',
+        'required': 'true',
+      })
+    ._row
+      +field('', '', [], {
+        'type': 'password',
+        'placeholder': 'Пароль',
+        'required': 'true',
+      })
+    ._button
+      +button('Войти', ['fill', 'wide'], {
+        'type': 'submit',
+      })
+    footer._footer
+      | Нет аккаунта на Toxin?
+      ._button.-flex
+        +button('Создать', [], {
+          'href': '/',
+        })
