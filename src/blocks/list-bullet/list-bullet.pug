@@ -1,5 +1,7 @@
 //- Parameters:
-//- string[[]] items - элементы списка
+//- string[[]] list - список перечислений, где каждый пункт (массив) содержит:
+//-                   - текст пункта
+//-                   - значение атрибута «href» у пункта (опционально)
 
 //- Examples:
 //- +list-bullet([
@@ -12,9 +14,9 @@
 //-   ['Scooty', '/scooty.html'],
 //- ])
 
-mixin list-bullet(items)
+mixin list-bullet(list)
   ul.list-bullet
-    each item in items
+    each item in list
       li._item
         if item[1]
           a._link(href=item[1])
