@@ -1,0 +1,58 @@
+//- Examples:
+//- +form-reservation
+
+mixin form-reservation
+  form.form-reservation
+    header._header
+      h2._h2.visually-hidden
+        | Забронировать номер
+      ._info
+        +room-info('888', 'Люкс')
+      ._price
+        +room-price('9 990₽')
+    ._row
+      +calendar('fields', 'Прибытие', 'Выезд', {
+        'required': true,
+      }, {
+        'required': true,
+      })
+    ._row
+      +dropdown('Гости', '', {
+        'placeholder': 'Сколько гостей',
+        'required': true,
+      }, ['гость', 'гостя', 'гостей'], [
+        [2, 0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+        [1, 0, 2, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+        [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+      ])
+    table._table
+      tbody._tbody
+        tr._tr
+          td._td
+            | 9&nbsp;990₽ х 4 суток
+          td._td.-tooltip
+          td._td.-price
+            | 39&nbsp;960₽
+        tr._tr
+          td._td
+            | Сбор за услуги: скидка 2&nbsp;179₽
+          td._td.-tooltip
+            +tooltip('Здесь будет подсказка (хорошая)')
+          td._td.-price
+            | 0₽
+        tr._tr
+          td._td
+            | Сбор за дополнительные услуги
+          td._td.-tooltip
+            +tooltip('Здесь будет подсказка (хорошая и красивая)')
+          td._td.-price
+            | 300₽
+      tfoot._tfoot
+        tr._tr
+          td._td.-total(colspan='2')
+            span._dots
+              | Итого
+          td._td.-total.-price
+            | 38&nbsp;081₽
+    ._button
+      +button('Забронировать', ['fill', 'wide'])
