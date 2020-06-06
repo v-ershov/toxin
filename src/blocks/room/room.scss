@@ -1,9 +1,15 @@
 .room {
+  display: block;
   overflow: hidden;
   min-width: rem(270);
   border-radius: rem(4);
   background-color: $color-white;
   box-shadow: $shadow-secondary;
+  transition: box-shadow $transition-fast;
+
+  &:hover {
+    box-shadow: $shadow-primary;
+  }
 
   &__slide {
     height: rem(150);
@@ -11,6 +17,7 @@
   }
 
   &__info {
+    position: relative;
     padding: rem(20);
     color: $color-gray-50p;
   }
@@ -40,6 +47,16 @@
 
   &__reviews {
     font-weight: bold;
+  }
+
+  &__link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    @include hidden-text;
   }
 }
 
