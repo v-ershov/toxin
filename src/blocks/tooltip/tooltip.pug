@@ -1,0 +1,10 @@
+//- Parameters:
+//- string text - текст подсказки
+
+//- Examples:
+//- +tooltip('VIP Members Only')
+
+mixin tooltip(text)
+  .tooltip
+    ._text(title=text)
+      | Подсказка
