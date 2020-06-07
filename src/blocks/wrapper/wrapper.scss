@@ -8,22 +8,6 @@
 
   &--ui {
     padding: rem(140) 0;
-
-    @include screen-lg {
-      padding: rem(134) 0;
-    }
-
-    @include screen-md {
-      padding: rem(128) 0;
-    }
-
-    @include screen-sm {
-      padding: rem(122) 0;
-    }
-
-    @include screen-xs {
-      padding: rem(116) 0;
-    }
   }
 
   &--gray {
