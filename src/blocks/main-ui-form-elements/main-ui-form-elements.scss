@@ -10,7 +10,7 @@
 
     @include container;
 
-    @include screen-lg {
+    @include screen-xl {
       justify-content: center;
       grid-template-columns:
         minmax(0, rem(320))
@@ -28,7 +28,7 @@
     max-width: rem(320);
 
     &:nth-of-type(3) {
-      @include screen-lg {
+      @include screen-xl {
         margin: rem(60) 0 rem(15);
       }
 
@@ -56,7 +56,7 @@
       grid-gap: 0 rem(40);
       grid-column: 1 / 4;
 
-      @include screen-lg {
+      @include screen-xl {
         grid-template-columns: 1fr;
         grid-column: auto;
       }
@@ -67,7 +67,7 @@
       max-width: none;
       grid-column: 2 / 4;
 
-      @include screen-lg {
+      @include screen-xl {
         margin-top: 0;
         grid-column: 1 / 3;
       }
@@ -88,7 +88,7 @@
     &--dropdowns {
       margin-top: 0;
 
-      @include screen-lg {
+      @include screen-xl {
         margin-top: rem(40);
       }
     }

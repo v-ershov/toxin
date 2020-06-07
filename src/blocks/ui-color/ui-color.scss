@@ -10,7 +10,7 @@
     border-radius: rem(6);
     background-color: $color-black;
 
-    @include screen-md {
+    @include screen-lg {
       margin-right: rem(30);
     }
 
