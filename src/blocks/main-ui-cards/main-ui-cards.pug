@@ -4,27 +4,30 @@
 mixin main-ui-cards
   main.ui-cards
     ._container
-      ._card
-        +form-find
-      ._card
-        +form-sign-up
-      ._card
-        +form-reservation
-      ._card
-        +form-sign-in
-      ._card.-calendar
-        +calendar
-      ._card.-room
-        +room([
-          ['888-1.jpg', 'Номер 888 (1)'],
-          ['888-2.jpg', 'Номер 888 (2)'],
-          ['888-3.jpg', 'Номер 888 (3)'],
-          ['888-3.jpg', 'Номер 888 (4)'],
-        ], '888', 'Люкс', '9 990₽', 5, '145', 'true')
-      ._card.-room
-        +room([
-          ['840-1.jpg', 'Номер 840 (1)'],
-          ['840-1.jpg', 'Номер 840 (2)'],
-          ['840-1.jpg', 'Номер 840 (3)'],
-          ['840-1.jpg', 'Номер 840 (4)'],
-        ], '840', '', '9 900₽', 4, '65')
+      h1._h1.visually-hidden
+        | Cards
+      ul._list
+        li._item
+          +form-find
+        li._item
+          +form-sign-up
+        li._item
+          +form-reservation
+        li._item
+          +form-sign-in
+        li._item.-calendar
+          +calendar
+        li._item.-room
+          +room([
+            ['888-1.jpg', 'Номер 888 (1)'],
+            ['888-2.jpg', 'Номер 888 (2)'],
+            ['888-3.jpg', 'Номер 888 (3)'],
+            ['888-3.jpg', 'Номер 888 (4)'],
+          ], '888', 'Люкс', '9 990₽', 5, '145', 'true')
+        li._item.-room
+          +room([
+            ['840-1.jpg', 'Номер 840 (1)'],
+            ['840-1.jpg', 'Номер 840 (2)'],
+            ['840-1.jpg', 'Номер 840 (3)'],
+            ['840-1.jpg', 'Номер 840 (4)'],
+          ], '840', '', '9 900₽', 4, '65')

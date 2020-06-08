@@ -1,16 +1,23 @@
 .ui-cards {
   &__container {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: space-between;
-    margin-top: rem(-40);
-    max-height: rem(1200);
-
     @include container;
 
     @include screen-xxl {
       max-width: rem(860);
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    margin: rem(-40) 0 0;
+    padding: 0;
+    max-height: rem(1200);
+    list-style-type: none;
+
+    @include screen-xxl {
       max-height: rem(1800);
     }
 
@@ -20,7 +27,7 @@
     }
   }
 
-  &__card {
+  &__item {
     margin-top: rem(40);
 
     @include screen-xxl {
