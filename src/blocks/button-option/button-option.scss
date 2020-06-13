@@ -18,7 +18,7 @@
     height: rem(20);
     border: 1px solid $color-gray-25p;
     border-radius: 25% / 50%;
-    transition: border-color $transition-fast;
+    transition: border-color $time-fast;
 
     &::before,
     &::after {
@@ -31,8 +31,8 @@
       background-image: $gradient-gray-25p;
       content: '';
       transition:
-        left $transition-fast,
-        opacity $transition-fast;
+        left $time-fast,
+        opacity $time-fast;
       transform: translateY(-50%);
     }
 
@@ -81,7 +81,7 @@
       border-radius: 0;
       background-image: $gradient-primary;
       opacity: 0;
-      transition: opacity $transition-fast;
+      transition: opacity $time-fast;
       transform:
         translate(-50%, -50%)
         rotate(45deg);
@@ -100,7 +100,7 @@
       opacity: 1;
       transition: none;
       animation-name: checkbox;
-      animation-duration: $transition-fast;
+      animation-duration: $time-fast;
       animation-fill-mode: forwards;
     }
   }
@@ -126,9 +126,9 @@
       background-image: $gradient-primary;
       opacity: 0;
       transition:
-        width $transition-fast,
-        height $transition-fast,
-        opacity $transition-fast;
+        width $time-fast,
+        height $time-fast,
+        opacity $time-fast;
       transform: translate(-50%, -50%);
     }
 
@@ -148,7 +148,7 @@
 
   &--radio &__text {
     color: $color-gray-50p;
-    transition: color $transition-fast;
+    transition: color $time-fast;
   }
 
   &--radio &__input:checked ~ &__text {

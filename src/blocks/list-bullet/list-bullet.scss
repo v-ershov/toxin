@@ -26,7 +26,7 @@
 
   &__link {
     color: inherit;
-    transition: color $transition-fast;
+    transition: color $time-fast;
 
     &:hover {
       color: $color-black;

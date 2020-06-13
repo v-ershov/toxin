@@ -11,7 +11,7 @@
     height: rem(44);
     border: 0;
     background-color: transparent;
-    transition: opacity $transition-fast;
+    transition: opacity $time-fast;
 
     @include hidden-text;
 

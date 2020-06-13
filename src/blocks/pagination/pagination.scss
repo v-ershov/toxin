@@ -21,7 +21,7 @@
     font-weight: normal;
     font-size: rem(12);
     font-family: $font-family-primary;
-    transition: color $transition-fast;
+    transition: color $time-fast;
 
     &:hover {
       color: $color-gray-100p;
@@ -49,7 +49,7 @@
         background-color: $color-white;
         content: '';
         opacity: 0;
-        transition: opacity $transition-fast;
+        transition: opacity $time-fast;
         transform: translate(-50%, -50%);
       }
 

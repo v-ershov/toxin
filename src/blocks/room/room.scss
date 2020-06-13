@@ -4,7 +4,7 @@
   border-radius: rem(4);
   background-color: $color-white;
   box-shadow: $shadow-secondary;
-  transition: box-shadow $transition-fast;
+  transition: box-shadow $time-fast;
 
   &:hover {
     box-shadow: $shadow-primary;
@@ -75,7 +75,7 @@
 
   &::before {
     content: 'expand_more';
-    transition: transform $transition-fast;
+    transition: transform $time-fast;
     transform: rotate(90deg);
 
     @include material-icons(rem(24), $color-white);
@@ -119,7 +119,7 @@
       border-radius: 50%;
       background-color: transparent;
       box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
-      transition: border-width $transition-fast;
+      transition: border-width $time-fast;
 
       @include hidden-text;
     }

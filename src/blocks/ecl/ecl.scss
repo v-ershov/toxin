@@ -7,7 +7,7 @@
     border: 0;
     background-color: transparent;
     text-align: left;
-    transition: margin-bottom $transition-slow;
+    transition: margin-bottom $time-slow;
 
     @include heading('h3');
 
@@ -16,7 +16,7 @@
       top: 50%;
       right: rem(10);
       content: 'expand_more';
-      transition: transform $transition-medium;
+      transition: transform $time-medium;
       transform: translateY(-50%);
 
       @include material-icons(rem(24), $color-gray-50p);
@@ -38,8 +38,8 @@
     max-height: 0;
     opacity: 0;
     transition:
-      max-height $transition-medium,
-      opacity $transition-medium;
+      max-height $time-medium,
+      opacity $time-medium;
   }
 
   &--active &__content {

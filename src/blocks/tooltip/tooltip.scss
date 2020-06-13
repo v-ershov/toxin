@@ -7,7 +7,7 @@
   border: 1px solid $color-gray-25p;
   border-radius: 50%;
   cursor: help;
-  transition: border-color $transition-fast;
+  transition: border-color $time-fast;
 
   &::before {
     position: absolute;
@@ -17,7 +17,7 @@
     content: 'i';
     font-weight: bold;
     font-size: rem(10);
-    transition: color $transition-fast;
+    transition: color $time-fast;
     transform: translate(-50%, -50%);
   }
 
@@ -25,9 +25,9 @@
     visibility: hidden;
     opacity: 0;
     transition:
-      visibility 0.01s $transition-fast,
-      opacity $transition-fast,
-      transform $transition-fast;
+      visibility 0.01s $time-fast,
+      opacity $time-fast,
+      transform $time-fast;
     pointer-events: none;
 
     @include hidden-text;
@@ -73,8 +73,8 @@
     visibility: visible;
     opacity: 1;
     transition:
-      opacity $transition-fast,
-      transform $transition-fast;
+      opacity $time-fast,
+      transform $time-fast;
     transform: translateY(rem(-5));
   }
 }

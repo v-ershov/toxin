@@ -30,9 +30,9 @@ $shadow-secondary : 0 rem(10) rem(20) rgba($color-gray-100p, 0.05);
 $shadow-form      : 0 0 rem(25) rgba($color-black, 0.2);
 $shadow-tooltip   : rem(2) rem(2) rem(6) rgba($color-black, 0.3);
 
-// Transitions
-$transition-fastest : 0.15s;
-$transition-fast    : 0.3s;
-$transition-medium  : 0.45s;
-$transition-slow    : 0.6s;
-$transition-slowest : 0.75s;
+// Time
+$time-fastest : 0.15s;
+$time-fast    : 0.3s;
+$time-medium  : 0.45s;
+$time-slow    : 0.6s;
+$time-slowest : 0.75s;

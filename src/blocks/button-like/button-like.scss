@@ -23,8 +23,8 @@
   font-family: $font-family-primary;
   line-height: 1;
   transition:
-    border-color $transition-fast,
-    color $transition-fast;
+    border-color $time-fast,
+    color $time-fast;
   user-select: none;
 
   &::before,
@@ -45,7 +45,7 @@
     color: $color-primary;
     content: 'favorite';
     opacity: 0;
-    transition: opacity $transition-fast;
+    transition: opacity $time-fast;
   }
 
   &--active {
@@ -73,12 +73,12 @@
 
     &--anim-increase {
       top: 23.5%;
-      transition: top $transition-fast;
+      transition: top $time-fast;
     }
 
     &--anim-decrease {
       top: -74%;
-      transition: top $transition-fast;
+      transition: top $time-fast;
     }
   }
 }
