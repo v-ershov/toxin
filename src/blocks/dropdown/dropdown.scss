@@ -25,7 +25,7 @@
     .field__input {
       border-color: $color-gray-50p;
       border-radius: rem(4) rem(4) 0 0;
-      box-shadow: $shadow-secondary;
+      box-shadow: $shadow-primary;
       transition:
         border-color $time-fast,
         box-shadow $time-fast;
@@ -58,7 +58,7 @@
     max-height: var(--height);
     border-color: $color-gray-50p;
     border-bottom-width: 1px;
-    box-shadow: $shadow-secondary;
+    box-shadow: $shadow-primary;
     transition:
       max-height $time-medium,
       border-color $time-fast,

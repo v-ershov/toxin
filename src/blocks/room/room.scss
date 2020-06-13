@@ -3,11 +3,11 @@
   overflow: hidden;
   border-radius: rem(4);
   background-color: $color-white;
-  box-shadow: $shadow-secondary;
+  box-shadow: $shadow-primary;
   transition: box-shadow $time-fast;
 
   &:hover {
-    box-shadow: $shadow-primary;
+    box-shadow: $shadow-secondary;
   }
 
   &__slide {

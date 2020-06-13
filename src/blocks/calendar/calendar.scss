@@ -78,7 +78,7 @@
   border: 1px solid $color-gray-25p;
   border-radius: rem(4);
   background: $color-white;
-  box-shadow: $shadow-secondary;
+  box-shadow: $shadow-primary;
   color: $color-gray-50p;
   font-size: rem(12);
   font-family: $font-family-primary;
@@ -88,7 +88,7 @@
 .datepicker-inline {
   .datepicker {
     border-color: $color-gray-25p;
-    box-shadow: $shadow-secondary;
+    box-shadow: $shadow-primary;
   }
 }
 
