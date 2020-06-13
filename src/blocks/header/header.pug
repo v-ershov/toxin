@@ -1,0 +1,65 @@
+//- Parameters:
+//- bool isLogin=false - если true, то вместо кнопок отображается ссылка на профиль пользователя
+
+//- Examples:
+//- +header
+//- +header(true)
+
+mixin header(isLogin=false)
+  header.header
+    ._shadow
+    ._container
+      ._logo
+        +logo(['adaptive'])
+      button._hamburger(type='button')
+        | Гамбургер-меню
+        span._layer
+        span._layer
+        span._layer
+      nav._nav(style='--height: 100vh')
+        ul._list
+          li._item
+            a._link(href='/')
+              | О нас
+          li._item.-sublist
+            a._link.-sublist(href='/')
+              | Услуги
+            ul._list.-sublist(style='--height: 100vh')
+              li._item.-subitem
+                a._link(href='/')
+                  | Оформление виз
+              li._item.-subitem
+                a._link(href='/')
+                  | Заказ экскурсий
+              li._item.-subitem
+                a._link(href='/')
+                  | Конференц-залы
+          li._item
+            a._link(href='/')
+              | Вакансии
+          li._item
+            a._link(href='/')
+              | Новости
+          li._item.-sublist
+            a._link.-sublist(href='/')
+              | Соглашения
+            ul._list.-sublist(style='--height: 100vh')
+              li._item.-subitem
+                a._link(href='/')
+                  | Польз. соглашение
+              li._item.-subitem
+                a._link(href='/')
+                  | Политика конф-ти
+      if isLogin
+        ._user
+          a._link(href='/')
+            | Владимир Ершов
+      else
+        ._button
+          +button('Войти', ['compact'], {
+            'href': '/',
+          })
+        ._button.-sign-up
+          +button('Зарегистрироваться', ['compact', 'fill'], {
+            'href': '/',
+          })

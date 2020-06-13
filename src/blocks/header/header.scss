@@ -1,0 +1,269 @@
+.header {
+  position: relative;
+  z-index: 100;
+  display: block;
+  padding: rem(15) 0;
+  background-color: $color-white;
+
+  @include screen-md {
+    box-shadow: none;
+  }
+
+  &__shadow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -5;
+    box-shadow: $shadow-secondary;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+
+    @include container;
+  }
+
+  &__logo {
+    margin-right: auto;
+  }
+
+  &__hamburger {
+    position: relative;
+    display: none;
+    order: 1;
+    margin-left: rem(20);
+    padding: 0;
+    width: rem(36);
+    height: rem(28);
+    border: 0;
+    background-color: transparent;
+
+    @include hidden-text;
+
+    @include screen-md {
+      display: block;
+    }
+  }
+
+  &__layer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    border-radius: rem(10);
+    background-image: $gradient-primary;
+    transition: all $transition-medium;
+
+    &:nth-child(1) {
+      top: 0;
+    }
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:nth-child(3) {
+      bottom: 0;
+    }
+  }
+
+  &__hamburger--active > &__layer:nth-child(1) {
+    top: 40%;
+    transform: rotate(135deg);
+  }
+
+  &__hamburger--active > &__layer:nth-child(2) {
+    left: -125%;
+    opacity: 0;
+  }
+
+  &__hamburger--active > &__layer:nth-child(3) {
+    bottom: 40%;
+    transform: rotate(-135deg);
+  }
+
+  &__nav {
+    display: flex;
+
+    @include screen-md {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      z-index: -10;
+      align-items: flex-end;
+      overflow: hidden;
+      max-height: 0;
+      background-color: $color-white;
+      box-shadow: $shadow-secondary;
+      transition: max-height $transition-medium;
+    }
+  }
+
+  &__hamburger--active + &__nav {
+    @include screen-md {
+      max-height: var(--height);
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    list-style-type: none;
+
+    @include screen-md {
+      justify-content: space-between;
+      padding: rem(24) rem(40);
+    }
+
+    @include screen-sm {
+      padding: rem(24) rem(20);
+    }
+
+    @include screen-xs {
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: rem(20) rem(18);
+    }
+
+    &--sublist {
+      position: absolute;
+      top: rem(46);
+      left: rem(-10);
+      z-index: -10;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      max-height: 0;
+      background-color: $color-white;
+      box-shadow: $shadow-secondary;
+      transition: max-height $transition-fast;
+
+      @include screen-lg {
+        display: none;
+      }
+    }
+  }
+
+  &__item {
+    margin: 0 0 0 rem(20);
+
+    @include screen-xs {
+      margin: rem(15) 0 0;
+    }
+
+    &:first-child {
+      margin: 0;
+    }
+
+    &--sublist {
+      position: relative;
+
+      &:hover {
+        &::before {
+          position: absolute;
+          top: 100%;
+          right: 0;
+          left: 0;
+          height: rem(25);
+          content: '';
+
+          @include screen-lg {
+            content: none;
+          }
+        }
+      }
+    }
+
+    &--subitem {
+      margin: 0;
+      padding: rem(10) rem(20);
+    }
+  }
+
+  &__item--sublist:hover > &__list--sublist {
+    max-height: var(--height);
+  }
+
+  &__link {
+    display: block;
+    color: $color-gray-50p;
+    white-space: nowrap;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-gray-100p;
+    }
+
+    &--sublist {
+      display: flex;
+
+      &::after {
+        overflow: hidden;
+        border-radius: 50%;
+        content: 'expand_more';
+        transition:
+          color $transition-fast,
+          transform $transition-fast;
+
+        @include material-icons(rem(24), $color-gray-50p);
+
+        @include screen-lg {
+          content: none;
+        }
+      }
+    }
+  }
+
+  &__item--sublist:hover > &__link--sublist {
+    &::after {
+      color: $color-gray-100p;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__button {
+    margin-left: rem(20);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &--sign-up {
+      @include screen-xl {
+        display: none;
+      }
+
+      @include screen-md {
+        display: block;
+      }
+
+      @include screen-sm {
+        display: none;
+      }
+    }
+  }
+
+  &__user {
+    margin-left: rem(30);
+    padding: rem(3.5) 0 rem(3.5) rem(30);
+    border-left: 1px solid $color-gray-10p;
+
+    @include screen-lg {
+      margin-left: rem(20);
+      padding: rem(3.5) 0 rem(3.5) rem(20);
+    }
+
+    @include screen-md {
+      padding: 0;
+      border: 0;
+    }
+  }
+}
