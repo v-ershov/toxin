@@ -26,5 +26,15 @@
     opacity: 0.25;
 
     @include hidden-text;
+
+    @include screen-md {
+      top: rem(24);
+      left: rem(24);
+    }
+
+    @include screen-sm {
+      top: rem(18);
+      left: rem(18);
+    }
   }
 }
