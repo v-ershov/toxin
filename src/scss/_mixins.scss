@@ -42,6 +42,16 @@
   padding-right: rem(30);
   padding-left: rem(30);
   max-width: rem(1220);
+
+  @include screen-md {
+    padding-right: rem(24);
+    padding-left: rem(24);
+  }
+
+  @include screen-sm {
+    padding-right: rem(18);
+    padding-left: rem(18);
+  }
 }
 
 // Heading
