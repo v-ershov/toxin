@@ -10,6 +10,14 @@ html {
   font-size: $font-size-primary;
   font-family: $font-family-primary;
   line-height: $line-height-primary;
+
+  @include screen-sm {
+    font-size: 13px;
+  }
+
+  @include screen-xs {
+    font-size: 12px;
+  }
 }
 
 body {
