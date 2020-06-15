@@ -9,7 +9,7 @@
     box-shadow: none;
   }
 
-  &__shadow {
+  &::before {
     position: absolute;
     top: 0;
     right: 0;
@@ -17,6 +17,7 @@
     left: 0;
     z-index: -5;
     box-shadow: $shadow-primary;
+    content: '';
   }
 
   &__container {
