@@ -16,7 +16,7 @@ mixin ecl(text, list, modifiers=[])
   .ecl(class=getModifiers('ecl', modifiers))
     button._button(type='button')
       | #{text}
-    ._content(style='--height: 100vh')
+    ._content(style='--height: 100vh;')
       ul._list
         each item in list
           li._item

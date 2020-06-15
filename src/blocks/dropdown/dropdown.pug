@@ -36,7 +36,7 @@ mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list
       'readonly': true,
       'data-words': words.length !== 0 ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
     }))
-    ._content(style='--height: 100vh')
+    ._content(style='--height: 100vh;')
       ul._list
         each item in list
           li._item(data-words=`${item[3]}, ${item[5]}, ${item[6]}`)
