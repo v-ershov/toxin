@@ -2,7 +2,7 @@ const merge = require('webpack-merge');
 const pugBem = require('pug-bem');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths.js');
-const common = require('./webpack.common.js');
+const common = require('./webpack.base.js');
 
 module.exports = merge(common, {
   mode: 'development',
