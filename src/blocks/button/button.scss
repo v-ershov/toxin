@@ -23,7 +23,7 @@
   font-weight: bold;
   font-size: rem(12);
   font-family: $font-family-primary;
-  line-height: 1.25;
+  line-height: $line-height-secondary;
   transition: color $time-fast;
 
   &::before {

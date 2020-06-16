@@ -2,7 +2,7 @@
   color: $color-black;
   font-weight: bold;
   font-family: $font-family-secondary;
-  line-height: 1.25;
+  line-height: $line-height-secondary;
 
   &__number {
     font-size: rem(24);

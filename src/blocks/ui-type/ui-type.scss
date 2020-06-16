@@ -7,20 +7,18 @@
     min-width: rem(70);
     color: $color-gray-25p;
     text-align: right;
+    line-height: $line-height-secondary;
 
     &--h1 {
       font-size: rem(24);
-      line-height: 1.25;
     }
 
     &--h2 {
       font-size: rem(19);
-      line-height: 1.265;
     }
 
     &--h3 {
       font-size: rem(12);
-      line-height: 1.25;
     }
   }
 

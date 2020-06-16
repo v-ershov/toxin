@@ -59,24 +59,22 @@
   @if $size == 'h1' {
     font-size: rem(24);
     font-family: $font-family-secondary;
-    line-height: 1.25;
   }
 
   @if $size == 'h2' {
     font-size: rem(19);
     font-family: $font-family-secondary;
-    line-height: 1.265;
   }
 
   @if $size == 'h3' {
     text-transform: uppercase;
     font-size: rem(12);
     font-family: $font-family-primary;
-    line-height: 1.25;
   }
 
   color: $color-gray-100p;
   font-weight: bold;
+  line-height: $line-height-secondary;
 }
 
 // Form
