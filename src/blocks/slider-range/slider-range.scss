@@ -4,6 +4,13 @@
   &__slider {
     margin-top: rem(18);
   }
+
+  &__text {
+    margin: rem(15) 0 0 0;
+    color: $color-gray-50p;
+    font-size: rem(12);
+    line-height: 1.2;
+  }
 }
 
 .ui-slider {
