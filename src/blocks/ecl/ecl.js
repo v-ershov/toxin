@@ -9,7 +9,7 @@ class Ecl {
   // находит указанные дочерние элементы корневого элемента
   _findNodes() {
     this.button = this.node.querySelector('.ecl__button');
-    this.content = this.node.querySelector('.ecl__content');
+    this.list = this.node.querySelector('.ecl__list');
   }
 
   // регистрирует обработчики событий
@@ -19,16 +19,11 @@ class Ecl {
     });
   }
 
-  // устанавливает максимальную высоту контейнера для контента
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
+  // устанавливает максимальную высоту списка чекбоксов
   _setHeight() {
-    this.content.style.setProperty('justify-content', 'flex-start');
-
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const heightRem = this.content.scrollHeight / fontSize;
 
-    this.content.style.setProperty('--height', ` ${heightRem}rem`);
-    this.content.style.removeProperty('justify-content');
+    this.list.style.setProperty('--height', ` ${this.list.scrollHeight / fontSize}rem`);
   }
 
   // переключает состояние списка чекбоксов

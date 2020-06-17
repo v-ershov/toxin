@@ -16,10 +16,9 @@ mixin ecl(text, list, modifiers=[])
   .ecl(class=getModifiers('ecl', modifiers))
     button._button(type='button')
       | #{text}
-    ._content(style='--height: 100vh;')
-      ul._list
-        each item in list
-          li._item
-            +button-option(item[0], '', ['checkbox'], {
-              'checked': item[1],
-            })
+    ul._list(style='--height: 100vh;')
+      each item in list
+        li._item
+          +button-option(item[0], '', ['checkbox'], {
+            'checked': item[1],
+          })

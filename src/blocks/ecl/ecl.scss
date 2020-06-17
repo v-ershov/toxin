@@ -7,7 +7,6 @@
     border: 0;
     background-color: transparent;
     text-align: left;
-    transition: margin-bottom $time-slow;
 
     @include heading('h3');
 
@@ -24,8 +23,6 @@
   }
 
   &--active &__button {
-    margin-bottom: rem(15);
-
     &::before {
       transform:
         translateY(-50%)
@@ -33,27 +30,26 @@
     }
   }
 
-  &__content {
+  &__list {
     overflow: hidden;
+    margin: 0;
+    padding: 0;
     max-height: 0;
+    list-style-type: none;
     opacity: 0;
     transition:
+      margin-top $time-slow,
       max-height $time-medium,
       opacity $time-medium;
   }
 
-  &--active &__content {
+  &--active &__list {
+    margin-top: rem(15);
     max-height: var(--height);
     opacity: 1;
   }
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  &__item:not(:last-child) {
-    margin-bottom: rem(10);
+  &__item:not(:first-child) {
+    margin-top: rem(10);
   }
 }
