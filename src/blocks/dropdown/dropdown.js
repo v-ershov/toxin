@@ -75,12 +75,10 @@ class Dropdown {
   // устанавливает максимальную высоту контейнера для контента
   // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
   _setHeight() {
-    this.content.style.setProperty('justify-content', 'flex-start');
-
     const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-    const heightRem = this.content.scrollHeight / fontSize;
 
-    this.content.style.setProperty('--height', ` ${heightRem}rem`);
+    this.content.style.setProperty('justify-content', 'flex-start');
+    this.content.style.setProperty('--height', ` ${this.content.scrollHeight / fontSize}rem`);
     this.content.style.removeProperty('justify-content');
   }
 
