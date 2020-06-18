@@ -5,6 +5,10 @@ $line-height-secondary : 1.25;
 $font-family-primary   : 'Montserrat', sans-serif;
 $font-family-secondary : 'Quicksand', 'Open Sans', sans-serif;
 
+// Brand colors
+$color-primary   : #bc9cff;
+$color-secondary : #6fcf97;
+
 // Grayscale colors
 $color-black     : #000000;
 $color-gray-100p : #1f2041;
@@ -14,10 +18,6 @@ $color-gray-25p  : #c7c7cF;
 $color-gray-10p  : #e9e9ec;
 $color-gray-5p   : #f3f4f5;
 $color-white     : #ffffff;
-
-// Brand colors
-$color-primary   : #bc9cff;
-$color-secondary : #6fcf97;
 
 // Gradients
 $gradient-primary   : linear-gradient($color-primary, #8ba4f9);
