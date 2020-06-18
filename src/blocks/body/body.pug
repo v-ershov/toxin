@@ -2,11 +2,11 @@
 //- string[] modifiers=[] - модификаторы блока
 
 //- Examples:
-//- +wrapper
-//- +wrapper(['ui'])
+//- +body
+//- +body(['ui'])
 
-mixin wrapper(modifiers=[])
-  .wrapper(class=getModifiers('wrapper', modifiers))
+mixin body(modifiers=[])
+  body.body(class=getModifiers('body', modifiers))
     if modifiers.includes('ui')
       a._link(href='/')
         | На главную
