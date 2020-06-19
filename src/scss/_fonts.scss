@@ -1,6 +1,4 @@
-// https://google-webfonts-helper.herokuapp.com/fonts
-// https://github.com/google/material-design-icons/tree/master/iconfont
-
+// https://google-webfonts-helper.herokuapp.com/fonts/montserrat
 @font-face {
   $name: 'montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-regular';
 
@@ -29,6 +27,7 @@
     url('../fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
+// https://google-webfonts-helper.herokuapp.com/fonts/quicksand
 @font-face {
   $name: 'quicksand-v20-latin-ext_latin-regular';
 
@@ -57,6 +56,7 @@
     url('../fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
+// https://google-webfonts-helper.herokuapp.com/fonts/open-sans
 @font-face {
   $name: 'open-sans-v17-cyrillic-ext_cyrillic-regular';
 
@@ -85,6 +85,7 @@
     url('../fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
+// https://github.com/google/material-design-icons/tree/master/iconfont
 @font-face {
   $name: 'MaterialIcons-Regular';
 
