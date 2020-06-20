@@ -1,13 +1,19 @@
 const merge = require('webpack-merge');
 const pugBem = require('pug-bem');
+const miniSvgDataUri = require('mini-svg-data-uri');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths.js');
 const common = require('./webpack.base.js');
 
 module.exports = merge(common, {
-  mode: 'production',
   output: {
     filename: 'js/[name].[contenthash].js',
+  },
+  mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
@@ -52,15 +58,30 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.(jpg|jpeg|png|gif)$/,
-        loader: 'image-webpack-loader',
+        test: /\.(jpe?g|png|gif)$/,
+        include: paths.src.blocks,
+        loader: 'url-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'images',
+          limit: 10240,
+        },
       },
       {
         test: /\.svg$/,
-        loader: 'svgo-loader',
+        include: paths.src.blocks,
+        loader: 'url-loader',
         options: {
-          externalConfig: '.svgo',
+          name: '[name].[ext]',
+          outputPath: 'icons',
+          limit: 10240,
+          generator: (content) => miniSvgDataUri(content.toString()),
         },
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'image-webpack-loader',
+        enforce: 'pre',
       },
     ],
   },

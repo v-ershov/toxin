@@ -18,10 +18,11 @@ module.exports = {
     path: paths.context.dist,
     publicPath: '/',
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
+  devServer: {
+    open: true,
+    overlay: true,
+    port: 8095,
+    writeToDisk: true,
   },
   resolve: {
     alias: {
@@ -36,25 +37,7 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(woff(2)?|ttf|svg|eot|otf)$/,
-        include: paths.src.fonts,
-        loader: 'file-loader',
-        options: {
-          name: '[folder]/[name].[ext]',
-          outputPath: 'fonts',
-        },
-      },
-      {
-        test: /\.(jpg|jpeg|png|gif|svg)$/,
-        include: paths.src.blocks,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'images',
-        },
-      },
-      {
-        test: /\.(jpg|jpeg|png|gif|svg)$/,
+        test: /\.(jpe?g|png|gif)$/,
         include: paths.src.content,
         loader: 'file-loader',
         options: {
@@ -63,7 +46,16 @@ module.exports = {
         },
       },
       {
-        test: /\.(woff(2)?|ttf|svg|eot|otf|jpg|jpeg|png|gif)$/,
+        test: /\.(woff2?|ttf|svg|eot|otf)$/,
+        include: paths.src.fonts,
+        loader: 'file-loader',
+        options: {
+          name: '[folder]/[name].[ext]',
+          outputPath: 'fonts',
+        },
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot|otf)$/,
         include: /node_modules/,
         loader: 'file-loader',
         options: {

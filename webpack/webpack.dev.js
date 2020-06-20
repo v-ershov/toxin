@@ -5,16 +5,10 @@ const paths = require('./paths.js');
 const common = require('./webpack.base.js');
 
 module.exports = merge(common, {
-  mode: 'development',
   output: {
     filename: 'js/[name].js',
   },
-  devServer: {
-    open: true,
-    overlay: true,
-    port: 8095,
-    writeToDisk: true,
-  },
+  mode: 'development',
   devtool: 'source-map',
   module: {
     rules: [
@@ -23,8 +17,8 @@ module.exports = merge(common, {
         loader: 'pug-loader',
         options: {
           plugins: pugBem,
-          pretty: true,
           root: paths.context.src,
+          pretty: true,
         },
       },
       {
@@ -75,6 +69,15 @@ module.exports = merge(common, {
             },
           },
         ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        include: paths.src.blocks,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'images',
+        },
       },
     ],
   },
