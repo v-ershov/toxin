@@ -12,6 +12,7 @@ const src = {
   fonts: `${context.src}\\fonts`,
   pug: `${context.src}\\pug`,
   pages: `${context.src}\\pug\\pages`,
+  scss: `${context.src}\\scss`,
 };
 
 const postcss = {

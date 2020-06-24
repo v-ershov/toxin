@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const fs = require('fs');
+const pugBem = require('pug-bem');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const paths = require('./paths.js');
 const helpers = require('./helpers.js');
 
@@ -35,6 +37,52 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+      },
+      {
+        test: /\.pug$/,
+        loader: 'pug-loader',
+        options: {
+          plugins: pugBem,
+          pretty: true,
+          root: paths.context.src,
+        },
+      },
+      {
+        test: /\.(sass|scss|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: paths.postcss.dev,
+              },
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                `${paths.src.scss}/_functions.scss`,
+                `${paths.src.scss}/_vars.scss`,
+                `${paths.src.scss}/_mixins.scss`,
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(jpe?g|png|gif)$/,

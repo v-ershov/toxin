@@ -2,7 +2,7 @@
   display: block;
   width: rem(106);
   height: rem(40);
-  background-image: url('../blocks/logo/img/logo-text.svg');
+  background-image: url('./img/logo-text.svg');
   background-size: contain;
   background-repeat: no-repeat;
 
@@ -11,7 +11,7 @@
   &--adaptive {
     @include screen-xs {
       width: rem(40);
-      background-image: url('../blocks/logo/img/logo.svg');
+      background-image: url('./img/logo.svg');
     }
   }
 }

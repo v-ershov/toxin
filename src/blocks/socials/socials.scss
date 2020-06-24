@@ -33,19 +33,19 @@
     &--twitter {
       &::before {
         padding: 0;
-        background-image: url('../blocks/socials/img/socials-twitter.svg');
+        background-image: url('./img/socials-twitter.svg');
       }
     }
 
     &--facebook {
       &::before {
-        background-image: url('../blocks/socials/img/socials-facebook.svg');
+        background-image: url('./img/socials-facebook.svg');
       }
     }
 
     &--instagram {
       &::before {
-        background-image: url('../blocks/socials/img/socials-instagram.svg');
+        background-image: url('./img/socials-instagram.svg');
       }
     }
   }
