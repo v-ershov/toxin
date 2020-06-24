@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/slider';
 import 'jquery-ui/themes/base/slider.css';
-import 'jquery-ui/themes/base/theme.css';
 
 class SliderRange {
   constructor($node) {
