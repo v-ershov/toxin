@@ -1,0 +1,73 @@
+//- Examples:
+//- +footer
+
+mixin footer
+  footer.footer
+    ._container.-primary
+      ._intro
+        ._logo
+          +logo
+        p._text
+          | Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+      section._section
+        h3._h3
+          | Навигация
+        ul._list
+          li._item
+            a._link(href='/')
+              | О нас
+          li._item
+            a._link(href='/')
+              | Новости
+          li._item
+            a._link(href='/')
+              | Служба поддержки
+          li._item
+            a._link(href='/')
+              | Услуги
+      section._section
+        h3._h3
+          | О нас
+        ul._list
+          li._item
+            a._link(href='/')
+              | О сервисе
+          li._item
+            a._link(href='/')
+              | Наша команда
+          li._item
+            a._link(href='/')
+              | Вакансии
+          li._item
+            a._link(href='/')
+              | Инвесторы
+      section._section
+        h3._h3
+          | Служба поддержки
+        ul._list
+          li._item
+            a._link(href='/')
+              | Соглашения
+          li._item
+            a._link(href='/')
+              | Сообщества
+          li._item
+            a._link(href='/')
+              | Связь с нами
+      section._section
+        h3._h3
+          | Подписка
+        p._text
+          | Получайте специальные предложения и новости сервиса
+        ._form
+          +form-field('', '', {
+            'type': 'email',
+            'placeholder': 'Email',
+          })
+    ._container.-secondary
+      ._logo.-adaptive
+        +logo
+      p._text.-center
+        | Copyright&nbsp;©&nbsp;2018&nbsp;Toxin&nbsp;отель. Все&nbsp;права&nbsp;зачищены.
+      ._socials
+        +socials

@@ -1,0 +1,145 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-white;
+  box-shadow: $shadow-primary;
+
+  &::before {
+    order: 2;
+    height: 1px;
+    background-color: $color-gray-15p;
+    content: '';
+
+    @include screen-md {
+      content: none;
+    }
+  }
+
+  &__container {
+    @include container;
+
+    &--primary {
+      display: grid;
+      order: 1;
+      padding-top: rem(100);
+      padding-bottom: rem(100);
+      grid-template-columns:
+        1.625fr
+        repeat(3, 1fr)
+        1.625fr;
+      grid-gap: rem(40);
+
+      @include screen-xxl {
+        padding-top: rem(80);
+        padding-bottom: rem(80);
+        grid-template-columns:
+          repeat(3, 1fr)
+          1.45fr;
+      }
+
+      @include screen-lg {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include screen-md {
+        display: none;
+      }
+    }
+
+    &--secondary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      order: 3;
+      padding-top: rem(15);
+      padding-bottom: rem(15);
+      min-height: rem(70);
+
+      @include screen-md {
+        flex-direction: column;
+        padding-top: rem(120);
+        padding-bottom: rem(120);
+      }
+    }
+  }
+
+  &__intro {
+    @include screen-xxl {
+      grid-column: span 4;
+    }
+
+    @include screen-lg {
+      grid-column: span 2;
+    }
+  }
+
+  &__logo {
+    margin-bottom: rem(20);
+
+    &--adaptive {
+      display: none;
+
+      @include screen-md {
+        display: block;
+      }
+    }
+  }
+
+  &__text {
+    margin: 0;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__section {
+    margin-top: rem(4);
+
+    @include screen-xxl {
+      margin-top: 0;
+    }
+  }
+
+  &__h3 {
+    margin: 0 0 rem(20) 0;
+
+    @include heading('h3');
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__item {
+    margin-top: rem(20);
+    line-height: $line-height-secondary;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__link {
+    color: $color-gray-50p;
+    transition: color $time-fast;
+
+    &:hover {
+      color: $color-gray-100p;
+    }
+  }
+
+  &__form {
+    margin-top: rem(20);
+  }
+
+  &__socials {
+    margin: 0 0 0 rem(40);
+
+    @include screen-md {
+      margin: rem(20) 0 0 0;
+    }
+  }
+}
