@@ -3,11 +3,8 @@
   z-index: 100;
   display: block;
   padding: rem(15) 0;
+  min-height: rem(70);
   background-color: $color-white;
-
-  @include screen-md {
-    box-shadow: none;
-  }
 
   &::before {
     position: absolute;
@@ -23,6 +20,7 @@
   &__container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
     @include container;
   }
@@ -203,6 +201,11 @@
       color: $color-gray-100p;
     }
 
+    &--bold {
+      color: $color-gray-75p;
+      font-weight: bold;
+    }
+
     &--sublist {
       display: flex;
 
@@ -253,14 +256,9 @@
   }
 
   &__user {
-    margin-left: rem(30);
-    padding: rem(3.5) 0 rem(3.5) rem(30);
+    margin-left: rem(20);
+    padding: rem(3) 0 rem(3) rem(20);
     border-left: 1px solid $color-gray-10p;
-
-    @include screen-lg {
-      margin-left: rem(20);
-      padding: rem(3.5) 0 rem(3.5) rem(20);
-    }
 
     @include screen-md {
       padding: 0;

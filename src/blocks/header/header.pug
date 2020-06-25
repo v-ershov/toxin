@@ -18,7 +18,7 @@ mixin header(isLogin=false)
       nav._nav(style='--height: 100vh;')
         ul._list
           li._item
-            a._link(href='/')
+            a._link.-bold(href='/')
               | О нас
           li._item.-sublist
             a._link.-sublist(href='/')
@@ -52,7 +52,7 @@ mixin header(isLogin=false)
       if isLogin
         ._user
           a._link(href='/')
-            | Владимир Ершов
+            | Юлий Цезарь
       else
         ._button
           +button('Войти', ['compact'], {
