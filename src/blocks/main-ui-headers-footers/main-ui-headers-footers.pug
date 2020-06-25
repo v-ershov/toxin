@@ -1,0 +1,21 @@
+//- Examples:
+//- +main-ui-headers-footers
+
+mixin main-ui-headers-footers
+  main.ui-headers-footers
+    h1._h1.visually-hidden
+      | Headers & Footers
+    section._section
+      h2._h2.visually-hidden
+        | Headers
+      ul._list
+        li._item.-shit
+          +header
+        li._item
+          +header(true)
+    section._section
+      h2._h2.visually-hidden
+        | Footers
+      ul._list
+        li._item
+          +footer
