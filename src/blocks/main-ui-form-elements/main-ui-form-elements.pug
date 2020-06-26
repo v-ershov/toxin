@@ -42,13 +42,13 @@ mixin main-ui-form-elements
           ul._list
             li._item
               +calendar('fields', 'Date Dropdown', 'Date Dropdown')
-            li._item.-width-260.-margin-40
+            li._item.-width-266.-margin-40
               +calendar('field', 'Filter Date Dropdown')
         section._subsection
           h3._h3.visually-hidden
             | One Field Forms
           ul._list
-            li._item.-width-260
+            li._item.-width-266
               +form-field('Subscription Text Field', '', {
                 'type': 'email',
                 'placeholder': 'Email',
@@ -118,8 +118,8 @@ mixin main-ui-form-elements
           h3._h3.visually-hidden
             | Sliders
           ul._list
-            li._item.-width-260
-              +slider-range('Range Slider', 0, 16000, 5000, 10000, 100, '₽')
+            li._item.-width-266
+              +slider-range('Range Slider', 0, 15000, 5000, 10000, 100, '₽')
         section._subsection
           h3._h3
             | Buttons
@@ -157,7 +157,7 @@ mixin main-ui-form-elements
           h3._h3.visually-hidden
             | Dropdown (Default)
           ul._list
-            li._item.-width-260
+            li._item.-width-266
               +dropdown('Dropdown', 'Default', {
                 'placeholder': 'Какие удобства',
               }, [], [
@@ -165,7 +165,7 @@ mixin main-ui-form-elements
                 [2, 0, 3, 'кровать', 'кровати', 'кровати', 'кроватей'],
                 [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
               ])
-            li._item.-width-260
+            li._item.-width-266
               +dropdown('Dropdown', 'Expanded', {
                 'placeholder': 'Какие удобства',
               }, [], [
@@ -201,7 +201,7 @@ mixin main-ui-form-elements
         h2._h2.visually-hidden
           | Expandable Checkbox List
         ul._list
-          li._item.-width-260
+          li._item.-width-266
             +ecl('Expandable Checkbox List', [
               ['Завтрак'],
               ['Письменный стол', true],
@@ -212,7 +212,7 @@ mixin main-ui-form-elements
               ['Телевизор'],
               ['Шампунь'],
             ])
-          li._item.-width-260.-margin-50
+          li._item.-width-266.-margin-50
             +ecl('Expandable Checkbox List', [
               ['Завтрак'],
               ['Письменный стол', true],
@@ -230,9 +230,9 @@ mixin main-ui-form-elements
           h3._h3
             | Rich Checkbox Buttons
           ul._list
-            li._item.-width-260
+            li._item.-width-266
               +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
-            li._item.-width-260.-margin-10
+            li._item.-width-266.-margin-10
               +button-option('Помощник для инвалидов', 'На 1 этаже вас встретит специалист и проводит до номера.', ['checkbox-rich'])
       section._section
         h2._h2.visually-hidden
@@ -241,7 +241,7 @@ mixin main-ui-form-elements
           h3._h3
             | Bullet List
           ul._list
-            li._item.-width-260
+            li._item.-width-266
               +list-bullet([
                 ['Нельзя с питомцами'],
                 ['Без вечеринок и мероприятий'],

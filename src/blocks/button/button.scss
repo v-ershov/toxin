@@ -2,7 +2,7 @@
   position: relative;
   z-index: 5;
   display: block;
-  padding: rem(13) rem(17);
+  padding: rem(12.5) rem(17);
   min-width: rem(99);
   border: 2px solid transparent;
   border-radius: rem(22);
@@ -58,8 +58,8 @@
   }
 
   &--compact {
-    padding-top: rem(9);
-    padding-bottom: rem(9);
+    padding-top: rem(7.5);
+    padding-bottom: rem(7.5);
     min-width: auto;
   }
 

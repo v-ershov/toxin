@@ -57,7 +57,7 @@
 
   &__text {
     color: $color-gray-75p;
-    line-height: 1.5;
+    line-height: 1.45;
   }
 
   &__text-rich {
@@ -65,7 +65,7 @@
     padding-left: rem(30);
     color: $color-gray-50p;
     font-size: rem(12);
-    line-height: 1.17;
+    line-height: 1.2;
   }
 
   &--checkbox &__box,
