@@ -1,11 +1,10 @@
 extends /pug/templates/_base.pug
 
 block body
-  +body(['gray'])
-    header
-      | Header
+  +body
+    +header
     block main
       main
-        | Main content
-    footer
-      | Footer
+        h1
+          | Main content
+    +footer
