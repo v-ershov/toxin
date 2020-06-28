@@ -37,4 +37,8 @@
       left: rem(18);
     }
   }
+
+  & > main {
+    flex-grow: 1;
+  }
 }
