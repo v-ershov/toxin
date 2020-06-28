@@ -4,6 +4,10 @@
   background-color: $color-white;
   box-shadow: $shadow-primary;
 
+  &--bordered {
+    border-top: 1px solid $color-gray-25p;
+  }
+
   &::before {
     order: 2;
     height: 1px;

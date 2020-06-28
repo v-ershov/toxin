@@ -1,8 +1,12 @@
+//- Parameters:
+//- string[] modifiers=[] - модификаторы блока
+
 //- Examples:
 //- +footer
+//- +footer(['bordered'])
 
-mixin footer
-  footer.footer
+mixin footer(modifiers=[])
+  footer.footer(class=getModifiers('footer', modifiers))
     ._container.-primary
       ._intro
         ._logo
