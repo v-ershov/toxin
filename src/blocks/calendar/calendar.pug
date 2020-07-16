@@ -1,5 +1,6 @@
 //- Parameters:
 //- string type='inline'       - тип календаря (inline / field / fields)
+//- string selectedDates=''    - выбранные даты календаря в формате 'YYYY-MM-DD/YYYY-MM-DD'
 //- string labelFirst=''       - лейбл первого поля календаря
 //- string labelSecond=''      - лейбл второго поля календаря
 //- object attrsFieldFirst={}  - атрибуты первого поля календаря
@@ -7,19 +8,22 @@
 
 //- Examples:
 //- +calendar
-//- +calendar('field', 'Period')
-//- +calendar('field', 'Period', '', {
+//- +calendar('inline', '2020-10-15/2020-10-20')
+//- +calendar('field', '', 'Period')
+//- +calendar('field', '2020-10-15/2020-10-20', 'Period')
+//- +calendar('field', '2020-10-15/2020-10-20', 'Period', '', {
 //-   'required': true,
 //- })
-//- +calendar('fields', 'Arrival', 'Departure')
-//- +calendar('fields', 'Arrival', 'Departure', {
+//- +calendar('fields', '', 'Arrival', 'Departure')
+//- +calendar('fields', '2020-10-15/2020-10-20', 'Arrival', 'Departure')
+//- +calendar('fields', '2020-10-15/2020-10-20', 'Arrival', 'Departure', {
 //-   'required': true,
 //- }, {
 //-   'required': true,
 //- })
 
-mixin calendar(type='inline', labelFirst='', labelSecond='', attrsFieldFirst={}, attrsFieldSecond={})
-  .calendar(data-type=type)
+mixin calendar(type='inline', selectedDates='', labelFirst='', labelSecond='', attrsFieldFirst={}, attrsFieldSecond={})
+  .calendar(data-type=type, data-selected-dates= selectedDates !=='' ? selectedDates : false)
     if type === 'field'
       +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
         'placeholder': 'ДД.ММ.ГГГГ',

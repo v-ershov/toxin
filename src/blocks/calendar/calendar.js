@@ -4,8 +4,8 @@ import 'air-datepicker/dist/css/datepicker.min.css';
 
 class Calendar {
   constructor($node) {
-    this.type = $node.attr('data-type');
     this.$node = $node;
+    this.type = $node.data('type');
     this._findNodes();
     this._createDatepicker();
     this._addEventListeners();
@@ -41,6 +41,20 @@ class Calendar {
       ? this.$inputs.first().datepicker(options).data('datepicker')
       : this.$node.datepicker(options).data('datepicker');
 
+    if (this.$node.data('selected-dates')) {
+      const dates = this.$node.data('selected-dates').split('/');
+
+      if (new Date(dates[0]) > this.$inst.minDate) {
+        this.$inst.selectDate([new Date(dates[0]), new Date(dates[1])]);
+
+        if (this.type === 'field') {
+          this._setDatesForField();
+        } else if (this.type === 'fields') {
+          this._setDatesForFields();
+        }
+      }
+    }
+
     this.$buttonReset = $('<button class="button button--bodyless button--text-gray">Очистить</button>');
     this.$buttonApply = $('<button class="button button--bodyless">Применить</button>');
 
@@ -48,7 +62,7 @@ class Calendar {
     const apply = $('<div class="calendar__button">').append(this.$buttonApply);
     const buttons = $('<div class="calendar__buttons">').append(reset).append(apply);
 
-    $(this.$inst.$datepicker).append(buttons);
+    this.$inst.$datepicker.append(buttons);
   }
 
   // регистрирует обработчики событий
