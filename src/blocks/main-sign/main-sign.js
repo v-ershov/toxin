@@ -1,4 +1,4 @@
-class Dropdown {
+class MainSign {
   constructor(node) {
     this.node = node;
     this.parallaxSpeed = 2.5;
@@ -24,4 +24,4 @@ class Dropdown {
   }
 }
 
-document.querySelectorAll('.sign').forEach((node) => new Dropdown(node));
+document.querySelectorAll('.sign').forEach((node) => new MainSign(node));
