@@ -1,9 +1,12 @@
-extends /pug/templates/_page.pug
+extends /pug/templates/_base.pug
 
 block vars
   - var keywords = 'important, keywords';
   - var description = 'short description';
   - var title = 'Sign Up';
 
-block main
-  +main-sign(true)
+block body
+  +body
+    +header
+    +main-sign(true)
+    +footer
