@@ -119,13 +119,19 @@
       border-radius: 50%;
       background-color: transparent;
       box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
-      transition: border-width $time-fast;
+      transition:
+        border-width $time-fast,
+        background-color 0.01s;
 
       @include hidden-text;
     }
 
     &.slick-active button {
       border-width: rem(3.75);
+      background-color: $color-white;
+      transition:
+        border-width $time-fast,
+        background-color 0.01s $time-fast;
     }
   }
 }
