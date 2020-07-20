@@ -1,0 +1,58 @@
+//- Examples:
+//- +form-filter
+
+mixin form-filter
+  form.form-filter
+    fieldset._fieldset
+      ul._list
+        li._item.-field
+          +calendar('field', '2020-10-19/2020-10-23', 'Даты пребывания в отеле')
+        li._item.-field
+          +dropdown('Гости', '', {
+            'placeholder': 'Сколько гостей',
+          }, ['гость', 'гостя', 'гостей'], [
+            [2, 0, 3, 'взрослый', 'взрослые', 'взрослых', 'взрослых'],
+            [1, 0, 3, 'ребёнок', 'дети', 'ребёнка', 'детей'],
+            [1, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
+          ])
+    fieldset._fieldset
+      +slider-range('Range Slider', 0, 15000, 5000, 10000, 100, '₽', 'Стоимость за сутки пребывания в номере')
+    fieldset._fieldset
+      legend._legend
+        | Checkbox Buttons
+      ul._list
+        li._item
+          +button-option('Можно курить', '', ['checkbox'])
+        li._item
+          +button-option('Можно с питомцами', '', ['checkbox'], {
+            'checked': true,
+          })
+        li._item
+          +button-option('Можно пригласить гостей (до 10 человек)', '', ['checkbox'], {
+            'checked': true,
+          })
+    fieldset._fieldset
+      legend._legend
+        | Доступность
+      ul._list
+        li._item
+          +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
+        li._item
+          +button-option('Помощник для инвалидов', 'На 1 этаже вас встретит специалист и проводит до номера.', ['checkbox-rich'])
+    fieldset._fieldset
+      +dropdown('Удобства номера', '', {
+        'placeholder': 'Какие удобства',
+      }, [], [
+        [2, 0, 3, 'спальня', 'спальни', 'спальни', 'спален'],
+        [2, 0, 3, 'кровать', 'кровати', 'кровати', 'кроватей'],
+        [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
+      ])
+    fieldset._fieldset
+      +ecl('Дополнительные удобства', [
+        ['Завтрак'],
+        ['Письменный стол', true],
+        ['Стул для кормления', true],
+        ['Кроватка', true],
+        ['Телевизор'],
+        ['Шампунь'],
+      ])
