@@ -1,7 +1,7 @@
 class MainSign {
   constructor(node) {
     this.node = node;
-    this.parallaxSpeed = 2.5;
+    this.parallaxSpeed = 2;
     this._findNodes();
     this._addEventListeners();
   }
