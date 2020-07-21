@@ -1,0 +1,146 @@
+.search {
+  &__container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    padding-top: rem(30);
+    padding-bottom: rem(70);
+
+    @include container;
+  }
+
+  &__button {
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    display: none;
+    padding: rem(10);
+    width: rem(40);
+    height: rem(40);
+    border: 0;
+    border-radius: rem(10) 0 0 rem(10);
+    background-color: transparent;
+    background-image: $gradient-primary;
+    box-shadow: $shadow-primary;
+    transition: border-radius $time-medium;
+
+    @include hidden-text;
+
+    @include screen-xl {
+      display: block;
+    }
+
+    &--active {
+      border-top-left-radius: 0;
+    }
+  }
+
+  &__icon-layers {
+    position: relative;
+    display: block;
+    height: 100%;
+  }
+
+  &__icon-layer {
+    position: absolute;
+    left: 50%;
+    height: 14%;
+    border-radius: rem(4);
+    background-color: $color-white;
+    transition: all $time-medium;
+    transform: translateX(-50%);
+
+    &:nth-child(1) {
+      top: 10%;
+      width: 100%;
+    }
+
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: 50%;
+      width: 65%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:nth-child(4) {
+      bottom: 10%;
+      width: 30%;
+    }
+  }
+
+  &__button--active &__icon-layer {
+    &:nth-child(1) {
+      top: 50%;
+      width: 0%;
+    }
+
+    &:nth-child(2) {
+      width: 100%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:nth-child(3) {
+      width: 100%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    &:nth-child(4) {
+      bottom: 50%;
+      width: 0%;
+    }
+  }
+
+  &__filter {
+    flex-shrink: 0;
+    box-sizing: content-box;
+    width: rem(266);
+    background-color: $color-white;
+
+    @include screen-xl {
+      position: absolute;
+      left: 100%;
+      z-index: 15;
+      padding: rem(50) rem(30);
+      border-radius: rem(30) 0 0 rem(30);
+      box-shadow: none;
+      transition:
+        left $time-medium,
+        box-shadow $time-medium $time-medium;
+    }
+  }
+
+  &__button--active + &__filter {
+    @include screen-xl {
+      left: calc(100% - #{rem(326)});
+      box-shadow: $shadow-form;
+      transition: left $time-medium;
+    }
+  }
+
+  &__section {
+    margin-left: rem(60);
+
+    @include screen-xl {
+      margin-left: 0;
+      min-height: rem(980);
+    }
+  }
+
+  &__h1 {
+    margin: 0 rem(40) rem(20) 0;
+
+    @include heading('h1');
+  }
+
+  &__rooms {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(rem(270), 1fr));
+    grid-gap: rem(20) rem(12);
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: rem(40);
+  }
+}
