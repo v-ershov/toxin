@@ -17,7 +17,6 @@ class Room {
   // создаёт слайдер
   _createSlider() {
     this.$slider.slick({
-      arrows: this.$slider.data('arrows'),
       dots: true,
     });
   }

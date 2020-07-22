@@ -1,13 +1,12 @@
 //- Parameters:
-//- string[[]] list     - список изображений комнаты, где каждый пункт (массив) содержит:
-//-                       - имя файла с изображением комнаты
-//-                       - значение атрибута «alt» у изображения
-//- string     number   - номер комнаты
-//- string     tag      - тег комнаты
-//- string     price    - цена комнаты за сутки
-//- int        rating   - значение рейтинга (от 0 до 5)
-//- string     reviews  - количество отзывов
-//- string     isArrows - если true, то у слайдера есть стрелки «Вперёд / Назад»
+//- string[[]] list    - список изображений комнаты, где каждый пункт (массив) содержит:
+//-                      - имя файла с изображением комнаты
+//-                      - значение атрибута «alt» у изображения
+//- string     number  - номер комнаты
+//- string     tag     - тег комнаты
+//- string     price   - цена комнаты за сутки
+//- int        rating  - значение рейтинга (от 0 до 5)
+//- string     reviews - количество отзывов
 
 //- Examples:
 //- +room([
@@ -15,17 +14,11 @@
 //-   ['888-2.jpg', 'Room 888 (2)'],
 //-   ['888-3.jpg', 'Room 888 (3)'],
 //-   ['888-4.jpg', 'Room 888 (4)'],
-//- ], '888', 'Люкс', '9 990₽', 5, '145', 'true')
-//- +room([
-//-   ['840-1.jpg', 'Room 840 (1)'],
-//-   ['840-2.jpg', 'Room 840 (2)'],
-//-   ['840-3.jpg', 'Room 840 (3)'],
-//-   ['840-4.jpg', 'Room 840 (4)'],
-//- ], '840', '', '9 900₽', 4, '65')
+//- ], '888', 'Люкс', '9 990₽', 5, '145')
 
-mixin room(list, number, tag, price, rating, reviews, isArrows='false')
+mixin room(list, number, tag, price, rating, reviews)
   .room
-    ._slider(data-arrows=isArrows)
+    ._slider
       each item in list
         img._slide(src=require(`~/content/rooms/${item[0]}`).default, alt=item[1])
     ._info
