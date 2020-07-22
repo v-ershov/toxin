@@ -7,7 +7,7 @@ class MainSearch {
 
   // находит указанные дочерние элементы корневого элемента
   _findNodes() {
-    this.button = this.node.querySelector('.search__button');
+    this.button = this.node.querySelector('.main-search__button');
   }
 
   // регистрирует обработчики событий
@@ -19,8 +19,8 @@ class MainSearch {
 
   // переключает состояние фильтра
   _switchFilter() {
-    this.button.classList.toggle('search__button--active');
+    this.button.classList.toggle('main-search__button--active');
   }
 }
 
-document.querySelectorAll('.search').forEach((node) => new MainSearch(node));
+document.querySelectorAll('.main-search').forEach((node) => new MainSearch(node));

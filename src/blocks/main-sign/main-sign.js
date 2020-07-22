@@ -8,7 +8,7 @@ class MainSign {
 
   // находит указанные дочерние элементы корневого элемента
   _findNodes() {
-    this.background = this.node.querySelector('.sign__background');
+    this.background = this.node.querySelector('.main-sign__background');
   }
 
   // регистрирует обработчики событий
@@ -24,4 +24,4 @@ class MainSign {
   }
 }
 
-document.querySelectorAll('.sign').forEach((node) => new MainSign(node));
+document.querySelectorAll('.main-sign').forEach((node) => new MainSign(node));
