@@ -24,6 +24,8 @@ $color-white     : #ffffff;
 $gradient-primary   : linear-gradient($color-primary, #8ba4f9);
 $gradient-secondary : linear-gradient($color-secondary, #66d2ea);
 $gradient-white     : linear-gradient($color-white, $color-white);
+$gradient-excellent : linear-gradient(#ffe39c, #ffba9c);
+$gradient-bad       : linear-gradient(#919191, #3d4975);
 
 // Shadows
 $shadow-primary   : 0 rem(10) rem(20) rgba($color-gray-100p, 0.05);
