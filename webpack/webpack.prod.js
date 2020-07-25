@@ -17,6 +17,47 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.(sass|scss)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: paths.postcss.prod,
+              },
+            },
+          },
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                `${paths.src.scss}/_functions.scss`,
+                `${paths.src.scss}/_vars.scss`,
+                `${paths.src.scss}/_mixins.scss`,
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              config: {
+                path: paths.postcss.prod,
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.(jpe?g|png|gif)$/,
         include: paths.src.blocks,
         loader: 'url-loader',
