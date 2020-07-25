@@ -1,7 +1,6 @@
 .main-sign {
   position: relative;
   display: flex;
-  padding: rem(20) 0;
   min-height: rem(700);
 
   &__background {
@@ -21,6 +20,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: rem(20);
+    padding-bottom: rem(20);
 
     @include container;
   }
