@@ -1,14 +1,21 @@
 .room-votes {
   display: flex;
+  flex-wrap: wrap;
 
   &__diagram {
     position: relative;
+    margin-right: rem(30);
     font-size: 0;
+  }
+
+  &__svg {
+    width: rem(120);
+    height: rem(120);
   }
 
   &__text {
     position: absolute;
-    top: 35px;
+    top: rem(35);
     left: 50%;
     display: flex;
     flex-direction: column;
@@ -30,7 +37,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin: 0 0 0 rem(30);
+    margin: rem(15) 0 0;
     padding: 0 0 0 rem(15);
     list-style-type: none;
   }

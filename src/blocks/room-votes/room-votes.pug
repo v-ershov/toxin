@@ -35,7 +35,7 @@ mixin room-votes(bad, average, good, excellent)
 
   .room-votes
     ._diagram
-      svg._svg(width='120', height='120', viewbox='0 0 33 33', fill='none', stroke-width='1', style=`transform: rotate(${deg}deg);`)
+      svg._svg(viewbox='0 0 33 33', fill='none', stroke-width='1', style=`transform: rotate(${deg}deg);`)
         defs
           lineargradient#bad(x1='1', y1='1', x2='0', y2='0')
             stop(offset='0%', stop-color='#919191')
