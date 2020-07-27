@@ -1,13 +1,16 @@
 .advantages {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+  display: flex;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
 
   &__item {
     display: flex;
-    align-items: center;
     margin-bottom: rem(18);
-    padding: rem(2) 0 rem(20);
+    padding: rem(2) rem(25) rem(20) 0;
     border-bottom: 1px solid $color-gray-10p;
 
     &:last-child {

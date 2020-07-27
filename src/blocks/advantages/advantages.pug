@@ -12,13 +12,14 @@
 //- ], ['ui'])
 
 mixin advantages(list, modifiers=[])
-  ul.advantages(class=getModifiers('advantages', modifiers))
-    each item in list
-      li._item
-        i._icon.material-icons
-          | #{item[0]}
-        ._info
-          ._title
-            | #{item[1]}
-          ._desc
-            | #{item[2]}
+  .advantages(class=getModifiers('advantages', modifiers))
+    ul._list
+      each item in list
+        li._item
+          i._icon.material-icons
+            | #{item[0]}
+          ._info
+            ._title
+              | #{item[1]}
+            ._desc
+              | #{item[2]}
