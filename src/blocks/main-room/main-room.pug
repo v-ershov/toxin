@@ -1,0 +1,58 @@
+//- Examples:
+//- +main-room
+
+mixin main-room
+  main.main-room
+    ._gallery
+      a._link.-main(href=require('~/content/rooms/888-1.jpg').default, data-fancybox='gallery')
+        img._img(src=require('~/content/rooms/888-1.jpg').default, alt='Номер 888 (1)')
+      a._link(href=require('~/content/rooms/888-2.jpg').default, data-fancybox='gallery')
+        img._img(src=require('~/content/rooms/888-2.jpg').default, alt='Номер 888 (2)')
+      a._link(href=require('~/content/rooms/888-3.jpg').default, data-fancybox='gallery')
+        img._img(src=require('~/content/rooms/888-3.jpg').default, alt='Номер 888 (3)')
+      a._link.visually-hidden(href=require('~/content/rooms/888-3.jpg').default, data-fancybox='gallery')
+        img._img(src=require('~/content/rooms/888-3.jpg').default, alt='Номер 888 (4)')
+    ._container
+      section._section
+        h1._h1.visually-hidden
+          | Детали номера 888
+        article._article
+          h2._h2
+            | Сведения о номере
+          +advantages([
+            ['insert_emoticon', 'Комфорт', 'Шумопоглощающие стены'],
+            ['location_city', 'Удобство', 'Окно в каждой из спален'],
+            ['whatshot', 'Уют', 'Номер оснащён камином'],
+          ])
+        article._article
+          h2._h2
+            | Впечатления от номера
+          +room-votes(0, 65, 65, 130)
+        article._article.-reviews
+          h2._h2
+            | Отзывы посетителей номера
+          ul._list
+            li._item
+              +review('Мурад Сарафанов', '5 дней назад', '2019-12-17',
+              'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+              12, true, 'sarafanov-murad.jpg')
+            li._item
+              +review('Патрисия Стёклышкова', 'Неделю назад', '2019-12-15',
+              'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+              2, false, 'patrisiya-styoklyshkova.jpg')
+        article._article
+          h2._h2
+            | Правила
+          +list-bullet([
+            ['Нельзя с питомцами'],
+            ['Без вечеринок и мероприятий'],
+            ['Время прибытия — после 13:00, а выезд до 12:00'],
+          ])
+        article._article
+          h2._h2
+            | Отмена
+          p._text
+            | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+      aside._aside
+        ._form
+          +form-reservation

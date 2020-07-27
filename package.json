@@ -68,6 +68,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
+    "@fancyapps/fancybox": "^3.5.7",
     "air-datepicker": "^2.2.3",
     "jquery": "^3.5.1",
     "jquery-mask-plugin": "^1.14.16",
