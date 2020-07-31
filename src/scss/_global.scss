@@ -11,12 +11,35 @@ html {
   font-family: $font-family-primary;
   line-height: $line-height-primary;
 
+  // custom scrollbar for Mozilla Firefox
+  scrollbar-color: $color-gray-15p transparent;
+  scrollbar-width: thin;
+
   @include screen-sm {
     font-size: 13px;
   }
 
   @include screen-xs {
     font-size: 12px;
+  }
+
+  // custom scrollbar for webkit browsers
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: $color-gray-15p;
+
+    &:hover {
+      background-color: $color-gray-25p;
+    }
+
+    &:active {
+      background-color: $color-gray-50p;
+    }
   }
 }
 
