@@ -1,28 +1,56 @@
 .main-search {
+  @include screen-xl {
+    &::before {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 500;
+      visibility: hidden;
+      content: '';
+      transition:
+        visibility 0.01s $time-medium,
+        background-color $time-medium;
+    }
+  }
+
+  &--filter {
+    @include screen-xl {
+      &::before {
+        visibility: visible;
+        background-color: rgba($color-black, 0.55);
+        transition: background-color $time-medium;
+      }
+    }
+  }
+
   &__container {
-    position: relative;
     display: flex;
-    overflow: hidden;
-    padding-top: rem(30);
-    padding-bottom: rem(70);
 
     @include container;
+
+    @include screen-xl {
+      overflow: hidden;
+    }
   }
 
   &__button {
-    position: absolute;
-    right: 0;
-    z-index: 20;
+    position: fixed;
+    top: 88.5%;
+    right: 81.5%;
+    z-index: 510;
     display: none;
-    padding: rem(10);
-    width: rem(40);
-    height: rem(40);
+    padding: rem(11);
+    width: rem(44);
+    height: rem(44);
     border: 0;
-    border-radius: rem(10) 0 0 rem(10);
-    background-color: transparent;
+    border-radius: 50%;
     background-image: $gradient-primary;
-    box-shadow: $shadow-primary;
-    transition: border-radius $time-medium;
+    transition:
+      top $time-medium,
+      right $time-medium;
+    animation: blink $time-slowest ease-in-out infinite;
 
     @include hidden-text;
 
@@ -31,7 +59,17 @@
     }
 
     &--active {
-      border-top-left-radius: 0;
+      top: rem(13);
+      right: rem(13);
+    }
+
+    &--hidden {
+      right: 102.5%;
+      visibility: hidden;
+      transition:
+        top $time-fast,
+        right $time-fast,
+        visibility 0.01s $time-fast;
     }
   }
 
@@ -90,44 +128,55 @@
     }
   }
 
-  &__filter {
+  &__aside {
+    position: sticky;
+    top: 0;
     flex-shrink: 0;
-    box-sizing: content-box;
-    width: rem(266);
+    overflow-y: scroll;
+    padding-right: rem(26);
+    height: 100vh;
     background-color: $color-white;
 
     @include screen-xl {
-      position: absolute;
+      position: fixed;
       left: 100%;
-      z-index: 15;
-      padding: rem(50) rem(30);
-      border-radius: rem(30) 0 0 rem(30);
-      box-shadow: none;
+      z-index: 505;
+      padding: 0 rem(30);
       transition:
         left $time-medium,
         box-shadow $time-medium $time-medium;
     }
   }
 
-  &__button--active + &__filter {
+  &__button--active + &__aside {
     @include screen-xl {
-      left: calc(100% - #{rem(326)});
+      left: calc(100% - #{rem(324)});
       box-shadow: $shadow-form;
       transition: left $time-medium;
     }
   }
 
+  &__filter {
+    padding: rem(30) 0 rem(100);
+    width: rem(266);
+
+    @include screen-xl {
+      padding-top: rem(70);
+    }
+  }
+
   &__section {
-    margin-left: rem(60);
+    margin-left: rem(26);
+    padding: rem(30) 0 rem(70);
 
     @include screen-xl {
       margin-left: 0;
-      min-height: rem(980);
+      min-height: 100vh;
     }
   }
 
   &__h1 {
-    margin: 0 rem(40) rem(20) 0;
+    margin: 0 0 rem(20);
 
     @include heading('h1');
   }
@@ -142,5 +191,22 @@
     display: flex;
     justify-content: center;
     margin-top: rem(40);
+  }
+}
+
+@keyframes blink {
+  0% {
+    box-shadow: 0 0 rem(15) $color-primary;
+    transform: scale(1.1);
+  }
+
+  50% {
+    box-shadow: none;
+    transform: scale(1);
+  }
+
+  100% {
+    box-shadow: 0 0 rem(15) $color-primary;
+    transform: scale(1.1);
   }
 }
