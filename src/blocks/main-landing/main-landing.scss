@@ -1,0 +1,157 @@
+.main-landing {
+  position: relative;
+
+  &__slideshow,
+  &__slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &__slideshow {
+    top: rem(-70);
+    z-index: -5;
+    overflow: hidden;
+  }
+
+  &__slide {
+    $backgrounds:
+      'bg-1.jpg',
+      'bg-2.jpg',
+      'bg-3.jpg',
+      'bg-4.jpg';
+    $texts:
+      'Лучшие номера...',
+      '...для вашей работы...',
+      '...вашего отдыха...',
+      '...и просто вдохновения!';
+    $time-each: 6s;
+    $time-full: length($backgrounds) * $time-each;
+
+    @each $background in $backgrounds {
+      $i: index($backgrounds, $background);
+      $delay: #{$i * $time-each - $time-each};
+
+      &:nth-child(#{$i}) {
+        background-image: url('../../content/backgrounds/#{$background}');
+        animation-delay: $delay;
+
+        &::before {
+          content: nth($texts, $i);
+          animation-delay: $delay;
+        }
+      }
+    }
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation: slide $time-full linear infinite;
+
+    &::before {
+      position: absolute;
+      right: rem(30);
+      bottom: 25%;
+      left: rem(30);
+      color: rgba($color-white, 0.9);
+      text-align: center;
+      text-shadow: 0.325vw 0.325vw 0.4vw rgba($color-black, 0.5);
+      font-weight: bold;
+      font-size: 3.15vw;
+      animation: text $time-full linear infinite;
+
+      @include screen-xxl {
+        text-shadow: rem(4) rem(4) rem(5) rgba($color-black, 0.5);
+        font-size: rem(46);
+      }
+
+      @include screen-lg {
+        font-size: rem(38);
+      }
+
+      @include screen-md {
+        font-size: rem(30);
+      }
+
+      @include screen-sm {
+        display: none;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: rem(70);
+    padding-bottom: rem(70);
+    min-height: rem(830);
+
+    @include container;
+
+    @include screen-sm {
+      min-height: calc(100vh - #{rem(140)});
+      max-width: rem(420);
+    }
+  }
+
+  &__form {
+    max-width: rem(380);
+  }
+
+  &__text {
+    display: none;
+    margin-top: rem(50);
+    color: $color-white;
+    text-align: center;
+    text-shadow: rem(2) rem(2) rem(3) rgba($color-black, 0.5);
+    font-weight: bold;
+    font-size: rem(19);
+
+    @include screen-sm {
+      display: block;
+    }
+  }
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  30% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes text {
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.125);
+  }
+
+  100% {
+    transform: scale(1.125);
+  }
+}
