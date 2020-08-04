@@ -136,6 +136,7 @@
     padding-right: rem(26);
     height: 100vh;
     background-color: $color-white;
+    scrollbar-width: thin;
 
     @include screen-xl {
       position: fixed;
