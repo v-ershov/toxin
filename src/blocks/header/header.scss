@@ -2,7 +2,6 @@
   position: relative;
   z-index: 200;
   display: block;
-  padding: rem(15) 0;
   min-height: rem(70);
   background-color: $color-white;
 
@@ -21,6 +20,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: rem(15);
+    padding-bottom: rem(15);
 
     @include container;
   }
