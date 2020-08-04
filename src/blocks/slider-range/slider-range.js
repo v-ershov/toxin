@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'jquery-ui/ui/widgets/slider';
 import 'jquery-ui/themes/base/slider.css';
+import 'jquery-ui-touch-punch/jquery.ui.touch-punch.min';
 
 class SliderRange {
   constructor($node) {
