@@ -1,13 +1,13 @@
 - function getModifiers(classMain, modifiers) {
--   let mods = '';
+-   let result = '';
 -
 -   if (modifiers.length !== 0) {
 -     modifiers.forEach((mod) => {
--       mods = `${mods}${classMain}--${mod} `;
+-       result = `${result}${classMain}--${mod} `;
 -     });
 -   }
 -
--   return mods.slice(0, -1);
+-   return result.slice(0, -1);
 - }
 
 include /pug/_blocks.pug
