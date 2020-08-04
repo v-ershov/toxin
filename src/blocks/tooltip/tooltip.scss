@@ -42,7 +42,7 @@
       bottom: rem(12);
       padding: rem(8) rem(10);
       width: rem(160);
-      border-radius: rem(4);
+      border-radius: $radius-primary;
       background-color: $color-gray-100p;
       box-shadow: $shadow-tooltip;
       color: $color-white;

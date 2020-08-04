@@ -82,7 +82,7 @@
 @mixin form {
   padding: rem(40) rem(30) rem(30);
   border: 1px solid rgba($color-black, 0.12);
-  border-radius: rem(4);
+  border-radius: $radius-primary;
   background-color: $color-white;
   box-shadow: $shadow-form;
 }

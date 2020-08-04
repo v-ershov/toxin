@@ -1,6 +1,6 @@
 .room {
   overflow: hidden;
-  border-radius: rem(4);
+  border-radius: $radius-primary;
   background-color: $color-white;
   box-shadow: $shadow-primary;
   transition: box-shadow $time-fast;

@@ -21,7 +21,7 @@
     padding: rem(12) rem(44) rem(12) rem(14);
     width: inherit;
     border: 1px solid $color-gray-25p;
-    border-radius: rem(4);
+    border-radius: $radius-primary;
     background-color: transparent;
     color: $color-gray-75p;
     text-overflow: ellipsis;

@@ -24,7 +24,7 @@
 
     .field__input {
       border-color: $color-gray-50p;
-      border-radius: rem(4) rem(4) 0 0;
+      border-radius: $radius-primary $radius-primary 0 0;
       box-shadow: $shadow-primary;
       transition:
         border-color $time-fast,
@@ -44,7 +44,7 @@
     border: 1px solid $color-gray-25p;
     border-top-width: 0;
     border-bottom-width: 0;
-    border-radius: 0 0 rem(4) rem(4);
+    border-radius: 0 0 $radius-primary $radius-primary;
     background-color: $color-white;
     transition:
       max-height $time-medium,

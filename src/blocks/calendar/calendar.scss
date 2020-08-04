@@ -76,7 +76,7 @@
   padding: rem(20);
   width: 100%;
   border: 1px solid $color-gray-25p;
-  border-radius: rem(4);
+  border-radius: $radius-primary;
   background: $color-white;
   box-shadow: $shadow-primary;
   color: $color-gray-50p;
@@ -114,7 +114,7 @@
 
 .datepicker--nav-action {
   width: auto;
-  border-radius: rem(4);
+  border-radius: $radius-primary;
 
   &:hover {
     background: $color-gray-5p;
@@ -131,7 +131,7 @@
 
 .datepicker--nav-title {
   padding: 0 rem(6);
-  border-radius: rem(4);
+  border-radius: $radius-primary;
 
   @include heading('h2');
 
