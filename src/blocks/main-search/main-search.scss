@@ -85,7 +85,11 @@
     height: 14%;
     border-radius: $radius-primary;
     background-color: $color-white;
-    transition: all $time-medium;
+    transition:
+      top $time-medium,
+      bottom $time-medium,
+      width $time-medium,
+      transform $time-medium;
     transform: translateX(-50%);
 
     &:nth-child(1) {

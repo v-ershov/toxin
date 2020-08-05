@@ -59,7 +59,12 @@
     height: 20%;
     border-radius: rem(10);
     background-image: $gradient-primary;
-    transition: all $time-medium;
+    transition:
+      top $time-medium,
+      bottom $time-medium,
+      left $time-medium,
+      opacity $time-medium,
+      transform $time-medium;
 
     &:nth-child(1) {
       top: 0;
