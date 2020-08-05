@@ -14,6 +14,7 @@
     top: rem(-70);
     z-index: -5;
     overflow: hidden;
+    will-change: transform;
   }
 
   &__slide {
@@ -50,6 +51,9 @@
     background-repeat: no-repeat;
     opacity: 0;
     animation: slide $time-full linear infinite;
+    will-change:
+      opacity,
+      transform;
 
     &::before {
       position: absolute;
@@ -62,6 +66,7 @@
       font-weight: bold;
       font-size: 3.15vw;
       animation: text $time-full linear infinite;
+      will-change: transform;
 
       @include screen-xxl {
         text-shadow: rem(4) rem(4) rem(5) rgba($color-black, 0.5);
