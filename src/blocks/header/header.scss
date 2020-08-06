@@ -200,7 +200,7 @@
     }
   }
 
-  &__item--sublist:hover > &__list--sublist {
+  &__item--sublist:hover &__list--sublist {
     max-height: var(--height);
   }
 
@@ -239,7 +239,7 @@
     }
   }
 
-  &__item--sublist:hover > &__link--sublist {
+  &__item--sublist:hover &__link--sublist {
     &::after {
       color: $color-gray-100p;
       transform: rotate(180deg);
