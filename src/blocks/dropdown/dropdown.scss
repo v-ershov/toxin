@@ -4,6 +4,7 @@
   .field {
     &::before {
       transition: color $time-fast;
+      will-change: color;
     }
   }
 
@@ -12,6 +13,10 @@
       border-color $time-fast,
       border-radius $time-fast $time-slow,
       box-shadow $time-fast;
+    will-change:
+      border-color,
+      border-radius,
+      box-shadow;
   }
 
   &--active,
@@ -51,6 +56,11 @@
       border-color $time-fast,
       border-bottom-width $time-fastest $time-fast,
       box-shadow $time-fast;
+    will-change:
+      max-height,
+      border-color,
+      border-bottom-width,
+      box-shadow;
   }
 
   &--active &__content,
@@ -119,7 +129,6 @@
     font-weight: normal;
     font-size: rem(18);
     font-family: $font-family-primary;
-    transition: border-color $time-fast;
 
     &:hover {
       border-color: $color-gray-50p;
@@ -159,6 +168,7 @@
   &__button {
     &--reset {
       transition: transform $time-fast;
+      will-change: transform;
     }
 
     &--hidden {
