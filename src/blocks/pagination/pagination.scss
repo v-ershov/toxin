@@ -3,7 +3,6 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
     margin-bottom: rem(10);
   }
 
@@ -17,7 +16,6 @@
     border-radius: 50%;
     background-color: transparent;
     color: $color-gray-50p;
-    font-weight: normal;
     font-size: rem(12);
     font-family: $font-family-primary;
     transition: color $time-fast;
