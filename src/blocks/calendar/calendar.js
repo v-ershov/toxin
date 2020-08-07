@@ -20,7 +20,7 @@ class Calendar {
   // создаёт календарь
   _createDatepicker() {
     const options = {
-      dateFormat: this.type === 'field' ? 'd M' : '',
+      dateFormat: 'd M',
       minDate: new Date(),
       maxDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
       multipleDatesSeparator: ' - ',
@@ -37,7 +37,7 @@ class Calendar {
       onShow: (inst) => this._setWidth(inst),
     };
 
-    this.$inst = this.type === 'field' || this.type === 'fields'
+    this.$inst = (this.type === 'field' || this.type === 'fields')
       ? this.$inputs.first().datepicker(options).data('datepicker')
       : this.$node.datepicker(options).data('datepicker');
 

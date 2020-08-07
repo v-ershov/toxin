@@ -23,7 +23,7 @@
 //- })
 
 mixin calendar(type='inline', selectedDates='', labelFirst='', labelSecond='', attrsFieldFirst={}, attrsFieldSecond={})
-  .calendar(data-type=type, data-selected-dates= selectedDates !=='' ? selectedDates : false)
+  .calendar(data-type=type, data-selected-dates=(selectedDates !=='') ? selectedDates : false)
     if type === 'field'
       +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
         'placeholder': 'ДД.ММ.ГГГГ',

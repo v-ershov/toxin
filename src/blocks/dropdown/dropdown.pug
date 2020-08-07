@@ -34,7 +34,7 @@ mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list
   .dropdown(class=getModifiers('dropdown', modifiers))
     +field(labelPrimary, labelSecondary, ['dropdown'], Object.assign(attrsField, {
       'readonly': true,
-      'data-words': words.length !== 0 ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
+      'data-words': (words.length !== 0) ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
     }))
     ._content(style='--height: 100vh;')
       ul._list

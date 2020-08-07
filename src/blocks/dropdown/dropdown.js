@@ -166,7 +166,7 @@ class Dropdown {
       text = `${totalNumber} ${words[0]}`;
     }
 
-    return totalNumber !== 0 ? text : '';
+    return (totalNumber !== 0) ? text : '';
   }
 
   // возвращает текст для поля дропдауна, если требуется описать все пункты меню по отдельности
@@ -195,7 +195,7 @@ class Dropdown {
       }
     });
 
-    return text.length !== 0 ? text.join(', ') : '';
+    return (text.length !== 0) ? text.join(', ') : '';
   }
 
   // сбрасывает дропдаун в состояние по умолчанию
