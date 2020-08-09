@@ -11,6 +11,8 @@
 
 mixin form-field(labelPrimary='', labelSecondary='', attrsField={})
   form.form-field
-    +field(labelPrimary, labelSecondary, [], attrsField)
+    +field(labelPrimary, labelSecondary, [], Object.assign(attrsField, {
+      'required': true,
+    }))
     button._button(type='submit')
       | Отправить
