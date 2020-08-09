@@ -3,8 +3,8 @@ const fs = require('fs');
 const pugBem = require('pug-bem');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('./paths.js');
-const helpers = require('./helpers.js');
+const paths = require('./webpack.paths.js');
+const helpers = require('./webpack.helpers.js');
 
 helpers.createBlocksFile();
 

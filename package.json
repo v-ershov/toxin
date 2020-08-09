@@ -24,9 +24,9 @@
   "repository": "github:user/repo",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config ./webpack/webpack.dev.js",
-    "prod": "webpack-dev-server --config ./webpack/webpack.prod.js",
-    "build": "webpack --config ./webpack/webpack.prod.js"
+    "dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js",
+    "prod": "webpack-dev-server --config ./webpack/webpack.config.prod.js",
+    "build": "webpack --config ./webpack/webpack.config.prod.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",

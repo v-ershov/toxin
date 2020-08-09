@@ -1,41 +1,35 @@
 const { merge } = require('webpack-merge');
+const miniSvgDataUri = require('mini-svg-data-uri');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const paths = require('./paths.js');
-const common = require('./webpack.base.js');
+const paths = require('./webpack.paths.js');
+const common = require('./webpack.config.base.js');
 
 module.exports = merge(common, {
   output: {
-    filename: 'js/[name].js',
+    filename: 'js/[name].[contenthash].js',
   },
-  mode: 'development',
-  devtool: 'source-map',
+  mode: 'production',
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   module: {
     rules: [
       {
         test: /\.(sass|scss)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: paths.postcss.dev,
+                path: paths.postcss.prod,
               },
-              sourceMap: true,
             },
           },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+          'sass-loader',
           {
             loader: 'sass-resources-loader',
             options: {
@@ -52,37 +46,48 @@ module.exports = merge(common, {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
               config: {
-                path: paths.postcss.dev,
+                path: paths.postcss.prod,
               },
-              sourceMap: true,
             },
           },
         ],
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/,
+        test: /\.(jpe?g|png|gif)$/,
         include: paths.src.blocks,
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
           name: '[name].[ext]',
           outputPath: 'images',
+          limit: 10240,
         },
+      },
+      {
+        test: /\.svg$/,
+        include: paths.src.blocks,
+        loader: 'url-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'icons',
+          limit: 10240,
+          generator: (content) => miniSvgDataUri(content.toString()),
+        },
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'image-webpack-loader',
+        enforce: 'pre',
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename: 'css/[name].[contenthash].css',
     }),
   ],
 });

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const paths = require('./paths.js');
+const paths = require('./webpack.paths.js');
 
 // creates _blocks.pug file with imports of all blocks
 const createBlocksFile = () => {
