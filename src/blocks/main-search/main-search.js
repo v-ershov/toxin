@@ -1,3 +1,5 @@
+import helpers from '~/js/helpers';
+
 class MainSearch {
   constructor(node) {
     this.node = node;
@@ -38,7 +40,7 @@ class MainSearch {
       this.button.classList.toggle(this.classes.buttonActive);
 
       if (this.button.classList.contains(this.classes.buttonActive)) {
-        document.body.style.overflowY = 'hidden';
+        document.body.style = `overflow-y: hidden; margin-right: ${helpers.getScrollbarWidth()}px;`;
         this.node.classList.add(this.classes.mainFilter);
       } else {
         document.body.removeAttribute('style');
