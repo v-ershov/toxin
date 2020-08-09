@@ -12,7 +12,7 @@ module.exports = {
   entry: {
     app: [
       '@babel/polyfill',
-      `${paths.context.src}/index.js`,
+      `${paths.src.js}/index.js`,
     ],
   },
   output: {

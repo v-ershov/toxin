@@ -10,6 +10,7 @@ const src = {
   blocks: `${context.src}\\blocks`,
   content: `${context.src}\\content`,
   fonts: `${context.src}\\fonts`,
+  js: `${context.src}\\js`,
   pug: `${context.src}\\pug`,
   pages: `${context.src}\\pug\\pages`,
   scss: `${context.src}\\scss`,
