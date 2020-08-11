@@ -26,7 +26,8 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js",
     "prod": "webpack-dev-server --config ./webpack/webpack.config.prod.js",
-    "build": "webpack --config ./webpack/webpack.config.prod.js"
+    "build": "webpack --config ./webpack/webpack.config.prod.js",
+    "eslint": "eslint \"**/*.js\" || exit 0" 
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
