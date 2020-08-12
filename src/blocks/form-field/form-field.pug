@@ -10,7 +10,7 @@
 //- })
 
 mixin form-field(labelPrimary='', labelSecondary='', attrsField={})
-  form.form-field
+  form.form-field(method='post')
     +field(labelPrimary, labelSecondary, [], Object.assign(attrsField, {
       'required': true,
     }))
