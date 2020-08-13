@@ -22,6 +22,8 @@
 //-   'required': true,
 //- })
 
+include /blocks/field/field.pug
+
 mixin calendar(type='inline', selectedDates='', labelFirst='', labelSecond='', attrsFieldFirst={}, attrsFieldSecond={})
   .calendar(data-type=type, data-selected-dates=(selectedDates !=='') ? selectedDates : false)
     if type === 'field'

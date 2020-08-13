@@ -11,6 +11,8 @@
 //- Examples:
 //- +slider-range('Price Range', 0, 1000, 10, 100, 1, '$', 'Cost per night in a room')
 
+include /blocks/label/label.pug
+
 mixin slider-range(labelPrimary, min, max, start, end, step, unit='', text='')
   - const labelSecondary = `${start.toLocaleString('ru')}${unit} - ${end.toLocaleString('ru')}${unit}`;
 

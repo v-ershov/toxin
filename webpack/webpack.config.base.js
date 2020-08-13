@@ -4,9 +4,6 @@ const pugBem = require('pug-bem');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('./webpack.paths.js');
-const helpers = require('./webpack.helpers.js');
-
-helpers.createBlocksFile();
 
 module.exports = {
   entry: {
@@ -19,16 +16,16 @@ module.exports = {
     path: paths.context.dist,
     publicPath: '/',
   },
+  resolve: {
+    alias: {
+      '~': paths.context.src,
+    },
+  },
   devServer: {
     open: true,
     overlay: true,
     port: 8095,
     writeToDisk: true,
-  },
-  resolve: {
-    alias: {
-      '~': paths.context.src,
-    },
   },
   module: {
     rules: [

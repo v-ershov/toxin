@@ -16,6 +16,10 @@
 //-   ['888-4-small.jpg', 'Room 888 (4)'],
 //- ], '888', 'Люкс', '9 990₽', 5, '145')
 
+include /blocks/rating/rating.pug
+include /blocks/room-info/room-info.pug
+include /blocks/room-price/room-price.pug
+
 mixin room(list, number, tag, price, rating, reviews)
   .room
     ._slider

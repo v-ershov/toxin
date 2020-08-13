@@ -30,6 +30,9 @@
 //-   [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
 //- ], true, ['expanded'])
 
+include /blocks/button/button.pug
+include /blocks/field/field.pug
+
 mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list, isButtons=false, modifiers=[])
   .dropdown(class=getModifiers('dropdown', modifiers))
     +field(labelPrimary, labelSecondary, ['dropdown'], Object.assign(attrsField, {

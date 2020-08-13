@@ -9,6 +9,8 @@
 //-   'placeholder': 'Email',
 //- })
 
+include /blocks/field/field.pug
+
 mixin form-field(labelPrimary='', labelSecondary='', attrsField={})
   form.form-field(method='post')
     +field(labelPrimary, labelSecondary, [], Object.assign(attrsField, {

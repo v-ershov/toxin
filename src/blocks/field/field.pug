@@ -16,6 +16,8 @@
 //-   'data-mask': '00.00.0000',
 //- })
 
+include /blocks/label/label.pug
+
 mixin field(labelPrimary='', labelSecondary='', modifiers=[], attrs={})
   +label(labelPrimary, labelSecondary)
     span.field(class=getModifiers('field', modifiers))

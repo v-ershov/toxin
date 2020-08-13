@@ -5,6 +5,10 @@
 //- +footer
 //- +footer(['bordered'])
 
+include /blocks/form-field/form-field.pug
+include /blocks/logo/logo.pug
+include /blocks/socials/socials.pug
+
 mixin footer(modifiers=[])
   footer.footer(class=getModifiers('footer', modifiers))
     ._container.-primary
