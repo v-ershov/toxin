@@ -21,6 +21,9 @@ module.exports = {
       '~': paths.context.src,
     },
   },
+  stats: {
+    children: false,
+  },
   devServer: {
     open: true,
     overlay: true,
