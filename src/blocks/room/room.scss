@@ -3,10 +3,13 @@
   border-radius: $radius-primary;
   background-color: $color-white;
   box-shadow: $shadow-primary;
-  transition: box-shadow $time-fast;
+  transition:
+    box-shadow $time-fast,
+    transform $time-fast;
 
   &:hover {
     box-shadow: $shadow-secondary;
+    transform: translateY(-3px);
   }
 
   &__slide {
