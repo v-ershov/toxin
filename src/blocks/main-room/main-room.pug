@@ -2,10 +2,10 @@
 //- +main-room
 
 include /blocks/advantages/advantages.pug
+include /blocks/chart/chart.pug
 include /blocks/form-reservation/form-reservation.pug
 include /blocks/list-bullet/list-bullet.pug
 include /blocks/review/review.pug
-include /blocks/room-votes/room-votes.pug
 
 mixin main-room
   main.main-room
@@ -33,7 +33,7 @@ mixin main-room
         article._article
           h2._h2
             | Впечатления от номера
-          +room-votes(0, 65, 65, 130)
+          +chart
         article._article.-reviews
           h2._h2
             | Отзывы посетителей номера

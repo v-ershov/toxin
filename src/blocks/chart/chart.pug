@@ -1,0 +1,95 @@
+//- Parameters:
+//- 🞂 duration: number   - продолжительность анимации диаграммы
+//- 🞂 gap: number        - размер пробела между секциями диаграммы
+//- 🞂 sections: [{       - секции диаграммы
+//-   🞂 gradient: {      - градиент секции
+//-     🞂 id: string     - ID градиента
+//-     🞂 color1: string - начальный цвет градиента
+//-     🞂 color2: string - конечный цвет градиента
+//-     }
+//-   🞂 name: string     - имя секции
+//-   🞂 value: number    - значение секции
+//-   }]
+//- 🞂 title: string      - заголовок диаграммы после суммы значений секций
+
+mixin chart(options)
+  -
+    const defaults = {
+      duration: 500,
+      gap: 0.6,
+      sections: [
+        {
+          gradient: {
+            id: 'bad',
+            color1: '#919191',
+            color2: '#3d4975',
+          },
+          name: 'Разочарован',
+          value: 0,
+        },
+        {
+          gradient: {
+            id: 'average',
+            color1: '#bc9cff',
+            color2: '#8ba4f9',
+          },
+          name: 'Удовлетворительно',
+          value: 65,
+        },
+        {
+          gradient: {
+            id: 'good',
+            color1: '#6fcf97',
+            color2: '#66d2ea',
+          },
+          name: 'Хорошо',
+          value: 65,
+        },
+        {
+          gradient: {
+            id: 'excellent',
+            color1: '#ffe39c',
+            color2: '#ffba9c',
+          },
+          name: 'Великолепно',
+          value: 130,
+        },
+      ],
+      title: 'голосов',
+    };
+
+  - const { duration, gap, sections, title } = Object.assign(defaults, options);
+
+  .chart
+    ._container
+      ._diagram
+        svg._svg(viewbox='0 0 33 33')
+          defs._defs
+            each item in sections
+              lineargradient._gradient(id=item.gradient.id, x1='1', y1='1', x2='0', y2='0')
+                stop._stop(offset='0', stop-color=item.gradient.color1)
+                stop._stop(offset='1', stop-color=item.gradient.color2)
+
+          - const sum = sections.reduce((a , b) => a + b.value, 0);
+          - let offset = -gap / 2;
+          each item in sections
+            - const percent = (item.value / sum) * 100;
+            - const array = `${Math.max(0, percent - gap)} 100`;
+            circle._circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient.id}); --array:${array}; --offset:${offset};`, data-value=item.value)
+            - offset -= percent;
+        ._title
+          span._sum
+            | 0
+          | #{title}
+        ._tooltip(style='--top: 0; --left: 0; --borderColor: #000000;')
+          ._name
+            | #{sections[0].name}
+          ._details(style='--gradient: linear-gradient(#ffffff, #000000);')
+            | #{title}:
+            span._value
+              | #{sections[0].value}
+    ul._legend
+      each item in sections
+        li._item
+          button._button.-active(type='button', style=`--gradient: linear-gradient(${item.gradient.color1}, ${item.gradient.color2});`)
+            | #{item.name}
