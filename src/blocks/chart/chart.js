@@ -200,8 +200,7 @@ class Chart {
   _showTooltip(i) {
     this.nodes.tooltip.classList.add('chart__tooltip--active');
 
-    const { color1 } = this.data.sections[i].gradient;
-    const { color2 } = this.data.sections[i].gradient;
+    const { color1, color2 } = this.data.sections[i].gradient;
 
     this.nodes.tooltip.style.setProperty('--borderColor', `${color1}`);
     this.nodes.tooltipDetails.style.setProperty('--gradient', `linear-gradient(${color1}, ${color2})`);
