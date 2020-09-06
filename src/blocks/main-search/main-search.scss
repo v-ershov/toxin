@@ -134,19 +134,22 @@
 
   &__aside {
     position: sticky;
-    top: 0;
+    top: $height-header;
     flex-shrink: 0;
     overflow-y: scroll;
     padding-right: rem(26);
-    height: 100vh;
+    height: calc(100vh - #{$height-header});
     background-color: $color-white;
     scrollbar-width: thin;
 
     @include screen-xl {
       position: fixed;
+      top: 0;
+      bottom: 0;
       left: 100%;
       z-index: 505;
       padding: 0 rem(30);
+      height: 100vh;
       transition:
         left $time-medium,
         box-shadow $time-medium $time-medium;

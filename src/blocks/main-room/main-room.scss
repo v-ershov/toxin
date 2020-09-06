@@ -138,6 +138,10 @@
 
   &__form {
     position: sticky;
-    top: rem(30);
+    top: calc(#{$height-header} + #{rem(70)});
+
+    @include screen-xxl {
+      top: calc(#{$height-header} + #{rem(50)});
+    }
   }
 }
