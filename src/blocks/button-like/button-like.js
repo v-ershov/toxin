@@ -1,80 +1,93 @@
 class ButtonLike {
   constructor(node) {
-    this.node = node;
-    this.animTime = 300;
-    this.isReady = true;
-    this._findNodes();
+    this._initNodes(node);
+    this._initData();
     this._addEventListeners();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.numbers = this.node.querySelector('.button-like__numbers');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      numbers: node.querySelector('.button-like__numbers'),
+    };
+  }
+
+  // инициализирует данные кнопки
+  _initData() {
+    this.data = {
+      duration: this._getDuration(),
+    };
+
+    this.isReady = true;
   }
 
   // регистрирует обработчики событий
   _addEventListeners() {
-    this.node.addEventListener('click', () => {
-      this._switchState();
+    this.nodes.root.addEventListener('click', () => {
+      this._switchButton();
     });
   }
 
+  // возвращает продолжительность анимации кнопки
+  _getDuration() {
+    return parseFloat(getComputedStyle(this.nodes.root).transitionDuration, 10) * 1000;
+  }
+
+  // переключает состояние кнопки
+  _switchButton() {
+    if (this.isReady) {
+      this.isReady = false;
+
+      const rcl = this.nodes.root.classList;
+      const num = +this.nodes.numbers.firstChild.textContent;
+
+      rcl.toggle('button-like--active');
+      this.setNumber(num + (rcl.contains('button-like--active') ? 1 : -1));
+
+      setTimeout(() => {
+        this.isReady = true;
+      }, this.data.duration);
+    }
+  }
+
   // устанавливает заданное значение лайков в кнопке
-  _setNumber(value) {
-    if (value === parseInt(this.numbers.firstChild.textContent, 10)) {
+  setNumber(value) {
+    const { numbers } = this.nodes;
+
+    if (value === +numbers.firstChild.textContent) {
       return;
     }
 
-    const isIncrease = value > this.numbers.firstChild.textContent;
-    const newNumber = this.numbers.firstChild.cloneNode(true);
-    newNumber.textContent = value;
+    const isIncrease = value > +numbers.firstChild.textContent;
+    const newNum = numbers.firstChild.cloneNode(true);
+    newNum.textContent = value;
 
     if (isIncrease) {
-      this.numbers.prepend(newNumber);
-      this.numbers.classList.add('button-like__numbers--increase');
+      numbers.prepend(newNum);
+      numbers.classList.add('button-like__numbers--increase');
     } else {
-      this.numbers.append(newNumber);
+      numbers.append(newNum);
     }
 
     setTimeout(() => {
-      if (isIncrease) {
-        this.numbers.classList.add('button-like__numbers--anim-increase');
-      } else {
-        this.numbers.classList.add('button-like__numbers--anim-decrease');
-      }
+      numbers.classList.add(isIncrease
+        ? 'button-like__numbers--anim-increase'
+        : 'button-like__numbers--anim-decrease');
     }, 25);
 
     setTimeout(() => {
       if (isIncrease) {
-        this.numbers.classList.remove(
+        numbers.lastChild.remove();
+        numbers.classList.remove(
           'button-like__numbers--increase',
           'button-like__numbers--anim-increase',
         );
-        this.numbers.lastChild.remove();
       } else {
-        this.numbers.classList.remove('button-like__numbers--anim-decrease');
-        this.numbers.firstChild.remove();
+        numbers.firstChild.remove();
+        numbers.classList.remove('button-like__numbers--anim-decrease');
       }
-    }, this.animTime);
-  }
-
-  // переключает состояние кнопки
-  _switchState() {
-    if (this.isReady) {
-      this.isReady = false;
-
-      if (!this.node.classList.contains('button-like--active')) {
-        this.node.classList.add('button-like--active');
-        this._setNumber(parseInt(this.numbers.firstChild.textContent, 10) + 1);
-      } else {
-        this.node.classList.remove('button-like--active');
-        this._setNumber(parseInt(this.numbers.firstChild.textContent, 10) - 1);
-      }
-
-      setTimeout(() => {
-        this.isReady = true;
-      }, this.animTime);
-    }
+    }, this.data.duration);
   }
 }
 

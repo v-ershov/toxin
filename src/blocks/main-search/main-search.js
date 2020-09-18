@@ -2,68 +2,56 @@ import helpers from '~/js/helpers';
 
 class MainSearch {
   constructor(node) {
-    this.node = node;
-    this._defineClasses();
-    this._findNodes();
+    this._initNodes(node);
     this._addEventListeners();
     this._observe();
   }
 
-  // определяет классы элементов, с которыми предстоит работать
-  _defineClasses() {
-    const classMain = this.node.classList[0];
-
-    this.classes = {
-      main: classMain,
-      mainFilter: `${classMain}--filter`,
-      button: `${classMain}__button`,
-      buttonActive: `${classMain}__button--active`,
-      buttonHidden: `${classMain}__button--hidden`,
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      button: node.querySelector('.main-search__button'),
     };
-  }
-
-  // находит указанные элементы корневого элемента
-  _findNodes() {
-    this.button = this.node.querySelector(`.${this.classes.button}`);
   }
 
   // регистрирует обработчики событий
   _addEventListeners() {
-    this.button.addEventListener('click', () => {
+    this.nodes.button.addEventListener('click', () => {
       this._switchSidebar();
     });
   }
 
-  // переключает состояние боковой панели
-  _switchSidebar() {
-    if (!this.button.classList.contains(this.classes.buttonHidden)) {
-      this.button.classList.toggle(this.classes.buttonActive);
-
-      if (this.button.classList.contains(this.classes.buttonActive)) {
-        document.body.style = `overflow-y: hidden; margin-right: ${helpers.getScrollbarWidth()}px;`;
-        this.node.classList.add(this.classes.mainFilter);
-      } else {
-        document.body.removeAttribute('style');
-        this.node.classList.remove(this.classes.mainFilter);
-      }
-    }
-  }
-
   // создаёт Intersection Observer для последующего скрытия / отображения кнопки «Фильтры»
   _observe() {
-    const options = {
-      rootMargin: '-100% 0px 0px',
-    };
-
     const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        this.button.classList.remove(this.classes.buttonHidden);
-      } else {
-        this.button.classList.add(this.classes.buttonHidden);
-      }
-    }, options);
+      const bcl = this.nodes.button.classList;
 
-    observer.observe(this.node);
+      if (entries[0].isIntersecting) {
+        bcl.remove('main-search__button--hidden');
+      } else {
+        bcl.add('main-search__button--hidden');
+      }
+    }, {
+      rootMargin: '-100% 0px 0px',
+    });
+
+    observer.observe(this.nodes.root);
+  }
+
+  // переключает состояние сайдбара
+  _switchSidebar() {
+    const rcl = this.nodes.root.classList;
+    const bcl = this.nodes.button.classList;
+
+    if (!bcl.contains('main-search__button--hidden')) {
+      rcl.toggle('main-search--filter');
+      bcl.toggle('main-search__button--active');
+
+      document.body.style = bcl.contains('main-search__button--active')
+        ? `overflow-y: hidden; margin-right: ${helpers.getScrollbarWidth()}px;`
+        : null;
+    }
   }
 }
 

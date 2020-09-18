@@ -3,131 +3,165 @@ import 'air-datepicker/dist/js/datepicker.min';
 import 'air-datepicker/dist/css/datepicker.min.css';
 
 class Calendar {
-  constructor($node) {
-    this.$node = $node;
-    this.type = $node.data('type');
-    this._findNodes();
-    this._createDatepicker();
+  constructor(node) {
+    this._initNodes(node);
+    this._initData();
+    this._initCalendar();
     this._addEventListeners();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.$labels = this.$node.find('.label');
-    this.$inputs = this.$node.find('.field__input');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      $root: $(node),
+      $labels: $(node).find('.label'),
+      $inputs: $(node).find('.field__input'),
+    };
   }
 
-  // создаёт календарь
-  _createDatepicker() {
+  // инициализирует данные календаря
+  _initData() {
+    this.data = {
+      type: this._getType(),
+    };
+  }
+
+  // инициализирует календарь
+  _initCalendar() {
+    const { $root, $inputs } = this.nodes;
+
     const options = {
       dateFormat: 'd M',
-      minDate: new Date(),
       maxDate: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+      minDate: new Date(),
       multipleDatesSeparator: ' - ',
-      range: true,
-      prevHtml: '<i class="material-icons">arrow_back</i>',
-      nextHtml: '<i class="material-icons">arrow_forward</i>',
       navTitles: {
         days: 'MM yyyy',
       },
+      nextHtml: '<i class="material-icons">arrow_forward</i>',
+      prevHtml: '<i class="material-icons">arrow_back</i>',
+      range: true,
+
       onSelect: (formattedDate) => {
-        this.formattedDate = formattedDate;
-        this._resetInputs();
+        this._resetFields();
+        this._setFormattedDate(formattedDate);
       },
       onShow: (inst) => this._setWidth(inst),
     };
 
-    this.$inst = (this.type === 'field' || this.type === 'fields')
-      ? this.$inputs.first().datepicker(options).data('datepicker')
-      : this.$node.datepicker(options).data('datepicker');
+    const target = (this.data.type === 'inline') ? $root : $inputs.first();
 
-    if (this.$node.data('selected-dates')) {
-      const dates = this.$node.data('selected-dates').split('/');
+    this.inst = target.datepicker(options).data('datepicker');
 
-      if (new Date(dates[0]) > this.$inst.minDate) {
-        this.$inst.selectDate([new Date(dates[0]), new Date(dates[1])]);
-
-        if (this.type === 'field') {
-          this._setDatesForField();
-        } else if (this.type === 'fields') {
-          this._setDatesForFields();
-        }
-      }
-    }
-
-    this.$buttonReset = $('<button class="button button--bodyless button--text-gray">Очистить</button>');
-    this.$buttonApply = $('<button class="button button--bodyless">Применить</button>');
-
-    const reset = $('<div class="calendar__button">').append(this.$buttonReset);
-    const apply = $('<div class="calendar__button">').append(this.$buttonApply);
-    const buttons = $('<div class="calendar__buttons">').append(reset).append(apply);
-
-    this.$inst.$datepicker.append(buttons);
+    this._initDates();
+    this._initButtons();
   }
 
   // регистрирует обработчики событий
   _addEventListeners() {
-    this.$labels.on('mousedown click', (e) => {
+    const {
+      $labels, $inputs, $buttonReset, $buttonApply,
+    } = this.nodes;
+
+    $labels.on('click mousedown', (e) => {
       e.preventDefault();
-      this.$inputs.first().focus();
+      $inputs[0].focus();
     });
 
-    if (this.type === 'fields') {
-      this.$inputs.last().on('mousedown click', (e) => {
-        e.preventDefault();
-        this.$inputs.first().focus();
-      });
-    }
-
-    this.$buttonReset.on('click', () => {
-      this.$inst.clear();
-      this._resetInputs();
+    $buttonReset.on('click', () => {
+      this._resetFields();
+      this._resetDates();
     });
 
-    if (this.type === 'field') {
-      this.$buttonApply.on('click', () => {
-        if (this.$inst.selectedDates.length === 1) {
-          return;
-        }
+    $buttonApply.on('click', () => {
+      if (this.inst.selectedDates.length !== 2) {
+        return;
+      }
 
-        this.$inst.hide();
-        this._setDatesForField();
-      });
-    } else if (this.type === 'fields') {
-      this.$buttonApply.on('click', () => {
-        if (this.$inst.selectedDates.length === 1) {
-          return;
-        }
+      this._hideCalendar();
 
-        this.$inst.hide();
-        this._setDatesForFields();
-      });
+      if (this.data.type === 'field') {
+        this._setField();
+      } else if (this.data.type === 'fields') {
+        this._setFields();
+      }
+    });
+  }
+
+  // возвращает тип календаря
+  _getType() {
+    return this.nodes.$root.data('type');
+  }
+
+  // скрывает календарь
+  _hideCalendar() {
+    this.inst.hide();
+  }
+
+  // инициализирует кнопки календаря
+  _initButtons() {
+    this.nodes.$buttonReset = $('<button class="button button--bodyless button--text-gray">Очистить</button>');
+    this.nodes.$buttonApply = $('<button class="button button--bodyless">Применить</button>');
+
+    const reset = $('<div class="calendar__button">').append(this.nodes.$buttonReset);
+    const apply = $('<div class="calendar__button">').append(this.nodes.$buttonApply);
+    const buttons = $('<div class="calendar__buttons">').append(reset).append(apply);
+
+    this.inst.$datepicker.append(buttons);
+  }
+
+  // инициализирует даты календаря
+  _initDates() {
+    const dataDates = this.nodes.$root.data('selected-dates');
+
+    if (dataDates) {
+      const dates = dataDates.split('/');
+
+      if (new Date(dates[0]) >= this.inst.minDate) {
+        this.inst.selectDate([new Date(dates[0]), new Date(dates[1])]);
+
+        if (this.data.type === 'field') {
+          this._setField();
+        } else if (this.data.type === 'fields') {
+          this._setFields();
+        }
+      }
     }
   }
 
-  // сбрасывает инпуты полей в состояние по умолчанию
-  _resetInputs() {
-    this.$inputs.each((_i, input) => {
+  // сбрасывает активные даты календаря
+  _resetDates() {
+    this.inst.clear();
+  }
+
+  // сбрасывает поля в состояние по умолчанию
+  _resetFields() {
+    this.nodes.$inputs.each((_i, input) => {
       $(input).val('');
     });
   }
 
+  // устанавливает выбранные даты в поле, если тип календаря — 'field'
+  _setField() {
+    this.nodes.$inputs.val(this.data.formattedDate.toLowerCase());
+  }
+
+  // устанавливает выбранные даты в поля, если тип календаря — 'fields'
+  _setFields() {
+    this.nodes.$inputs.each((i, input) => {
+      $(input).val(this.inst.selectedDates[i].toLocaleDateString());
+    });
+  }
+
+  // устанавливает форматированную дату
+  _setFormattedDate(formattedDate) {
+    this.data.formattedDate = formattedDate;
+  }
+
   // устанавливает ширину календаря
   _setWidth(inst) {
-    inst.$datepicker.css('width', `${this.$node.width()}`);
-  }
-
-  // устанавливает выбранные даты в инпут поля, если тип календаря — 'field'
-  _setDatesForField() {
-    this.$inputs.val(this.formattedDate.toLowerCase());
-  }
-
-  // устанавливает выбранные даты в инпуты полей, если тип календаря — 'fields'
-  _setDatesForFields() {
-    this.$inputs.each((i, input) => {
-      $(input).val(this.$inst.selectedDates[i].toLocaleDateString());
-    });
+    inst.$datepicker.css('width', `${this.nodes.$root.width()}`);
   }
 }
 
-$('.calendar').each((_i, node) => new Calendar($(node)));
+document.querySelectorAll('.calendar').forEach((node) => new Calendar(node));

@@ -1,58 +1,62 @@
+import helpers from '~/js/helpers';
+
 class Header {
   constructor(node) {
-    this.node = node;
-    this._findNodes();
+    this._initNodes(node);
     this._addEventListeners();
-    this._setHeight();
+    this._setNavHeight();
+    this._setSublistsHeight();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.hamburger = this.node.querySelector('.header__hamburger');
-    this.nav = this.node.querySelector('.header__nav');
-    this.list = this.node.querySelector('.header__list');
-    this.sublists = this.node.querySelectorAll('.header__list--sublist');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      hamburger: node.querySelector('.header__hamburger'),
+      nav: node.querySelector('.header__nav'),
+      list: node.querySelector('.header__list'),
+      sublists: node.querySelectorAll('.header__list--sublist'),
+    };
   }
 
   // регистрирует обработчики событий
   _addEventListeners() {
     window.addEventListener('resize', () => {
-      this._setHeight();
+      this._setNavHeight();
+      this._setSublistsHeight();
     });
 
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.header') !== this.node) {
-        this._collapseHamburger();
+      if (e.target.closest('.header') !== this.nodes.root) {
+        this._disableHamburger();
       }
     });
 
-    this.hamburger.addEventListener('click', () => {
+    this.nodes.hamburger.addEventListener('click', () => {
       this._switchHamburger();
     });
   }
 
-  // устанавливает максимальную высоту подсписков и навигационного меню
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
-  _setHeight() {
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-
-    this.sublists.forEach((sublist) => {
-      sublist.style.setProperty('justify-content', 'flex-start');
-      sublist.style.setProperty('--height', ` ${sublist.scrollHeight / fontSize}rem`);
-      sublist.style.removeProperty('justify-content');
-    });
-
-    this.nav.style.setProperty('--height', ` ${this.list.scrollHeight / fontSize}rem`);
+  // устанавливает максимальную высоту навигационного меню
+  _setNavHeight() {
+    this.nodes.nav.style.setProperty('--height', helpers.getHeight(this.nodes.list));
   }
 
-  // схлопывает гамбургер-меню
-  _collapseHamburger() {
-    this.hamburger.classList.remove('header__hamburger--active');
+  // устанавливает максимальную высоту подсписков навигационного меню
+  _setSublistsHeight() {
+    this.nodes.sublists.forEach((sublist) => {
+      sublist.style.setProperty('--height', helpers.getHeight(sublist));
+    });
+  }
+
+  // выключает гамбургер-меню
+  _disableHamburger() {
+    this.nodes.hamburger.classList.remove('header__hamburger--active');
   }
 
   // переключает состояние гамбургер-меню
   _switchHamburger() {
-    this.hamburger.classList.toggle('header__hamburger--active');
+    this.nodes.hamburger.classList.toggle('header__hamburger--active');
   }
 }
 

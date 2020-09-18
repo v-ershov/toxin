@@ -1,23 +1,13 @@
-// создаёт анимацию с помощью requestAnimationFrame
-// https://javascript.info/js-animation#structured-animation
-function animate({ duration, timing, draw }) {
-  const start = performance.now();
+// ############################################################################################################
+// https://bugs.chromium.org/p/chromium/issues/detail?id=411624
+function getHeight(node) {
+  const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
 
-  requestAnimationFrame(function step(time) {
-    let timeFraction = (time - start) / duration;
+  node.style.setProperty('justify-content', 'flex-start');
+  const height = node.scrollHeight / fontSize;
+  node.style.removeProperty('justify-content');
 
-    if (timeFraction > 1) {
-      timeFraction = 1;
-    }
-
-    const progress = timing(timeFraction);
-
-    draw(progress);
-
-    if (timeFraction < 1) {
-      requestAnimationFrame(step);
-    }
-  });
+  return `${height}rem`;
 }
 
 // возвращает ширину вертикальной полосы прокрутки главного окна
@@ -25,7 +15,32 @@ function getScrollbarWidth() {
   return window.innerWidth - document.body.clientWidth;
 }
 
+// https://webpack.js.org/guides/dependency-management/
+function importAll(r) {
+  r.keys().forEach(r);
+}
+
+// ############################################################################################################
+function shit(value, word1, word2, word3) {
+  const lastDigit = value % 10;
+  const lastTwoDigits = value % 100;
+
+  if (lastDigit === 0
+    || (lastDigit >= 5 && lastDigit <= 9)
+    || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
+    return word3;
+  }
+
+  if (lastDigit >= 2 && lastDigit <= 4) {
+    return word2;
+  }
+
+  return word1;
+}
+
 export default {
-  animate,
+  getHeight,
   getScrollbarWidth,
+  importAll,
+  shit,
 };

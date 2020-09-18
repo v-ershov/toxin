@@ -1,99 +1,130 @@
+import helpers from '~/js/helpers';
+
 class Dropdown {
   constructor(node) {
-    this.node = node;
-    this._findNodes();
+    this._initNodes(node);
+    this._initDropdown();
     this._addEventListeners();
+  }
+
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      input: node.querySelector('.field__input'),
+      content: node.querySelector('.dropdown__content'),
+      items: node.querySelectorAll('.dropdown__item'),
+      numbers: node.querySelectorAll('.dropdown__number'),
+      increments: node.querySelectorAll('.dropdown__spinner[name="increment"]'),
+      decrements: node.querySelectorAll('.dropdown__spinner[name="decrement"]'),
+      buttonResetWrapper: node.querySelector('.dropdown__button--reset'),
+      buttonReset: node.querySelector('.button[name="reset"]'),
+      buttonApply: node.querySelector('.button[name="apply"]'),
+    };
+  }
+
+  // инициализирует дропдаун
+  _initDropdown() {
     this._setHeight();
     this._setText();
 
-    this.items.forEach((_item, i) => {
+    this.nodes.items.forEach((_item, i) => {
       this._switchSpinners(i);
     });
 
-    if (this.buttonReset) {
+    if (this.nodes.buttonReset) {
       this._switchButtonReset();
     }
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.input = this.node.querySelector('.field__input');
-    this.content = this.node.querySelector('.dropdown__content');
-    this.items = this.node.querySelectorAll('.dropdown__item');
-    this.increments = this.node.querySelectorAll('.dropdown__spinner[name="increment"]');
-    this.decrements = this.node.querySelectorAll('.dropdown__spinner[name="decrement"]');
-    this.numbers = this.node.querySelectorAll('.dropdown__number');
-    this.buttonResetWrapper = this.node.querySelector('.dropdown__button--reset');
-    this.buttonReset = this.node.querySelector('.button[name="reset"]');
-    this.buttonApply = this.node.querySelector('.button[name="apply"]');
-  }
-
   // регистрирует обработчики событий
   _addEventListeners() {
+    const {
+      root, input, items, increments, decrements, numbers, buttonReset, buttonApply,
+    } = this.nodes;
+
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.dropdown') !== this.node) {
-        this._collapseDropdown();
+      if (e.target.closest('.dropdown') !== root) {
+        this._hideDropdown();
       }
     });
 
-    this.input.addEventListener('click', () => {
+    input.addEventListener('click', () => {
       this._switchDropdown();
     });
 
-    this.items.forEach((_item, i) => {
-      this.increments[i].addEventListener('click', () => {
-        this._setNumber(i, parseInt(this.numbers[i].value, 10) + 1);
-      });
-
-      this.decrements[i].addEventListener('click', () => {
-        this._setNumber(i, parseInt(this.numbers[i].value, 10) - 1);
-      });
-
-      this.numbers[i].addEventListener('input', () => {
+    items.forEach((_item, i) => {
+      numbers[i].addEventListener('input', () => {
         this._switchSpinners(i);
 
-        if (this.buttonReset) {
+        if (buttonReset) {
           this._switchButtonReset();
         } else {
           this._setText();
         }
       });
+
+      increments[i].addEventListener('click', () => {
+        this._setNumber(i, +numbers[i].value + 1);
+      });
+
+      decrements[i].addEventListener('click', () => {
+        this._setNumber(i, +numbers[i].value - 1);
+      });
     });
 
-    if (this.buttonReset) {
-      this.buttonReset.addEventListener('click', () => {
+    if (buttonReset) {
+      buttonReset.addEventListener('click', () => {
         this._resetDropdown();
       });
 
-      this.buttonApply.addEventListener('click', () => {
+      buttonApply.addEventListener('click', () => {
         this._setText();
-        this._collapseDropdown();
+        this._hideDropdown();
       });
     }
   }
 
   // устанавливает максимальную высоту контейнера для контента
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
   _setHeight() {
-    const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-
-    this.content.style.setProperty('justify-content', 'flex-start');
-    this.content.style.setProperty('--height', ` ${this.content.scrollHeight / fontSize}rem`);
-    this.content.style.removeProperty('justify-content');
+    this.nodes.content.style.setProperty('--height', helpers.getHeight(this.nodes.content));
   }
 
-  // устанавливает текст для поля дропдауна
+  // устанавливает текст в поле дропдауна
   _setText() {
-    this.input.value = this.input.dataset.words
-      ? this._getTextForAllItems()
-      : this._getTextForEachItem();
+    const text = [];
+    let sum = 0;
+
+    this.nodes.items.forEach((item, i) => {
+      const num = +this.nodes.numbers[i].value;
+
+      if (num !== 0) {
+        let { words } = item.dataset;
+
+        if (words) {
+          words = words.split(', ');
+
+          text.push(`${num} ${helpers.shit(num, words[0], words[1], words[2])}`);
+        } else {
+          sum += num;
+        }
+      }
+    });
+
+    if (sum > 0) {
+      const words = this.nodes.input.dataset.words.split(', ');
+
+      text.unshift(`${sum} ${helpers.shit(sum, words[0], words[1], words[2])}`);
+    }
+
+    this.nodes.input.value = `${text.join(', ')}`;
   }
 
   // переключает состояния кнопок указанного пункта меню в зависимости от текущего количества
-  _switchSpinners(itemIndex) {
-    const number = this.numbers[itemIndex];
-    const increment = this.increments[itemIndex];
-    const decrement = this.decrements[itemIndex];
+  _switchSpinners(i) {
+    const number = this.nodes.numbers[i];
+    const increment = this.nodes.increments[i];
+    const decrement = this.nodes.decrements[i];
 
     switch (number.value) {
       case number.min:
@@ -113,98 +144,51 @@ class Dropdown {
 
   // переключает состояние кнопки "Очистить" в зависимости от общего количества всех пунктов меню
   _switchButtonReset() {
-    if (this._getTotalNumber() === 0) {
-      this.buttonResetWrapper.classList.add('dropdown__button--hidden');
+    const bcl = this.nodes.buttonResetWrapper.classList;
+
+    if (this._getSum() === 0) {
+      bcl.add('dropdown__button--hidden');
     } else {
-      this.buttonResetWrapper.classList.remove('dropdown__button--hidden');
+      bcl.remove('dropdown__button--hidden');
     }
   }
 
-  // схлопывает дропдаун
-  _collapseDropdown() {
-    this.node.classList.remove('dropdown--active');
+  // скрывает дропдаун
+  _hideDropdown() {
+    this.nodes.root.classList.remove('dropdown--active');
   }
 
   // переключает состояние дропдауна
   _switchDropdown() {
-    this.node.classList.toggle('dropdown--active');
+    this.nodes.root.classList.toggle('dropdown--active');
   }
 
-  // устанавливает количество указанного пункта меню
-  _setNumber(itemIndex, value) {
-    this.numbers[itemIndex].value = value;
-    this.numbers[itemIndex].dispatchEvent(new Event('input'));
-  }
+  // устанавливает значение количества указанного пункта меню
+  _setNumber(i, value) {
+    const number = this.nodes.numbers[i];
 
-  // возвращает общее количество всех пунктов меню
-  _getTotalNumber() {
-    let total = 0;
-
-    this.numbers.forEach((number) => {
-      total += parseInt(number.value, 10);
-    });
-
-    return total;
-  }
-
-  // возвращает текст для поля дропдауна, если требуется описать все пункты меню общим обозначением
-  _getTextForAllItems() {
-    let text = '';
-
-    const totalNumber = this._getTotalNumber();
-    const lastDigit = parseInt(totalNumber, 10) % 10;
-    const lastTwoDigits = parseInt(totalNumber, 10) % 100;
-    const words = this.input.dataset.words.split(', ');
-
-    if (lastDigit === 0
-      || (lastDigit >= 5 && lastDigit <= 9)
-      || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
-      text = `${totalNumber} ${words[2]}`;
-    } else if (lastDigit >= 2 && lastDigit <= 4) {
-      text = `${totalNumber} ${words[1]}`;
-    } else {
-      text = `${totalNumber} ${words[0]}`;
-    }
-
-    return (totalNumber !== 0) ? text : '';
-  }
-
-  // возвращает текст для поля дропдауна, если требуется описать все пункты меню по отдельности
-  _getTextForEachItem() {
-    const text = [];
-
-    this.items.forEach((item, i) => {
-      const number = this.numbers[i];
-
-      if (number.value === '0') {
-        return;
-      }
-
-      const lastDigit = parseInt(number.value, 10) % 10;
-      const lastTwoDigits = parseInt(number.value, 10) % 100;
-      const words = item.dataset.words.split(', ');
-
-      if (lastDigit === 0
-        || (lastDigit >= 5 && lastDigit <= 9)
-        || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
-        text.push(`${number.value} ${words[2]}`);
-      } else if (lastDigit >= 2 && lastDigit <= 4) {
-        text.push(`${number.value} ${words[1]}`);
-      } else {
-        text.push(`${number.value} ${words[0]}`);
-      }
-    });
-
-    return (text.length !== 0) ? text.join(', ') : '';
+    number.value = value;
+    number.dispatchEvent(new Event('input'));
   }
 
   // сбрасывает дропдаун в состояние по умолчанию
   _resetDropdown() {
-    this.items.forEach((_item, i) => {
+    this.nodes.items.forEach((_item, i) => {
       this._setNumber(i, 0);
     });
 
-    this.input.value = '';
+    this.nodes.input.value = '';
+  }
+
+  // возвращает сумму значений всех пунктов меню
+  _getSum() {
+    let sum = 0;
+
+    this.nodes.numbers.forEach((number) => {
+      sum += +number.value;
+    });
+
+    return sum;
   }
 }
 

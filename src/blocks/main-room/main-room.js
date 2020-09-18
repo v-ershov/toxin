@@ -3,25 +3,27 @@ import '@fancyapps/fancybox/dist/jquery.fancybox.min';
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 
 class MainRoom {
-  constructor($node) {
-    this.$node = $node;
-    this._findNodes();
-    this._createGallery();
+  constructor(node) {
+    this._initNodes(node);
+    this._initGallery();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.$images = this.$node.find('[data-fancybox="gallery"]');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      $images: $(node).find('[data-fancybox="gallery"]'),
+    };
   }
 
-  // создаёт галлерею
-  _createGallery() {
-    this.$images.fancybox({
-      loop: true,
+  // инициализирует галлерею
+  _initGallery() {
+    this.nodes.$images.fancybox({
       animationEffect: 'fade',
+      loop: true,
       transitionEffect: 'slide',
     });
   }
 }
 
-$('.main-room').each((_i, node) => new MainRoom($(node)));
+document.querySelectorAll('.main-room').forEach((node) => new MainRoom(node));

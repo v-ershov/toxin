@@ -1,14 +1,15 @@
 class MainSign {
   constructor(node) {
-    this.node = node;
-    this.parallaxSpeed = 2;
-    this._findNodes();
+    this._initNodes(node);
     this._addEventListeners();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.background = this.node.querySelector('.main-sign__background');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      background: node.querySelector('.main-sign__background'),
+    };
   }
 
   // регистрирует обработчики событий
@@ -20,7 +21,7 @@ class MainSign {
 
   // создаёт параллакс-эффект для фонового изображения
   _createParallax() {
-    this.background.style.transform = `translateY(${window.pageYOffset / this.parallaxSpeed}px)`;
+    this.nodes.background.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 }
 

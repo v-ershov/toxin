@@ -4,38 +4,49 @@ import 'jquery-ui/themes/base/slider.css';
 import 'jquery-ui-touch-punch/jquery.ui.touch-punch.min';
 
 class SliderRange {
-  constructor($node) {
-    this.$node = $node;
-    this._createSlider();
+  constructor(node) {
+    this._initNodes(node);
+    this._initSlider();
   }
 
-  // создаёт слайдер
-  _createSlider() {
-    const label = this.$node.find('.label__secondary');
-    const input = this.$node.find('.slider-range__input');
-    const slider = this.$node.find('.slider-range__slider');
-    const unit = slider.data('unit');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      $label: $(node).find('.label__secondary'),
+      $input: $(node).find('.slider-range__input'),
+      $slider: $(node).find('.slider-range__slider'),
+    };
+  }
 
-    slider.slider({
+  // инициализирует слайдер
+  _initSlider() {
+    const { $label, $input, $slider } = this.nodes;
+
+    $slider.slider({
       animate: 'fast',
       classes: {
         'ui-slider': '',
         'ui-slider-handle': '',
         'ui-slider-range': '',
       },
-      max: slider.data('max'),
-      min: slider.data('min'),
+      max: $slider.data('max'),
+      min: $slider.data('min'),
       range: true,
-      step: slider.data('step'),
-      values: [slider.data('start'), slider.data('end')],
+      step: $slider.data('step'),
+      values: [$slider.data('start'), $slider.data('end')],
 
       slide(_e, ui) {
-        const value = `${ui.values[0].toLocaleString('ru')}${unit} - ${ui.values[1].toLocaleString('ru')}${unit}`;
-        label.text(value);
-        input.val(value);
+        const unit = $slider.data('unit');
+        const start = `${ui.values[0].toLocaleString('ru')}${unit}`;
+        const end = `${ui.values[1].toLocaleString('ru')}${unit}`;
+        const value = `${start} - ${end}`;
+
+        $label.text(value);
+        $input.val(value);
       },
     });
   }
 }
 
-$('.slider-range').each((_i, node) => new SliderRange($(node)));
+document.querySelectorAll('.slider-range').forEach((node) => new SliderRange(node));

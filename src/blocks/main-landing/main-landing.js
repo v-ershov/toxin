@@ -1,14 +1,15 @@
 class MainLanding {
   constructor(node) {
-    this.node = node;
-    this.parallaxSpeed = 2;
-    this._findNodes();
+    this._initNodes(node);
     this._addEventListeners();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.slideshow = this.node.querySelector('.main-landing__slideshow');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      slideshow: node.querySelector('.main-landing__slideshow'),
+    };
   }
 
   // регистрирует обработчики событий
@@ -18,9 +19,9 @@ class MainLanding {
     });
   }
 
-  // создаёт параллакс-эффект для слайд-шоу
+  // создаёт параллакс-эффект для фонового изображения
   _createParallax() {
-    this.slideshow.style.transform = `translateY(${window.pageYOffset / this.parallaxSpeed}px)`;
+    this.nodes.slideshow.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 }
 

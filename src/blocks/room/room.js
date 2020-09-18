@@ -3,23 +3,25 @@ import 'slick-carousel/slick/slick.min';
 import 'slick-carousel/slick/slick.css';
 
 class Room {
-  constructor($node) {
-    this.$node = $node;
-    this._findNodes();
-    this._createSlider();
+  constructor(node) {
+    this._initNodes(node);
+    this._initSlider();
   }
 
-  // находит указанные дочерние элементы корневого элемента
-  _findNodes() {
-    this.$slider = this.$node.find('.room__slider');
+  // инициализирует узлы, необходимые для дальнейшей работы
+  _initNodes(node) {
+    this.nodes = {
+      root: node,
+      $slider: $(node).find('.room__slider'),
+    };
   }
 
-  // создаёт слайдер
-  _createSlider() {
-    this.$slider.slick({
+  // инициализирует слайдер
+  _initSlider() {
+    this.nodes.$slider.slick({
       dots: true,
     });
   }
 }
 
-$('.room').each((_i, node) => new Room($(node)));
+document.querySelectorAll('.room').forEach((node) => new Room(node));
