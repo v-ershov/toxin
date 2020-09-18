@@ -38,7 +38,7 @@
     }
   }
 
-  &__svg--active > &__circle {
+  &__svg--active &__circle {
     stroke-dasharray: var(--array);
     stroke-dashoffset: var(--offset);
   }
