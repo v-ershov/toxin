@@ -24,7 +24,7 @@
   font-size: rem(12);
   font-family: $font-family-primary;
   line-height: $line-height-secondary;
-  transition: color $time-fast;
+  transition: color $time-primary;
 
   &::before {
     position: absolute;
@@ -39,7 +39,7 @@
     background-color: $color-white;
     content: '';
     opacity: 0;
-    transition: opacity $time-fast;
+    transition: opacity $time-primary;
     transform: translate(-50%, -50%);
   }
 
@@ -95,7 +95,7 @@
     border-radius: 0;
     background-image: none;
     color: $color-primary;
-    transition: opacity $time-fast;
+    transition: opacity $time-primary;
 
     &::before,
     &::after {

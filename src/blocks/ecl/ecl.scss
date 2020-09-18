@@ -15,7 +15,7 @@
       top: 50%;
       right: rem(10);
       content: 'expand_more';
-      transition: transform $time-medium;
+      transition: transform $time-primary;
       transform: translateY(-50%);
 
       @include material-icons(rem(24), $color-gray-50p);
@@ -38,9 +38,9 @@
     list-style-type: none;
     opacity: 0;
     transition:
-      margin-top $time-slow,
-      max-height $time-medium,
-      opacity $time-medium;
+      margin-top $time-primary,
+      max-height $time-primary,
+      opacity $time-primary;
   }
 
   &--active &__list {

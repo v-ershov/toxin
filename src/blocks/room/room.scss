@@ -4,8 +4,8 @@
   background-color: $color-white;
   box-shadow: $shadow-primary;
   transition:
-    box-shadow $time-fast,
-    transform $time-fast;
+    box-shadow $time-primary,
+    transform $time-primary;
 
   &:hover {
     box-shadow: $shadow-secondary;
@@ -72,13 +72,13 @@
   border: 0;
   background: linear-gradient(90deg, rgba($color-black, 0.5) 0%, rgba($color-black, 0) 100%);
   opacity: 0;
-  transition: opacity $time-fast;
+  transition: opacity $time-primary;
 
   @include hidden-text;
 
   &::before {
     content: 'expand_more';
-    transition: transform $time-fast;
+    transition: transform $time-primary;
     transform: rotate(90deg);
 
     @include material-icons(rem(24), $color-white);
@@ -127,7 +127,7 @@
       background-color: transparent;
       box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
       transition:
-        border-width $time-fast,
+        border-width $time-primary,
         background-color 0.01s;
 
       @include hidden-text;
@@ -137,8 +137,8 @@
       border-width: rem(3.75);
       background-color: $color-white;
       transition:
-        border-width $time-fast,
-        background-color 0.01s $time-fastest;
+        border-width $time-primary,
+        background-color 0.01s #{$time-primary * 0.85};
     }
   }
 }

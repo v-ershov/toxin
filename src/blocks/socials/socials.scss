@@ -10,7 +10,7 @@
 
   &__link {
     display: block;
-    transition: opacity $time-fast;
+    transition: opacity $time-primary;
 
     @include hidden-text;
 

@@ -21,8 +21,8 @@
 
   &__circle {
     transition:
-      opacity $time-fast,
-      stroke-width $time-fast,
+      opacity $time-primary,
+      stroke-width $time-primary,
       stroke-dasharray var(--duration),
       stroke-dashoffset var(--duration);
     stroke: var(--stroke);
@@ -80,15 +80,15 @@
     line-height: 1.3;
     opacity: 0;
     transition:
-      visibility 0.01s #{$time-fast * 2},
-      opacity $time-fast $time-fast;
+      visibility 0.01s #{$time-primary * 2},
+      opacity $time-primary $time-primary;
     transform: translate(-5%, -125%);
     pointer-events: none;
 
     &--active {
       visibility: visible;
       opacity: 1;
-      transition: opacity $time-fast;
+      transition: opacity $time-primary;
     }
   }
 
@@ -137,7 +137,7 @@
     color: $color-gray-25p;
     font-size: rem(14);
     font-family: $font-family-primary;
-    transition: color $time-fast;
+    transition: color $time-primary;
 
     &::before,
     &::after {
@@ -157,7 +157,7 @@
     &::after {
       background-image: var(--gradient);
       opacity: 0;
-      transition: opacity $time-fast;
+      transition: opacity $time-primary;
     }
 
     &--active {

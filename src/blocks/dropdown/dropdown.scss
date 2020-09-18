@@ -3,16 +3,16 @@
 
   .field {
     &::before {
-      transition: color $time-fast;
+      transition: color $time-primary;
       will-change: color;
     }
   }
 
   .field__input {
     transition:
-      border-color $time-fast,
-      border-radius $time-fast $time-slow,
-      box-shadow $time-fast;
+      border-color $time-primary,
+      border-radius $time-primary #{$time-primary * 2},
+      box-shadow $time-primary;
     will-change:
       border-color,
       border-radius,
@@ -32,8 +32,8 @@
       border-radius: $radius-primary $radius-primary 0 0;
       box-shadow: $shadow-primary;
       transition:
-        border-color $time-fast,
-        box-shadow $time-fast;
+        border-color $time-primary,
+        box-shadow $time-primary;
     }
   }
 
@@ -53,10 +53,10 @@
     border-radius: 0 0 $radius-primary $radius-primary;
     background-color: $color-white;
     transition:
-      max-height $time-medium,
-      border-color $time-fast,
-      border-bottom-width $time-fastest $time-fast,
-      box-shadow $time-fast;
+      max-height $time-primary,
+      border-color $time-primary,
+      border-bottom-width 0.01s $time-primary,
+      box-shadow $time-primary;
     will-change:
       max-height,
       border-color,
@@ -71,9 +71,9 @@
     border-bottom-width: 1px;
     box-shadow: $shadow-primary;
     transition:
-      max-height $time-medium,
-      border-color $time-fast,
-      box-shadow $time-fast;
+      max-height $time-primary,
+      border-color $time-primary,
+      box-shadow $time-primary;
   }
 
   &--expanded &__content {
@@ -168,7 +168,7 @@
 
   &__button {
     &--reset {
-      transition: transform $time-fast;
+      transition: transform $time-primary;
       will-change: transform;
     }
 

@@ -61,11 +61,11 @@
     border-radius: rem(10);
     background-image: $gradient-primary;
     transition:
-      top $time-medium,
-      bottom $time-medium,
-      left $time-medium,
-      opacity $time-medium,
-      transform $time-medium;
+      top $time-primary,
+      bottom $time-primary,
+      left $time-primary,
+      opacity $time-primary,
+      transform $time-primary;
 
     &:nth-child(1) {
       top: 0;
@@ -112,7 +112,7 @@
       max-height: 0;
       background-color: $color-white;
       box-shadow: $shadow-primary;
-      transition: max-height $time-medium;
+      transition: max-height $time-primary;
     }
   }
 
@@ -157,7 +157,7 @@
       border-radius: 0 0 $radius-primary $radius-primary;
       background-color: $color-white;
       box-shadow: $shadow-primary;
-      transition: max-height $time-fast;
+      transition: max-height $time-primary;
 
       @include screen-lg {
         display: none;
@@ -209,7 +209,7 @@
     color: $color-gray-50p;
     text-decoration: none;
     white-space: nowrap;
-    transition: color $time-fast;
+    transition: color $time-primary;
 
     &:hover {
       color: $color-gray-100p;
@@ -228,8 +228,8 @@
         border-radius: 50%;
         content: 'expand_more';
         transition:
-          color $time-fast,
-          transform $time-fast;
+          color $time-primary,
+          transform $time-primary;
 
         @include material-icons(rem(24), $color-gray-50p);
 

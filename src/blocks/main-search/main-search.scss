@@ -10,8 +10,8 @@
       visibility: hidden;
       content: '';
       transition:
-        visibility 0.01s $time-medium,
-        background-color $time-medium;
+        visibility 0.01s $time-primary,
+        background-color $time-primary;
     }
   }
 
@@ -20,7 +20,7 @@
       &::before {
         visibility: visible;
         background-color: rgba($color-black, 0.55);
-        transition: background-color $time-medium;
+        transition: background-color $time-primary;
       }
     }
   }
@@ -48,9 +48,9 @@
     border-radius: 50%;
     background-image: $gradient-primary;
     transition:
-      top $time-medium,
-      right $time-medium;
-    animation: blink $time-slowest ease-in-out infinite;
+      top $time-primary,
+      right $time-primary;
+    animation: blink 1s ease-in-out infinite;
 
     @include hidden-text;
 
@@ -67,9 +67,9 @@
       right: 102.5%;
       visibility: hidden;
       transition:
-        top $time-fast,
-        right $time-fast,
-        visibility 0.01s $time-fast;
+        top $time-primary,
+        right $time-primary,
+        visibility 0.01s $time-primary;
     }
   }
 
@@ -86,10 +86,10 @@
     border-radius: $radius-primary;
     background-color: $color-white;
     transition:
-      top $time-medium,
-      bottom $time-medium,
-      width $time-medium,
-      transform $time-medium;
+      top $time-primary,
+      bottom $time-primary,
+      width $time-primary,
+      transform $time-primary;
     transform: translateX(-50%);
 
     &:nth-child(1) {
@@ -151,8 +151,8 @@
       padding: 0 rem(30);
       height: 100vh;
       transition:
-        left $time-medium,
-        box-shadow $time-medium $time-medium;
+        left $time-primary,
+        box-shadow $time-primary $time-primary;
     }
   }
 
@@ -160,7 +160,7 @@
     @include screen-xl {
       left: calc(100% - #{rem(324)});
       box-shadow: $shadow-form;
-      transition: left $time-medium;
+      transition: left $time-primary;
     }
   }
 
