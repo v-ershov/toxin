@@ -1,19 +1,20 @@
-- function getModifiers(classMain, modifiers) {
--   let result = '';
 -
--   if (modifiers.length !== 0) {
--     modifiers.forEach((mod) => {
--       result = `${result}${classMain}--${mod} `;
--     });
--   }
--
--   return result.slice(0, -1);
-- }
+  function getModifiers(classMain, modifiers) {
+    let result = '';
+
+    if (modifiers.length !== 0) {
+      modifiers.forEach((mod) => {
+        result = `${result}${classMain}--${mod} `;
+      });
+    }
+
+    return result.slice(0, -1);
+  }
 
 block vars
-  - var keywords = 'important, keywords';
-  - var description = 'short description';
-  - var title = 'Webpage Title';
+  - let keywords = 'important, keywords';
+  - let description = 'short description';
+  - let title = 'Webpage Title';
 
 doctype html
 html(lang='ru')
