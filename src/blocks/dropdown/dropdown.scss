@@ -4,7 +4,6 @@
   .field {
     &::before {
       transition: color $time-primary;
-      will-change: color;
     }
   }
 
@@ -13,10 +12,6 @@
       border-color $time-primary,
       border-radius $time-primary #{$time-primary * 2},
       box-shadow $time-primary;
-    will-change:
-      border-color,
-      border-radius,
-      box-shadow;
   }
 
   &--active,
@@ -57,11 +52,6 @@
       border-color $time-primary,
       border-bottom-width 0.01s $time-primary,
       box-shadow $time-primary;
-    will-change:
-      max-height,
-      border-color,
-      border-bottom-width,
-      box-shadow;
   }
 
   &--active &__content,
@@ -169,7 +159,6 @@
   &__button {
     &--reset {
       transition: transform $time-primary;
-      will-change: transform;
     }
 
     &--hidden {

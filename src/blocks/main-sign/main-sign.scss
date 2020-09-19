@@ -15,7 +15,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     transform: translateY(var(--translateY));
-    will-change: transform;
   }
 
   &__container {
