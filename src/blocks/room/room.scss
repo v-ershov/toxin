@@ -128,7 +128,7 @@
       box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
       transition:
         border-width $time-primary,
-        background-color 0.01s;
+        background-color 1ms;
 
       @include hidden-text;
     }
@@ -138,7 +138,7 @@
       background-color: $color-white;
       transition:
         border-width $time-primary,
-        background-color 0.01s #{$time-primary * 0.85};
+        background-color 1ms #{$time-primary * 0.85};
     }
   }
 }

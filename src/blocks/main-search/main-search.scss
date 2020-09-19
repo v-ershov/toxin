@@ -10,7 +10,7 @@
       visibility: hidden;
       content: '';
       transition:
-        visibility 0.01s $time-primary,
+        visibility 1ms $time-primary,
         background-color $time-primary;
     }
   }
@@ -69,7 +69,7 @@
       transition:
         top $time-primary,
         right $time-primary,
-        visibility 0.01s $time-primary;
+        visibility 1ms $time-primary;
     }
   }
 

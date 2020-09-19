@@ -24,7 +24,7 @@
     visibility: hidden;
     opacity: 0;
     transition:
-      visibility 0.01s $time-primary,
+      visibility 1ms $time-primary,
       opacity $time-primary,
       transform $time-primary;
     pointer-events: none;

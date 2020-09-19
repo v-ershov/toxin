@@ -50,7 +50,7 @@
     transition:
       max-height $time-primary,
       border-color $time-primary,
-      border-bottom-width 0.01s $time-primary,
+      border-bottom-width 1ms $time-primary,
       box-shadow $time-primary;
   }
 

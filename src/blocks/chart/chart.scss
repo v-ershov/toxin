@@ -80,7 +80,7 @@
     line-height: 1.3;
     opacity: 0;
     transition:
-      visibility 0.01s #{$time-primary * 2},
+      visibility 1ms #{$time-primary * 2},
       opacity $time-primary $time-primary;
     transform: translate(-5%, -125%);
     pointer-events: none;
