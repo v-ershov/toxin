@@ -58,6 +58,16 @@ module.exports = merge(common, {
         ],
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'image-webpack-loader',
+        enforce: 'pre',
+        options: {
+          webp: {
+            method: 6,
+          },
+        },
+      },
+      {
         test: /\.(jpe?g|png|gif)$/,
         include: paths.src.blocks,
         loader: 'url-loader',
@@ -77,11 +87,6 @@ module.exports = merge(common, {
           limit: 10240,
           generator: (content) => miniSvgDataUri(content.toString()),
         },
-      },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/,
-        loader: 'image-webpack-loader',
-        enforce: 'pre',
       },
     ],
   },
