@@ -42,7 +42,7 @@ mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list
     ._content(style='--height: 100vh;')
       ul._list
         each item in list
-          li._item(data-words= (item[3].length !== 0) ? `${item[3]}, ${item[5]}, ${item[6]}` : false)
+          li._item(data-words=(item[3].length !== 0) ? `${item[3]}, ${item[5]}, ${item[6]}` : false)
             span._title
               | #{item[4]}
             span._controls
