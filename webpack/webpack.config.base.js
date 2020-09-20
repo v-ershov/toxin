@@ -47,15 +47,6 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
-        include: paths.src.content,
-        loader: 'file-loader',
-        options: {
-          name: '[folder]/[name].[ext]',
-          outputPath: 'images/content',
-        },
-      },
-      {
         test: /\.(woff2?|ttf|svg|eot|otf)$/,
         include: paths.src.fonts,
         loader: 'file-loader',
@@ -65,7 +56,16 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot|otf)$/,
+        test: /\.(jpe?g|png|gif)$/,
+        include: paths.src.content,
+        loader: 'file-loader',
+        options: {
+          name: '[folder]/[name].[ext]',
+          outputPath: 'images/content',
+        },
+      },
+      {
+        test: /\.(woff2?|ttf|svg|eot|otf|jpe?g|png|gif)$/,
         include: /node_modules/,
         loader: 'file-loader',
         options: {
