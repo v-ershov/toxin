@@ -70,7 +70,7 @@ mixin chart(options)
                 stop._stop(offset='0', stop-color=item.gradient.color1)
                 stop._stop(offset='1', stop-color=item.gradient.color2)
 
-          - const sum = sections.reduce((a , b) => a + b.value, 0);
+          - const sum = sections.reduce((sum , current) => sum + current.value, 0);
           - let offset = -gap / 2;
           each item in sections
             - const percent = (item.value / sum) * 100;
