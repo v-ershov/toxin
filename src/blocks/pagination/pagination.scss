@@ -3,7 +3,6 @@
 
   &__buttons {
     display: flex;
-    margin-bottom: rem(10);
   }
 
   &__button {
@@ -90,6 +89,7 @@
   }
 
   &__text {
+    margin-top: rem(10);
     text-align: center;
   }
 }

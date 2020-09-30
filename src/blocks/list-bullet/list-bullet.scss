@@ -5,7 +5,11 @@
 
   &__item {
     position: relative;
-    margin-bottom: rem(10);
+    margin-top: rem(10);
+
+    &:first-child {
+      margin-top: 0;
+    }
 
     &::before {
       position: absolute;
@@ -16,10 +20,6 @@
       border-radius: 50%;
       background-color: $color-gray-25p;
       content: '';
-    }
-
-    &:last-child {
-      margin-bottom: 0;
     }
   }
 

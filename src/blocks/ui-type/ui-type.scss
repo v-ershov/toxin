@@ -3,7 +3,6 @@
 
   &__tag {
     flex-shrink: 0;
-    margin-right: rem(30);
     min-width: rem(70);
     color: $color-gray-25p;
     text-align: right;
@@ -25,6 +24,8 @@
   }
 
   &__text {
+    margin-left: rem(30);
+
     &--h1 {
       @include heading('h1');
     }

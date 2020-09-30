@@ -78,8 +78,6 @@
   }
 
   &__logo {
-    margin-bottom: rem(20);
-
     &--adaptive {
       display: none;
 
@@ -90,7 +88,7 @@
   }
 
   &__text {
-    margin: 0;
+    margin: rem(20) 0 0 0;
 
     &--center {
       text-align: center;

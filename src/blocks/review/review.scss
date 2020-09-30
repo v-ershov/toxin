@@ -1,19 +1,24 @@
 .review {
   &__row {
     display: flex;
-    margin-bottom: rem(10);
+    margin-top: rem(10);
 
-    &:last-child {
-      margin-bottom: 0;
+    &:first-child {
+      margin-top: 0;
     }
   }
 
   &__cell {
+    margin-left: rem(10);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
     &--small {
       display: flex;
       flex-shrink: 0;
       justify-content: center;
-      margin-right: rem(10);
       width: rem(48);
       height: rem(48);
     }

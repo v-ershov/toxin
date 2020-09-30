@@ -9,12 +9,15 @@
 
   &__item {
     display: flex;
-    margin-bottom: rem(18);
+    margin-top: rem(18);
     padding: rem(2) rem(25) rem(20) 0;
     border-bottom: 1px solid $color-gray-10p;
 
+    &:first-child {
+      margin-top: 0;
+    }
+
     &:last-child {
-      margin-bottom: 0;
       padding-bottom: 0;
       border-bottom: 0;
     }
@@ -29,11 +32,14 @@
 
   &__icon {
     flex-shrink: 0;
-    margin-right: rem(10);
     background-image: $gradient-primary;
     background-clip: text;
     color: transparent;
     font-size: rem(48);
+  }
+
+  &__info {
+    margin-left: rem(10);
   }
 
   &__title {

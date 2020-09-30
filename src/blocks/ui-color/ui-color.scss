@@ -4,15 +4,10 @@
 
   &__box {
     flex-shrink: 0;
-    margin-right: rem(40);
     width: rem(70);
     height: rem(70);
     border-radius: rem(6);
     background-color: $color-black;
-
-    @include screen-lg {
-      margin-right: rem(30);
-    }
 
     &--gray-100p {
       background-color: $color-gray-100p;
@@ -44,11 +39,16 @@
   }
 
   &__info {
+    margin-left: rem(40);
     color: $color-gray-100p;
     white-space: nowrap;
     font-size: rem(19);
     font-family: $font-family-secondary;
     line-height: 1.55;
+
+    @include screen-lg {
+      margin-left: rem(30);
+    }
   }
 
   &__name {

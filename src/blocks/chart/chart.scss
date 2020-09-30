@@ -104,8 +104,7 @@
 
     &::before {
       display: block;
-      margin-right: rem(6);
-      margin-left: rem(2);
+      margin: 0 rem(6) 0 rem(2);
       width: rem(7);
       height: rem(7);
       border-radius: 50%;
