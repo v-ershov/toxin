@@ -24,8 +24,8 @@ module.exports = merge(common, {
           {
             loader: 'postcss-loader',
             options: {
-              config: {
-                path: paths.postcss.prod,
+              postcssOptions: {
+                config: paths.postcss.prod,
               },
             },
           },
@@ -50,8 +50,8 @@ module.exports = merge(common, {
           {
             loader: 'postcss-loader',
             options: {
-              config: {
-                path: paths.postcss.prod,
+              postcssOptions: {
+                config: paths.postcss.prod,
               },
             },
           },
