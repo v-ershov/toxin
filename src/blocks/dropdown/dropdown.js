@@ -104,7 +104,7 @@ class Dropdown {
         if (words) {
           words = words.split(', ');
 
-          text.push(`${num} ${helpers.shit(num, words[0], words[1], words[2])}`);
+          text.push(`${num} ${helpers.getWord(num, words)}`);
         } else {
           sum += num;
         }
@@ -114,7 +114,7 @@ class Dropdown {
     if (sum > 0) {
       const words = this.nodes.input.dataset.words.split(', ');
 
-      text.unshift(`${sum} ${helpers.shit(sum, words[0], words[1], words[2])}`);
+      text.unshift(`${sum} ${helpers.getWord(sum, words)}`);
     }
 
     this.nodes.input.value = `${text.join(', ')}`;

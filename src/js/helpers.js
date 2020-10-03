@@ -1,4 +1,4 @@
-// ############################################################################################################
+// возвращает реальную высоту указанного узла (в rem)
 // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
 function getHeight(node) {
   const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -15,32 +15,27 @@ function getScrollbarWidth() {
   return window.innerWidth - document.body.clientWidth;
 }
 
-// https://webpack.js.org/guides/dependency-management/
-function importAll(r) {
-  r.keys().forEach(r);
-}
-
-// ############################################################################################################
-function shit(value, word1, word2, word3) {
-  const lastDigit = value % 10;
-  const lastTwoDigits = value % 100;
+// возвращает одно из указанных слов в зависимости от последней цифры
+// указанного числа для правильного склонения слов
+function getWord(num, words) {
+  const lastDigit = num % 10;
+  const lastTwoDigits = num % 100;
 
   if (lastDigit === 0
     || (lastDigit >= 5 && lastDigit <= 9)
     || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
-    return word3;
+    return words[2];
   }
 
   if (lastDigit >= 2 && lastDigit <= 4) {
-    return word2;
+    return words[1];
   }
 
-  return word1;
+  return words[0];
 }
 
 export default {
   getHeight,
   getScrollbarWidth,
-  importAll,
-  shit,
+  getWord,
 };
