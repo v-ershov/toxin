@@ -12,6 +12,7 @@
     }
 
     &::before {
+      content: '';
       position: absolute;
       top: rem(7);
       left: rem(-20);
@@ -19,7 +20,6 @@
       height: rem(10);
       border-radius: 50%;
       background-color: $color-gray-25p;
-      content: '';
     }
   }
 

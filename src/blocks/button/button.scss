@@ -2,8 +2,8 @@
   position: relative;
   z-index: 5;
   display: block;
-  padding: rem(12.5) rem(17);
   min-width: rem(99);
+  padding: rem(12.5) rem(17);
   border: 2px solid transparent;
   border-radius: rem(22);
   background-color: transparent;
@@ -17,30 +17,30 @@
     padding-box,
     border-box;
   color: $color-primary;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
   font-weight: bold;
   font-size: rem(12);
   font-family: $font-family-primary;
   line-height: $line-height-secondary;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
   transition: color $time-primary;
 
   &::before {
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     z-index: -5;
-    box-sizing: content-box;
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
     border-radius: inherit;
     background-color: $color-white;
-    content: '';
+    transform: translate(-50%, -50%);
+    box-sizing: content-box;
     opacity: 0;
     transition: opacity $time-primary;
-    transform: translate(-50%, -50%);
   }
 
   &:hover,
@@ -58,23 +58,23 @@
   }
 
   &--compact {
+    min-width: auto;
     padding-top: rem(7.5);
     padding-bottom: rem(7.5);
-    min-width: auto;
   }
 
   &--wide {
+    width: 100%;
     padding-right: rem(44);
     padding-left: rem(44);
-    width: 100%;
 
     &::after {
+      content: 'arrow_forward';
       position: absolute;
       top: 50%;
       right: rem(10);
       background-image: $gradient-primary;
       background-clip: text;
-      content: 'arrow_forward';
       transform: translateY(-50%);
 
       @include material-icons(rem(24), transparent);
@@ -88,9 +88,9 @@
   }
 
   &--bodyless {
-    padding: 0;
-    min-width: auto;
     width: auto;
+    min-width: auto;
+    padding: 0;
     border: 0;
     border-radius: 0;
     background-image: none;

@@ -13,12 +13,12 @@
   }
 
   &__section {
-    margin: 0 0 0 rem(40);
     max-width: rem(410);
+    margin: 0 0 0 rem(40);
 
     @include screen-md {
-      margin: rem(80) 0 0;
       width: 100%;
+      margin: rem(80) 0 0;
     }
 
     &:first-of-type {

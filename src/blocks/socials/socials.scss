@@ -15,15 +15,15 @@
     @include hidden-text;
 
     &::before {
+      content: '';
       display: block;
-      padding: 1px;
       width: rem(24);
       height: rem(24);
+      padding: 1px;
       background-position: center;
       background-origin: content-box;
       background-size: contain;
       background-repeat: no-repeat;
-      content: '';
     }
 
     &:hover {

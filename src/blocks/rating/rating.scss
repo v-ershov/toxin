@@ -5,9 +5,9 @@
     @include hidden-text;
 
     &::before {
+      content: 'star';
       background-image: $gradient-primary;
       background-clip: text;
-      content: 'star';
 
       @include material-icons(rem(24), transparent);
     }

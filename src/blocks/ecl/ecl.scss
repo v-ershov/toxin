@@ -2,8 +2,8 @@
   &__button {
     position: relative;
     display: block;
-    padding: 0;
     width: 100%;
+    padding: 0;
     border: 0;
     background-color: transparent;
     text-align: left;
@@ -11,12 +11,12 @@
     @include heading('h3');
 
     &::before {
+      content: 'expand_more';
       position: absolute;
       top: 50%;
       right: rem(10);
-      content: 'expand_more';
-      transition: transform $time-primary;
       transform: translateY(-50%);
+      transition: transform $time-primary;
 
       @include material-icons(rem(24), $color-gray-50p);
     }
@@ -32,9 +32,9 @@
 
   &__list {
     overflow: hidden;
+    max-height: 0;
     margin: 0;
     padding: 0;
-    max-height: 0;
     list-style-type: none;
     opacity: 0;
     transition:
@@ -44,8 +44,8 @@
   }
 
   &--active &__list {
-    margin-top: rem(15);
     max-height: var(--height);
+    margin-top: rem(15);
     opacity: 1;
   }
 

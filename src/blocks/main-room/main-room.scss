@@ -1,9 +1,6 @@
 .main-room {
   &__gallery {
     display: grid;
-    min-height: rem(485);
-    height: 50vh;
-    background-color: $color-gray-5p;
     grid-template-rows:
       1fr
       1fr;
@@ -11,10 +8,13 @@
       1fr
       1fr
       1fr;
+    height: 50vh;
+    min-height: rem(485);
+    background-color: $color-gray-5p;
 
     @include screen-xl {
-      min-height: auto;
       height: 50vw;
+      min-height: auto;
     }
   }
 
@@ -30,10 +30,10 @@
 
   &__img {
     position: absolute;
+    object-fit: cover;
     width: 100%;
     height: 100%;
     transition: filter $time-primary;
-    object-fit: cover;
 
     &:hover {
       filter: contrast(115%) brightness(105%);
@@ -124,8 +124,8 @@
 
   &__aside {
     flex-shrink: 0;
-    margin: 0 0 0 rem(70);
     max-width: rem(380);
+    margin: 0 0 0 rem(70);
 
     @include screen-xxl {
       margin: 0 0 0 rem(40);

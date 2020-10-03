@@ -12,9 +12,9 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-content: space-between;
+    max-height: rem(1200);
     margin: rem(-40) 0 0;
     padding: 0;
-    max-height: rem(1200);
     list-style-type: none;
 
     @include screen-xxl {

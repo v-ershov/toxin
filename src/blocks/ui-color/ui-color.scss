@@ -41,10 +41,10 @@
   &__info {
     margin-left: rem(40);
     color: $color-gray-100p;
-    white-space: nowrap;
     font-size: rem(19);
     font-family: $font-family-secondary;
     line-height: 1.55;
+    white-space: nowrap;
 
     @include screen-lg {
       margin-left: rem(30);

@@ -6,6 +6,7 @@
   background-color: $color-white;
 
   &::before {
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -13,7 +14,6 @@
     left: 0;
     z-index: -5;
     box-shadow: $shadow-primary;
-    content: '';
   }
 
   &__container {
@@ -33,10 +33,10 @@
   &__hamburger {
     display: none;
     order: 1;
-    margin-left: rem(20);
-    padding: 0;
     width: rem(36);
     height: rem(28);
+    margin-left: rem(20);
+    padding: 0;
     border: 0;
     background-color: transparent;
 
@@ -124,9 +124,9 @@
 
   &__list {
     display: flex;
+    min-width: 100%;
     margin: 0;
     padding: 0;
-    min-width: 100%;
     list-style-type: none;
 
     @include screen-md {
@@ -181,12 +181,12 @@
 
       &:hover {
         &::before {
+          content: '';
           position: absolute;
           top: 100%;
           right: 0;
           left: 0;
           height: rem(25);
-          content: '';
 
           @include screen-lg {
             content: none;
@@ -224,9 +224,9 @@
       display: flex;
 
       &::after {
+        content: 'expand_more';
         overflow: hidden;
         border-radius: 50%;
-        content: 'expand_more';
         transition:
           color $time-primary,
           transform $time-primary;

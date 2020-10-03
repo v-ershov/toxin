@@ -29,12 +29,12 @@
   }
 
   &__img {
+    object-fit: cover;
     width: inherit;
     height: inherit;
     border: 2px solid $color-white;
     border-radius: 50%;
     box-shadow: $shadow-secondary;
-    object-fit: cover;
   }
 
   &__author {

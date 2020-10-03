@@ -13,8 +13,8 @@
   }
 
   &__slide {
-    height: rem(150);
     object-fit: cover;
+    height: rem(150);
   }
 
   &__info {
@@ -67,8 +67,8 @@
   bottom: 0;
   z-index: 5;
   display: block;
-  padding: 0;
   width: rem(42);
+  padding: 0;
   border: 0;
   background: linear-gradient(90deg, rgba($color-black, 0.5) 0%, rgba($color-black, 0) 100%);
   opacity: 0;
@@ -78,8 +78,8 @@
 
   &::before {
     content: 'expand_more';
-    transition: transform $time-primary;
     transform: rotate(90deg);
+    transition: transform $time-primary;
 
     @include material-icons(rem(24), $color-white);
   }
@@ -119,9 +119,9 @@
 
     button {
       display: block;
-      padding: 0;
       width: rem(7.5);
       height: rem(7.5);
+      padding: 0;
       border: 1px solid $color-white;
       border-radius: 50%;
       background-color: transparent;

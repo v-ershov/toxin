@@ -1,8 +1,8 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
   outline: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -54,11 +54,11 @@ button[disabled] {
 
 .visually-hidden {
   position: absolute;
-  visibility: hidden;
   clip: rect(0 0 0 0);
-  margin: -1px;
   width: 1px;
   height: 1px;
+  margin: -1px;
+  visibility: hidden;
 }
 
 .material-icons {

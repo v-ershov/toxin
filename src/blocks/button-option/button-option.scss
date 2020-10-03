@@ -19,6 +19,7 @@
 
     &::before,
     &::after {
+      content: '';
       position: absolute;
       top: 50%;
       left: rem(3);
@@ -26,11 +27,10 @@
       height: rem(12);
       border-radius: 50%;
       background-color: $color-gray-25p;
-      content: '';
+      transform: translateY(-50%);
       transition:
         left $time-primary,
         opacity $time-primary;
-      transform: translateY(-50%);
     }
 
     &::after {
@@ -77,11 +77,11 @@
       height: 45.675%;
       border-radius: 0;
       background-image: $gradient-primary;
-      opacity: 0;
-      transition: opacity $time-primary;
       transform:
         translate(-50%, -50%)
         rotate(45deg);
+      opacity: 0;
+      transition: opacity $time-primary;
       clip-path: polygon(0 100%, 100% 100%, 100% 0, 66.66% 0, 66.66% 75%, 0 75%);
     }
 
@@ -94,11 +94,11 @@
   &--checkbox-rich &__input:checked + &__box {
     &::before {
       left: 50%;
-      opacity: 1;
-      transition: none;
       animation-name: checkbox;
       animation-duration: $time-primary;
       animation-fill-mode: forwards;
+      opacity: 1;
+      transition: none;
     }
   }
 
@@ -121,12 +121,12 @@
       height: 0;
       border-radius: 50%;
       background-image: $gradient-primary;
+      transform: translate(-50%, -50%);
       opacity: 0;
       transition:
         width $time-primary,
         height $time-primary,
         opacity $time-primary;
-      transform: translate(-50%, -50%);
     }
 
     &::after {

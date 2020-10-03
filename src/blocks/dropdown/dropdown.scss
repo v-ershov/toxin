@@ -96,9 +96,9 @@
   &__title,
   &__number {
     color: $color-gray-100p;
-    text-transform: uppercase;
     font-weight: bold;
     font-size: rem(12);
+    text-transform: uppercase;
     cursor: default;
   }
 
@@ -110,9 +110,9 @@
 
   &__spinner {
     flex-shrink: 0;
-    padding: 0;
     width: rem(30);
     height: rem(30);
+    padding: 0;
     border: 1px solid $color-gray-25p;
     border-radius: 50%;
     background-color: transparent;
@@ -136,12 +136,12 @@
 
   &__number {
     flex-shrink: 0;
-    padding: 0 0 1px 0;
     width: rem(32);
+    padding: 0 0 1px 0;
     border: 0;
     background-color: transparent;
-    text-align: center;
     font-family: $font-family-primary;
+    text-align: center;
     -moz-appearance: textfield;
 
     &::-webkit-outer-spin-button,

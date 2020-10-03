@@ -1,6 +1,7 @@
 .main-search {
   @include screen-xl {
     &::before {
+      content: '';
       position: fixed;
       top: 0;
       right: 0;
@@ -8,7 +9,6 @@
       left: 0;
       z-index: 500;
       visibility: hidden;
-      content: '';
       transition:
         visibility 1ms $time-primary,
         background-color $time-primary;
@@ -18,8 +18,8 @@
   &--filter {
     @include screen-xl {
       &::before {
-        visibility: visible;
         background-color: rgba($color-black, 0.55);
+        visibility: visible;
         transition: background-color $time-primary;
       }
     }
@@ -41,16 +41,16 @@
     right: 81.5%;
     z-index: 510;
     display: none;
-    padding: rem(11);
     width: rem(44);
     height: rem(44);
+    padding: rem(11);
     border: 0;
     border-radius: 50%;
     background-image: $gradient-primary;
+    animation: blink 1s ease-in-out infinite;
     transition:
       top $time-primary,
       right $time-primary;
-    animation: blink 1s ease-in-out infinite;
 
     @include hidden-text;
 
@@ -85,12 +85,12 @@
     height: 14%;
     border-radius: $radius-primary;
     background-color: $color-white;
+    transform: translateX(-50%);
     transition:
       top $time-primary,
       bottom $time-primary,
       width $time-primary,
       transform $time-primary;
-    transform: translateX(-50%);
 
     &:nth-child(1) {
       top: 10%;
@@ -137,8 +137,8 @@
     top: $height-header;
     flex-shrink: 0;
     overflow-y: scroll;
-    padding-right: rem(26);
     height: calc(100vh - #{$height-header});
+    padding-right: rem(26);
     background-color: $color-white;
     scrollbar-width: thin;
 
@@ -148,8 +148,8 @@
       bottom: 0;
       left: 100%;
       z-index: 505;
-      padding: 0 rem(30);
       height: 100vh;
+      padding: 0 rem(30);
       transition:
         left $time-primary,
         box-shadow $time-primary $time-primary;
@@ -165,8 +165,8 @@
   }
 
   &__filter {
-    padding: rem(30) 0 rem(100);
     width: rem(266);
+    padding: rem(30) 0 rem(100);
 
     @include screen-xl {
       padding-top: rem(70);
@@ -178,8 +178,8 @@
     padding: rem(30) 0 rem(70);
 
     @include screen-xl {
-      margin-left: 0;
       min-height: 100vh;
+      margin-left: 0;
     }
   }
 

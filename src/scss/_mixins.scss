@@ -37,12 +37,12 @@
 
 // Container
 @mixin container {
+  width: 100%;
+  max-width: rem(1220);
   margin-right: auto;
   margin-left: auto;
   padding-right: rem(30);
   padding-left: rem(30);
-  max-width: rem(1220);
-  width: 100%;
 
   @include screen-md {
     padding-right: rem(24);
@@ -68,9 +68,9 @@
   }
 
   @if $size == 'h3' {
-    text-transform: uppercase;
     font-size: rem(12);
     font-family: $font-family-primary;
+    text-transform: uppercase;
   }
 
   color: $color-gray-100p;
@@ -96,19 +96,19 @@
 @mixin material-icons($font-size: $font-size-primary, $color: $color-primary) {
   display: inline-block;
   color: $color;
-  text-transform: none;
-  white-space: nowrap;
-  word-wrap: normal;
-  letter-spacing: normal;
   font-weight: normal;
   font-style: normal;
   font-size: $font-size;
   font-family: 'Material Icons', sans-serif;
   line-height: 1;
-  direction: ltr;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
 
   /* My extra properties */
   user-select: none;
+  direction: ltr;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
