@@ -1,15 +1,20 @@
-const webpack = require('webpack');
-const fs = require('fs');
-const pugBem = require('pug-bem');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const paths = require('./webpack.paths.js');
+// https://webpack.js.org/configuration/configuration-languages/#typescript
 
-module.exports = {
+import webpack from 'webpack';
+import fs from 'fs';
+
+// @ts-ignore
+import pugBem from 'pug-bem';
+
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import paths from './paths';
+
+const config: webpack.Configuration = {
   entry: {
     app: [
       '@babel/polyfill',
-      `${paths.src.js}/index.js`,
+      `${paths.src.ts}/index.ts`,
     ],
   },
   output: {
@@ -20,6 +25,7 @@ module.exports = {
     alias: {
       '~': paths.context.src,
     },
+    extensions: ['.ts', '.js', '.sass'],
   },
   stats: {
     children: false,
@@ -33,15 +39,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        use: [
+          'babel-loader',
+          'ts-loader',
+        ],
       },
       {
         test: /\.pug$/,
         loader: 'pug-loader',
         options: {
-          plugins: pugBem,
+          plugins: [pugBem],
           pretty: true,
           root: paths.context.src,
         },
@@ -70,8 +79,8 @@ module.exports = {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: (url, resourcePath) => {
-            const path = resourcePath.split('\\');
+          outputPath: (url: string, resourcePath: string): string => {
+            const path: string[] = resourcePath.split('\\');
             return `plugin-files/${path[path.indexOf('node_modules') + 1]}/${url}`;
           },
         },
@@ -79,11 +88,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProgressPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
     }),
-    new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     ...fs.readdirSync(paths.src.pages).map((page) => new HtmlWebpackPlugin({
       filename: `${page.replace(/\.pug/, '.html')}`,
@@ -91,3 +100,5 @@ module.exports = {
     })),
   ],
 };
+
+export default config;

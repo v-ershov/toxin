@@ -1,4 +1,4 @@
-const path = require('path');
+import path from 'path';
 
 const context = {
   src: path.resolve('src'),
@@ -10,19 +10,21 @@ const src = {
   blocks: `${context.src}\\blocks`,
   content: `${context.src}\\content`,
   fonts: `${context.src}\\fonts`,
-  js: `${context.src}\\js`,
   pug: `${context.src}\\pug`,
   pages: `${context.src}\\pug\\pages`,
   scss: `${context.src}\\scss`,
+  ts: `${context.src}\\ts`,
 };
 
 const postcss = {
-  dev: `${context.postcss}\\dev`,
-  prod: `${context.postcss}\\prod`,
+  dev: `${context.postcss}\\postcss.dev.js`,
+  prod: `${context.postcss}\\postcss.prod.js`,
 };
 
-module.exports = {
+const paths = {
   context,
   src,
   postcss,
 };
+
+export default paths;

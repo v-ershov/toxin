@@ -1,10 +1,7 @@
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-
 module.exports = {
   plugins: [
-    autoprefixer,
-    cssnano({
+    require('autoprefixer'),
+    require('cssnano')({
       preset: [
         'default', {
           discardComments: {
