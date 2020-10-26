@@ -1,64 +1,64 @@
 //- Options:
-//- 🞂 duration: number   - продолжительность анимации диаграммы
+//- 🞂 title: string      - заголовок после суммы значений секций диаграммы
 //- 🞂 gap: number        - размер пробела между секциями диаграммы
+//- 🞂 duration: number   - продолжительность анимации диаграммы
 //- 🞂 sections: [{       - секции диаграммы
+//-   🞂 name: string     - имя секции
+//-   🞂 value: number    - значение секции
 //-   🞂 gradient: {      - градиент секции
 //-     🞂 id: string     - ID градиента
 //-     🞂 color1: string - начальный цвет градиента
 //-     🞂 color2: string - конечный цвет градиента
 //-     }
-//-   🞂 name: string     - имя секции
-//-   🞂 value: number    - значение секции
 //-   }]
-//- 🞂 title: string      - заголовок диаграммы после суммы значений секций
 
 mixin chart(options)
   -
     const defaults = {
-      duration: 500,
+      title: 'голосов',
       gap: 0.6,
+      duration: 500,
       sections: [
         {
+          name: 'Разочарован',
+          value: 0,
           gradient: {
             id: 'bad',
             color1: '#919191',
             color2: '#3d4975',
           },
-          name: 'Разочарован',
-          value: 0,
         },
         {
+          name: 'Удовлетворительно',
+          value: 65,
           gradient: {
             id: 'average',
             color1: '#bc9cff',
             color2: '#8ba4f9',
           },
-          name: 'Удовлетворительно',
-          value: 65,
         },
         {
+          name: 'Хорошо',
+          value: 65,
           gradient: {
             id: 'good',
             color1: '#6fcf97',
             color2: '#66d2ea',
           },
-          name: 'Хорошо',
-          value: 65,
         },
         {
+          name: 'Великолепно',
+          value: 130,
           gradient: {
             id: 'excellent',
             color1: '#ffe39c',
             color2: '#ffba9c',
           },
-          name: 'Великолепно',
-          value: 130,
         },
       ],
-      title: 'голосов',
     };
 
-  - const { duration, gap, sections, title } = Object.assign(defaults, options);
+  - const { title, gap, duration, sections } = Object.assign(defaults, options);
 
   .chart
     ._container
