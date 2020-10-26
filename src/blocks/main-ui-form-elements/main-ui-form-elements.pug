@@ -267,10 +267,21 @@ mixin main-ui-form-elements
           | Advantages
         ul._list
           li._item.-width-280
-            +advantages([
-              ['insert_emoticon', 'Комфорт', 'Шумопоглощающие стены'],
-              ['location_city', 'Удобство', 'Окно в каждой из спален'],
-            ], ['ui'])
+            +advantages({
+              list: [
+                {
+                  icon: 'insert_emoticon',
+                  title: 'Комфорт',
+                  desc: 'Шумопоглощающие стены',
+                },
+                {
+                  icon: 'location_city',
+                  title: 'Удобство',
+                  desc: 'Окно в каждой из спален',
+                },
+              ],
+              modifiers: ['ui'],
+            })
       section._section.-reviews
         h2._h2.visually-hidden
           | Reviews
