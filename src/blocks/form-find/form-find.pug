@@ -26,6 +26,10 @@ mixin form-find
         [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
       ])
     ._button
-      +button('Подобрать номер', ['fill', 'wide'], {
-        'type': 'submit',
+      +button({
+        text: 'Подобрать номер',
+        modifiers: ['fill', 'wide'],
+        attrs: {
+          type: 'submit',
+        },
       })

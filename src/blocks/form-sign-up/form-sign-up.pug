@@ -51,12 +51,19 @@ mixin form-sign-up
     ._row
       +button-option('Получать спецпредложения')
     ._button
-      +button('Перейти к оплате', ['fill', 'wide'], {
-        'type': 'submit',
+      +button({
+        text: 'Перейти к оплате',
+        modifiers: ['fill', 'wide'],
+        attrs: {
+          type: 'submit',
+        },
       })
     footer._footer
       | Уже есть аккаунт на Toxin
       ._button.-flex
-        +button('Войти', [], {
-          'href': '/',
+        +button({
+          text: 'Войти',
+          attrs: {
+            href: '/',
+          },
         })

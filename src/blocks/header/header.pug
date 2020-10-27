@@ -59,10 +59,18 @@ mixin header(isLogin=false)
             | Юлий Цезарь
       else
         ._button
-          +button('Войти', ['compact'], {
-            'href': '/',
+          +button({
+            text: 'Войти',
+            modifiers: ['compact'],
+            attrs: {
+              href: '/',
+            },
           })
         ._button.-sign-up
-          +button('Зарегистрироваться', ['compact', 'fill'], {
-            'href': '/',
+          +button({
+            text: 'Зарегистрироваться',
+            modifiers: ['compact', 'fill'],
+            attrs: {
+              href: '/',
+            },
           })

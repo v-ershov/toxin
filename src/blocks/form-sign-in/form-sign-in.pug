@@ -22,12 +22,19 @@ mixin form-sign-in
         'required': true,
       })
     ._button
-      +button('Войти', ['fill', 'wide'], {
-        'type': 'submit',
+      +button({
+        text: 'Войти',
+        modifiers: ['fill', 'wide'],
+        attrs: {
+          type: 'submit',
+        },
       })
     footer._footer
       | Нет аккаунта на Toxin?
       ._button.-flex
-        +button('Создать', [], {
-          'href': '/',
+        +button({
+          text: 'Создать',
+          attrs: {
+            href: '/',
+          },
         })

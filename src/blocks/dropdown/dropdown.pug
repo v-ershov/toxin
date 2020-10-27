@@ -54,10 +54,18 @@ mixin dropdown(labelPrimary='', labelSecondary='', attrsField={}, words=[], list
       if isButtons
         ._buttons
           ._button.-reset.-hidden
-            +button('Очистить', ['bodyless', 'text-gray'], {
-              'name': 'reset',
+            +button({
+              text: 'Очистить',
+              modifiers: ['bodyless', 'text-gray'],
+              attrs: {
+                name: 'reset',
+              },
             })
           ._button
-            +button('Применить', ['bodyless'], {
-              'name': 'apply',
+            +button({
+              text: 'Применить',
+              modifiers: ['bodyless'],
+              attrs: {
+                name: 'apply',
+              },
             })

@@ -62,4 +62,7 @@ mixin form-reservation
           td._td.-total.-price
             | 38&nbsp;081₽
     ._button
-      +button('Забронировать', ['fill', 'wide'])
+      +button({
+        text: 'Забронировать',
+        modifiers: ['fill', 'wide'],
+      })

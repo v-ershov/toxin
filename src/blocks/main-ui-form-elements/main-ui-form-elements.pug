@@ -142,23 +142,43 @@ mixin main-ui-form-elements
             li._item
               ul._list.-flex
                 li._item.-flex
-                  +button('Click Me', ['fill'])
+                  +button({
+                    text: 'Click Me',
+                    modifiers: ['fill'],
+                  })
                 li._item.-flex
-                  +button('Click Me', ['fill', 'hover'])
+                  +button({
+                    text: 'Click Me',
+                    modifiers: ['fill', 'hover'],
+                  })
             li._item.-margin-30
               ul._list.-flex
                 li._item.-flex
-                  +button('Click Me')
+                  +button({
+                    text: 'Click Me',
+                  })
                 li._item.-flex
-                  +button('Click Me', ['hover'])
+                  +button({
+                    text: 'Click Me',
+                    modifiers: ['hover'],
+                  })
             li._item.-margin-30
               ul._list.-flex
                 li._item.-flex
-                  +button('Click Me', ['bodyless'])
+                  +button({
+                    text: 'Click Me',
+                    modifiers: ['bodyless'],
+                  })
                 li._item.-flex
-                  +button('Click Me', ['bodyless', 'text-gray', 'hover'])
+                  +button({
+                    text: 'Click Me',
+                    modifiers: ['bodyless', 'text-gray', 'hover'],
+                  })
             li._item.-margin-30
-              +button('Перейти к оплате', ['fill', 'wide'])
+              +button({
+                text: 'Перейти к оплате',
+                modifiers: ['fill', 'wide'],
+              })
         section._subsection
           h3._h3
             | Pagination
