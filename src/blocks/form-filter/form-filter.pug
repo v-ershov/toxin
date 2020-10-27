@@ -12,7 +12,11 @@ mixin form-filter
     fieldset._fieldset
       ul._list
         li._item.-field
-          +calendar('field', '2020-10-19/2020-10-23', 'Даты пребывания в отеле')
+          +calendar({
+            type: 'field',
+            selectedDates: '2020-12-15/2020-12-19',
+            labelFirst: 'Даты пребывания в отеле',
+          })
         li._item.-field
           +dropdown('Гости', '', {
             'placeholder': 'Сколько гостей',

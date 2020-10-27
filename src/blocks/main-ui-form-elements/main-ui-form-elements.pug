@@ -56,9 +56,18 @@ mixin main-ui-form-elements
             | Date Dropdowns
           ul._list
             li._item
-              +calendar('fields', '2020-10-19/2020-10-23', 'Date Dropdown', 'Date Dropdown')
+              +calendar({
+                type: 'fields',
+                selectedDates: '2020-12-15/2020-12-19',
+                labelFirst: 'Date Dropdown',
+                labelSecond: 'Date Dropdown',
+              })
             li._item.-width-266.-margin-40
-              +calendar('field', '2020-10-19/2020-10-23', 'Filter Date Dropdown')
+              +calendar({
+                type: 'field',
+                selectedDates: '2020-12-15/2020-12-19',
+                labelFirst: 'Filter Date Dropdown',
+              })
         section._subsection
           h3._h3.visually-hidden
             | One Field Forms

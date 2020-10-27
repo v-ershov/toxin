@@ -1,30 +1,26 @@
-//- Parameters:
-//- string type='inline'       - тип календаря (inline / field / fields)
-//- string selectedDates=''    - выбранные даты календаря в формате 'YYYY-MM-DD/YYYY-MM-DD'
-//- string labelFirst=''       - лейбл первого поля календаря
-//- string labelSecond=''      - лейбл второго поля календаря
-//- object attrsFieldFirst={}  - атрибуты первого поля календаря
-//- object attrsFieldSecond={} - атрибуты второго поля календаря
-
-//- Examples:
-//- +calendar
-//- +calendar('inline', '2020-10-15/2020-10-20')
-//- +calendar('field', '', 'Period')
-//- +calendar('field', '2020-10-15/2020-10-20', 'Period')
-//- +calendar('field', '2020-10-15/2020-10-20', 'Period', '', {
-//-   'required': true,
-//- })
-//- +calendar('fields', '', 'Arrival', 'Departure')
-//- +calendar('fields', '2020-10-15/2020-10-20', 'Arrival', 'Departure')
-//- +calendar('fields', '2020-10-15/2020-10-20', 'Arrival', 'Departure', {
-//-   'required': true,
-//- }, {
-//-   'required': true,
-//- })
+//- Options:
+//- 🞂 type: string             - тип календаря (inline | field | fields)
+//- 🞂 selectedDates: string    - выбранные даты календаря в формате 'YYYY-MM-DD/YYYY-MM-DD'
+//- 🞂 labelFirst: string       - лейбл 1-го поля календаря
+//- 🞂 labelSecond: string      - лейбл 2-го поля календаря
+//- 🞂 attrsFieldFirst: object  - атрибуты 1-го поля календаря
+//- 🞂 attrsFieldSecond: object - атрибуты 2-го поля календаря
 
 include /blocks/field/field.pug
 
-mixin calendar(type='inline', selectedDates='', labelFirst='', labelSecond='', attrsFieldFirst={}, attrsFieldSecond={})
+mixin calendar(options)
+  -
+    const defaults = {
+      type: 'inline',
+      selectedDates: '',
+      labelFirst: '',
+      labelSecond: '',
+      attrsFieldFirst: {},
+      attrsFieldSecond: {},
+    };
+
+  - const { type, selectedDates, labelFirst, labelSecond, attrsFieldFirst, attrsFieldSecond } = Object.assign(defaults, options);
+
   .calendar(data-type=type, data-selected-dates=(selectedDates !== '') ? selectedDates : false)
     if type === 'field'
       +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
