@@ -28,23 +28,42 @@ mixin form-filter
         | Checkbox Buttons
       ul._list
         li._item
-          +button-option('Можно курить', '', ['checkbox'])
-        li._item
-          +button-option('Можно с питомцами', '', ['checkbox'], {
-            'checked': true,
+          +button-option({
+            text: 'Можно курить',
+            modifiers: ['checkbox'],
           })
         li._item
-          +button-option('Можно пригласить гостей (до 10 человек)', '', ['checkbox'], {
-            'checked': true,
+          +button-option({
+            text: 'Можно с питомцами',
+            modifiers: ['checkbox'],
+            attrs: {
+              checked: true,
+            },
+          })
+        li._item
+          +button-option({
+            text: 'Можно пригласить гостей (до 10 человек)',
+            modifiers: ['checkbox'],
+            attrs: {
+              checked: true,
+            },
           })
     fieldset._fieldset
       legend._legend
         | Доступность
       ul._list
         li._item
-          +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
+          +button-option({
+            text: 'Широкий коридор',
+            textRich: 'Ширина коридоров в номере не менее 91 см.',
+            modifiers: ['checkbox-rich'],
+          })
         li._item
-          +button-option('Помощник для инвалидов', 'На 1 этаже вас встретит специалист и проводит до номера.', ['checkbox-rich'])
+          +button-option({
+            text: 'Помощник для инвалидов',
+            textRich: 'На 1 этаже вас встретит специалист и проводит до номера.',
+            modifiers: ['checkbox-rich'],
+          })
     fieldset._fieldset
       +dropdown('Удобства номера', '', {
         'placeholder': 'Какие удобства',

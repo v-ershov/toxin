@@ -76,40 +76,62 @@ mixin main-ui-form-elements
             | Checkbox Buttons
           ul._list
             li._item.-width-230
-              +button-option('Можно курить', '', ['checkbox'])
-            li._item.-width-230.-margin-10
-              +button-option('Можно с питомцами', '', ['checkbox'], {
-                'checked': true,
+              +button-option({
+                text: 'Можно курить',
+                modifiers: ['checkbox'],
               })
             li._item.-width-230.-margin-10
-              +button-option('Можно пригласить гостей (до 10 человек)', '', ['checkbox'], {
-                'checked': true,
+              +button-option({
+                text: 'Можно с питомцами',
+                modifiers: ['checkbox'],
+                attrs: {
+                  checked: true,
+                },
+              })
+            li._item.-width-230.-margin-10
+              +button-option({
+                text: 'Можно пригласить гостей (до 10 человек)',
+                modifiers: ['checkbox'],
+                attrs: {
+                  checked: true,
+                },
               })
         section._subsection
           h3._h3
             | Radio Buttons
           ul._list.-flex
             li._item.-flex
-              +button-option('Мужчина', '', ['radio'], {
-                'name': 'gender',
-                'value': 'm',
-                'checked': true,
+              +button-option({
+                text: 'Мужчина',
+                modifiers: ['radio'],
+                attrs: {
+                  name: 'gender',
+                  checked: true,
+                },
               })
             li._item.-flex
-              +button-option('Женщина', '', ['radio'], {
-                'name': 'gender',
-                'value': 'f',
+              +button-option({
+                text: 'Женщина',
+                modifiers: ['radio'],
+                attrs: {
+                  name: 'gender',
+                },
               })
         section._subsection
           h3._h3
             | Toggle
           ul._list
             li._item
-              +button-option('Получать спецпредложения', '', [], {
-                'checked': true,
+              +button-option({
+                text: 'Получать спецпредложения',
+                attrs: {
+                  checked: true,
+                },
               })
             li._item.-margin-10
-              +button-option('Получать спецпредложения')
+              +button-option({
+                text: 'Получать спецпредложения',
+              })
         section._subsection
           h3._h3
             | Like Button
@@ -271,9 +293,17 @@ mixin main-ui-form-elements
             | Rich Checkbox Buttons
           ul._list
             li._item.-width-266
-              +button-option('Широкий коридор', 'Ширина коридоров в номере не менее 91 см.', ['checkbox-rich'])
+              +button-option({
+                text: 'Широкий коридор',
+                textRich: 'Ширина коридоров в номере не менее 91 см.',
+                modifiers: ['checkbox-rich'],
+              })
             li._item.-width-266.-margin-10
-              +button-option('Помощник для инвалидов', 'На 1 этаже вас встретит специалист и проводит до номера.', ['checkbox-rich'])
+              +button-option({
+                text: 'Помощник для инвалидов',
+                textRich: 'На 1 этаже вас встретит специалист и проводит до номера.',
+                modifiers: ['checkbox-rich'],
+              })
       section._section
         h2._h2.visually-hidden
           | Lists

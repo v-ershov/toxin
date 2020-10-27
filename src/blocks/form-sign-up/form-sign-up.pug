@@ -22,13 +22,21 @@ mixin form-sign-up
       })
     ._row.-flex
       ._radio
-        +button-option('Мужчина', '', ['radio'], {
-          'name': 'gender',
-          'checked': true,
+        +button-option({
+          text: 'Мужчина',
+          modifiers: ['radio'],
+          attrs: {
+            name: 'gender',
+            checked: true,
+          },
         })
       ._radio
-        +button-option('Женщина', '', ['radio'], {
-          'name': 'gender',
+        +button-option({
+          text: 'Женщина',
+          modifiers: ['radio'],
+          attrs: {
+            name: 'gender',
+          },
         })
     ._row.-margin-20
       +field('Дата рождения', '', [], {
@@ -49,7 +57,9 @@ mixin form-sign-up
         'required': true,
       })
     ._row
-      +button-option('Получать спецпредложения')
+      +button-option({
+        text: 'Получать спецпредложения',
+      })
     ._button
       +button({
         text: 'Перейти к оплате',
