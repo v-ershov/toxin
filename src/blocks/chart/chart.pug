@@ -1,16 +1,16 @@
 //- Options:
-//- 🞂 title: string      - заголовок после суммы значений секций диаграммы
-//- 🞂 gap: number        - размер пробела между секциями диаграммы
-//- 🞂 duration: number   - продолжительность анимации диаграммы
-//- 🞂 sections: [{       - секции диаграммы
-//-   🞂 name: string     - имя секции
-//-   🞂 value: number    - значение секции
-//-   🞂 gradient: {      - градиент секции
-//-     🞂 id: string     - ID градиента
-//-     🞂 color1: string - начальный цвет градиента
-//-     🞂 color2: string - конечный цвет градиента
-//-     }
-//-   }]
+//- 🞂 title: string    - заголовок после суммы значений секций диаграммы
+//- 🞂 gap: number      - размер пробела между секциями диаграммы
+//- 🞂 duration: number - продолжительность анимации диаграммы
+//- 🞂 sections: [{     - секции диаграммы
+//-   🞂 name: string   - имя секции
+//-   🞂 value: number  - значение секции
+//-   🞂 gradient: [    - градиент секции
+//-     🞂 [0]: string  - ID градиента
+//-     🞂 [1]: string  - начальный цвет градиента
+//-     🞂 [2]: string  - конечный цвет градиента
+//-     ]
+//-   ]}
 
 mixin chart(options)
   -
@@ -22,38 +22,22 @@ mixin chart(options)
         {
           name: 'Разочарован',
           value: 0,
-          gradient: {
-            id: 'bad',
-            color1: '#919191',
-            color2: '#3d4975',
-          },
+          gradient: ['bad', '#919191', '#3d4975'],
         },
         {
           name: 'Удовлетворительно',
           value: 65,
-          gradient: {
-            id: 'average',
-            color1: '#bc9cff',
-            color2: '#8ba4f9',
-          },
+          gradient: ['average', '#bc9cff', '#8ba4f9'],
         },
         {
           name: 'Хорошо',
           value: 65,
-          gradient: {
-            id: 'good',
-            color1: '#6fcf97',
-            color2: '#66d2ea',
-          },
+          gradient: ['good', '#6fcf97', '#66d2ea'],
         },
         {
           name: 'Великолепно',
           value: 130,
-          gradient: {
-            id: 'excellent',
-            color1: '#ffe39c',
-            color2: '#ffba9c',
-          },
+          gradient: ['excellent', '#ffe39c', '#ffba9c'],
         },
       ],
     };
@@ -66,16 +50,16 @@ mixin chart(options)
         svg._svg(viewbox='0 0 33 33')
           defs._defs
             each item in sections
-              lineargradient._gradient(id=item.gradient.id, x1='1', y1='1', x2='0', y2='0')
-                stop._stop(offset='0', stop-color=item.gradient.color1)
-                stop._stop(offset='1', stop-color=item.gradient.color2)
+              lineargradient._gradient(id=item.gradient[0], x1='1', y1='1', x2='0', y2='0')
+                stop._stop(offset='0', stop-color=item.gradient[1])
+                stop._stop(offset='1', stop-color=item.gradient[2])
 
           - const sum = sections.reduce((sum , current) => sum + current.value, 0);
           - let offset = -gap / 2;
           each item in sections
             - const percent = (item.value / sum) * 100;
             - const array = `${Math.max(0, percent - gap)} 100`;
-            circle._circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient.id}); --array:${array}; --offset:${offset};`, data-value=item.value)
+            circle._circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
             - offset -= percent;
         ._title
           span._sum
@@ -91,5 +75,5 @@ mixin chart(options)
     ul._legend
       each item in sections
         li._item
-          button._button.-active(type='button', style=`--gradient: linear-gradient(${item.gradient.color1}, ${item.gradient.color2});`)
+          button._button.-active(type='button', style=`--gradient: linear-gradient(${item.gradient[1]}, ${item.gradient[2]});`)
             | #{item.name}
