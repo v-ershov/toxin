@@ -333,16 +333,8 @@ mixin main-ui-form-elements
           li._item.-width-280
             +advantages({
               list: [
-                {
-                  icon: 'insert_emoticon',
-                  title: 'Комфорт',
-                  desc: 'Шумопоглощающие стены',
-                },
-                {
-                  icon: 'location_city',
-                  title: 'Удобство',
-                  desc: 'Окно в каждой из спален',
-                },
+                ['insert_emoticon', 'Комфорт', 'Шумопоглощающие стены'],
+                ['location_city', 'Удобство', 'Окно в каждой из спален'],
               ],
               modifiers: ['ui'],
             })
