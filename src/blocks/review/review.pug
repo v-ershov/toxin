@@ -30,9 +30,14 @@ mixin review(author, time, datetime, text, likes, isLike=false, image='')
     ._row
       ._cell.-small.-button
         if isLike
-          +button-like(likes, ['active'])
+          +button-like({
+            number: likes,
+            modifiers: ['active'],
+          })
         else
-          +button-like(likes)
+          +button-like({
+            number: likes,
+          })
       ._cell
         blockquote._blockquote
           p._text

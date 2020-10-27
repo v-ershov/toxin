@@ -1,12 +1,16 @@
-//- Parameters:
-//- int      number       - количество лайков в кнопке
-//- string[] modifiers=[] - модификаторы блока
+//- Options:
+//- 🞂 number: number      - количество лайков в кнопке
+//- 🞂 modifiers: string[] - модификаторы блока
 
-//- Examples:
-//- +button-like(4)
-//- +button-like(4, ['active'])
+mixin button-like(options)
+  -
+    const defaults = {
+      number: 0,
+      modifiers: [],
+    };
 
-mixin button-like(number, modifiers=[])
+  - const { number, modifiers } = Object.assign(defaults, options);
+
   button.button-like(class=getModifiers('button-like', modifiers), type='button')
     span._numbers
       span._number

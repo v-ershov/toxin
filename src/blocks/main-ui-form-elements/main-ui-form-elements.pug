@@ -115,9 +115,14 @@ mixin main-ui-form-elements
             | Like Button
           ul._list.-flex
             li._item.-button-like
-              +button-like(2)
+              +button-like({
+                number: 2,
+              })
             li._item.-button-like
-              +button-like(12, ['active'])
+              +button-like({
+                number: 12,
+                modifiers: ['active'],
+              })
         section._subsection
           h3._h3
             | Rate Button
