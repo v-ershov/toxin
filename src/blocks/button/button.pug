@@ -13,7 +13,7 @@ mixin button(options)
 
   - const { text, modifiers, attrs } = Object.assign(defaults, options);
 
-  if (attrs.href)
+  if attrs.href
     a.button(class=getModifiers('button', modifiers))&attributes(attrs)
       | #{text}
   else
