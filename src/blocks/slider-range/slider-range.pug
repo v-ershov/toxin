@@ -20,6 +20,6 @@ mixin slider-range(labelPrimary, min, max, start, end, step, unit='', text='')
     +label(labelPrimary, labelSecondary)
       input._input(type='hidden', value=labelSecondary)
     ._slider(data-min=min, data-max=max, data-start=start, data-end=end, data-step=step, data-unit=unit)
-    if text !== ''
+    if text
       p._text
         | #{text}

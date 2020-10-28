@@ -14,6 +14,6 @@ mixin room-info(number, tag='', modifiers=[])
     span._number
       | #{number}
     | &nbsp;
-    if tag !== ''
+    if tag
       span._tag
         | #{tag}

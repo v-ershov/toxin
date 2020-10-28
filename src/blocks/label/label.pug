@@ -9,9 +9,9 @@
 //- +label('Text Field', 'Hover / Focus')
 
 mixin label(primary='', secondary='')
-  if primary !== ''
+  if primary
     label.label
-      if secondary !== ''
+      if secondary
         span._container
           span._primary
             | #{primary}
