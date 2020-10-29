@@ -19,7 +19,15 @@ mixin calendar(options)
       attrsFieldSecond: {},
     };
 
-  - const { type, selectedDates, labelFirst, labelSecond, attrsFieldFirst, attrsFieldSecond } = Object.assign(defaults, options);
+  -
+    const {
+      type,
+      selectedDates,
+      labelFirst,
+      labelSecond,
+      attrsFieldFirst,
+      attrsFieldSecond,
+    } = Object.assign(defaults, options);
 
   .calendar(data-type=type, data-selected-dates=selectedDates ? selectedDates : false)
     if type === 'field'

@@ -42,7 +42,13 @@ mixin chart(options)
       ],
     };
 
-  - const { title, gap, duration, sections } = Object.assign(defaults, options);
+  -
+    const {
+      title,
+      gap,
+      duration,
+      sections,
+    } = Object.assign(defaults, options);
 
   .chart
     ._container

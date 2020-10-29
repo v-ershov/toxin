@@ -17,7 +17,11 @@ mixin advantages(options)
       modifiers: [],
     };
 
-  - const { list, modifiers } = Object.assign(defaults, options);
+  -
+    const {
+      list,
+      modifiers,
+    } = Object.assign(defaults, options);
 
   .advantages(class=getModifiers('advantages', modifiers))
     ul._list

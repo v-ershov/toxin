@@ -9,7 +9,11 @@ mixin button-like(options)
       modifiers: [],
     };
 
-  - const { number, modifiers } = Object.assign(defaults, options);
+  -
+    const {
+      number,
+      modifiers,
+    } = Object.assign(defaults, options);
 
   button.button-like(class=getModifiers('button-like', modifiers), type='button')
     span._numbers

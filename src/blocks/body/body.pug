@@ -7,7 +7,10 @@ mixin body(options)
       modifiers: [],
     };
 
-  - const { modifiers } = Object.assign(defaults, options);
+  -
+    const {
+      modifiers,
+    } = Object.assign(defaults, options);
 
   body.body(class=getModifiers('body', modifiers))
     if modifiers.includes('ui')

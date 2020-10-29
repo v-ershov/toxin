@@ -11,7 +11,12 @@ mixin button(options)
       attrs: {},
     };
 
-  - const { text, modifiers, attrs } = Object.assign(defaults, options);
+  -
+    const {
+      text,
+      modifiers,
+      attrs,
+    } = Object.assign(defaults, options);
 
   if attrs.href
     a.button(class=getModifiers('button', modifiers))&attributes(attrs)

@@ -14,7 +14,13 @@ mixin button-option(options)
       attrs: {},
     };
 
-  - const { text, textRich, modifiers, attrs } = Object.assign(defaults, options);
+  -
+    const {
+      text,
+      textRich,
+      modifiers,
+      attrs,
+    } = Object.assign(defaults, options);
 
   .button-option(class=getModifiers('button-option', modifiers))
     label._label
