@@ -31,19 +31,31 @@ mixin calendar(options)
 
   .calendar(data-type=type, data-selected-dates=selectedDates ? selectedDates : false)
     if type === 'field'
-      +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
-        'placeholder': 'ДД.ММ.ГГГГ',
-        'readonly': true,
-      }))
+      +field({
+        labelPrimary: labelFirst,
+        modifiers: ['dropdown'],
+        attrs: Object.assign(attrsFieldFirst, {
+          placeholder: 'ДД.ММ.ГГГГ',
+          readonly: true,
+        }),
+      })
     else if type === 'fields'
       ._fields
         ._field
-          +field(labelFirst, '', ['dropdown'], Object.assign(attrsFieldFirst, {
-            'placeholder': 'ДД.ММ.ГГГГ',
-            'readonly': true,
-          }))
+          +field({
+            labelPrimary: labelFirst,
+            modifiers: ['dropdown'],
+            attrs: Object.assign(attrsFieldFirst, {
+              placeholder: 'ДД.ММ.ГГГГ',
+              readonly: true,
+            }),
+          })
         ._field
-          +field(labelSecond, '', ['dropdown'], Object.assign(attrsFieldSecond, {
-            'placeholder': 'ДД.ММ.ГГГГ',
-            'readonly': true,
-          }))
+          +field({
+            labelPrimary: labelSecond,
+            modifiers: ['dropdown'],
+            attrs: Object.assign(attrsFieldSecond, {
+              placeholder: 'ДД.ММ.ГГГГ',
+              readonly: true,
+            }),
+          })

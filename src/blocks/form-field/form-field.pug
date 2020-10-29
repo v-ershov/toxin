@@ -13,8 +13,12 @@ include /blocks/field/field.pug
 
 mixin form-field(labelPrimary='', labelSecondary='', attrsField={})
   form.form-field(method='post')
-    +field(labelPrimary, labelSecondary, [], Object.assign(attrsField, {
-      'required': true,
-    }))
+    +field({
+      labelPrimary,
+      labelSecondary,
+      attrs: Object.assign(attrsField, {
+        required: true,
+      }),
+    })
     button._button(type='submit')
       | Отправить

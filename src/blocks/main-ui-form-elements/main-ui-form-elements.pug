@@ -29,14 +29,22 @@ mixin main-ui-form-elements
             | Text Fields
           ul._list
             li._item
-              +field('Text Field', 'Default', [], {
-                'type': 'email',
-                'placeholder': 'Email',
+              +field({
+                labelPrimary: 'Text Field',
+                labelSecondary: 'Default',
+                attrs: {
+                  type: 'email',
+                  placeholder: 'Email',
+                },
               })
             li._item
-              +field('Text Field', 'Hover / Focus', [], {
-                'placeholder': 'Enter text',
-                'value': 'This is pretty awesome',
+              +field({
+                labelPrimary: 'Text Field',
+                labelSecondary: 'Hover / Focus',
+                attrs: {
+                  placeholder: 'Enter text',
+                  value: 'This is pretty awesome',
+                },
               })
             li._item
               +dropdown({
@@ -65,9 +73,13 @@ mixin main-ui-form-elements
                 },
               })
             li._item
-              +field('Masked Text Field', 'Default', [], {
-                'placeholder': 'ДД.ММ.ГГГГ',
-                'data-mask': '00.00.0000',
+              +field({
+                labelPrimary: 'Masked Text Field',
+                labelSecondary: 'Default',
+                attrs: {
+                  placeholder: 'ДД.ММ.ГГГГ',
+                  'data-mask': '00.00.0000',
+                },
               })
         section._subsection
           h3._h3.visually-hidden

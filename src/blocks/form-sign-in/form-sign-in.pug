@@ -10,16 +10,20 @@ mixin form-sign-in
       h2._h2
         | Войти
     ._row
-      +field('', '', [], {
-        'type': 'email',
-        'placeholder': 'Email',
-        'required': true,
+      +field({
+        attrs: {
+          type: 'email',
+          placeholder: 'Email',
+          required: true,
+        },
       })
     ._row
-      +field('', '', [], {
-        'type': 'password',
-        'placeholder': 'Пароль',
-        'required': true,
+      +field({
+        attrs: {
+          type: 'password',
+          placeholder: 'Пароль',
+          required: true,
+        },
       })
     ._button
       +button({

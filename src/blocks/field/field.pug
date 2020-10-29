@@ -1,24 +1,28 @@
-//- Parameters:
-//- string   labelPrimary=''   - лейбл поля (первичный)
-//- string   labelSecondary='' - лейбл поля (вторичный)
-//- string[] modifiers=[]      - модификаторы блока
-//- object   attrs={}          - атрибуты поля
-
-//- Examples:
-//- +field
-//- +field('Text Field', 'Default')
-//- +field('Email', '', [], {
-//-   'type': 'email',
-//-   'placeholder': 'Enter your email',
-//- })
-//- +field('Date', '', [], {
-//-   'placeholder': 'DD.MM.YYYY',
-//-   'data-mask': '00.00.0000',
-//- })
+//- Options:
+//- 🞂 labelPrimary: string   - лейбл поля (первичный)
+//- 🞂 labelSecondary: string - лейбл поля (вторичный)
+//- 🞂 modifiers: string[]    - модификаторы блока
+//- 🞂 attrs: object          - атрибуты поля
 
 include /blocks/label/label.pug
 
-mixin field(labelPrimary='', labelSecondary='', modifiers=[], attrs={})
+mixin field(options)
+  -
+    const defaults = {
+      labelPrimary: '',
+      labelSecondary: '',
+      modifiers: [],
+      attrs: {},
+    };
+
+  -
+    const {
+      labelPrimary,
+      labelSecondary,
+      modifiers,
+      attrs,
+    } = Object.assign(defaults, options);
+
   +label(labelPrimary, labelSecondary)
     span.field(class=getModifiers('field', modifiers))
       input._input&attributes(attrs)

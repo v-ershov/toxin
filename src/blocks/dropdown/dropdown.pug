@@ -72,10 +72,15 @@ mixin dropdown(options)
     } = Object.assign(defaults, options);
 
   .dropdown(class=getModifiers('dropdown', modifiers))
-    +field(labelPrimary, labelSecondary, ['dropdown'], Object.assign(attrsField, {
-      'readonly': true,
-      'data-words': words.length ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
-    }))
+    +field({
+      labelPrimary,
+      labelSecondary,
+      modifiers: ['dropdown'],
+      attrs: Object.assign(attrsField, {
+        readonly: true,
+        'data-words': words.length ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
+      }),
+    })
     ._content(style='--height: 100vh;')
       ul._list
         each item in list

@@ -11,14 +11,18 @@ mixin form-sign-up
       h2._h2
         | Регистрация аккаунта
     ._row
-      +field('', '', [], {
-        'placeholder': 'Имя',
-        'required': true,
+      +field({
+        attrs: {
+          placeholder: 'Имя',
+          required: true,
+        },
       })
     ._row
-      +field('', '', [], {
-        'placeholder': 'Фамилия',
-        'required': true,
+      +field({
+        attrs: {
+          placeholder: 'Фамилия',
+          required: true,
+        },
       })
     ._row.-flex
       ._radio
@@ -39,22 +43,30 @@ mixin form-sign-up
           },
         })
     ._row.-margin-20
-      +field('Дата рождения', '', [], {
-        'placeholder': 'ДД.ММ.ГГГГ',
-        'data-mask': '00.00.0000',
-        'required': true,
+      +field({
+        labelPrimary: 'Дата рождения',
+        attrs: {
+          placeholder: 'ДД.ММ.ГГГГ',
+          required: true,
+          'data-mask': '00.00.0000',
+        },
       })
     ._row.-margin-20
-      +field('Данные для входа в сервис', '', [], {
-        'type': 'email',
-        'placeholder': 'Email',
-        'required': true,
+      +field({
+        labelPrimary: 'Данные для входа в сервис',
+        attrs: {
+          type: 'email',
+          placeholder: 'Email',
+          required: true,
+        },
       })
     ._row
-      +field('', '', [], {
-        'type': 'password',
-        'placeholder': 'Пароль',
-        'required': true,
+      +field({
+        attrs: {
+          type: 'password',
+          placeholder: 'Пароль',
+          required: true,
+        },
       })
     ._row
       +button-option({
