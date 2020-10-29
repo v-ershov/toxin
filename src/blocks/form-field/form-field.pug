@@ -1,17 +1,28 @@
-//- Parameters:
-//- string   labelPrimary=''   - лейбл поля (первичный)
-//- string   labelSecondary='' - лейбл поля (вторичный)
-//- object   attrsField={}     - атрибуты поля
-
-//- Examples:
-//- +form-field('Subscription Text Field', '', {
-//-   'type': 'email',
-//-   'placeholder': 'Email',
-//- })
+//- Options:
+//- 🞂 labelPrimary: string   - лейбл поля формы (первичный)
+//- 🞂 labelSecondary: string - лейбл поля формы (вторичный)
+//- 🞂 attrsField: object     - атрибуты поля формы
 
 include /blocks/field/field.pug
 
-mixin form-field(labelPrimary='', labelSecondary='', attrsField={})
+mixin form-field(options)
+  -
+    const defaults = {
+      labelPrimary: '',
+      labelSecondary: '',
+      attrsField: {
+        type: 'email',
+        placeholder: 'Email',
+      },
+    };
+
+  -
+    const {
+      labelPrimary,
+      labelSecondary,
+      attrsField,
+    } = Object.assign(defaults, options);
+
   form.form-field(method='post')
     +field({
       labelPrimary,

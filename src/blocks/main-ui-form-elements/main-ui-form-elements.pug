@@ -103,9 +103,8 @@ mixin main-ui-form-elements
             | One Field Forms
           ul._list
             li._item.-width-266
-              +form-field('Subscription Text Field', '', {
-                'type': 'email',
-                'placeholder': 'Email',
+              +form-field({
+                labelPrimary: 'Subscription Text Field',
               })
       section._section
         h2._h2.visually-hidden

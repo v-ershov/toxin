@@ -74,10 +74,7 @@ mixin footer(options)
         p._text
           | Получайте специальные предложения и новости сервиса
         ._form
-          +form-field('', '', {
-            'type': 'email',
-            'placeholder': 'Email',
-          })
+          +form-field
     ._container.-secondary
       ._logo.-adaptive
         +logo
