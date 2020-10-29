@@ -1,15 +1,21 @@
-//- Parameters:
-//- string[] modifiers=[] - модификаторы блока
-
-//- Examples:
-//- +footer
-//- +footer(['bordered'])
+//- Options:
+//- 🞂 modifiers: string[] - модификаторы блока
 
 include /blocks/form-field/form-field.pug
 include /blocks/logo/logo.pug
 include /blocks/socials/socials.pug
 
-mixin footer(modifiers=[])
+mixin footer(options)
+  -
+    const defaults = {
+      modifiers: [],
+    };
+
+  -
+    const {
+      modifiers,
+    } = Object.assign(defaults, options);
+
   footer.footer(class=getModifiers('footer', modifiers))
     ._container.-primary
       ._intro
