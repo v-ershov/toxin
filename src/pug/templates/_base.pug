@@ -1,12 +1,14 @@
 -
   function getModifiers(classMain, modifiers) {
+    if (!classMain || !modifiers || modifiers.length === 0) {
+      return;
+    }
+
     let result = '';
 
-    if (modifiers.length !== 0) {
-      modifiers.forEach((mod) => {
-        result = `${result}${classMain}--${mod} `;
-      });
-    }
+    modifiers.forEach((modifier) => {
+      result = `${result}${classMain}--${modifier} `;
+    });
 
     return result.slice(0, -1);
   }
