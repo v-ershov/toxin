@@ -39,13 +39,31 @@ mixin main-ui-form-elements
                 'value': 'This is pretty awesome',
               })
             li._item
-              +dropdown('Dropdown', 'Default', {
-                'placeholder': 'Сколько гостей',
-              }, ['гость', 'гостя', 'гостей'], [
-                [0, 0, 3, '', 'взрослые', '', ''],
-                [0, 0, 3, '', 'дети', '', ''],
-                [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
-              ])
+              +dropdown({
+                list: [
+                  {
+                    name: 'взрослые',
+                    values: [0, 0, 3],
+                    words: [],
+                  },
+                  {
+                    name: 'дети',
+                    values: [0, 0, 3],
+                    words: [],
+                  },
+                  {
+                    name: 'младенцы',
+                    values: [0, 0, 1],
+                    words: ['младенец', 'младенца', 'младенцев'],
+                  },
+                ],
+                words: ['гость', 'гостя', 'гостей'],
+                labelPrimary: 'Dropdown',
+                labelSecondary: 'Default',
+                attrsField: {
+                  placeholder: 'Сколько гостей',
+                },
+              })
             li._item
               +field('Masked Text Field', 'Default', [], {
                 'placeholder': 'ДД.ММ.ГГГГ',
@@ -229,45 +247,120 @@ mixin main-ui-form-elements
             | Dropdown (Default)
           ul._list
             li._item.-width-266
-              +dropdown('Dropdown', 'Default', {
-                'placeholder': 'Какие удобства',
-              }, [], [
-                [2, 0, 3, 'спальня', 'спальни', 'спальни', 'спален'],
-                [2, 0, 3, 'кровать', 'кровати', 'кровати', 'кроватей'],
-                [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
-              ])
+              +dropdown({
+                list: [
+                  {
+                    name: 'спальни',
+                    values: [2, 0, 3],
+                    words: ['спальня', 'спальни', 'спален'],
+                  },
+                  {
+                    name: 'кровати',
+                    values: [2, 0, 3],
+                    words: ['кровать', 'кровати', 'кроватей'],
+                  },
+                  {
+                    name: 'ванные комнаты',
+                    values: [0, 0, 1],
+                    words: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
+                  },
+                ],
+                labelPrimary: 'Dropdown',
+                labelSecondary: 'Default',
+                attrsField: {
+                  placeholder: 'Какие удобства',
+                },
+              })
             li._item.-width-266
-              +dropdown('Dropdown', 'Expanded', {
-                'placeholder': 'Какие удобства',
-              }, [], [
-                [2, 0, 3, 'спальня', 'спальни', 'спальни', 'спален'],
-                [2, 0, 3, 'кровать', 'кровати', 'кровати', 'кроватей'],
-                [0, 0, 1, 'ванная комната', 'ванные комнаты', 'ванные комнаты', 'ванных комнат'],
-              ], false, ['expanded'])
+              +dropdown({
+                list: [
+                  {
+                    name: 'спальни',
+                    values: [2, 0, 3],
+                    words: ['спальня', 'спальни', 'спален'],
+                  },
+                  {
+                    name: 'кровати',
+                    values: [2, 0, 3],
+                    words: ['кровать', 'кровати', 'кроватей'],
+                  },
+                  {
+                    name: 'ванные комнаты',
+                    values: [0, 0, 1],
+                    words: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
+                  },
+                ],
+                labelPrimary: 'Dropdown',
+                labelSecondary: 'Default',
+                modifiers: ['expanded'],
+                attrsField: {
+                  placeholder: 'Какие удобства',
+                },
+              })
         section._subsection.-dropdowns
           h3._h3.visually-hidden
             | Dropdown (Buttons)
           ul._list
             li._item
-              +dropdown('Dropdown', '', {
-                'placeholder': 'Сколько гостей',
-              }, ['гость', 'гостя', 'гостей'], [
-                [0, 0, 3, '', 'взрослые', '', ''],
-                [0, 0, 3, '', 'дети', '', ''],
-                [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
-              ], true, ['expanded'])
+              +dropdown({
+                list: [
+                  {
+                    name: 'взрослые',
+                    values: [0, 0, 3],
+                    words: [],
+                  },
+                  {
+                    name: 'дети',
+                    values: [0, 0, 3],
+                    words: [],
+                  },
+                  {
+                    name: 'младенцы',
+                    values: [0, 0, 1],
+                    words: ['младенец', 'младенца', 'младенцев'],
+                  },
+                ],
+                words: ['гость', 'гостя', 'гостей'],
+                labelPrimary: 'Dropdown',
+                labelSecondary: 'Default',
+                isButtons: true,
+                modifiers: ['expanded'],
+                attrsField: {
+                  placeholder: 'Сколько гостей',
+                },
+              })
         section._subsection.-dropdowns
           h3._h3.visually-hidden
             | Dropdown (Buttons / Filled)
           ul._list
             li._item
-              +dropdown('Dropdown', '', {
-                'placeholder': 'Сколько гостей',
-              }, ['гость', 'гостя', 'гостей'], [
-                [0, 0, 3, '', 'взрослые', '', ''],
-                [0, 0, 3, '', 'дети', '', ''],
-                [0, 0, 1, 'младенец', 'младенцы', 'младенца', 'младенцев'],
-              ], true, ['expanded'])
+              +dropdown({
+                list: [
+                  {
+                    name: 'взрослые',
+                    values: [2, 0, 3],
+                    words: [],
+                  },
+                  {
+                    name: 'дети',
+                    values: [1, 0, 3],
+                    words: [],
+                  },
+                  {
+                    name: 'младенцы',
+                    values: [0, 0, 1],
+                    words: ['младенец', 'младенца', 'младенцев'],
+                  },
+                ],
+                words: ['гость', 'гостя', 'гостей'],
+                labelPrimary: 'Dropdown',
+                labelSecondary: 'Default',
+                isButtons: true,
+                modifiers: ['expanded'],
+                attrsField: {
+                  placeholder: 'Сколько гостей',
+                },
+              })
       section._section
         h2._h2.visually-hidden
           | Expandable Checkbox List
