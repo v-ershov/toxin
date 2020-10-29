@@ -1,20 +1,32 @@
-//- Parameters:
-//- string     text         - текст кнопки списка чекбоксов
-//- string[[]] list         - список чекбоксов, где каждый пункт (массив) содержит:
-//-                           - текст чекбокса
-//-                           - если true, то чекбокс отмечен
-//- string[]   modifiers=[] - модификаторы блока
-
-//- Examples:
-//- +ecl('Hotel Amenities', [
-//-   ['Crib'],
-//-   ['TV', true],
-//-   ['Shampoo'],
-//- ])
+//- Options:
+//- 🞂 text: string        - текст списка чекбоксов
+//- 🞂 list: [[            - список чекбоксов
+//-   🞂 [0]: string       - текст чекбокса
+//-   🞂 [1]: boolean      - если true, то чекбокс отмечен
+//-   ]]
+//- 🞂 modifiers: string[] - модификаторы блока
 
 include /blocks/button-option/button-option.pug
 
-mixin ecl(text, list, modifiers=[])
+mixin ecl(options)
+  -
+    const defaults = {
+      text: 'Expandable Checkbox List',
+      list: [
+        ['Checkbox 1'],
+        ['Checkbox 2', true],
+        ['Checkbox 3'],
+      ],
+      modifiers: [],
+    };
+
+  -
+    const {
+      text,
+      list,
+      modifiers,
+    } = Object.assign(defaults, options);
+
   .ecl(class=getModifiers('ecl', modifiers))
     button._button(type='button')
       | #{text}
