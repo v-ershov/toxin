@@ -25,7 +25,13 @@ mixin main-room
         article._article
           h2._h2
             | Сведения о номере
-          +advantages
+          +advantages({
+            list: [
+              ['insert_emoticon', 'Комфорт', 'Шумопоглощающие стены'],
+              ['location_city', 'Удобство', 'Окно в каждой из спален'],
+              ['whatshot', 'Уют', 'Номер оснащён камином'],
+            ],
+          })
         article._article
           h2._h2
             | Впечатления от номера
