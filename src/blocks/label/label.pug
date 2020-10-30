@@ -1,14 +1,20 @@
-//- Parameters:
-//- string primary=''   - лейбл (первичный)
-//- string secondary='' - лейбл (вторичный)
+//- Options:
+//- 🞂 primary: string   - лейбл (первичный)
+//- 🞂 secondary: string - лейбл (вторичный)
 
-//- Examples:
-//- +label
-//- +label('Text Field')
-//- +label('Text Field', 'Default')
-//- +label('Text Field', 'Hover / Focus')
+mixin label(options)
+  -
+    const defaults = {
+      primary: '',
+      secondary: '',
+    };
 
-mixin label(primary='', secondary='')
+  -
+    const {
+      primary,
+      secondary,
+    } = Object.assign(defaults, options);
+
   if primary
     label.label
       if secondary

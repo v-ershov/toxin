@@ -23,6 +23,9 @@ mixin field(options)
       attrs,
     } = Object.assign(defaults, options);
 
-  +label(labelPrimary, labelSecondary)
+  +label({
+    primary: labelPrimary,
+    secondary: labelSecondary,
+  })
     span.field(class=getModifiers('field', modifiers))
       input._input&attributes(attrs)
