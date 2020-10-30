@@ -1,20 +1,37 @@
-//- Parameters:
-//- string author       - имя автора отзыва
-//- string time         - время отзыва (в свободной форме)
-//- string datetime     - время отзыва (в формате ISO 8601)
-//- string text         - текст отзыва
-//- int    likes        - количество лайков у кнопки отзыва
-//- bool   isLike=false - если true, то кнопка отзыва активна
-//- string image=''     - имя файла с изображением автора отзыва
-
-//- Examples:
-//- +review('Darth Vader', 'Yesterday', '2015-12-17',
-//-   'I hate The Force Awakens so much!',
-//-   1977, true, 'darth-vader.jpg')
+//- Options:
+//- 🞂 image: string    - имя файла с изображением автора отзыва
+//- 🞂 author: string   - имя автора отзыва
+//- 🞂 time: string     - время отзыва (в свободной форме)
+//- 🞂 datetime: string - время отзыва (в формате ISO 8601)
+//- 🞂 text: string     - текст отзыва
+//- 🞂 likes: number    - количество лайков у кнопки отзыва
+//- 🞂 isLike: boolean  - если true, то кнопка отзыва активна
 
 include /blocks/button-like/button-like.pug
 
-mixin review(author, time, datetime, text, likes, isLike=false, image='')
+mixin review(options)
+  -
+    const defaults = {
+      image: '',
+      author: 'Author',
+      time: 'Today',
+      datetime: new Date().toISOString(),
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      likes: 0,
+      isLike: false,
+    };
+
+  -
+    const {
+      image,
+      author,
+      time,
+      datetime,
+      text,
+      likes,
+      isLike,
+    } = Object.assign(defaults, options);
+
   .review
     ._row
       ._cell.-small
