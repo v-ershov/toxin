@@ -1,14 +1,20 @@
-//- Parameters:
-//- bool isLogin=false - если true, то вместо кнопок отображается ссылка на профиль пользователя
-
-//- Examples:
-//- +header
-//- +header(true)
+//- Options:
+//- 🞂 isLogin: boolean - если true, то вместо кнопок отображается ссылка на профиль пользователя
 
 include /blocks/button/button.pug
 include /blocks/logo/logo.pug
 
-mixin header(isLogin=false)
+mixin header(options)
+  -
+    const defaults = {
+      isLogin: false,
+    };
+
+  -
+    const {
+      isLogin,
+    } = Object.assign(defaults, options);
+
   header.header
     ._container
       ._logo

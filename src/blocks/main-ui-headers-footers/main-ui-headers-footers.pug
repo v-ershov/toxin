@@ -15,7 +15,9 @@ mixin main-ui-headers-footers
         li._item.-first-header
           +header
         li._item
-          +header(true)
+          +header({
+            isLogin: true,
+          })
     section._section
       h2._h2.visually-hidden
         | Footers
