@@ -1,14 +1,20 @@
-//- Parameters:
-//- bool isSignUp=false - если true, то вместо формы «Sign In» отобразится форма «Sign Up»
-
-//- Examples:
-//- +main-sign
-//- +main-sign(true)
+//- Options:
+//- 🞂 isSignUp: boolean - если true, то вместо формы «Sign In» отобразится форма «Sign Up»
 
 include /blocks/form-sign-in/form-sign-in.pug
 include /blocks/form-sign-up/form-sign-up.pug
 
-mixin main-sign(isSignUp=false)
+mixin main-sign(options)
+  -
+    const defaults = {
+      isSignUp: false,
+    };
+
+  -
+    const {
+      isSignUp,
+    } = Object.assign(defaults, options);
+
   main.main-sign
     ._background(style='--translateY: 0;')
     ._container
