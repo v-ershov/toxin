@@ -18,7 +18,9 @@ mixin header(options)
   header.header
     ._container
       ._logo
-        +logo(['adaptive'])
+        +logo({
+          modifiers: ['adaptive'],
+        })
       button._hamburger(type='button')
         | Гамбургер-меню
         span._icon-layers

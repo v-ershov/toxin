@@ -1,10 +1,16 @@
-//- Parameters:
-//- string[] modifiers=[] - модификаторы блока
+//- Options:
+//- 🞂 modifiers: string[] - модификаторы блока
 
-//- Examples:
-//- +logo
-//- +logo(['adaptive'])
+mixin logo(options)
+  -
+    const defaults = {
+      modifiers: [],
+    };
 
-mixin logo(modifiers=[])
+  -
+    const {
+      modifiers,
+    } = Object.assign(defaults, options);
+
   a.logo(class=getModifiers('logo', modifiers), href='/')
     | На главную
