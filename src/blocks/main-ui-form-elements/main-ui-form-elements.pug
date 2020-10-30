@@ -430,11 +430,13 @@ mixin main-ui-form-elements
             | Bullet List
           ul._list
             li._item.-width-266
-              +list-bullet([
-                ['Нельзя с питомцами'],
-                ['Без вечеринок и мероприятий'],
-                ['Время прибытия — после 13:00, а выезд до 12:00'],
-              ])
+              +list-bullet({
+                list: [
+                  ['Нельзя с питомцами'],
+                  ['Без вечеринок и мероприятий'],
+                  ['Время прибытия — после 13:00, а выезд до 12:00'],
+                ],
+              })
       section._section
         h2._h2.visually-hidden
           | Advantages

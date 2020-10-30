@@ -11,19 +11,23 @@ mixin main-sitemap
       section._section
         h2._h2
           | UI-Kit
-        +list-bullet([
-          ['Colors & Type', '/ui-colors-type.html'],
-          ['Form Elements', '/ui-form-elements.html'],
-          ['Cards', '/ui-cards.html'],
-          ['Headers & Footers', '/ui-headers-footers.html'],
-        ])
+        +list-bullet({
+          list: [
+            ['Colors & Type', '/ui-colors-type.html'],
+            ['Form Elements', '/ui-form-elements.html'],
+            ['Cards', '/ui-cards.html'],
+            ['Headers & Footers', '/ui-headers-footers.html'],
+          ],
+        })
       section._section
         h2._h2
           | Website Pages
-        +list-bullet([
-          ['Landing Page', '/landing.html'],
-          ['Search Room', '/search.html'],
-          ['Room Details', '/room.html'],
-          ['Sign Up', '/sign-up.html'],
-          ['Sign In', '/sign-in.html'],
-        ])
+        +list-bullet({
+          list: [
+            ['Landing Page', '/landing.html'],
+            ['Search Room', '/search.html'],
+            ['Room Details', '/room.html'],
+            ['Sign Up', '/sign-up.html'],
+            ['Sign In', '/sign-in.html'],
+          ],
+        })
