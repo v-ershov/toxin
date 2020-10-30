@@ -33,7 +33,9 @@ mixin room(list, number, tag, price, rating, reviews)
           +room-price(price)
       ._row
         ._cell
-          +rating(rating)
+          +rating({
+            value: rating,
+          })
         ._cell
           span._reviews
             | #{reviews}

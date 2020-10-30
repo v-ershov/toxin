@@ -185,9 +185,13 @@ mixin main-ui-form-elements
             | Rate Button
           ul._list.-flex
             li._item.-flex
-              +rating(4)
+              +rating({
+                value: 4,
+              })
             li._item.-flex
-              +rating(5)
+              +rating({
+                value: 5,
+              })
       section._section
         h2._h2.visually-hidden
           | Sliders, Buttons, Pagination
