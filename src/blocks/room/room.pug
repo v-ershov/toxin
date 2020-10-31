@@ -1,30 +1,43 @@
-//- Parameters:
-//- string[[]] list    - список изображений комнаты, где каждый пункт (массив) содержит:
-//-                      - имя файла с изображением комнаты
-//-                      - значение атрибута «alt» у изображения
-//- string     number  - номер комнаты
-//- string     tag     - тег комнаты
-//- string     price   - цена комнаты за сутки
-//- int        rating  - значение рейтинга (от 0 до 5)
-//- string     reviews - количество отзывов
-
-//- Examples:
-//- +room([
-//-   ['888-1-small.jpg', 'Room 888 (1)'],
-//-   ['888-2-small.jpg', 'Room 888 (2)'],
-//-   ['888-3-small.jpg', 'Room 888 (3)'],
-//-   ['888-4-small.jpg', 'Room 888 (4)'],
-//- ], '888', 'Люкс', '9 990₽', 5, '145')
+//- Options:
+//- 🞂 images: [[      - список изображений комнаты
+//-   🞂 [0]: string   - имя файла с изображением комнаты
+//-   🞂 [1]: string   - значение атрибута «alt» у тега <img> с изображением комнаты
+//-   ]]
+//- 🞂 number: number  - номер комнаты
+//- 🞂 tag: string     - тег комнаты (Люкс, Эконом и т.д.)
+//- 🞂 price: string   - цена комнаты за сутки
+//- 🞂 rating: number  - значение рейтинга у комнаты (от 0 до 5)
+//- 🞂 reviews: number - количество отзывов у комнаты
 
 include /blocks/rating/rating.pug
 include /blocks/room-info/room-info.pug
 include /blocks/room-price/room-price.pug
 
-mixin room(list, number, tag, price, rating, reviews)
+mixin room(options)
+  -
+    const defaults = {
+      images: [],
+      number: 0,
+      tag: '',
+      price: '0$',
+      rating: 0,
+      reviews: 0,
+    };
+
+  -
+    const {
+      images,
+      number,
+      tag,
+      price,
+      rating,
+      reviews,
+    } = Object.assign(defaults, options);
+
   .room
     ._slider
-      each item in list
-        img._slide(src=require(`~/content/rooms/${item[0]}`).default, alt=item[1])
+      each image in images
+        img._img(src=require(`~/content/rooms/${image[0]}`).default, alt=image[1])
     ._info
       ._row.-baseline
         ._cell

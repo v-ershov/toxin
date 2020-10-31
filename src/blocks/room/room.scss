@@ -12,7 +12,12 @@
     transform: translateY(-3px);
   }
 
-  &__slide {
+  &__slider {
+    height: rem(150);
+    background-color: $color-gray-5p;
+  }
+
+  &__img {
     object-fit: cover;
     height: rem(150);
   }
