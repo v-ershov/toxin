@@ -1,10 +1,17 @@
-//- Parameters:
-//- string price - цена комнаты за сутки
+//- Options:
+//- 🞂 price: string - цена комнаты за сутки
 
-//- Examples:
-//- room-price('200$')
+mixin room-price(options)
+  -
+    const defaults = {
+      price: '0$',
+    };
 
-mixin room-price(price)
+  -
+    const {
+      price,
+    } = Object.assign(defaults, options);
+
   .room-price
     span._price
       | #{price}

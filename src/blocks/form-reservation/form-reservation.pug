@@ -17,7 +17,9 @@ mixin form-reservation
           modifiers: [],
         })
       ._price
-        +room-price('9 990₽')
+        +room-price({
+          price: '9 990₽',
+        })
     ._row
       +calendar({
         type: 'fields',

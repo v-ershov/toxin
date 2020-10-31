@@ -47,7 +47,9 @@ mixin room(options)
             modifiers: ['small'],
           })
         ._cell
-          +room-price(price)
+          +room-price({
+            price,
+          })
       ._row
         ._cell
           +rating({
