@@ -41,7 +41,11 @@ mixin room(options)
     ._info
       ._row.-baseline
         ._cell
-          +room-info(number, tag, ['small'])
+          +room-info({
+            number,
+            tag,
+            modifiers: ['small'],
+          })
         ._cell
           +room-price(price)
       ._row

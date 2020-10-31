@@ -11,7 +11,11 @@ mixin form-reservation
       h2._h2.visually-hidden
         | Забронировать номер
       ._info
-        +room-info('888', 'Люкс')
+        +room-info({
+          number: 888,
+          tag: 'Люкс',
+          modifiers: [],
+        })
       ._price
         +room-price('9 990₽')
     ._row

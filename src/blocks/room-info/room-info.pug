@@ -1,14 +1,23 @@
-//- Parameters:
-//- string   number       - номер комнаты
-//- string   tag=''       - тег комнаты
-//- string[] modifiers=[] - модификаторы блока
+//- Options:
+//- 🞂 number: number      - номер комнаты
+//- 🞂 tag: string         - тег комнаты (Люкс, Эконом и т.д.)
+//- 🞂 modifiers: string[] - модификаторы блока
 
-//- Examples:
-//- +room-info('888')
-//- +room-info('888', 'Luxe')
-//- +room-info('888', 'Luxe', ['small'])
+mixin room-info(options)
+  -
+    const defaults = {
+      number: 0,
+      tag: '',
+      modifiers: [],
+    };
 
-mixin room-info(number, tag='', modifiers=[])
+  -
+    const {
+      number,
+      tag,
+      modifiers,
+    } = Object.assign(defaults, options);
+
   .room-info(class=getModifiers('room-info', modifiers))
     | №&nbsp;
     span._number
