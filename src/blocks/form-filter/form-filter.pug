@@ -41,7 +41,16 @@ mixin form-filter
             },
           })
     fieldset._fieldset
-      +slider-range('Range Slider', 0, 15000, 5000, 10000, 100, '₽', 'Стоимость за сутки пребывания в номере')
+      +slider-range({
+        labelPrimary: 'Диапазон цены',
+        min: 0,
+        max: 15000,
+        start: 5000,
+        end: 10000,
+        step: 100,
+        unit: '₽',
+        text: 'Стоимость за сутки пребывания в номере',
+      })
     fieldset._fieldset
       legend._legend
         | Checkbox Buttons

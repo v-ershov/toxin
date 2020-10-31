@@ -200,7 +200,14 @@ mixin main-ui-form-elements
             | Sliders
           ul._list
             li._item.-width-266
-              +slider-range('Range Slider', 0, 15000, 5000, 10000, 100, '₽')
+              +slider-range({
+                min: 0,
+                max: 15000,
+                start: 5000,
+                end: 10000,
+                step: 100,
+                unit: '₽',
+              })
         section._subsection
           h3._h3
             | Buttons
