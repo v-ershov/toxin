@@ -1,13 +1,23 @@
-//- Parameters:
-//- string color - имя оттенка из палитры (в формате модификатора)
-//- string name  - имя оттенка в произвольной форме
-//- string hex   - код оттенка (в формате HEX)
+//- Options:
+//- 🞂 color: string - оттенок из палитры (в формате модификатора)
+//- 🞂 name: string  - имя оттенка в произвольной форме
+//- 🞂 hex: string   - HEX-код оттенка
 
-//- Examples:
-//- +ui-color('primary', 'Purple', '#bc9cff')
-//- +ui-color('secondary', 'Green', '#6fcf97')
+mixin ui-color(options)
+  -
+    const defaults = {
+      color: '',
+      name: 'UI Color',
+      hex: 'UI Color',
+    };
 
-mixin ui-color(color, name, hex)
+  -
+    const {
+      color,
+      name,
+      hex,
+    } = Object.assign(defaults, options);
+
   .ui-color
     ._box(class=`ui-color__box--${color}`)
     ._info
