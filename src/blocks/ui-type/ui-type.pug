@@ -1,12 +1,20 @@
-//- Parameters:
-//- string tag  - имя тега
-//- string text - пример текста, к которому будут применены стили указанного тега
+//- Options:
+//- 🞂 tag: string  - имя тега
+//- 🞂 text: string - пример текста, к которому будут применены стили указанного тега
 
-//- Examples:
-//- +ui-type('H1', 'Main heading text')
-//- +ui-type('Body', 'Body text')
+mixin ui-type(options)
+  -
+    const defaults = {
+      tag: 'UI Type',
+      text: 'UI Type',
+    };
 
-mixin ui-type(tag, text)
+  -
+    const {
+      tag,
+      text,
+    } = Object.assign(defaults, options);
+
   .ui-type
     ._tag(class=`ui-type__tag--${tag.toLowerCase()}`)
       | #{tag}
