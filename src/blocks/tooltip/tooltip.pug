@@ -1,10 +1,17 @@
-//- Parameters:
-//- string text - текст подсказки
+//- Options:
+//- 🞂 text: string - текст подсказки
 
-//- Examples:
-//- +tooltip('VIP Members Only')
+mixin tooltip(options)
+  -
+    const defaults = {
+      text: 'Lorem ipsum',
+    };
 
-mixin tooltip(text)
+  -
+    const {
+      text,
+    } = Object.assign(defaults, options);
+
   .tooltip
     ._text(title=text)
       | Подсказка

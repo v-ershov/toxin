@@ -71,14 +71,18 @@ mixin form-reservation
           td._td
             | Сбор за услуги: скидка 2&nbsp;179₽
           td._td.-tooltip
-            +tooltip('Здесь будет подсказка (хорошая)')
+            +tooltip({
+              text: 'Здесь будет подсказка (хорошая)',
+            })
           td._td.-price
             | 0₽
         tr._tr
           td._td
             | Сбор за дополнительные услуги
           td._td.-tooltip
-            +tooltip('Здесь будет подсказка (хорошая и красивая)')
+            +tooltip({
+              text: 'Здесь будет подсказка (хорошая и красивая)',
+            })
           td._td.-price
             | 300₽
       tfoot._tfoot
