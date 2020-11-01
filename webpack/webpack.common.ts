@@ -21,20 +21,20 @@ const config: webpack.Configuration = {
     path: paths.context.dist,
     publicPath: '/',
   },
-  resolve: {
-    alias: {
-      '~': paths.context.src,
-    },
-    extensions: ['.ts', '.js', '.sass'],
-  },
-  stats: {
-    children: false,
-  },
   devServer: {
     open: true,
     overlay: true,
     port: 8095,
     writeToDisk: true,
+  },
+  resolve: {
+    alias: {
+      '~': paths.context.src,
+    },
+    extensions: ['.ts', '.js', '.sass', 'scss'],
+  },
+  stats: {
+    children: false,
   },
   module: {
     rules: [
