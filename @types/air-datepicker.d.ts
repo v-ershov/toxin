@@ -74,7 +74,6 @@ interface AirDatepickerInstance extends AirDatepickerOptions {
 }
 
 interface JQuery {
-  datepicker(): JQuery;
-  datepicker(options: AirDatepickerOptions): JQuery;
+  datepicker(options?: AirDatepickerOptions): JQuery;
   data(type: 'datepicker'): AirDatepickerInstance;
 }
