@@ -1,27 +1,31 @@
+interface IButtonLikeElements {
+  numbers: HTMLElement;
+}
+
 class ButtonLike {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент кнопки
+  private _root: HTMLElement; // корневой html-элемент кнопки
 
-  private elements; // элементы кнопки
+  private _elements: IButtonLikeElements; // элементы кнопки
 
-  private duration; // продолжительность анимации кнопки
+  private _duration: number; // продолжительность анимации кнопки
 
-  private isReady; // если true, то кнопка доступна для изменений
+  private _isReady: boolean; // если true, то кнопка доступна для изменений
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
-    this.duration = this.getDuration();
-    this.isReady = true;
+    this._root = root;
+    this._elements = this._getElements();
+    this._duration = this._getDuration();
+    this._isReady = true;
 
-    this.addEventListeners();
+    this._addEventListeners();
   }
 
   // -----------------------
@@ -29,46 +33,46 @@ class ButtonLike {
   // -----------------------
 
   // возвращает элементы кнопки
-  private getElements() {
+  private _getElements(): IButtonLikeElements {
     return {
-      numbers: this.root.querySelector('.button-like__numbers') as HTMLElement,
+      numbers: this._root.querySelector('.button-like__numbers') as HTMLElement,
     };
   }
 
   // возвращает продолжительность анимации кнопки
-  private getDuration() {
-    return parseFloat(getComputedStyle(this.root).transitionDuration) * 1000;
+  private _getDuration(): number {
+    return parseFloat(getComputedStyle(this._root).transitionDuration) * 1000;
   }
 
   // регистрирует обработчики событий
-  private addEventListeners() {
-    this.root.addEventListener('click', () => {
-      this.switchButton();
+  private _addEventListeners(): void {
+    this._root.addEventListener('click', () => {
+      this._switchButton();
     });
   }
 
   // переключает состояние кнопки
-  private switchButton() {
-    if (this.isReady) {
-      this.isReady = false;
+  private _switchButton(): void {
+    if (this._isReady) {
+      this._isReady = false;
 
-      const rcl = this.root.classList;
+      const rcl = this._root.classList;
 
-      const child = this.elements.numbers.firstChild as ChildNode;
+      const child = this._elements.numbers.firstChild as ChildNode;
       const num = +(child.textContent as string);
 
       rcl.toggle('button-like--active');
-      this.setLikes(num + (rcl.contains('button-like--active') ? 1 : -1));
+      this._setLikes(num + (rcl.contains('button-like--active') ? 1 : -1));
 
       setTimeout(() => {
-        this.isReady = true;
-      }, this.duration);
+        this._isReady = true;
+      }, this._duration);
     }
   }
 
   // устанавливает заданное значение лайков в кнопке
-  private setLikes(value: number) {
-    const { numbers } = this.elements;
+  private _setLikes(value: number): void {
+    const { numbers } = this._elements;
 
     const child = numbers.firstChild as ChildNode;
     const num = +(child.textContent as string);
@@ -105,7 +109,7 @@ class ButtonLike {
         (numbers.firstChild as ChildNode).remove();
         numbers.classList.remove('button-like__numbers--anim-decrease');
       }
-    }, this.duration);
+    }, this._duration);
   }
 }
 

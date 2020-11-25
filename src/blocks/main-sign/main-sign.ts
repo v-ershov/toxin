@@ -1,21 +1,25 @@
+interface IMainSignElements {
+  background: HTMLElement;
+}
+
 class MainSign {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент блока
+  private _root: HTMLElement; // корневой html-элемент блока
 
-  private elements; // элементы блока
+  private _elements: IMainSignElements; // элементы блока
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.addEventListeners();
+    this._addEventListeners();
   }
 
   // -----------------------
@@ -23,22 +27,22 @@ class MainSign {
   // -----------------------
 
   // возвращает элементы блока
-  private getElements() {
+  private _getElements(): IMainSignElements {
     return {
-      background: this.root.querySelector('.main-sign__background') as HTMLElement,
+      background: this._root.querySelector('.main-sign__background') as HTMLElement,
     };
   }
 
   // регистрирует обработчики событий
-  private addEventListeners() {
+  private _addEventListeners(): void {
     window.addEventListener('scroll', () => {
-      this.createParallax();
+      this._createParallax();
     });
   }
 
   // создаёт параллакс-эффект для фонового изображения
-  private createParallax() {
-    this.elements.background.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
+  private _createParallax(): void {
+    this._elements.background.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 }
 

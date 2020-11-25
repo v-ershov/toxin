@@ -1,24 +1,28 @@
 import 'slick-carousel/slick/slick.min';
 import 'slick-carousel/slick/slick.css';
 
+interface IRoomElements {
+  $slider: JQuery<HTMLElement>;
+}
+
 class Room {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент слайдера
+  private _root: HTMLElement; // корневой html-элемент слайдера
 
-  private elements; // элементы слайдера
+  private _elements: IRoomElements; // элементы слайдера
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.initSlider();
+    this._initSlider();
   }
 
   // -----------------------
@@ -26,15 +30,15 @@ class Room {
   // -----------------------
 
   // возвращает элементы слайдера
-  private getElements() {
+  private _getElements(): IRoomElements {
     return {
-      $slider: $(this.root).find('.room__slider'),
+      $slider: $(this._root).find('.room__slider'),
     };
   }
 
   // инициализирует слайдер
-  private initSlider() {
-    this.elements.$slider.slick({
+  private _initSlider(): void {
+    this._elements.$slider.slick({
       dots: true,
     });
   }

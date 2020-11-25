@@ -1,35 +1,53 @@
 import 'jquery-ui/ui/effect';
 
+interface IChartElements {
+  svg: HTMLElement;
+  gradients: NodeListOf<HTMLElement>;
+  circles: NodeListOf<HTMLElement>;
+  buttons: NodeListOf<HTMLElement>;
+  tooltip: HTMLElement;
+  tooltipName: HTMLElement;
+  tooltipDetails: HTMLElement;
+  tooltipValue: HTMLElement;
+  $sum: JQuery<HTMLElement>;
+}
+
+interface IChartSection {
+  name: string;
+  value: number;
+  gradient: {
+    color1: string;
+    color2: string;
+  };
+}
+
 class Chart {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент диаграммы
+  private _root: HTMLElement; // корневой html-элемент диаграммы
 
-  private elements; // элементы диаграммы
+  private _elements: IChartElements; // элементы диаграммы
 
-  private duration; // продолжительность анимации диаграммы
+  private _gap: number; // размер пробела между секциями диаграммы
 
-  private gap; // размер пробела между секциями диаграммы
+  private _duration: number; // продолжительность анимации диаграммы
 
-  private sections; // данные о каждой секции диаграммы
-
-  private sum; // сумма значений активных секций диаграммы
+  private _sections: IChartSection[]; // данные о каждой секции диаграммы
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
-    this.duration = this.getDuration();
-    this.gap = this.getGap();
-    this.sections = this.getSections();
-    this.sum = this.getSum();
+    this._root = root;
+    this._elements = this._getElements();
+    this._gap = this._getGap();
+    this._duration = this._getDuration();
+    this._sections = this._getSections();
 
-    this.addEventListeners();
+    this._addEventListeners();
   }
 
   // -----------------------
@@ -37,123 +55,101 @@ class Chart {
   // -----------------------
 
   // возвращает элементы диаграммы
-  private getElements() {
+  private _getElements(): IChartElements {
     return {
-      svg: this.root.querySelector('.chart__svg') as HTMLElement,
-      gradients: this.root.querySelectorAll('.chart__gradient') as NodeListOf<HTMLElement>,
-      circles: this.root.querySelectorAll('.chart__circle') as NodeListOf<HTMLElement>,
-      buttons: this.root.querySelectorAll('.chart__button') as NodeListOf<HTMLElement>,
-      tooltip: this.root.querySelector('.chart__tooltip') as HTMLElement,
-      tooltipName: this.root.querySelector('.chart__name') as HTMLElement,
-      tooltipDetails: this.root.querySelector('.chart__details') as HTMLElement,
-      tooltipValue: this.root.querySelector('.chart__value') as HTMLElement,
-      $sum: $(this.root).find('.chart__sum'),
+      svg: this._root.querySelector('.chart__svg') as HTMLElement,
+      gradients: this._root.querySelectorAll('.chart__gradient') as NodeListOf<HTMLElement>,
+      circles: this._root.querySelectorAll('.chart__circle') as NodeListOf<HTMLElement>,
+      buttons: this._root.querySelectorAll('.chart__button') as NodeListOf<HTMLElement>,
+      tooltip: this._root.querySelector('.chart__tooltip') as HTMLElement,
+      tooltipName: this._root.querySelector('.chart__name') as HTMLElement,
+      tooltipDetails: this._root.querySelector('.chart__details') as HTMLElement,
+      tooltipValue: this._root.querySelector('.chart__value') as HTMLElement,
+      $sum: $(this._root).find('.chart__sum'),
     };
   }
 
-  // возвращает продолжительность анимации диаграммы
-  private getDuration() {
-    return parseInt(this.elements.circles[0].style.getPropertyValue('--duration'), 10);
+  // возвращает размер пробела между секциями диаграммы
+  private _getGap(): number {
+    return Math.abs(+this._elements.circles[0].style.getPropertyValue('--offset') * 2);
   }
 
-  // возвращает размер пробела между секциями диаграммы
-  private getGap() {
-    return Math.abs(+this.elements.circles[0].style.getPropertyValue('--offset') * 2);
+  // возвращает продолжительность анимации диаграммы
+  private _getDuration(): number {
+    return parseInt(this._elements.circles[0].style.getPropertyValue('--duration'), 10);
   }
 
   // возвращает данные о каждой секции диаграммы
-  private getSections() {
-    const { gradients, circles, buttons } = this.elements;
+  private _getSections(): IChartSection[] {
+    const { gradients, circles, buttons } = this._elements;
 
-    const sections: {
-      gradient: {
-        color1: string;
-        color2: string;
-      };
-      name: string;
-      value: number;
-    }[] = [];
+    const sections: IChartSection[] = [];
 
     circles.forEach((_circle, i) => {
       sections.push({
+        name: buttons[i].textContent as string,
+        value: +(circles[i].dataset.value as string),
         gradient: {
           color1: gradients[i].children[0].getAttribute('stop-color') as string,
           color2: gradients[i].children[1].getAttribute('stop-color') as string,
         },
-        name: buttons[i].textContent as string,
-        value: +(circles[i].dataset.value as string),
       });
     });
 
     return sections;
   }
 
-  // возвращает сумму значений активных секций диаграммы
-  private getSum() {
-    let sum = 0;
-
-    this.elements.circles.forEach((circle, i) => {
-      if (this.isButtonActive(i)) {
-        sum += +(circle.dataset.value as string);
-      }
-    });
-
-    return sum;
-  }
-
   // регистрирует обработчики событий
-  private addEventListeners() {
+  private _addEventListeners(): void {
     window.addEventListener('load', () => {
-      this.activeDiagram();
-      this.animateSum();
+      this._activeDiagram();
+      this._animateSum();
     });
 
-    this.elements.buttons.forEach((button, i) => {
+    this._elements.buttons.forEach((button, i) => {
       button.addEventListener('mouseover', () => {
-        this.highlightCircle(i);
+        this._highlightCircle(i);
       });
 
       button.addEventListener('mouseout', () => {
-        this.dehighlightCircles();
+        this._dehighlightCircles();
       });
 
       button.addEventListener('click', () => {
-        this.switchButton(i);
-        this.changeSum(i);
-        this.animateSum();
-        this.redrawDiagram();
+        this._switchButton(i);
+        this._animateSum();
+        this._redrawDiagram();
       });
     });
 
-    this.elements.circles.forEach((circle, i) => {
+    this._elements.circles.forEach((circle, i) => {
       circle.addEventListener('mouseover', () => {
-        this.highlightCircle(i);
-        this.showTooltip(i);
+        this._highlightCircle(i);
+        this._showTooltip(i);
       });
 
       circle.addEventListener('mousemove', (e) => {
-        this.setTooltipPosition(e);
+        this._setTooltipPosition(e);
       });
 
       circle.addEventListener('mouseout', () => {
-        this.dehighlightCircles();
-        this.hideTooltip();
+        this._dehighlightCircles();
+        this._hideTooltip();
       });
     });
   }
 
   // активирует диаграмму
-  private activeDiagram() {
-    this.elements.svg.classList.add('chart__svg--active');
+  private _activeDiagram(): void {
+    this._elements.svg.classList.add('chart__svg--active');
   }
 
   // анимирует сумму значений активных секций диаграммы в заголовке диаграммы
-  private animateSum() {
-    const { $sum } = this.elements;
-    const { duration, sum } = this;
+  private _animateSum(): void {
+    const { $sum } = this._elements;
 
-    $({ num: +$sum.text() }).animate({ num: sum }, {
-      duration,
+    $({ num: +$sum.text() }).animate({ num: this._getSum() }, {
+      duration: this._duration,
       easing: 'easeOutQuad', // from jquery-ui
       step() {
         $sum.text(Math.floor(this.num));
@@ -165,13 +161,13 @@ class Chart {
   }
 
   // выделяет указанную секцию диаграммы
-  private highlightCircle(i: number) {
-    if (this.isButtonActive(i)) {
-      this.elements.circles.forEach((circle) => {
+  private _highlightCircle(i: number): void {
+    if (this._isButtonActive(i)) {
+      this._elements.circles.forEach((circle) => {
         circle.classList.add('chart__circle--translucent');
       });
 
-      const ccl = this.elements.circles[i].classList;
+      const ccl = this._elements.circles[i].classList;
 
       ccl.remove('chart__circle--translucent');
       ccl.add('chart__circle--wide');
@@ -179,8 +175,8 @@ class Chart {
   }
 
   // снимает выделение со всех секций диаграммы
-  private dehighlightCircles() {
-    this.elements.circles.forEach((circle) => {
+  private _dehighlightCircles(): void {
+    this._elements.circles.forEach((circle) => {
       circle.classList.remove(
         'chart__circle--translucent',
         'chart__circle--wide',
@@ -189,30 +185,21 @@ class Chart {
   }
 
   // переключает состояние указанной кнопки диаграмммы
-  private switchButton(i: number) {
-    const button = this.elements.buttons[i];
+  private _switchButton(i: number): void {
+    const button = this._elements.buttons[i];
 
     button.classList.toggle('chart__button--active');
-    button.dispatchEvent(new Event(this.isButtonActive(i) ? 'mouseover' : 'mouseout'));
-  }
-
-  // изменяет сумму значений активных секций диаграммы в зависимости от нажатой кнопки
-  private changeSum(i: number) {
-    const { value } = this.sections[i];
-
-    this.sum += this.isButtonActive(i) ? value : -value;
+    button.dispatchEvent(new Event(this._isButtonActive(i) ? 'mouseover' : 'mouseout'));
   }
 
   // перерисовывает диаграмму
-  private redrawDiagram() {
-    const { gap, sum } = this;
+  private _redrawDiagram(): void {
+    let offset = -this._gap / 2;
 
-    let offset = -this.gap / 2;
-
-    this.elements.circles.forEach((circle, i) => {
-      if (this.isButtonActive(i)) {
-        const percent = (this.sections[i].value / sum) * 100 || 0;
-        const array = `${Math.max(0, percent - gap)} 100`;
+    this._elements.circles.forEach((circle, i) => {
+      if (this._isButtonActive(i)) {
+        const percent = (this._sections[i].value / this._getSum()) * 100 || 0;
+        const array = `${Math.max(0, percent - this._gap)} 100`;
 
         circle.style.setProperty('--array', array);
         circle.style.setProperty('--offset', `${offset}`);
@@ -220,19 +207,19 @@ class Chart {
         offset -= percent;
       } else {
         circle.style.setProperty('--array', '0 100');
-        circle.style.setProperty('--offset', `${offset + gap / 2}`);
+        circle.style.setProperty('--offset', `${offset + this._gap / 2}`);
       }
     });
   }
 
   // отображает всплывающую подсказку для указанной секции диаграммы
-  private showTooltip(i: number) {
+  private _showTooltip(i: number): void {
     const {
       tooltip, tooltipDetails, tooltipName, tooltipValue,
-    } = this.elements;
+    } = this._elements;
 
-    const { color1, color2 } = this.sections[i].gradient;
-    const { name, value } = this.sections[i];
+    const { color1, color2 } = this._sections[i].gradient;
+    const { name, value } = this._sections[i];
 
     tooltip.classList.add('chart__tooltip--active');
 
@@ -245,8 +232,8 @@ class Chart {
 
   // устанавливает положение всплывающей подсказки диаграммы
   // https://stackoverflow.com/questions/11334452/event-offsetx-in-firefox
-  private setTooltipPosition(mousemove: MouseEvent) {
-    const { tooltip } = this.elements;
+  private _setTooltipPosition(mousemove: MouseEvent): void {
+    const { tooltip } = this._elements;
 
     const rect = (mousemove.target as Element).getBoundingClientRect();
     const offsetX = mousemove.clientX - rect.left;
@@ -257,13 +244,26 @@ class Chart {
   }
 
   // скрывает всплывающую подсказку диаграммы
-  private hideTooltip() {
-    this.elements.tooltip.classList.remove('chart__tooltip--active');
+  private _hideTooltip(): void {
+    this._elements.tooltip.classList.remove('chart__tooltip--active');
+  }
+
+  // возвращает сумму значений активных секций диаграммы
+  private _getSum(): number {
+    let sum = 0;
+
+    this._elements.circles.forEach((circle, i) => {
+      if (this._isButtonActive(i)) {
+        sum += +(circle.dataset.value as string);
+      }
+    });
+
+    return sum;
   }
 
   // возвращает true, если указанная кнопка диаграммы активна
-  private isButtonActive(i: number) {
-    return this.elements.buttons[i].classList.contains('chart__button--active');
+  private _isButtonActive(i: number): boolean {
+    return this._elements.buttons[i].classList.contains('chart__button--active');
   }
 }
 

@@ -1,24 +1,28 @@
 import helpers from '~/ts/helpers';
 
+interface IMainSearchElements {
+  button: HTMLElement;
+}
+
 class MainSearch {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент блока
+  private _root: HTMLElement; // корневой html-элемент блока
 
-  private elements; // элементы блока
+  private _elements: IMainSearchElements; // элементы блока
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.addEventListeners();
-    this.observe();
+    this._addEventListeners();
+    this._observe();
   }
 
   // -----------------------
@@ -26,23 +30,23 @@ class MainSearch {
   // -----------------------
 
   // возвращает элементы блока
-  private getElements() {
+  private _getElements(): IMainSearchElements {
     return {
-      button: this.root.querySelector('.main-search__button') as HTMLElement,
+      button: this._root.querySelector('.main-search__button') as HTMLElement,
     };
   }
 
   // регистрирует обработчики событий
-  private addEventListeners() {
-    this.elements.button.addEventListener('click', () => {
-      this.switchSidebar();
+  private _addEventListeners(): void {
+    this._elements.button.addEventListener('click', () => {
+      this._switchSidebar();
     });
   }
 
   // создаёт Intersection Observer для последующего скрытия / отображения кнопки «Фильтры»
-  private observe() {
+  private _observe(): void {
     const observer = new IntersectionObserver((entries) => {
-      const bcl = this.elements.button.classList;
+      const bcl = this._elements.button.classList;
 
       if (entries[0].isIntersecting) {
         bcl.remove('main-search__button--hidden');
@@ -53,13 +57,13 @@ class MainSearch {
       rootMargin: '-100% 0px 0px',
     });
 
-    observer.observe(this.root);
+    observer.observe(this._root);
   }
 
   // переключает состояние сайдбара
-  private switchSidebar() {
-    const rcl = this.root.classList;
-    const bcl = this.elements.button.classList;
+  private _switchSidebar(): void {
+    const rcl = this._root.classList;
+    const bcl = this._elements.button.classList;
 
     if (!bcl.contains('main-search__button--hidden')) {
       rcl.toggle('main-search--filter');

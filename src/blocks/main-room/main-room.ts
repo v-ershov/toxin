@@ -1,24 +1,28 @@
 import '@fancyapps/fancybox/dist/jquery.fancybox.min';
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 
+interface IMainRoomElements {
+  $images: JQuery<HTMLElement>;
+}
+
 class MainRoom {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент блока
+  private _root: HTMLElement; // корневой html-элемент блока
 
-  private elements; // элементы блока
+  private _elements: IMainRoomElements; // элементы блока
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.initGallery();
+    this._initGallery();
   }
 
   // -----------------------
@@ -26,15 +30,15 @@ class MainRoom {
   // -----------------------
 
   // возвращает элементы блока
-  private getElements() {
+  private _getElements(): IMainRoomElements {
     return {
-      $images: $(this.root).find('[data-fancybox="gallery"]'),
+      $images: $(this._root).find('[data-fancybox="gallery"]'),
     };
   }
 
   // инициализирует галлерею
-  private initGallery() {
-    this.elements.$images.fancybox({
+  private _initGallery(): void {
+    this._elements.$images.fancybox({
       animationEffect: 'fade',
       loop: true,
       transitionEffect: 'slide',

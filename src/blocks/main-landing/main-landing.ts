@@ -1,21 +1,25 @@
+interface IMainLandingElements {
+  slideshow: HTMLElement;
+}
+
 class MainLanding {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент блока
+  private _root: HTMLElement; // корневой html-элемент блока
 
-  private elements; // элементы блока
+  private _elements: IMainLandingElements; // элементы блока
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.addEventListeners();
+    this._addEventListeners();
   }
 
   // -----------------------
@@ -23,22 +27,22 @@ class MainLanding {
   // -----------------------
 
   // возвращает элементы блока
-  private getElements() {
+  private _getElements(): IMainLandingElements {
     return {
-      slideshow: this.root.querySelector('.main-landing__slideshow') as HTMLElement,
+      slideshow: this._root.querySelector('.main-landing__slideshow') as HTMLElement,
     };
   }
 
   // регистрирует обработчики событий
-  private addEventListeners() {
+  private _addEventListeners(): void {
     window.addEventListener('scroll', () => {
-      this.createParallax();
+      this._createParallax();
     });
   }
 
   // создаёт параллакс-эффект для слайдшоу
-  private createParallax() {
-    this.elements.slideshow.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
+  private _createParallax(): void {
+    this._elements.slideshow.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 }
 

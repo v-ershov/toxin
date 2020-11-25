@@ -1,24 +1,29 @@
 import helpers from '~/ts/helpers';
 
+interface IEclElements {
+  button: HTMLElement;
+  list: HTMLElement;
+}
+
 class Ecl {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент списка чекбоксов
+  private _root: HTMLElement; // корневой html-элемент списка чекбоксов
 
-  private elements; // элементы списка чекбоксов
+  private _elements: IEclElements; // элементы списка чекбоксов
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.addEventListeners();
-    this.setHeight();
+    this._addEventListeners();
+    this._setHeight();
   }
 
   // -----------------------
@@ -26,28 +31,28 @@ class Ecl {
   // -----------------------
 
   // возвращает элементы списка чекбоксов
-  private getElements() {
+  private _getElements(): IEclElements {
     return {
-      button: this.root.querySelector('.ecl__button') as HTMLElement,
-      list: this.root.querySelector('.ecl__list') as HTMLElement,
+      button: this._root.querySelector('.ecl__button') as HTMLElement,
+      list: this._root.querySelector('.ecl__list') as HTMLElement,
     };
   }
 
   // регистрирует обработчики событий
-  private addEventListeners() {
-    this.elements.button.addEventListener('click', () => {
-      this.switchEcl();
+  private _addEventListeners(): void {
+    this._elements.button.addEventListener('click', () => {
+      this._switchEcl();
     });
   }
 
   // устанавливает максимальную высоту списка чекбоксов
-  private setHeight() {
-    this.elements.list.style.setProperty('--height', helpers.getHeight(this.elements.list));
+  private _setHeight(): void {
+    this._elements.list.style.setProperty('--height', helpers.getHeight(this._elements.list));
   }
 
   // переключает состояние списка чекбоксов
-  private switchEcl() {
-    this.root.classList.toggle('ecl--active');
+  private _switchEcl(): void {
+    this._root.classList.toggle('ecl--active');
   }
 }
 

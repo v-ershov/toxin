@@ -2,24 +2,30 @@ import 'jquery-ui/ui/widgets/slider';
 import 'jquery-ui/themes/base/slider.css';
 import 'jquery-ui-touch-punch/jquery.ui.touch-punch.min';
 
+interface ISliderRangeElements {
+  $label: JQuery<HTMLElement>;
+  $input: JQuery<HTMLElement>;
+  $slider: JQuery<HTMLElement>;
+}
+
 class SliderRange {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент слайдера
+  private _root: HTMLElement; // корневой html-элемент слайдера
 
-  private elements; // элементы слайдера
+  private _elements: ISliderRangeElements; // элементы слайдера
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
+    this._root = root;
+    this._elements = this._getElements();
 
-    this.initSlider();
+    this._initSlider();
   }
 
   // -----------------------
@@ -27,17 +33,17 @@ class SliderRange {
   // -----------------------
 
   // возвращает элементы слайдера
-  private getElements() {
+  private _getElements(): ISliderRangeElements {
     return {
-      $label: $(this.root).find('.label__secondary'),
-      $input: $(this.root).find('.slider-range__input'),
-      $slider: $(this.root).find('.slider-range__slider'),
+      $label: $(this._root).find('.label__secondary'),
+      $input: $(this._root).find('.slider-range__input'),
+      $slider: $(this._root).find('.slider-range__slider'),
     };
   }
 
   // инициализирует слайдер
-  private initSlider() {
-    const { $label, $input, $slider } = this.elements;
+  private _initSlider(): void {
+    const { $label, $input, $slider } = this._elements;
 
     $slider.slider({
       animate: 'fast',

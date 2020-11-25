@@ -1,35 +1,43 @@
 import 'air-datepicker/dist/js/datepicker.min';
 import 'air-datepicker/dist/css/datepicker.min.css';
 
+interface ICalendarElements {
+  $root: JQuery<HTMLElement>;
+  $labels: JQuery<HTMLElement>;
+  $inputs: JQuery<HTMLElement>;
+  $buttonReset: JQuery<HTMLElement>;
+  $buttonApply: JQuery<HTMLElement>;
+}
+
 class Calendar {
-  // ------------------
-  // --- PROPERTIES ---
-  // ------------------
+  // ---------------
+  // --- FIELDS ---
+  // ---------------
 
-  private root; // корневой html-элемент календаря
+  private _root: HTMLElement; // корневой html-элемент календаря
 
-  private elements; // элементы календаря
+  private _elements: ICalendarElements; // элементы календаря
 
-  private type; // тип календаря (fields | field | inline)
+  private _type: string; // тип календаря (fields | field | inline)
 
-  private inst; // экземпляр плагина air-datepicker
+  private _inst: AirDatepickerInstance; // экземпляр плагина air-datepicker
 
-  private formattedDate; // форматированная дата календаря
+  private _formattedDate: string; // форматированная дата календаря
 
   // -------------------
   // --- CONSTRUCTOR ---
   // -------------------
 
   constructor(root: HTMLElement) {
-    this.root = root;
-    this.elements = this.getElements();
-    this.type = this.getType();
-    this.inst = this.getInst();
-    this.formattedDate = '';
+    this._root = root;
+    this._elements = this._getElements();
+    this._type = this._getType();
+    this._inst = this._getInst();
+    this._formattedDate = '';
 
-    this.initDates();
-    this.initButtons();
-    this.addEventListeners();
+    this._initDates();
+    this._initButtons();
+    this._addEventListeners();
   }
 
   // -----------------------
@@ -37,26 +45,26 @@ class Calendar {
   // -----------------------
 
   // возвращает элементы календаря
-  private getElements() {
+  private _getElements(): ICalendarElements {
     return {
-      $root: $(this.root),
-      $labels: $(this.root).find('.label'),
-      $inputs: $(this.root).find('.field__input'),
+      $root: $(this._root),
+      $labels: $(this._root).find('.label'),
+      $inputs: $(this._root).find('.field__input'),
       $buttonReset: $('<button class="button button--bodyless button--text-gray">Очистить</button>'),
       $buttonApply: $('<button class="button button--bodyless">Применить</button>'),
     };
   }
 
   // возвращает тип календаря
-  private getType() {
-    return this.elements.$root.data('type') as string;
+  private _getType(): string {
+    return this._elements.$root.data('type') as string;
   }
 
   // возвращает экземпляр плагина air-datepicker
-  private getInst() {
-    const { $root, $inputs } = this.elements;
+  private _getInst(): AirDatepickerInstance {
+    const { $root, $inputs } = this._elements;
 
-    const target = (this.type === 'inline') ? $root : $inputs.first();
+    const target = (this._type === 'inline') ? $root : $inputs.first();
 
     target.datepicker({
       dateFormat: 'd M',
@@ -71,44 +79,44 @@ class Calendar {
       range: true,
 
       onSelect: (formattedDate) => {
-        this.resetFields();
-        this.setFormattedDate(formattedDate);
+        this._resetFields();
+        this._setFormattedDate(formattedDate);
       },
-      onShow: (inst: AirDatepickerInstance) => this.setWidth(inst),
+      onShow: (inst: AirDatepickerInstance) => this._setWidth(inst),
     });
 
     return target.data('datepicker');
   }
 
   // инициализирует даты календаря
-  private initDates() {
-    const dates = this.elements.$root.data('selected-dates') as string;
+  private _initDates(): void {
+    const dates = this._elements.$root.data('selected-dates') as string;
 
     if (dates) {
       const split = dates.split('/');
 
-      if (!this.inst.minDate || new Date(split[0]) >= this.inst.minDate) {
-        this.inst.selectDate([new Date(split[0]), new Date(split[1])]);
+      if (!this._inst.minDate || new Date(split[0]) >= this._inst.minDate) {
+        this._inst.selectDate([new Date(split[0]), new Date(split[1])]);
 
-        this.setFields();
+        this._setFields();
       }
     }
   }
 
   // инициализирует кнопки календаря
-  private initButtons() {
-    const reset = $('<div class="calendar__button">').append(this.elements.$buttonReset);
-    const apply = $('<div class="calendar__button">').append(this.elements.$buttonApply);
+  private _initButtons(): void {
+    const reset = $('<div class="calendar__button">').append(this._elements.$buttonReset);
+    const apply = $('<div class="calendar__button">').append(this._elements.$buttonApply);
     const buttons = $('<div class="calendar__buttons">').append(reset).append(apply);
 
-    this.inst.$datepicker.append(buttons);
+    this._inst.$datepicker.append(buttons);
   }
 
   // регистрирует обработчики событий
-  private addEventListeners() {
+  private _addEventListeners(): void {
     const {
       $labels, $inputs, $buttonReset, $buttonApply,
-    } = this.elements;
+    } = this._elements;
 
     $labels.on('click mousedown', (e) => {
       e.preventDefault();
@@ -116,51 +124,51 @@ class Calendar {
     });
 
     $buttonReset.on('click', () => {
-      this.resetFields();
-      this.resetDates();
+      this._resetFields();
+      this._resetDates();
     });
 
     $buttonApply.on('click', () => {
-      if (this.inst.selectedDates.length !== 2) {
+      if (this._inst.selectedDates.length !== 2) {
         return;
       }
 
-      this.inst.hide();
+      this._inst.hide();
 
-      this.setFields();
+      this._setFields();
     });
   }
 
   // сбрасывает поля календаря
-  private resetFields() {
-    this.elements.$inputs.each((_i, input) => {
+  private _resetFields(): void {
+    this._elements.$inputs.each((_i, input) => {
       $(input).val('');
     });
   }
 
   // сбрасывает активные даты календаря
-  private resetDates() {
-    this.inst.clear();
+  private _resetDates(): void {
+    this._inst.clear();
   }
 
   // устанавливает форматированную дату календаря
-  private setFormattedDate(formattedDate: string) {
-    this.formattedDate = formattedDate;
+  private _setFormattedDate(formattedDate: string): void {
+    this._formattedDate = formattedDate;
   }
 
   // устанавливает ширину календаря
-  private setWidth(inst: AirDatepickerInstance) {
-    inst.$datepicker.css('width', `${this.elements.$root.width() as number}`);
+  private _setWidth(inst: AirDatepickerInstance): void {
+    inst.$datepicker.css('width', `${this._elements.$root.width() as number}`);
   }
 
   // устанавливает активные даты в поля календаря
-  private setFields() {
-    if (this.type === 'fields') {
-      this.elements.$inputs.each((i, input) => {
-        $(input).val(this.inst.selectedDates[i].toLocaleDateString());
+  private _setFields(): void {
+    if (this._type === 'fields') {
+      this._elements.$inputs.each((i, input) => {
+        $(input).val(this._inst.selectedDates[i].toLocaleDateString());
       });
-    } else if (this.type === 'field') {
-      this.elements.$inputs.val(this.formattedDate.toLowerCase());
+    } else if (this._type === 'field') {
+      this._elements.$inputs.val(this._formattedDate.toLowerCase());
     }
   }
 }
