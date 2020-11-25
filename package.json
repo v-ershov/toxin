@@ -1,7 +1,7 @@
 {
   "name": "toxin",
   "version": "1.0.0",
-  "description": "FSD Developer Training System — Step 2",
+  "description": "FSD Frontend Education Program: Task 2",
   "keywords": [
     "starter-kit",
     "starter-project",
@@ -23,8 +23,10 @@
     "dev": "webpack-dev-server --config ./webpack/webpack.dev.ts",
     "prod": "webpack-dev-server --config ./webpack/webpack.prod.ts",
     "build": "webpack --config ./webpack/webpack.prod.ts",
-    "eslint": "eslint --ext .ts,.js ./",
-    "stylelint": "stylelint \"src/**/*.{scss,sass}\""
+    "lint": "npm run lint:ts && npm run lint:pug && npm run lint:sass",
+    "lint:ts": "eslint --ext .ts ./",
+    "lint:pug": "glob-exec \"./src/**/*.pug\" -- \"pug-lint {{files.join(' ')}}\"",
+    "lint:sass": "stylelint \"./src/**/*.{scss,sass}\""
   },
   "devDependencies": {
     "@babel/cli": "^7.11.6",
@@ -54,6 +56,7 @@
     "eslint-import-resolver-webpack": "^0.13.0",
     "eslint-plugin-import": "^2.22.1",
     "file-loader": "^6.1.0",
+    "glob-exec": "^0.1.1",
     "html-webpack-plugin": "^4.5.0",
     "image-webpack-loader": "^7.0.1",
     "mini-css-extract-plugin": "^0.11.2",
