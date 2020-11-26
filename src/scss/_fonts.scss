@@ -1,4 +1,4 @@
-// https://google-webfonts-helper.herokuapp.com/fonts/montserrat
+// https://google-webfonts-helper.herokuapp.com/assets/fonts/montserrat
 @font-face {
   $name: 'montserrat-v14-latin-ext_latin_cyrillic-ext_cyrillic-regular';
 
@@ -7,10 +7,10 @@
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url('../fonts/montserrat/#{$name}.woff2') format('woff2'),
-    url('../fonts/montserrat/#{$name}.woff') format('woff'),
-    url('../fonts/montserrat/#{$name}.ttf') format('truetype'),
-    url('../fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
+    url('../assets/fonts/montserrat/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/montserrat/#{$name}.woff') format('woff'),
+    url('../assets/fonts/montserrat/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
 @font-face {
@@ -21,13 +21,13 @@
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url('../fonts/montserrat/#{$name}.woff2') format('woff2'),
-    url('../fonts/montserrat/#{$name}.woff') format('woff'),
-    url('../fonts/montserrat/#{$name}.ttf') format('truetype'),
-    url('../fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
+    url('../assets/fonts/montserrat/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/montserrat/#{$name}.woff') format('woff'),
+    url('../assets/fonts/montserrat/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
-// https://google-webfonts-helper.herokuapp.com/fonts/quicksand
+// https://google-webfonts-helper.herokuapp.com/assets/fonts/quicksand
 @font-face {
   $name: 'quicksand-v20-latin-ext_latin-regular';
 
@@ -36,10 +36,10 @@
   font-family: 'Quicksand';
   src:
     local('Quicksand'),
-    url('../fonts/quicksand/#{$name}.woff2') format('woff2'),
-    url('../fonts/quicksand/#{$name}.woff') format('woff'),
-    url('../fonts/quicksand/#{$name}.ttf') format('truetype'),
-    url('../fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
+    url('../assets/fonts/quicksand/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/quicksand/#{$name}.woff') format('woff'),
+    url('../assets/fonts/quicksand/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
 @font-face {
@@ -50,13 +50,13 @@
   font-family: 'Quicksand';
   src:
     local('Quicksand'),
-    url('../fonts/quicksand/#{$name}.woff2') format('woff2'),
-    url('../fonts/quicksand/#{$name}.woff') format('woff'),
-    url('../fonts/quicksand/#{$name}.ttf') format('truetype'),
-    url('../fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
+    url('../assets/fonts/quicksand/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/quicksand/#{$name}.woff') format('woff'),
+    url('../assets/fonts/quicksand/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
-// https://google-webfonts-helper.herokuapp.com/fonts/open-sans
+// https://google-webfonts-helper.herokuapp.com/assets/fonts/open-sans
 @font-face {
   $name: 'open-sans-v17-cyrillic-ext_cyrillic-regular';
 
@@ -65,10 +65,10 @@
   font-family: 'Open Sans';
   src:
     local('Open Sans'),
-    url('../fonts/open-sans/#{$name}.woff2') format('woff2'),
-    url('../fonts/open-sans/#{$name}.woff') format('woff'),
-    url('../fonts/open-sans/#{$name}.ttf') format('truetype'),
-    url('../fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
+    url('../assets/fonts/open-sans/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/open-sans/#{$name}.woff') format('woff'),
+    url('../assets/fonts/open-sans/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
 @font-face {
@@ -79,10 +79,10 @@
   font-family: 'Open Sans';
   src:
     local('Open Sans'),
-    url('../fonts/open-sans/#{$name}.woff2') format('woff2'),
-    url('../fonts/open-sans/#{$name}.woff') format('woff'),
-    url('../fonts/open-sans/#{$name}.ttf') format('truetype'),
-    url('../fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
+    url('../assets/fonts/open-sans/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/open-sans/#{$name}.woff') format('woff'),
+    url('../assets/fonts/open-sans/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
 // https://github.com/google/material-design-icons/tree/master/iconfont
@@ -94,8 +94,8 @@
   font-family: 'Material Icons';
   src:
     local('Material Icons'),
-    url('../fonts/material-icons/#{$name}.woff2') format('woff2'),
-    url('../fonts/material-icons/#{$name}.woff') format('woff'),
-    url('../fonts/material-icons/#{$name}.ttf') format('truetype'),
-    url('../fonts/material-icons/#{$name}.svg#MaterialIcons-Regular') format('svg');
+    url('../assets/fonts/material-icons/#{$name}.woff2') format('woff2'),
+    url('../assets/fonts/material-icons/#{$name}.woff') format('woff'),
+    url('../assets/fonts/material-icons/#{$name}.ttf') format('truetype'),
+    url('../assets/fonts/material-icons/#{$name}.svg#MaterialIcons-Regular') format('svg');
 }

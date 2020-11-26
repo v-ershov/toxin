@@ -37,7 +37,7 @@ mixin room(options)
   .room
     ._slider
       each image in images
-        img._img(src=require(`~/content/rooms/${image[0]}`).default, alt=image[1])
+        img._img(src=require(`~/assets/content/rooms/${image[0]}`).default, alt=image[1])
     ._info
       ._row.-baseline
         ._cell

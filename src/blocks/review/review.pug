@@ -36,7 +36,7 @@ mixin review(options)
     ._row
       ._cell.-small
         if image
-          img._img(src=require(`~/content/reviewers/${image}`).default, alt=author)
+          img._img(src=require(`~/assets/content/reviewers/${image}`).default, alt=author)
         else
           img._img(src=require('~/blocks/review/img/review-avatar.svg').default, alt='Иконка «Аватар»')
       ._cell

@@ -14,11 +14,11 @@ const config: webpack.Configuration = {
   entry: {
     app: [
       '@babel/polyfill',
-      `${paths.context.src}/index.ts`,
+      `${paths.src._}/index.ts`,
     ],
   },
   output: {
-    path: paths.context.dist,
+    path: paths.dist,
     publicPath: '/',
   },
   devServer: {
@@ -29,7 +29,7 @@ const config: webpack.Configuration = {
   },
   resolve: {
     alias: {
-      '~': paths.context.src,
+      '~': paths.src._,
     },
     extensions: ['.ts', '.js', '.sass', 'scss'],
   },
@@ -52,12 +52,12 @@ const config: webpack.Configuration = {
         options: {
           plugins: [pugBem],
           pretty: true,
-          root: paths.context.src,
+          root: paths.src._,
         },
       },
       {
         test: /\.(woff2?|ttf|svg|eot|otf)$/,
-        include: paths.src.fonts,
+        include: paths.src.assets.fonts,
         loader: 'file-loader',
         options: {
           name: '[folder]/[name].[ext]',
@@ -66,7 +66,7 @@ const config: webpack.Configuration = {
       },
       {
         test: /\.(jpe?g|png|gif)$/,
-        include: paths.src.content,
+        include: paths.src.assets.content,
         loader: 'file-loader',
         options: {
           name: '[folder]/[name].[ext]',
@@ -94,9 +94,9 @@ const config: webpack.Configuration = {
       jQuery: 'jquery',
     }),
     new CleanWebpackPlugin(),
-    ...fs.readdirSync(paths.src.pages).map((page) => new HtmlWebpackPlugin({
+    ...fs.readdirSync(paths.src.pug.pages).map((page) => new HtmlWebpackPlugin({
       filename: `${page.replace(/\.pug/, '.html')}`,
-      template: `${paths.src.pages}/${page}`,
+      template: `${paths.src.pug.pages}/${page}`,
     })),
   ],
 };

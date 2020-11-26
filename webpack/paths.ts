@@ -1,30 +1,33 @@
 import path from 'path';
 
-const context = {
-  src: path.resolve('src'),
-  dist: path.resolve('dist'),
-  postcss: path.resolve('postcss'),
-};
+const src = path.resolve('src');
+const dist = path.resolve('dist');
+const postcss = path.resolve('postcss');
 
-const src = {
-  blocks: `${context.src}\\blocks`,
-  content: `${context.src}\\content`,
-  fonts: `${context.src}\\fonts`,
-  pug: `${context.src}\\pug`,
-  pages: `${context.src}\\pug\\pages`,
-  scss: `${context.src}\\scss`,
-  ts: `${context.src}\\ts`,
-};
-
-const postcss = {
-  dev: `${context.postcss}\\postcss.dev.js`,
-  prod: `${context.postcss}\\postcss.prod.js`,
-};
+const assets = `${src}\\assets`;
+const pug = `${src}\\pug`;
 
 const paths = {
-  context,
-  src,
-  postcss,
+  src: {
+    _: src,
+    assets: {
+      content: `${assets}\\content`,
+      favicons: `${assets}\\favicons`,
+      fonts: `${assets}\\fonts`,
+    },
+    blocks: `${src}\\blocks`,
+    pug: {
+      _: pug,
+      pages: `${pug}\\pages`,
+    },
+    scss: `${src}\\scss`,
+    ts: `${src}\\ts`,
+  },
+  dist,
+  postcss: {
+    dev: `${postcss}\\postcss.dev.js`,
+    prod: `${postcss}\\postcss.prod.js`,
+  },
 };
 
 export default paths;

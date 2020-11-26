@@ -36,7 +36,7 @@
       $delay: #{$i * $time-each - $time-each};
 
       &:nth-child(#{$i}) {
-        background-image: url('../../content/backgrounds/#{$background}');
+        background-image: url('../../assets/content/backgrounds/#{$background}');
         animation-delay: $delay;
 
         &::before {
