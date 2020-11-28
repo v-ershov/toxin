@@ -4,24 +4,23 @@ const src = path.resolve('src');
 const dist = path.resolve('dist');
 const postcss = path.resolve('postcss');
 
-const assets = `${src}\\assets`;
-const pug = `${src}\\pug`;
-
 const paths = {
   src: {
     _: src,
     assets: {
-      content: `${assets}\\content`,
-      favicons: `${assets}\\favicons`,
-      fonts: `${assets}\\fonts`,
+      content: `${src}\\assets\\content`,
+      fonts: `${src}\\assets\\fonts`,
     },
     blocks: `${src}\\blocks`,
     pug: {
-      _: pug,
-      pages: `${pug}\\pages`,
+      pages: `${src}\\pug\\pages`,
     },
-    scss: `${src}\\scss`,
-    ts: `${src}\\ts`,
+    scss: {
+      _functions: `${src}\\scss\\_functions.scss`,
+      _mixins: `${src}\\scss\\_mixins.scss`,
+      _vars: `${src}\\scss\\_vars.scss`,
+    },
+    index: `${src}\\index.ts`,
   },
   dist,
   postcss: {

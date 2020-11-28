@@ -14,7 +14,7 @@ const config: webpack.Configuration = {
   entry: {
     app: [
       '@babel/polyfill',
-      `${paths.src._}/index.ts`,
+      paths.src.index,
     ],
   },
   output: {
