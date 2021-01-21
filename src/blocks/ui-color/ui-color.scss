@@ -9,6 +9,11 @@
     border-radius: rem(6);
     background-color: $color-black;
 
+    @include screen-sm {
+      width: rem(60);
+      height: rem(60);
+    }
+
     &--gray-100p {
       background-color: $color-gray-100p;
     }
