@@ -235,7 +235,7 @@ class Chart {
   private _setTooltipPosition(mousemove: MouseEvent): void {
     const { tooltip } = this._elements;
 
-    const rect = (mousemove.target as Element).getBoundingClientRect();
+    const rect = (mousemove.target as HTMLElement).getBoundingClientRect();
     const offsetX = mousemove.clientX - rect.left;
     const offsetY = mousemove.clientY - rect.top;
 
