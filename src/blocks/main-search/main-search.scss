@@ -174,11 +174,12 @@
   }
 
   &__section {
+    flex-grow: 1;
     margin-left: rem(26);
     padding: rem(30) 0 rem(70);
 
     @include screen-xl {
-      min-height: 100vh;
+      min-height: calc(100vh - #{$height-header});
       margin-left: 0;
     }
   }
