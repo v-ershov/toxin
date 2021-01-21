@@ -95,7 +95,7 @@
 
     @include screen-sm {
       max-width: rem(420);
-      min-height: calc(100vh - #{rem(140)});
+      min-height: calc(100vh - #{$height-header * 2});
     }
   }
 
