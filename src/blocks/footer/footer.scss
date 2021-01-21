@@ -64,6 +64,16 @@
         padding-top: rem(120);
         padding-bottom: rem(120);
       }
+
+      @include screen-sm {
+        padding-top: rem(100);
+        padding-bottom: rem(100);
+      }
+
+      @include screen-xs {
+        padding-top: rem(80);
+        padding-bottom: rem(80);
+      }
     }
   }
 
