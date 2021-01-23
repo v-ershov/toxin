@@ -10,11 +10,7 @@ mixin form-field(options)
     const defaults = {
       labelPrimary: '',
       labelSecondary: '',
-      attrsField: {
-        type: 'email',
-        placeholder: 'Email',
-        required: true,
-      },
+      attrsField: {},
     };
 
   -
@@ -28,7 +24,9 @@ mixin form-field(options)
     +field({
       labelPrimary,
       labelSecondary,
-      attrs: attrsField,
+      attrs: Object.assign(attrsField, {
+        required: true,
+      }),
     })
     button._button(type='submit')
       | Отправить

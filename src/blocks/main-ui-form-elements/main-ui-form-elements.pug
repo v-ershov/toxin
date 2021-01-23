@@ -102,6 +102,10 @@ mixin main-ui-form-elements
             li._item.-width-266
               +form-field({
                 labelPrimary: 'Subscription Text Field',
+                attrsField: {
+                  type: 'email',
+                  placeholder: 'Email',
+                },
               })
       section._section
         h2._h2.visually-hidden
