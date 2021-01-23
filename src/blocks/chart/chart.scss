@@ -76,7 +76,7 @@
     box-shadow: $shadow-tooltip;
     font-size: rem(12);
     font-family: $font-family-secondary;
-    line-height: 1.3;
+    line-height: $line-height-secondary;
     visibility: hidden;
     pointer-events: none;
     transform: translate(-5%, -125%);
