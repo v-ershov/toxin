@@ -18,8 +18,8 @@
   border-radius: rem(3);
 
   .ui-slider-handle {
-    width: 16px;
-    height: 16px;
+    width: rem(16);
+    height: rem(16);
     border: 2px solid $color-white;
     border-radius: 50%;
     background-image: $gradient-secondary;
@@ -32,10 +32,10 @@
 }
 
 .ui-slider-horizontal {
-  height: 6px;
+  height: rem(6);
 
   .ui-slider-handle {
-    top: -6px;
+    top: rem(-6);
   }
 
   .ui-slider-range {
@@ -45,10 +45,10 @@
 }
 
 .ui-slider-vertical {
-  width: 6px;
+  width: rem(6);
 
   .ui-slider-handle {
-    left: -6px;
+    left: rem(-6);
   }
 
   .ui-slider-range {
