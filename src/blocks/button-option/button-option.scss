@@ -1,6 +1,7 @@
 .button-option {
   &__label {
     display: flex;
+    width: fit-content;
     cursor: pointer;
   }
 
