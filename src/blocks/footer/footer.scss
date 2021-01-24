@@ -101,7 +101,12 @@
     margin: rem(20) 0 0 0;
 
     &--center {
+      margin: 0;
       text-align: center;
+
+      @include screen-md {
+        margin: rem(20) 0 0 0;
+      }
     }
   }
 
