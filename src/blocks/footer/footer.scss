@@ -98,14 +98,14 @@
   }
 
   &__text {
-    margin: rem(20) 0 0 0;
+    margin: rem(20) 0 0;
 
     &--center {
       margin: 0;
       text-align: center;
 
       @include screen-md {
-        margin: rem(20) 0 0 0;
+        margin: rem(20) 0 0;
       }
     }
   }
@@ -119,7 +119,7 @@
   }
 
   &__h3 {
-    margin: 0 0 rem(20) 0;
+    margin: 0 0 rem(20);
 
     @include heading('h3');
   }
@@ -157,7 +157,7 @@
     margin: 0 0 0 rem(40);
 
     @include screen-md {
-      margin: rem(20) 0 0 0;
+      margin: rem(20) 0 0;
     }
   }
 }
