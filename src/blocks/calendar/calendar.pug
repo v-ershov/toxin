@@ -29,7 +29,7 @@ mixin calendar(options)
       attrsFieldSecond,
     } = Object.assign(defaults, options);
 
-  .calendar(data-type=type, data-selected-dates=selectedDates ? selectedDates : false)
+  .calendar(data-type=type, data-selected-dates=selectedDates || false)
     if type === 'field'
       +field({
         labelPrimary: labelFirst,
