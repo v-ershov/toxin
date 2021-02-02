@@ -1,6 +1,6 @@
 .field {
   position: relative;
-  z-index: 5;
+  z-index: 1;
   display: block;
   width: 100%;
 
@@ -10,7 +10,7 @@
       position: absolute;
       top: 50%;
       right: rem(10);
-      z-index: -5;
+      z-index: -1;
       transform: translateY(-50%);
 
       @include material-icons(rem(24), $color-gray-50p);

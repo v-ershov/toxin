@@ -12,7 +12,7 @@
 
   &__slideshow {
     top: #{$height-header * -1};
-    z-index: -5;
+    z-index: -1;
     overflow: hidden;
     transform: translateY(var(--translateY));
   }

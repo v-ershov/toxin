@@ -74,7 +74,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  z-index: 5;
+  z-index: 1;
   display: block;
   width: rem(42);
   padding: 0;
@@ -117,7 +117,7 @@
   position: absolute;
   right: rem(15);
   bottom: rem(15);
-  z-index: 10;
+  z-index: 2;
   display: flex;
   margin: 0;
   padding: 0;
