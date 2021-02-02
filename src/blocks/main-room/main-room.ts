@@ -2,7 +2,7 @@ import '@fancyapps/fancybox/dist/jquery.fancybox.min';
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 
 interface IMainRoomElements {
-  $images: JQuery<HTMLElement>;
+  images: NodeListOf<HTMLAnchorElement>;
 }
 
 class MainRoom {
@@ -20,25 +20,25 @@ class MainRoom {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
-    this._initGallery();
+    this._initFancybox();
   }
 
   // -----------------------
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы блока
-  private _getElements(): IMainRoomElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IMainRoomElements {
     return {
-      $images: $(this._root).find('[data-fancybox="gallery"]'),
+      images: this._root.querySelectorAll('[data-fancybox="gallery"]') as NodeListOf<HTMLAnchorElement>,
     };
   }
 
-  // инициализирует галлерею
-  private _initGallery(): void {
-    this._elements.$images.fancybox({
+  // инициализирует экземпляр плагина fancybox
+  private _initFancybox(): void {
+    $(this._elements.images).fancybox({
       animationEffect: 'fade',
       loop: true,
       transitionEffect: 'slide',
@@ -46,4 +46,8 @@ class MainRoom {
   }
 }
 
-document.querySelectorAll('.main-room').forEach((el) => new MainRoom(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.main-room').forEach((el) => new MainRoom(el as HTMLElement));
+}
+
+render();
