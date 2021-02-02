@@ -1,5 +1,5 @@
 interface IMainSignElements {
-  background: HTMLElement;
+  background: HTMLDivElement;
 }
 
 class MainSign {
@@ -17,7 +17,7 @@ class MainSign {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
     this._addEventListeners();
   }
@@ -26,10 +26,10 @@ class MainSign {
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы блока
-  private _getElements(): IMainSignElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IMainSignElements {
     return {
-      background: this._root.querySelector('.main-sign__background') as HTMLElement,
+      background: this._root.querySelector('.main-sign__background') as HTMLDivElement,
     };
   }
 
@@ -46,4 +46,8 @@ class MainSign {
   }
 }
 
-document.querySelectorAll('.main-sign').forEach((el) => new MainSign(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.main-sign').forEach((el) => new MainSign(el as HTMLElement));
+}
+
+render();
