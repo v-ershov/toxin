@@ -2,7 +2,7 @@ import 'slick-carousel/slick/slick.min';
 import 'slick-carousel/slick/slick.css';
 
 interface IRoomElements {
-  $slider: JQuery<HTMLElement>;
+  slider: HTMLDivElement;
 }
 
 class Room {
@@ -10,9 +10,9 @@ class Room {
   // --- FIELDS ---
   // ---------------
 
-  private _root: HTMLElement; // корневой html-элемент слайдера
+  private _root: HTMLElement; // корневой html-элемент карточки
 
-  private _elements: IRoomElements; // элементы слайдера
+  private _elements: IRoomElements; // элементы карточки
 
   // -------------------
   // --- CONSTRUCTOR ---
@@ -20,28 +20,32 @@ class Room {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
-    this._initSlider();
+    this._initSlickCarousel();
   }
 
   // -----------------------
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы слайдера
-  private _getElements(): IRoomElements {
+  // находит и возвращает элементы карточки
+  private _findElements(): IRoomElements {
     return {
-      $slider: $(this._root).find('.room__slider'),
+      slider: this._root.querySelector('.room__slider') as HTMLDivElement,
     };
   }
 
-  // инициализирует слайдер
-  private _initSlider(): void {
-    this._elements.$slider.slick({
+  // инициализирует экземпляр плагина slick-carousel
+  private _initSlickCarousel(): void {
+    $(this._elements.slider).slick({
       dots: true,
     });
   }
 }
 
-document.querySelectorAll('.room').forEach((el) => new Room(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.room').forEach((el) => new Room(el as HTMLElement));
+}
+
+render();
