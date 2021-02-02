@@ -1,8 +1,8 @@
 import helpers from '~/ts/helpers';
 
 interface IEclElements {
-  button: HTMLElement;
-  list: HTMLElement;
+  button: HTMLButtonElement;
+  list: HTMLUListElement;
 }
 
 class Ecl {
@@ -10,9 +10,9 @@ class Ecl {
   // --- FIELDS ---
   // ---------------
 
-  private _root: HTMLElement; // корневой html-элемент списка чекбоксов
+  private _root: HTMLElement; // корневой html-элемент списка
 
-  private _elements: IEclElements; // элементы списка чекбоксов
+  private _elements: IEclElements; // элементы списка
 
   // -------------------
   // --- CONSTRUCTOR ---
@@ -20,21 +20,21 @@ class Ecl {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
     this._addEventListeners();
-    this._setHeight();
+    this._setListHeight();
   }
 
   // -----------------------
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы списка чекбоксов
-  private _getElements(): IEclElements {
+  // находит и возвращает элементы списка
+  private _findElements(): IEclElements {
     return {
-      button: this._root.querySelector('.ecl__button') as HTMLElement,
-      list: this._root.querySelector('.ecl__list') as HTMLElement,
+      button: this._root.querySelector('.ecl__button') as HTMLButtonElement,
+      list: this._root.querySelector('.ecl__list') as HTMLUListElement,
     };
   }
 
@@ -45,15 +45,21 @@ class Ecl {
     });
   }
 
-  // устанавливает максимальную высоту списка чекбоксов
-  private _setHeight(): void {
-    this._elements.list.style.setProperty('--height', helpers.getHeight(this._elements.list));
+  // устанавливает максимальную высоту списка
+  private _setListHeight(): void {
+    const { list } = this._elements;
+
+    list.style.setProperty('--height', helpers.getHeight(list));
   }
 
-  // переключает состояние списка чекбоксов
+  // переключает состояние списка
   private _switchEcl(): void {
     this._root.classList.toggle('ecl--active');
   }
 }
 
-document.querySelectorAll('.ecl').forEach((el) => new Ecl(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.ecl').forEach((el) => new Ecl(el as HTMLElement));
+}
+
+render();
