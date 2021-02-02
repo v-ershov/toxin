@@ -81,7 +81,7 @@ mixin dropdown(options)
         'data-words': words.length ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
       }),
     })
-    ._content(style='--height: 100vh;')
+    ._menu(style='--height: 100vh;')
       ul._list
         each item in list
           li._item(data-words=item.words.length ? `${item.words[0]}, ${item.words[1]}, ${item.words[2]}` : false)
@@ -95,19 +95,19 @@ mixin dropdown(options)
                 | +
       if isButtons
         ._buttons
-          ._button.-reset.-hidden
-            +button({
-              text: 'Очистить',
-              modifiers: ['bodyless', 'text-gray'],
-              attrs: {
-                name: 'reset',
-              },
-            })
           ._button
             +button({
               text: 'Применить',
               modifiers: ['bodyless'],
               attrs: {
                 name: 'apply',
+              },
+            })
+          ._button.-reset.-hidden
+            +button({
+              text: 'Очистить',
+              modifiers: ['bodyless', 'text-gray'],
+              attrs: {
+                name: 'reset',
               },
             })

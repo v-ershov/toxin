@@ -2,15 +2,14 @@ import helpers from '~/ts/helpers';
 
 interface IDropdownElements {
   input: HTMLInputElement;
-  content: HTMLElement;
-  items: NodeListOf<HTMLElement>;
+  menu: HTMLDivElement;
+  items: NodeListOf<HTMLLIElement>;
   numbers: NodeListOf<HTMLInputElement>;
   increments: NodeListOf<HTMLButtonElement>;
   decrements: NodeListOf<HTMLButtonElement>;
-  buttons: HTMLElement;
-  buttonResetWrapper: HTMLElement;
-  buttonReset: HTMLButtonElement;
-  buttonApply: HTMLButtonElement;
+  buttonApply?: HTMLButtonElement;
+  buttonReset?: HTMLButtonElement;
+  buttonResetWrapper?: HTMLDivElement;
 }
 
 class Dropdown {
@@ -28,58 +27,51 @@ class Dropdown {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
-    this._initDropdown();
     this._addEventListeners();
+    this._initDropdown();
   }
 
   // -----------------------
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы дропдауна
-  private _getElements(): IDropdownElements {
+  // находит и возвращает элементы дропдауна
+  private _findElements(): IDropdownElements {
     return {
       input: this._root.querySelector('.field__input') as HTMLInputElement,
-      content: this._root.querySelector('.dropdown__content') as HTMLElement,
-      items: this._root.querySelectorAll('.dropdown__item') as NodeListOf<HTMLElement>,
+      menu: this._root.querySelector('.dropdown__menu') as HTMLDivElement,
+      items: this._root.querySelectorAll('.dropdown__item') as NodeListOf<HTMLLIElement>,
       numbers: this._root.querySelectorAll('.dropdown__number') as NodeListOf<HTMLInputElement>,
       increments: this._root.querySelectorAll('.dropdown__spinner[name="increment"]') as NodeListOf<HTMLButtonElement>,
       decrements: this._root.querySelectorAll('.dropdown__spinner[name="decrement"]') as NodeListOf<HTMLButtonElement>,
-      buttons: this._root.querySelector('.dropdown__buttons') as HTMLElement,
-      buttonResetWrapper: this._root.querySelector('.dropdown__button--reset') as HTMLElement,
-      buttonReset: this._root.querySelector('.button[name="reset"]') as HTMLButtonElement,
       buttonApply: this._root.querySelector('.button[name="apply"]') as HTMLButtonElement,
+      buttonReset: this._root.querySelector('.button[name="reset"]') as HTMLButtonElement,
+      buttonResetWrapper: this._root.querySelector('.dropdown__button--reset') as HTMLDivElement,
     };
-  }
-
-  // инициализирует дропдаун
-  private _initDropdown(): void {
-    const { items, buttons } = this._elements;
-
-    this._setHeight();
-    this._setText();
-
-    items.forEach((_item, i) => {
-      this._switchSpinners(i);
-    });
-
-    if (buttons) {
-      this._switchButtonReset();
-    }
   }
 
   // регистрирует обработчики событий
   private _addEventListeners(): void {
     const {
-      input, items, numbers, increments, decrements, buttons, buttonReset, buttonApply,
+      input,
+      items,
+      numbers,
+      increments,
+      decrements,
+      buttonApply,
+      buttonReset,
     } = this._elements;
 
     document.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).closest('.dropdown') !== this._root) {
-        this._hideDropdown();
+      const target = e.target as HTMLElement;
+
+      if (target.closest('.dropdown') === this._root) {
+        return;
       }
+
+      this._hideDropdown();
     });
 
     input.addEventListener('click', () => {
@@ -87,15 +79,17 @@ class Dropdown {
     });
 
     items.forEach((_item, i) => {
-      numbers[i].addEventListener('input', () => {
-        this._switchSpinners(i);
-
-        if (buttons) {
+      if (buttonApply) {
+        numbers[i].addEventListener('input', () => {
+          this._switchSpinners(i);
           this._switchButtonReset();
-        } else {
+        });
+      } else {
+        numbers[i].addEventListener('input', () => {
+          this._switchSpinners(i);
           this._setText();
-        }
-      });
+        });
+      }
 
       increments[i].addEventListener('click', () => {
         this._setNumber(i, +numbers[i].value + 1);
@@ -106,55 +100,94 @@ class Dropdown {
       });
     });
 
-    if (buttons) {
-      buttonReset.addEventListener('click', () => {
-        this._resetDropdown();
-      });
-
+    if (buttonApply && buttonReset) {
       buttonApply.addEventListener('click', () => {
         this._setText();
         this._hideDropdown();
       });
+
+      buttonReset.addEventListener('click', () => {
+        this._resetNumbers();
+      });
     }
   }
 
-  // устанавливает максимальную высоту контейнера для контента
-  private _setHeight(): void {
-    this._elements.content.style.setProperty('--height', helpers.getHeight(this._elements.content));
+  // инициализирует дропдаун
+  private _initDropdown(): void {
+    this._setMenuHeight();
+    this._setText();
+
+    this._elements.items.forEach((_item, i) => {
+      this._switchSpinners(i);
+    });
+
+    this._switchButtonReset();
   }
 
-  // устанавливает текст в поле дропдауна
+  // устанавливает максимальную высоту меню
+  private _setMenuHeight(): void {
+    const { menu } = this._elements;
+
+    menu.style.setProperty('--height', helpers.getHeight(menu));
+  }
+
+  // устанавливает новое значение для указанного пункта меню
+  private _setNumber(i: number, value: number): void {
+    const number = this._elements.numbers[i];
+
+    number.value = `${value}`;
+    number.dispatchEvent(new Event('input'));
+  }
+
+  // устанавливает текст в поле
   private _setText(): void {
+    const {
+      input,
+      items,
+      numbers,
+    } = this._elements;
+
     const text = [];
     let sum = 0;
 
-    this._elements.items.forEach((item, i) => {
-      const num = +this._elements.numbers[i].value;
+    items.forEach((item, i) => {
+      const num = +numbers[i].value;
 
-      if (num !== 0) {
-        const { words } = item.dataset;
+      if (num === 0) {
+        return;
+      }
 
-        if (words) {
-          const split = words.split(', ') as [string, string, string];
+      const { words } = item.dataset;
 
-          text.push(`${num} ${helpers.getWord(num, split)}`);
-        } else {
-          sum += num;
-        }
+      if (words) {
+        const split = words.split(', ') as [string, string, string];
+
+        text.push(`${num} ${helpers.getWord(num, split)}`);
+      } else {
+        sum += num;
       }
     });
 
     if (sum > 0) {
-      const words = this._elements.input.dataset.words as string;
-      const split = words.split(', ') as [string, string, string];
+      const split = (input.dataset.words as string).split(', ') as [string, string, string];
 
       text.unshift(`${sum} ${helpers.getWord(sum, split)}`);
     }
 
-    this._elements.input.value = `${text.join(', ')}`;
+    input.value = text.join(', ');
   }
 
-  // переключает состояния кнопок указанного пункта меню в зависимости от текущего количества
+  // переключает состояние дропдауна
+  private _switchDropdown(): void {
+    this._root.classList.toggle('dropdown--active');
+  }
+
+  // скрывает дропдаун
+  private _hideDropdown(): void {
+    this._root.classList.remove('dropdown--active');
+  }
+
+  // переключает состояния кнопок указанного пункта меню в зависимости от текущего значения
   private _switchSpinners(i: number): void {
     const number = this._elements.numbers[i];
     const increment = this._elements.increments[i];
@@ -176,46 +209,39 @@ class Dropdown {
     }
   }
 
-  // переключает состояние кнопки "Очистить" в зависимости от общего количества всех пунктов меню
+  // переключает состояние кнопки "Очистить" в зависимости от суммы значений всех пунктов меню
   private _switchButtonReset(): void {
-    const bcl = this._elements.buttonResetWrapper.classList;
+    const { buttonResetWrapper } = this._elements;
 
-    if (this._getSum() === 0) {
+    if (!buttonResetWrapper) {
+      return;
+    }
+
+    const bcl = buttonResetWrapper.classList;
+
+    if (this._getNumbersSum() === 0) {
       bcl.add('dropdown__button--hidden');
     } else {
       bcl.remove('dropdown__button--hidden');
     }
   }
 
-  // скрывает дропдаун
-  private _hideDropdown(): void {
-    this._root.classList.remove('dropdown--active');
-  }
+  // сбрасывает значения всех пунктов меню
+  private _resetNumbers(): void {
+    const {
+      input,
+      items,
+    } = this._elements;
 
-  // переключает состояние дропдауна
-  private _switchDropdown(): void {
-    this._root.classList.toggle('dropdown--active');
-  }
+    input.value = '';
 
-  // сбрасывает дропдаун
-  private _resetDropdown(): void {
-    this._elements.items.forEach((_item, i) => {
+    items.forEach((_item, i) => {
       this._setNumber(i, 0);
     });
-
-    this._elements.input.value = '';
-  }
-
-  // устанавливает значение количества указанного пункта меню
-  private _setNumber(i: number, value: number): void {
-    const number = this._elements.numbers[i];
-
-    number.value = `${value}`;
-    number.dispatchEvent(new Event('input'));
   }
 
   // возвращает сумму значений всех пунктов меню
-  private _getSum(): number {
+  private _getNumbersSum(): number {
     let sum = 0;
 
     this._elements.numbers.forEach((number) => {
@@ -226,4 +252,8 @@ class Dropdown {
   }
 }
 
-document.querySelectorAll('.dropdown').forEach((el) => new Dropdown(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.dropdown').forEach((el) => new Dropdown(el as HTMLElement));
+}
+
+render();
