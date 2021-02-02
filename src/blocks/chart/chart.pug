@@ -63,7 +63,7 @@ mixin chart(options)
           - const sum = sections.reduce((sum , current) => sum + current.value, 0);
           - let offset = -gap / 2;
           each item in sections
-            - const percent = (item.value / sum) * 100;
+            - const percent = (item.value / sum) * 100 || 0;
             - const array = `${Math.max(0, percent - gap)} 100`;
             circle._circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
             - offset -= percent;

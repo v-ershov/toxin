@@ -29,7 +29,7 @@
     stroke-width: 1.25;
     stroke-dasharray: 0 100;
 
-    &--translucent {
+    &--semitransparent {
       opacity: 0.2;
     }
 
@@ -68,7 +68,7 @@
     position: absolute;
     top: var(--top);
     left: var(--left);
-    z-index: 5;
+    z-index: 10;
     padding: rem(8);
     border: 1px solid var(--borderColor);
     border-radius: $radius-primary;
