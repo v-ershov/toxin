@@ -18,10 +18,10 @@ interface AirDatepickerOptions {
   minView?: 'days' | 'months' | 'years';
   showOtherMonths?: boolean;
   selectOtherMonths?: boolean;
-  moveToOtherMonthsOnSelected?: boolean;
+  moveToOtherMonthsOnSelect?: boolean;
   showOtherYears?: boolean;
   selectOtherYears?: boolean;
-  moveToOtherYearsOnSelected?: boolean;
+  moveToOtherYearsOnSelect?: boolean;
   minDate?: Date;
   maxDate?: Date;
   disableNavWhenOutOfRange?: boolean;
