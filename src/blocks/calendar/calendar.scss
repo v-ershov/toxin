@@ -1,11 +1,13 @@
 .calendar {
+  position: relative;
+
   &__fields {
     display: flex;
     justify-content: space-between;
   }
 
   &__field {
-    width: 100%;
+    flex-grow: 1;
     margin-left: rem(20);
 
     &:first-child {
@@ -13,10 +15,69 @@
     }
   }
 
+  &__container {
+    z-index: 50;
+    padding: rem(20);
+    border: 1px solid $color-gray-25p;
+    border-radius: $radius-primary;
+    background-color: $color-white;
+    box-shadow: $shadow-primary;
+    animation-duration: $time-primary * 3;
+
+    &--hidden {
+      position: absolute;
+      top: calc(100% + #{rem(20)});
+      visibility: hidden;
+      opacity: 0;
+      transition:
+        top $time-primary,
+        visibility 1ms $time-primary,
+        opacity $time-primary;
+    }
+
+    &--active {
+      position: absolute;
+      top: calc(100% + #{rem(10)});
+      visibility: visible;
+      opacity: 1;
+      transition:
+        top $time-primary,
+        opacity $time-primary;
+    }
+
+    &--animated {
+      animation-name: shakeX;
+    }
+  }
+
   &__buttons {
     display: flex;
+    flex-direction: row-reverse;
     justify-content: space-between;
     margin-top: rem(20);
+  }
+}
+
+// https://github.com/animate-css/animate.css/blob/main/source/attention_seekers/shakeX.css
+@keyframes shakeX {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translate3d(2px, 0, 0);
   }
 }
 
@@ -25,30 +86,18 @@
 // -------------------------
 
 // Objects
-// ------------------------
+// -------------------------------------------------
 
 %otherMonth {
   color: $color-gray-25p;
 
-  &.-in-range- {
-    background-color: rgba($color-primary, 0.25);
-    color: $color-gray-50p;
-
-    &.-focus- {
-      background-color: rgba($color-primary, 0.25);
-    }
+  &:hover {
+    color: $color-gray-25p;
   }
 
   &.-disabled- {
     &.-focus- {
       color: $color-gray-25p;
-    }
-  }
-
-  &.-range-from-,
-  &.-range-to- {
-    &::before {
-      opacity: 0.5;
     }
   }
 
@@ -58,10 +107,15 @@
 
     &.-focus- {
       background: rgba($color-primary, 0.25);
+    }
+  }
 
-      &::before {
-        opacity: 1;
-      }
+  &.-in-range- {
+    background-color: rgba($color-primary, 0.25);
+    color: $color-gray-25p;
+
+    &.-focus- {
+      background-color: rgba($color-primary, 0.25);
     }
   }
 }
@@ -70,25 +124,19 @@
 // --- Datepicker ---
 // ------------------
 
-.datepicker {
-  z-index: 1000;
-  width: 100%;
-  padding: rem(20);
-  border: 1px solid $color-gray-25p;
-  border-radius: $radius-primary;
-  color: $color-gray-50p;
-  box-shadow: $shadow-primary;
-  font-size: rem(12);
-  font-family: $font-family-primary;
-  user-select: none;
-  box-sizing: border-box;
-  background: $color-white;
-}
-
 .datepicker-inline {
   .datepicker {
-    border-color: $color-gray-25p;
-    box-shadow: $shadow-primary;
+    z-index: auto;
+    width: 100%;
+    border: 0;
+    border-radius: 0;
+    color: $color-gray-50p;
+    font-size: rem(12);
+    font-family: $font-family-primary;
+    user-select: none;
+    background: $color-white;
+    transition: all 0ms ease 0ms;
+    box-sizing: border-box;
   }
 }
 
@@ -96,10 +144,6 @@
   margin-top: 10.5%;
   padding: 0;
   box-sizing: border-box;
-}
-
-.datepicker--pointer {
-  display: none;
 }
 
 // ------------------
@@ -120,25 +164,16 @@
     background: $color-gray-5p;
   }
 
-  path {
-    stroke: $color-primary;
-  }
-
   .material-icons {
     font-size: rem(24);
   }
 }
 
 .datepicker--nav-title {
-  padding: 0 rem(6);
+  padding: 0 rem(8);
   border-radius: $radius-primary;
 
   @include heading('h2');
-
-  i {
-    margin-left: rem(6);
-    color: $color-primary;
-  }
 
   &:hover {
     background: $color-gray-5p;
@@ -150,7 +185,7 @@
 // ------------------------
 
 .datepicker--cell {
-  z-index: 5;
+  z-index: 1;
   height: 0;
   padding-top: 7.2%;
   padding-bottom: 7.2%;
@@ -188,7 +223,7 @@
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: -5;
+        z-index: -1;
         border-radius: 50%;
         background: rgba($color-primary, 0.25);
       }
@@ -196,19 +231,26 @@
   }
 
   &.-disabled- {
-    color: $color-gray-10p;
+    color: $color-gray-15p;
     cursor: not-allowed;
 
     &.-focus-,
-    &.-in-range-,
-    &.-range-from-,
-    &.-range-to- {
+    &.-in-range- {
       color: $color-gray-25p;
     }
 
     &.-current- {
       &.-focus- {
         color: $color-gray-25p;
+      }
+    }
+
+    &.-range-from-,
+    &.-range-to {
+      color: $color-gray-25p;
+
+      &::before {
+        opacity: 0.5;
       }
     }
   }
@@ -225,7 +267,7 @@
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: -5;
+      z-index: -1;
       border: 2px solid $color-primary;
       border-radius: 50%;
     }
@@ -269,8 +311,8 @@
   }
 }
 
-// Days
-// ------------------------
+//  Day names
+// -------------------------------------------------
 
 .datepicker--days-names {
   margin: 0;
@@ -286,18 +328,24 @@
   text-transform: capitalize;
 }
 
+//  Day cell
+// -------------------------
+
 .datepicker--cell-day {
   &.-other-month- {
     @extend %otherMonth;
   }
 }
 
-// Months
-// ------------------------
+//  Months
+// -------------------------------------------------
 
 .datepicker--cells-months {
   height: auto;
 }
+
+//  Month cell
+// -------------------------
 
 .datepicker--cell-month {
   width: 25%;
@@ -306,16 +354,16 @@
   padding-bottom: 12.5%;
 }
 
-// Years
-// ------------------------
+//  Years
+// -------------------------------------------------
 
-.datepicker--years {
-  height: auto;
-}
-
+.datepicker--years,
 .datepicker--cells-years {
   height: auto;
 }
+
+//  Year cell
+// -------------------------
 
 .datepicker--cell-year {
   width: 25%;

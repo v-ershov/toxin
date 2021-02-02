@@ -1,6 +1,6 @@
 //- Options:
 //- 🞂 type: string             - тип календаря (inline | field | fields)
-//- 🞂 selectedDates: string    - выбранные даты календаря в формате 'YYYY-MM-DD/YYYY-MM-DD'
+//- 🞂 selectedDates: string    - выбранные даты календаря (в формате 'YYYY-MM-DD/YYYY-MM-DD')
 //- 🞂 labelFirst: string       - лейбл 1-го поля календаря
 //- 🞂 labelSecond: string      - лейбл 2-го поля календаря
 //- 🞂 attrsFieldFirst: object  - атрибуты 1-го поля календаря
@@ -29,33 +29,57 @@ mixin calendar(options)
       attrsFieldSecond,
     } = Object.assign(defaults, options);
 
-  .calendar(data-type=type, data-selected-dates=selectedDates || false)
-    if type === 'field'
-      +field({
-        labelPrimary: labelFirst,
-        modifiers: ['dropdown'],
-        attrs: Object.assign(attrsFieldFirst, {
-          placeholder: 'ДД.ММ.ГГГГ',
-          readonly: true,
-        }),
-      })
-    else if type === 'fields'
+  - const isFields = type === 'fields' || type === 'field';
+
+  .calendar(data-selected-dates=selectedDates || false)
+    input._input(type='hidden')
+    if isFields
       ._fields
-        ._field
-          +field({
-            labelPrimary: labelFirst,
-            modifiers: ['dropdown'],
-            attrs: Object.assign(attrsFieldFirst, {
-              placeholder: 'ДД.ММ.ГГГГ',
-              readonly: true,
-            }),
+        if type === 'fields'
+          ._field
+            +field({
+              labelPrimary: labelFirst,
+              modifiers: ['dropdown'],
+              attrs: Object.assign(attrsFieldFirst, {
+                placeholder: 'ДД.ММ.ГГГГ',
+                readonly: true,
+              }),
+            })
+          ._field
+            +field({
+              labelPrimary: labelSecond,
+              modifiers: ['dropdown'],
+              attrs: Object.assign(attrsFieldSecond, {
+                placeholder: 'ДД.ММ.ГГГГ',
+                readonly: true,
+              }),
+            })
+        else if type === 'field'
+          ._field
+            +field({
+              labelPrimary: labelFirst,
+              modifiers: ['dropdown'],
+              attrs: Object.assign(attrsFieldFirst, {
+                placeholder: 'ДД.ММ.ГГГГ',
+                readonly: true,
+              }),
+            })
+    ._container(class=getModifiers('calendar__container', isFields ? ['hidden'] : []))
+      ._datepicker
+      ._buttons
+        ._button
+          +button({
+            text: 'Применить',
+            modifiers: ['bodyless'],
+            attrs: {
+              name: 'apply',
+            },
           })
-        ._field
-          +field({
-            labelPrimary: labelSecond,
-            modifiers: ['dropdown'],
-            attrs: Object.assign(attrsFieldSecond, {
-              placeholder: 'ДД.ММ.ГГГГ',
-              readonly: true,
-            }),
+        ._button
+          +button({
+            text: 'Очистить',
+            modifiers: ['bodyless', 'text-gray'],
+            attrs: {
+              name: 'reset',
+            },
           })
