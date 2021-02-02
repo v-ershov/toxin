@@ -1,5 +1,5 @@
 interface IMainLandingElements {
-  slideshow: HTMLElement;
+  slideshow: HTMLDivElement;
 }
 
 class MainLanding {
@@ -17,7 +17,7 @@ class MainLanding {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
     this._addEventListeners();
   }
@@ -26,10 +26,10 @@ class MainLanding {
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы блока
-  private _getElements(): IMainLandingElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IMainLandingElements {
     return {
-      slideshow: this._root.querySelector('.main-landing__slideshow') as HTMLElement,
+      slideshow: this._root.querySelector('.main-landing__slideshow') as HTMLDivElement,
     };
   }
 
@@ -46,4 +46,8 @@ class MainLanding {
   }
 }
 
-document.querySelectorAll('.main-landing').forEach((el) => new MainLanding(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.main-landing').forEach((el) => new MainLanding(el as HTMLElement));
+}
+
+render();
