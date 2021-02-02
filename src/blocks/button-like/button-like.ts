@@ -1,5 +1,5 @@
 interface IButtonLikeElements {
-  numbers: HTMLElement;
+  numbers: HTMLSpanElement;
 }
 
 class ButtonLike {
@@ -21,7 +21,7 @@ class ButtonLike {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
     this._duration = this._getDuration();
     this._isReady = true;
 
@@ -32,10 +32,10 @@ class ButtonLike {
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы кнопки
-  private _getElements(): IButtonLikeElements {
+  // находит и возвращает элементы кнопки
+  private _findElements(): IButtonLikeElements {
     return {
-      numbers: this._root.querySelector('.button-like__numbers') as HTMLElement,
+      numbers: this._root.querySelector('.button-like__numbers') as HTMLSpanElement,
     };
   }
 
@@ -53,27 +53,34 @@ class ButtonLike {
 
   // переключает состояние кнопки
   private _switchButton(): void {
-    if (this._isReady) {
-      this._isReady = false;
-
-      const rcl = this._root.classList;
-
-      const child = this._elements.numbers.firstChild as ChildNode;
-      const num = +(child.textContent as string);
-
-      rcl.toggle('button-like--active');
-      this._setLikes(num + (rcl.contains('button-like--active') ? 1 : -1));
-
-      setTimeout(() => {
-        this._isReady = true;
-      }, this._duration);
+    if (!this._isReady) {
+      return;
     }
+
+    this._isReady = false;
+
+    const rcl = this._root.classList;
+    const child = this._elements.numbers.firstChild as ChildNode;
+    const num = +(child.textContent as string);
+
+    rcl.toggle('button-like--active');
+
+    const newNum = rcl.contains('button-like--active')
+      ? num + 1
+      : num - 1;
+
+    this._setLikes(newNum);
+
+    setTimeout(() => {
+      this._isReady = true;
+    }, this._duration);
   }
 
-  // устанавливает заданное значение лайков в кнопке
+  // устанавливает значение лайков в кнопке
   private _setLikes(value: number): void {
     const { numbers } = this._elements;
 
+    const ncl = numbers.classList;
     const child = numbers.firstChild as ChildNode;
     const num = +(child.textContent as string);
 
@@ -87,13 +94,13 @@ class ButtonLike {
 
     if (isIncrease) {
       numbers.prepend(newChild);
-      numbers.classList.add('button-like__numbers--increase');
+      ncl.add('button-like__numbers--increase');
     } else {
       numbers.append(newChild);
     }
 
     setTimeout(() => {
-      numbers.classList.add(isIncrease
+      ncl.add(isIncrease
         ? 'button-like__numbers--anim-increase'
         : 'button-like__numbers--anim-decrease');
     }, 25);
@@ -101,16 +108,20 @@ class ButtonLike {
     setTimeout(() => {
       if (isIncrease) {
         (numbers.lastChild as ChildNode).remove();
-        numbers.classList.remove(
+        ncl.remove(
           'button-like__numbers--increase',
           'button-like__numbers--anim-increase',
         );
       } else {
         (numbers.firstChild as ChildNode).remove();
-        numbers.classList.remove('button-like__numbers--anim-decrease');
+        ncl.remove('button-like__numbers--anim-decrease');
       }
     }, this._duration);
   }
 }
 
-document.querySelectorAll('.button-like').forEach((el) => new ButtonLike(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.button-like').forEach((el) => new ButtonLike(el as HTMLElement));
+}
+
+render();
