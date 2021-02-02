@@ -1,10 +1,10 @@
 import helpers from '~/ts/helpers';
 
 interface IHeaderElements {
-  hamburger: HTMLElement;
+  hamburger: HTMLButtonElement;
   nav: HTMLElement;
-  list: HTMLElement;
-  sublists: NodeListOf<HTMLElement>;
+  list: HTMLUListElement;
+  sublists: NodeListOf<HTMLUListElement>;
 }
 
 class Header {
@@ -22,7 +22,7 @@ class Header {
 
   constructor(root: HTMLElement) {
     this._root = root;
-    this._elements = this._getElements();
+    this._elements = this._findElements();
 
     this._addEventListeners();
     this._setNavHeight();
@@ -33,13 +33,13 @@ class Header {
   // --- PRIVATE METHODS ---
   // -----------------------
 
-  // возвращает элементы хедера
-  private _getElements(): IHeaderElements {
+  // находит и возвращает элементы хедера
+  private _findElements(): IHeaderElements {
     return {
-      hamburger: this._root.querySelector('.header__hamburger') as HTMLElement,
+      hamburger: this._root.querySelector('.header__hamburger') as HTMLButtonElement,
       nav: this._root.querySelector('.header__nav') as HTMLElement,
-      list: this._root.querySelector('.header__list') as HTMLElement,
-      sublists: this._root.querySelectorAll('.header__list--sublist') as NodeListOf<HTMLElement>,
+      list: this._root.querySelector('.header__list') as HTMLUListElement,
+      sublists: this._root.querySelectorAll('.header__list--sublist') as NodeListOf<HTMLUListElement>,
     };
   }
 
@@ -51,19 +51,28 @@ class Header {
     });
 
     document.addEventListener('click', (e) => {
-      if ((e.target as HTMLElement).closest('.header') !== this._root) {
-        this._disableHamburger();
+      const target = e.target as HTMLElement;
+
+      if (target.closest('.header') === this._root) {
+        return;
       }
+
+      this._hideHamburgerMenu();
     });
 
     this._elements.hamburger.addEventListener('click', () => {
-      this._switchHamburger();
+      this._switchHamburgerMenu();
     });
   }
 
   // устанавливает максимальную высоту навигационного меню
   private _setNavHeight(): void {
-    this._elements.nav.style.setProperty('--height', helpers.getHeight(this._elements.list));
+    const {
+      nav,
+      list,
+    } = this._elements;
+
+    nav.style.setProperty('--height', helpers.getHeight(list));
   }
 
   // устанавливает максимальную высоту подсписков навигационного меню
@@ -73,15 +82,19 @@ class Header {
     });
   }
 
-  // выключает гамбургер-меню
-  private _disableHamburger(): void {
-    this._elements.hamburger.classList.remove('header__hamburger--active');
+  // переключает состояние гамбургер-меню
+  private _switchHamburgerMenu(): void {
+    this._elements.hamburger.classList.toggle('header__hamburger--active');
   }
 
-  // переключает состояние гамбургер-меню
-  private _switchHamburger(): void {
-    this._elements.hamburger.classList.toggle('header__hamburger--active');
+  // скрывает гамбургер-меню
+  private _hideHamburgerMenu(): void {
+    this._elements.hamburger.classList.remove('header__hamburger--active');
   }
 }
 
-document.querySelectorAll('.header').forEach((el) => new Header(el as HTMLElement));
+export default function render(): void {
+  document.querySelectorAll('.header').forEach((el) => new Header(el as HTMLElement));
+}
+
+render();
