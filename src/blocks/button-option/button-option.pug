@@ -1,15 +1,14 @@
 //- Options:
 //- 🞂 text: string        - текст кнопки
-//- 🞂 textRich: string    - дополнительный текст кнопки
-//-                         (если указан модификатор 'checkbox-rich')
+//- 🞂 textRich: string    - дополнительный текст кнопки (если указан модификатор 'checkbox-rich')
 //- 🞂 modifiers: string[] - модификаторы блока
 //- 🞂 attrs: object       - атрибуты кнопки
 
 mixin button-option(options)
   -
     const defaults = {
-      text: 'Button Option',
-      textRich: 'Lorem ipsum',
+      text: 'undefined',
+      textRich: 'undefined',
       modifiers: [],
       attrs: {},
     };
@@ -29,5 +28,5 @@ mixin button-option(options)
       span._text
         | #{text}
     if modifiers.includes('checkbox-rich')
-      p._text-rich
+      ._text-rich
         | #{textRich}
