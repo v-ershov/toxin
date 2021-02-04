@@ -6,6 +6,7 @@
     min-width: rem(70);
     color: $color-gray-25p;
     text-align: right;
+    text-transform: capitalize;
 
     @include screen-sm {
       min-width: rem(60);
