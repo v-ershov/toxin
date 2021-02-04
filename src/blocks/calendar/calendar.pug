@@ -1,6 +1,6 @@
 //- Options:
 //- 🞂 type: string             - тип календаря (inline | field | fields)
-//- 🞂 selectedDates: string    - выбранные даты календаря (в формате 'YYYY-MM-DD/YYYY-MM-DD')
+//- 🞂 dates: string            - начальный диапазон дат календаря (в формате 'YYYY-MM-DD/YYYY-MM-DD')
 //- 🞂 labelFirst: string       - лейбл 1-го поля календаря
 //- 🞂 labelSecond: string      - лейбл 2-го поля календаря
 //- 🞂 attrsFieldFirst: object  - атрибуты 1-го поля календаря
@@ -12,7 +12,7 @@ mixin calendar(options)
   -
     const defaults = {
       type: 'inline',
-      selectedDates: '',
+      dates: '',
       labelFirst: '',
       labelSecond: '',
       attrsFieldFirst: {},
@@ -22,7 +22,7 @@ mixin calendar(options)
   -
     const {
       type,
-      selectedDates,
+      dates,
       labelFirst,
       labelSecond,
       attrsFieldFirst,
@@ -31,7 +31,7 @@ mixin calendar(options)
 
   - const isFields = type === 'fields' || type === 'field';
 
-  .calendar(data-selected-dates=selectedDates || false)
+  .calendar(data-dates=dates || false)
     input._input(type='hidden')
     if isFields
       ._fields

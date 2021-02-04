@@ -150,16 +150,16 @@ class Calendar {
     });
   }
 
-  // инициализирует начальные даты
+  // инициализирует начальный диапазон дат календаря
   private _initDates(): void {
-    const { selectedDates } = this._root.dataset;
+    const { dates } = this._root.dataset;
 
-    if (!selectedDates) {
+    if (!dates) {
       return;
     }
 
     const inst = this._inst;
-    const split = selectedDates.split('/');
+    const split = dates.split('/');
     const from = new Date(split[0]);
     const to = new Date(split[1]);
 
