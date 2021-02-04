@@ -6,7 +6,7 @@
 //- 🞂 number: number  - номер комнаты
 //- 🞂 tag: string     - тег комнаты (Люкс, Эконом и т.д.)
 //- 🞂 price: string   - цена комнаты за сутки
-//- 🞂 rating: number  - значение рейтинга у комнаты (от 0 до 5)
+//- 🞂 rating: number  - рейтинг комнаты (от 0 до 5)
 //- 🞂 reviews: number - количество отзывов у комнаты
 
 include /blocks/rating/rating.pug
@@ -19,7 +19,7 @@ mixin room(options)
       images: [],
       number: 0,
       tag: '',
-      price: '0$',
+      price: 'undefined',
       rating: 0,
       reviews: 0,
     };
