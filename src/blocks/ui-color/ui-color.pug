@@ -1,14 +1,14 @@
 //- Options:
 //- 🞂 color: string - оттенок из палитры (в формате модификатора)
-//- 🞂 name: string  - имя оттенка в произвольной форме
+//- 🞂 name: string  - имя оттенка (в произвольной форме)
 //- 🞂 hex: string   - HEX-код оттенка
 
 mixin ui-color(options)
   -
     const defaults = {
-      color: '',
-      name: 'UI Color',
-      hex: 'UI Color',
+      color: 'undefined',
+      name: 'undefined',
+      hex: 'undefined',
     };
 
   -
@@ -19,7 +19,7 @@ mixin ui-color(options)
     } = Object.assign(defaults, options);
 
   .ui-color
-    ._box(class=`ui-color__box--${color}`)
+    ._color(class=`ui-color__color--${color}`)
     ._info
       ._name
         | #{name}
