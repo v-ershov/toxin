@@ -68,22 +68,16 @@
     position: absolute;
     top: var(--top);
     left: var(--left);
-    z-index: 10;
-    padding: rem(8);
+    z-index: 30;
     border: 1px solid var(--borderColor);
-    border-radius: $radius-primary;
-    background-color: rgba($color-white, 0.9);
-    box-shadow: $shadow-tooltip;
-    font-size: rem(12);
-    font-family: $font-family-secondary;
-    line-height: $line-height-secondary;
     visibility: hidden;
-    pointer-events: none;
     transform: translate(-5%, -125%);
     opacity: 0;
     transition:
       visibility 1ms #{$time-primary * 2},
       opacity $time-primary $time-primary;
+
+    @include tooltip;
 
     &--active {
       visibility: visible;
