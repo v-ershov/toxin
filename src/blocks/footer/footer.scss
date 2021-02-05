@@ -98,14 +98,14 @@
   }
 
   &__text {
-    margin: rem(20) 0 0;
+    margin-top: rem(20);
 
     &--center {
-      margin: 0;
+      margin-top: 0;
       text-align: center;
 
       @include screen-md {
-        margin: rem(20) 0 0;
+        margin-top: rem(20);
       }
     }
   }
