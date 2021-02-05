@@ -87,6 +87,20 @@
   box-shadow: $shadow-form;
 }
 
+// Tooltip
+@mixin tooltip {
+  padding: rem(8);
+  border: 1px solid $color-primary;
+  border-radius: $radius-primary;
+  background-color: rgba($color-white, 0.9);
+  box-shadow: $shadow-tooltip;
+  font-size: rem(12);
+  font-family: $font-family-secondary;
+  line-height: $line-height-secondary;
+  pointer-events: none;
+  user-select: none;
+}
+
 // Hidden Text
 @mixin hidden-text {
   font-size: 0;
