@@ -193,6 +193,12 @@ class Dropdown {
     const increment = this._elements.increments[i];
     const decrement = this._elements.decrements[i];
 
+    if (number.min === number.max) {
+      increment.disabled = true;
+      decrement.disabled = true;
+      return;
+    }
+
     switch (number.value) {
       case number.min:
         increment.disabled = false;

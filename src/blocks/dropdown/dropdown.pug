@@ -35,29 +35,27 @@ mixin dropdown(options)
     const defaults = {
       list: [
         {
-          name: 'Item 1',
-          values: [0, 0, 10],
+          name: 'undefined',
+          values: [0, 0, 0],
           words: [],
         },
         {
-          name: 'Item 2',
-          values: [0, 0, 10],
+          name: 'undefined',
+          values: [0, 0, 0],
           words: [],
         },
         {
-          name: 'Item 3',
-          values: [0, 0, 10],
+          name: 'undefined',
+          values: [0, 0, 0],
           words: [],
         },
       ],
-      words: ['item', 'items', 'items'],
+      words: ['undefined', 'undefined', 'undefined'],
       labelPrimary: '',
       labelSecondary: '',
       isButtons: false,
       modifiers: [],
-      attrsField: {
-        placeholder: 'Add some items',
-      },
+      attrsField: {},
     };
 
   -
@@ -85,9 +83,9 @@ mixin dropdown(options)
       ul._list
         each item in list
           li._item(data-words=item.words.length ? `${item.words[0]}, ${item.words[1]}, ${item.words[2]}` : false)
-            span._name
+            ._name
               | #{item.name}
-            span._controls
+            ._controls
               button._spinner(type='button', name='decrement', disabled)
                 | &minus;
               input._number(type='number', value=item.values[0], min=item.values[1], max=item.values[2], readonly)
