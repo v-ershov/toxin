@@ -90,7 +90,6 @@
 // Tooltip
 @mixin tooltip {
   padding: rem(8);
-  border: 1px solid $color-primary;
   border-radius: $radius-primary;
   background-color: rgba($color-white, 0.9);
   box-shadow: $shadow-tooltip;
