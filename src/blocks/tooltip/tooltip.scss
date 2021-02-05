@@ -1,6 +1,5 @@
 .tooltip {
   position: relative;
-  z-index: 1;
   width: rem(20);
   height: rem(20);
   border: 1px solid $color-gray-25p;
@@ -21,56 +20,36 @@
   }
 
   &__text {
+    position: absolute;
+    bottom: rem(26);
+    left: 50%;
+    z-index: 30;
+    width: rem(160);
+    background-image: $gradient-primary;
+    color: $color-white;
+    text-align: center;
     visibility: hidden;
-    pointer-events: none;
+    transform: translate(-50%, 0);
     opacity: 0;
     transition:
       visibility 1ms $time-primary,
       opacity $time-primary,
       transform $time-primary;
 
-    @include hidden-text;
-
-    &::before,
-    &::after {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    &::before {
-      content: attr(title);
-      bottom: rem(12);
-      width: rem(160);
-      padding: rem(8) rem(10);
-      border-radius: $radius-primary;
-      background-color: $color-gray-100p;
-      color: $color-white;
-      box-shadow: $shadow-tooltip;
-      font-size: rem(12);
-      text-align: center;
-    }
-
-    &::after {
-      content: '';
-      bottom: rem(3);
-      border-width: rem(10) rem(12) 0;
-      border-style: solid;
-      border-color: $color-gray-100p transparent;
-    }
+    @include tooltip;
   }
 
   &:hover {
-    border-color: $color-gray-50p;
+    border-color: $color-primary;
 
     &::before {
-      color: $color-gray-50p;
+      color: $color-primary;
     }
   }
 
   &:hover &__text {
     visibility: visible;
-    transform: translateY(rem(-5));
+    transform: translate(-50%, rem(-5));
     opacity: 1;
     transition:
       opacity $time-primary,
