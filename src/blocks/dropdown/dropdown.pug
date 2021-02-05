@@ -3,8 +3,8 @@
 //-   🞂 name: string         - название пункта (во множественном числе)
 //-   🞂 values: [            - значения пункта
 //-     🞂 [0]: number        - текущее значение пункта
-//-     🞂 [1]: number        - мин. допустимое значение пункта
-//-     🞂 [2]: number        - макс. допустимое значение пункта
+//-     🞂 [1]: number        - мин. значение пункта
+//-     🞂 [2]: number        - макс. значение пункта
 //-     ]
 //-   🞂 words: [             - названия пункта для правильного склонения слова
 //-     🞂 [0]: string        - название пункта (в единственном числе)
@@ -76,7 +76,7 @@ mixin dropdown(options)
       modifiers: ['dropdown'],
       attrs: Object.assign(attrsField, {
         readonly: true,
-        'data-words': words.length ? `${words[0]}, ${words[1]}, ${words[2]}` : false,
+        'data-words': `${words[0]}, ${words[1]}, ${words[2]}`,
       }),
     })
     ._menu(style='--height: 100vh;')
@@ -86,7 +86,7 @@ mixin dropdown(options)
             ._name
               | #{item.name}
             ._controls
-              button._spinner(type='button', name='decrement', disabled)
+              button._spinner(type='button', name='decrement')
                 | &minus;
               input._number(type='number', value=item.values[0], min=item.values[1], max=item.values[2], readonly)
               button._spinner(type='button', name='increment')
