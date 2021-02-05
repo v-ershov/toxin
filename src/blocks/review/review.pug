@@ -13,10 +13,10 @@ mixin review(options)
   -
     const defaults = {
       image: '',
-      author: 'Author',
-      time: 'Today',
-      datetime: new Date().toISOString(),
-      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      author: 'undefined',
+      time: 'undefined',
+      datetime: '0000-00-00T00:00:00',
+      text: 'undefined',
       likes: 0,
       isLike: false,
     };
@@ -45,16 +45,11 @@ mixin review(options)
         time._time(datetime=datetime)
           | #{time}
     ._row
-      ._cell.-small.-button
-        if isLike
-          +button-like({
-            number: likes,
-            modifiers: ['active'],
-          })
-        else
-          +button-like({
-            number: likes,
-          })
+      ._cell.-small.-margin
+        +button-like({
+          number: likes,
+          modifiers: isLike ? ['active'] : [],
+        })
       ._cell
         blockquote._blockquote
           p._text
