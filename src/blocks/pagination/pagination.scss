@@ -80,12 +80,16 @@
         color: $color-white;
       }
     }
+  }
 
-    &--dots {
-      &:hover {
-        color: $color-gray-50p;
-      }
-    }
+  &__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(40);
+    height: rem(40);
+    color: $color-gray-50p;
+    user-select: none;
   }
 
   &__text {
