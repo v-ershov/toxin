@@ -39,7 +39,7 @@ mixin slider-range(options)
 
   .slider-range
     +label({
-      primary: labelPrimary,
+      primary: labelPrimary || 'undefined',
       secondary: labelSecondary,
     })
       input._input(type='hidden', value=labelSecondary)
