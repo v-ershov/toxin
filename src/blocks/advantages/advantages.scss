@@ -19,13 +19,6 @@
     }
   }
 
-  &--ui &__item {
-    &:last-child {
-      padding-bottom: rem(20);
-      border-bottom: 1px solid $color-gray-10p;
-    }
-  }
-
   &__icon {
     flex-shrink: 0;
     background-image: $gradient-primary;
