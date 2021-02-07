@@ -18,6 +18,8 @@ mixin main-sign(options)
   main.main-sign
     ._background(style='--translateY: 0;')
     ._container
+      h1._h1.visually-hidden
+        | #{isSignUp ? 'Регистрация аккаунта' : 'Войти'}
       ._form
         if isSignUp
           +form-sign-up
