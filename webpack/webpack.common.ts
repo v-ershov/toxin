@@ -8,13 +8,14 @@ import pugBem from 'pug-bem';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import paths from './paths';
 
 const config: webpack.Configuration = {
   entry: {
     app: [
       '@babel/polyfill',
-      paths.src.index,
+      paths.src._index,
     ],
   },
   output: {
@@ -39,7 +40,7 @@ const config: webpack.Configuration = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
+        test: /\.(ts)$/,
         exclude: /node_modules/,
         use: [
           'babel-loader',
@@ -47,7 +48,8 @@ const config: webpack.Configuration = {
         ],
       },
       {
-        test: /\.pug$/,
+        test: /\.(pug)$/,
+        exclude: /node_modules/,
         loader: 'pug-loader',
         options: {
           plugins: [pugBem],
@@ -56,32 +58,32 @@ const config: webpack.Configuration = {
         },
       },
       {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        include: paths.src.assets.content,
+        loader: 'file-loader',
+        options: {
+          name: '[folder]/[name].[ext]',
+          outputPath: 'assets/images/content',
+        },
+      },
+      {
         test: /\.(woff2?|ttf|svg|eot|otf)$/,
         include: paths.src.assets.fonts,
         loader: 'file-loader',
         options: {
           name: '[folder]/[name].[ext]',
-          outputPath: 'fonts',
+          outputPath: 'assets/fonts',
         },
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
-        include: paths.src.assets.content,
-        loader: 'file-loader',
-        options: {
-          name: '[folder]/[name].[ext]',
-          outputPath: 'images/content',
-        },
-      },
-      {
-        test: /\.(woff2?|ttf|svg|eot|otf|jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|svg|woff2?|ttf|eot|otf)$/,
         include: /node_modules/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
           outputPath: (url: string, resourcePath: string): string => {
-            const path: string[] = resourcePath.split('\\');
-            return `plugin-files/${path[path.indexOf('node_modules') + 1]}/${url}`;
+            const split = resourcePath.split('\\');
+            return `modules-files/${split[split.indexOf('node_modules') + 1]}/${url}`;
           },
         },
       },
@@ -98,6 +100,10 @@ const config: webpack.Configuration = {
       filename: `${page.replace(/\.pug/, '.html')}`,
       template: `${paths.src.pug.pages}/${page}`,
     })),
+    new FaviconsWebpackPlugin({
+      logo: paths.src.assets.favicons._fav,
+      outputPath: 'assets/favicons',
+    }),
   ],
 };
 

@@ -26,7 +26,7 @@ const config: webpack.Configuration = merge(common, {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: paths.postcss.dev,
+                config: paths.postcss._dev,
               },
               sourceMap: true,
             },
@@ -50,7 +50,7 @@ const config: webpack.Configuration = merge(common, {
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -63,7 +63,7 @@ const config: webpack.Configuration = merge(common, {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: paths.postcss.dev,
+                config: paths.postcss._dev,
               },
               sourceMap: true,
             },
@@ -76,7 +76,7 @@ const config: webpack.Configuration = merge(common, {
         loader: 'file-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'images',
+          outputPath: 'assets/images',
         },
       },
     ],

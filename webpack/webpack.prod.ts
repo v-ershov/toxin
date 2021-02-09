@@ -25,7 +25,7 @@ const config: webpack.Configuration = merge(common, {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: paths.postcss.prod,
+                config: paths.postcss._prod,
               },
             },
           },
@@ -43,7 +43,7 @@ const config: webpack.Configuration = merge(common, {
         ],
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -51,7 +51,7 @@ const config: webpack.Configuration = merge(common, {
             loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                config: paths.postcss.prod,
+                config: paths.postcss._prod,
               },
             },
           },
@@ -68,22 +68,12 @@ const config: webpack.Configuration = merge(common, {
         },
       },
       {
-        test: /\.(jpe?g|png|gif)$/,
+        test: /\.(jpe?g|png|gif|svg)$/,
         include: paths.src.blocks,
         loader: 'url-loader',
         options: {
           name: '[name].[ext]',
-          outputPath: 'images',
-          limit: 10240,
-        },
-      },
-      {
-        test: /\.svg$/,
-        include: paths.src.blocks,
-        loader: 'url-loader',
-        options: {
-          name: '[name].[ext]',
-          outputPath: 'icons',
+          outputPath: 'assets/images',
           limit: 10240,
         },
       },

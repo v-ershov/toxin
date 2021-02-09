@@ -9,6 +9,9 @@ const paths = {
     _: src,
     assets: {
       content: `${src}\\assets\\content`,
+      favicons: {
+        _fav: `${src}\\assets\\favicons\\fav.svg`,
+      },
       fonts: `${src}\\assets\\fonts`,
     },
     blocks: `${src}\\blocks`,
@@ -20,12 +23,12 @@ const paths = {
       _mixins: `${src}\\scss\\_mixins.scss`,
       _vars: `${src}\\scss\\_vars.scss`,
     },
-    index: `${src}\\index.ts`,
+    _index: `${src}\\index.ts`,
   },
   dist,
   postcss: {
-    dev: `${postcss}\\postcss.dev.js`,
-    prod: `${postcss}\\postcss.prod.js`,
+    _dev: `${postcss}\\postcss.dev.js`,
+    _prod: `${postcss}\\postcss.prod.js`,
   },
 };
 
