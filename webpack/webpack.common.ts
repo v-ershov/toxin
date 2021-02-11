@@ -8,7 +8,6 @@ import pugBem from 'pug-bem';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import paths from './paths';
 
 const config: webpack.Configuration = {
@@ -100,10 +99,6 @@ const config: webpack.Configuration = {
       filename: `${page.replace(/\.pug/, '.html')}`,
       template: `${paths.src.pug.pages}/${page}`,
     })),
-    new FaviconsWebpackPlugin({
-      logo: paths.src.assets.favicons._fav,
-      outputPath: 'assets/favicons',
-    }),
   ],
 };
 
