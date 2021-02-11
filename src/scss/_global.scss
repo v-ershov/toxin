@@ -43,15 +43,6 @@ html {
   }
 }
 
-a,
-button {
-  cursor: pointer;
-}
-
-button[disabled] {
-  cursor: not-allowed;
-}
-
 .visually-hidden {
   position: absolute;
   clip: rect(0 0 0 0);
