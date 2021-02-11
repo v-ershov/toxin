@@ -1,6 +1,7 @@
 import webpack from 'webpack';
 import { merge } from 'webpack-merge';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import common from './webpack.common';
 import paths from './paths';
 
@@ -82,6 +83,11 @@ const config: webpack.Configuration = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: paths.src.assets.favicons._fav,
+      outputPath: 'assets/favicons',
+      prefix: 'assets/favicons',
     }),
   ],
 });
