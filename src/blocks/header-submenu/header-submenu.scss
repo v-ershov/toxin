@@ -5,6 +5,7 @@
     color: $color-gray-50p;
     text-decoration: none;
     white-space: nowrap;
+    cursor: pointer;
     transition: color $time-primary;
 
     &:hover {

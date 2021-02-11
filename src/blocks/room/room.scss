@@ -65,6 +65,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+    cursor: pointer;
 
     @include hidden-text;
   }
@@ -79,6 +80,7 @@
   width: rem(42);
   padding: 0;
   border: 0;
+  cursor: pointer;
   background: linear-gradient(90deg, rgba($color-black, 0.5) 0%, rgba($color-black, 0) 100%);
   opacity: 0;
   transition: opacity $time-primary;
@@ -135,6 +137,7 @@
       border-radius: 50%;
       background-color: transparent;
       box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
+      cursor: pointer;
       transition:
         border-width $time-primary,
         background-color 1ms;

@@ -17,7 +17,12 @@
     color: $color-gray-50p;
     font-size: rem(12);
     font-family: $font-family-primary;
+    cursor: pointer;
     transition: color $time-primary;
+
+    &[disabled] {
+      cursor: not-allowed;
+    }
 
     &:hover {
       color: $color-gray-100p;
