@@ -1,0 +1,35 @@
+//- Options:
+//- 🞂 title: string - заголовок главной ссылки подменю
+//- 🞂 href: string  - значение атрибута «href» главной ссылки подменю
+//- 🞂 list [[       - список подменю
+//-   🞂 [0]: string - текст пункта списка
+//-   🞂 [1]: string - значение атрибута «href» пункта списка
+//-   ]]
+
+mixin header-submenu(options)
+  -
+    const defaults = {
+      title: 'undefined',
+      href: '/undefined',
+      list: [
+        ['undefined', '/undefined'],
+        ['undefined', '/undefined'],
+        ['undefined', '/undefined'],
+      ],
+    };
+
+  -
+    const {
+      title,
+      href,
+      list,
+    } = Object.assign(defaults, options);
+
+  .header-submenu
+    a._link.-main(href=href)
+      | #{title}
+    ul._list(style='--height: 100vh;')
+      each item in list
+        li._item
+          a._link(href=item[1])
+            | #{item[0]}
