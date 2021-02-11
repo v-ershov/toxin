@@ -157,13 +157,24 @@
   border-bottom: 0;
 }
 
-.datepicker--nav-action {
-  width: auto;
+.datepicker--nav-action,
+.datepicker--nav-title {
   border-radius: $radius-primary;
+  cursor: pointer;
 
   &:hover {
     background: $color-gray-5p;
   }
+
+  &.-disabled- {
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+.datepicker--nav-action {
+  width: auto;
 
   .material-icons {
     font-size: rem(24);
@@ -172,13 +183,8 @@
 
 .datepicker--nav-title {
   padding: 0 rem(8);
-  border-radius: $radius-primary;
 
   @include heading('h2');
-
-  &:hover {
-    background: $color-gray-5p;
-  }
 }
 
 // ------------------------
@@ -191,6 +197,7 @@
   padding-top: 7.2%;
   padding-bottom: 7.2%;
   border-radius: 50%;
+  cursor: pointer;
 
   &.-focus- {
     background: rgba($color-primary, 0.25);
