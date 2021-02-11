@@ -4,7 +4,6 @@ interface IHeaderElements {
   hamburger: HTMLButtonElement;
   nav: HTMLElement;
   list: HTMLUListElement;
-  sublists: NodeListOf<HTMLUListElement>;
 }
 
 class Header {
@@ -26,7 +25,6 @@ class Header {
 
     this._addEventListeners();
     this._setNavHeight();
-    this._setSublistsHeight();
   }
 
   // -----------------------
@@ -39,7 +37,6 @@ class Header {
       hamburger: this._root.querySelector('.header__hamburger') as HTMLButtonElement,
       nav: this._root.querySelector('.header__nav') as HTMLElement,
       list: this._root.querySelector('.header__list') as HTMLUListElement,
-      sublists: this._root.querySelectorAll('.header__list--sublist') as NodeListOf<HTMLUListElement>,
     };
   }
 
@@ -47,7 +44,6 @@ class Header {
   private _addEventListeners(): void {
     window.addEventListener('resize', () => {
       this._setNavHeight();
-      this._setSublistsHeight();
     });
 
     document.addEventListener('click', (e) => {
@@ -57,11 +53,11 @@ class Header {
         return;
       }
 
-      this._hideHamburgerMenu();
+      this._hideHamburger();
     });
 
     this._elements.hamburger.addEventListener('click', () => {
-      this._switchHamburgerMenu();
+      this._switchHamburger();
     });
   }
 
@@ -75,20 +71,13 @@ class Header {
     nav.style.setProperty('--height', helpers.getHeight(list));
   }
 
-  // устанавливает максимальную высоту подсписков навигационного меню
-  private _setSublistsHeight(): void {
-    this._elements.sublists.forEach((sublist) => {
-      sublist.style.setProperty('--height', helpers.getHeight(sublist));
-    });
-  }
-
   // переключает состояние гамбургер-меню
-  private _switchHamburgerMenu(): void {
+  private _switchHamburger(): void {
     this._elements.hamburger.classList.toggle('header__hamburger--active');
   }
 
   // скрывает гамбургер-меню
-  private _hideHamburgerMenu(): void {
+  private _hideHamburger(): void {
     this._elements.hamburger.classList.remove('header__hamburger--active');
   }
 }
