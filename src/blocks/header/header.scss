@@ -196,9 +196,12 @@
   }
 
   &__user {
+    overflow: hidden;
+    max-width: rem(160);
     margin-left: rem(20);
     padding: rem(3) 0 rem(3) rem(20);
     border-left: 1px solid $color-gray-10p;
+    text-overflow: ellipsis;
 
     @include screen-lg {
       padding: 0;
