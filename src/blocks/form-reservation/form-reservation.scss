@@ -43,10 +43,8 @@
 
     &::after {
       content: '';
-      position: relative;
-      bottom: rem(4);
       flex-grow: 1;
-      margin: 0 rem(5);
+      margin: 0 rem(5) rem(4);
       border-bottom: 1px dotted $color-gray-25p;
     }
   }
