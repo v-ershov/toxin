@@ -1,3 +1,9 @@
+// Dimensions
+$height-header : rem(70);
+
+// Radius
+$radius-primary : rem(4);
+
 // Text
 $font-size-primary     : 14px;
 $line-height-primary   : 1.75;
@@ -33,9 +39,3 @@ $shadow-tooltip   : rem(2) rem(2) rem(6) rgba($color-black, 0.3);
 
 // Time
 $time-primary : 200ms;
-
-// Radius
-$radius-primary : rem(4);
-
-// Sizes
-$height-header : rem(70);
