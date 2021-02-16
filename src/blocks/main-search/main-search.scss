@@ -160,7 +160,7 @@
   &__button--active + &__aside {
     @include screen-xl {
       left: calc(100% - #{rem(324)});
-      box-shadow: $shadow-form;
+      box-shadow: 0 0 rem(25) rgba($color-black, 0.2);
       transition: left $time-primary;
     }
   }
