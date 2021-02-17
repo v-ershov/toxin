@@ -95,9 +95,7 @@
   &--checkbox-rich &__input:checked + &__box {
     &::before {
       left: 50%;
-      animation-name: checkbox;
-      animation-duration: $time-primary;
-      animation-fill-mode: forwards;
+      animation: checkbox $time-primary;
       opacity: 1;
       transition: none;
     }
