@@ -18,14 +18,17 @@
     font-size: rem(12);
     font-family: $font-family-primary;
     cursor: pointer;
-    transition: color $time-primary;
+    transition:
+      background-color $time-primary,
+      color $time-primary;
 
     &[disabled] {
       cursor: not-allowed;
     }
 
     &:hover {
-      color: $color-gray-100p;
+      background-color: $color-primary;
+      color: $color-gray-75p;
     }
 
     &--prev,
