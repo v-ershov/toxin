@@ -85,6 +85,7 @@
 // -------------------------
 // --- Datepicker config ---
 // -------------------------
+$datepicker-color-background: rgba($color-primary, 0.25);
 
 // Objects
 // -------------------------------------------------
@@ -104,19 +105,19 @@
 
   &.-selected- {
     color: $color-white;
-    background: rgba($color-primary, 0.25);
+    background: $datepicker-color-background;
 
     &.-focus- {
-      background: rgba($color-primary, 0.25);
+      background: $datepicker-color-background;
     }
   }
 
   &.-in-range- {
-    background-color: rgba($color-primary, 0.25);
+    background-color: $datepicker-color-background;
     color: $color-gray-25p;
 
     &.-focus- {
-      background-color: rgba($color-primary, 0.25);
+      background-color: $datepicker-color-background;
     }
   }
 }
@@ -200,7 +201,7 @@
   cursor: pointer;
 
   &.-focus- {
-    background: rgba($color-primary, 0.25);
+    background: $datepicker-color-background;
   }
 
   &.-current- {
@@ -213,16 +214,16 @@
     &.-range-from-,
     &.-range-to- {
       color: $color-gray-50p;
-      background: rgba($color-primary, 0.25);
+      background: $datepicker-color-background;
     }
   }
 
   &.-in-range- {
     color: $color-gray-50p;
-    background: rgba($color-primary, 0.25);
+    background: $datepicker-color-background;
 
     &.-focus- {
-      background-color: rgba($color-primary, 0.25);
+      background-color: $datepicker-color-background;
 
       &::before {
         content: '';
@@ -233,7 +234,7 @@
         left: 0;
         z-index: -1;
         border-radius: 50%;
-        background: rgba($color-primary, 0.25);
+        background: $datepicker-color-background;
       }
     }
   }
@@ -266,7 +267,7 @@
   &.-range-from-,
   &.-range-to- {
     border: 0;
-    background-color: rgba($color-primary, 0.25);
+    background-color: $datepicker-color-background;
 
     &::before {
       content: '';
@@ -296,7 +297,7 @@
   &.-selected- {
     color: $color-white;
     font-weight: bold;
-    background: rgba($color-primary, 0.25);
+    background: $datepicker-color-background;
 
     &::before {
       border: 0;
@@ -306,11 +307,11 @@
 
     &.-current- {
       color: $color-white;
-      background: rgba($color-primary, 0.25);
+      background: $datepicker-color-background;
     }
 
     &.-focus- {
-      background: rgba($color-primary, 0.25);
+      background: $datepicker-color-background;
 
       &::before {
         opacity: 1;
