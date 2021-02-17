@@ -21,13 +21,13 @@
 
   &__circle {
     stroke: var(--stroke);
+    stroke-width: 1.25;
+    stroke-dasharray: 0 100;
     transition:
       opacity $time-primary,
       stroke-width $time-primary,
       stroke-dasharray var(--duration),
       stroke-dashoffset var(--duration);
-    stroke-width: 1.25;
-    stroke-dasharray: 0 100;
 
     &--semitransparent {
       opacity: 0.2;
