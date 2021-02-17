@@ -1,3 +1,6 @@
+$mainlanding-color-text: rgba($color-white, 0.9);
+$mainlanding-color-shadow: rgba($color-black, 0.5);
+
 .main-landing {
   position: relative;
 
@@ -57,16 +60,16 @@
       right: rem(30);
       bottom: 25%;
       left: rem(30);
-      color: rgba($color-white, 0.9);
+      color: $mainlanding-color-text;
       font-weight: bold;
       font-size: 3.15vw;
       text-align: center;
-      text-shadow: 0.325vw 0.325vw 0.4vw rgba($color-black, 0.5);
+      text-shadow: 0.325vw 0.325vw 0.4vw $mainlanding-color-shadow;
       animation: text $time-full linear infinite;
 
       @include screen-xxl {
         font-size: rem(46);
-        text-shadow: rem(4) rem(4) rem(5) rgba($color-black, 0.5);
+        text-shadow: rem(4) rem(4) rem(5) $mainlanding-color-shadow;
       }
 
       @include screen-lg {
@@ -110,7 +113,7 @@
     font-weight: bold;
     font-size: rem(19);
     text-align: center;
-    text-shadow: rem(2) rem(2) rem(3) rgba($color-black, 0.5);
+    text-shadow: rem(2) rem(2) rem(3) $mainlanding-color-shadow;
 
     @include screen-sm {
       display: block;
