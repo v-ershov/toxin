@@ -11,9 +11,9 @@ interface ICalendarElements {
 }
 
 class Calendar {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент календаря
 
@@ -25,9 +25,9 @@ class Calendar {
 
   private _formattedDate: string; // выбранные в плагине air-datepicker даты
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -43,9 +43,9 @@ class Calendar {
     this._initDates();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы календаря
   private _findElements(): ICalendarElements {
@@ -238,9 +238,9 @@ class Calendar {
     }
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleDocumentClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;

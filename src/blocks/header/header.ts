@@ -7,17 +7,17 @@ interface IHeaderElements {
 }
 
 class Header {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент хедера
 
   private _elements: IHeaderElements; // элементы хедера
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -27,9 +27,9 @@ class Header {
     this._setNavHeight();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы хедера
   private _findElements(): IHeaderElements {
@@ -67,9 +67,9 @@ class Header {
     this._elements.hamburger.classList.remove('header__hamburger--active');
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleWindowResize(): void {
     this._setNavHeight();

@@ -3,9 +3,9 @@ interface IButtonLikeElements {
 }
 
 class ButtonLike {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент кнопки
 
@@ -15,9 +15,9 @@ class ButtonLike {
 
   private _isReady: boolean; // если true, то кнопка доступна для изменений
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -28,9 +28,9 @@ class ButtonLike {
     this._bindEventListeners();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы кнопки
   private _findElements(): IButtonLikeElements {
@@ -117,9 +117,9 @@ class ButtonLike {
     }, this._duration);
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleRootClick(): void {
     this._switchButton();

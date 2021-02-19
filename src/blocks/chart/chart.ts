@@ -22,9 +22,9 @@ interface IChartSection {
 }
 
 class Chart {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент диаграммы
 
@@ -36,9 +36,9 @@ class Chart {
 
   private _sections: IChartSection[]; // данные о каждой секции диаграммы
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -50,9 +50,9 @@ class Chart {
     this._bindEventListeners();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы диаграммы
   private _findElements(): IChartElements {
@@ -269,9 +269,9 @@ class Chart {
     return this._elements.buttons[i].classList.contains('chart__button--active');
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleWindowLoad(): void {
     this._activeDiagram();

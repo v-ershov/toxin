@@ -5,17 +5,17 @@ interface IMainSearchElements {
 }
 
 class MainSearch {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент блока
 
   private _elements: IMainSearchElements; // элементы блока
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -25,9 +25,9 @@ class MainSearch {
     this._observe();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы блока
   private _findElements(): IMainSearchElements {
@@ -81,9 +81,9 @@ class MainSearch {
     }
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleButtonClick(): void {
     this._switchSidebar();

@@ -9,17 +9,17 @@ interface ISliderRangeElements {
 }
 
 class SliderRange {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент слайдера
 
   private _elements: ISliderRangeElements; // элементы слайдера
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -28,9 +28,9 @@ class SliderRange {
     this._initJqueryUiSlider();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы слайдера
   private _findElements(): ISliderRangeElements {

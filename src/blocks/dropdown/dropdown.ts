@@ -13,17 +13,17 @@ interface IDropdownElements {
 }
 
 class Dropdown {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент дропдауна
 
   private _elements: IDropdownElements; // элементы дропдауна
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -33,9 +33,9 @@ class Dropdown {
     this._initDropdown();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы дропдауна
   private _findElements(): IDropdownElements {
@@ -229,9 +229,9 @@ class Dropdown {
     return sum;
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleDocumentClick(event: MouseEvent): void {
     if (this._root.contains(event.target as HTMLElement)) {

@@ -6,17 +6,17 @@ interface IHeaderSubmenuElements {
 }
 
 class HeaderSubmenu {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент подменю
 
   private _elements: IHeaderSubmenuElements; // элементы подменю
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -26,9 +26,9 @@ class HeaderSubmenu {
     this._setListHeight();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы подменю
   private _findElements(): IHeaderSubmenuElements {
@@ -67,9 +67,9 @@ class HeaderSubmenu {
     return window.innerWidth > 858;
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleWindowResize(): void {
     this._setListHeight();

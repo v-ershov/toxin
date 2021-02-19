@@ -3,17 +3,17 @@ interface IMainLandingElements {
 }
 
 class MainLanding {
-  // ---------------
-  // --- FIELDS ---
-  // ---------------
+  // ----------------------------
+  // ---------- FIELDS ----------
+  // ----------------------------
 
   private _root: HTMLElement; // корневой html-элемент блока
 
   private _elements: IMainLandingElements; // элементы блока
 
-  // -------------------
-  // --- CONSTRUCTOR ---
-  // -------------------
+  // ---------------------------------
+  // ---------- CONSTRUCTOR ----------
+  // ---------------------------------
 
   constructor(root: HTMLElement) {
     this._root = root;
@@ -22,9 +22,9 @@ class MainLanding {
     this._bindEventListeners();
   }
 
-  // -----------------------
-  // --- PRIVATE METHODS ---
-  // -----------------------
+  // -------------------------------------
+  // ---------- PRIVATE METHODS ----------
+  // -------------------------------------
 
   // находит и возвращает элементы блока
   private _findElements(): IMainLandingElements {
@@ -43,9 +43,9 @@ class MainLanding {
     this._elements.slideshow.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 
-  // ----------------------
-  // --- EVENT HANDLERS ---
-  // ----------------------
+  // ------------------------------------
+  // ---------- EVENT HANDLERS ----------
+  // ------------------------------------
 
   private _handleWindowScroll(): void {
     this._createParallax();
