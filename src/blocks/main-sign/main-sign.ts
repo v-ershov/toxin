@@ -19,7 +19,7 @@ class MainSign {
     this._root = root;
     this._elements = this._findElements();
 
-    this._addEventListeners();
+    this._bindEventListeners();
   }
 
   // -----------------------
@@ -34,15 +34,21 @@ class MainSign {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
-    window.addEventListener('scroll', () => {
-      this._createParallax();
-    });
+  private _bindEventListeners(): void {
+    window.addEventListener('scroll', this._handleWindowScroll.bind(this));
   }
 
   // создаёт параллакс-эффект для фонового изображения
   private _createParallax(): void {
     this._elements.background.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleWindowScroll(): void {
+    this._createParallax();
   }
 }
 

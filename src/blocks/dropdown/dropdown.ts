@@ -29,7 +29,7 @@ class Dropdown {
     this._root = root;
     this._elements = this._findElements();
 
-    this._addEventListeners();
+    this._bindEventListeners();
     this._initDropdown();
   }
 
@@ -53,7 +53,7 @@ class Dropdown {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
+  private _bindEventListeners(): void {
     const {
       input,
       items,
@@ -64,51 +64,23 @@ class Dropdown {
       buttonReset,
     } = this._elements;
 
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-
-      if (target.closest('.dropdown') === this._root) {
-        return;
-      }
-
-      this._hideDropdown();
-    });
-
-    input.addEventListener('click', () => {
-      this._switchDropdown();
-    });
+    document.addEventListener('click', this._handleDocumentClick.bind(this));
+    input.addEventListener('click', this._handleInputClick.bind(this));
 
     items.forEach((_item, i) => {
-      if (buttonApply) {
-        numbers[i].addEventListener('input', () => {
-          this._switchSpinners(i);
-          this._switchButtonReset();
-        });
+      if (buttonApply && buttonReset) {
+        numbers[i].addEventListener('input', this._handleNumberInputWithButtons.bind(this, i));
       } else {
-        numbers[i].addEventListener('input', () => {
-          this._switchSpinners(i);
-          this._setText();
-        });
+        numbers[i].addEventListener('input', this._handleNumberInput.bind(this, i));
       }
 
-      increments[i].addEventListener('click', () => {
-        this._setNumber(i, +numbers[i].value + 1);
-      });
-
-      decrements[i].addEventListener('click', () => {
-        this._setNumber(i, +numbers[i].value - 1);
-      });
+      increments[i].addEventListener('click', this._handleIncrementClick.bind(this, i));
+      decrements[i].addEventListener('click', this._handleDecrementClick.bind(this, i));
     });
 
     if (buttonApply && buttonReset) {
-      buttonApply.addEventListener('click', () => {
-        this._setText();
-        this._hideDropdown();
-      });
-
-      buttonReset.addEventListener('click', () => {
-        this._resetNumbers();
-      });
+      buttonApply.addEventListener('click', this._handleButtonApplyClick.bind(this));
+      buttonReset.addEventListener('click', this._handleButtonResetClick.bind(this));
     }
   }
 
@@ -255,6 +227,49 @@ class Dropdown {
     });
 
     return sum;
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleDocumentClick(event: MouseEvent): void {
+    if (this._root.contains(event.target as HTMLElement)) {
+      return;
+    }
+
+    this._hideDropdown();
+  }
+
+  private _handleInputClick(): void {
+    this._switchDropdown();
+  }
+
+  private _handleNumberInputWithButtons(index: number): void {
+    this._switchSpinners(index);
+    this._switchButtonReset();
+  }
+
+  private _handleNumberInput(index: number): void {
+    this._switchSpinners(index);
+    this._setText();
+  }
+
+  private _handleIncrementClick(index: number): void {
+    this._setNumber(index, +this._elements.numbers[index].value + 1);
+  }
+
+  private _handleDecrementClick(index: number): void {
+    this._setNumber(index, +this._elements.numbers[index].value - 1);
+  }
+
+  private _handleButtonApplyClick(): void {
+    this._setText();
+    this._hideDropdown();
+  }
+
+  private _handleButtonResetClick(): void {
+    this._resetNumbers();
   }
 }
 

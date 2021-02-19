@@ -39,7 +39,7 @@ class Calendar {
     this._inst = this._getAirDatepickerInst();
     this._formattedDate = '';
 
-    this._addEventListeners();
+    this._bindEventListeners();
     this._initDates();
   }
 
@@ -92,7 +92,7 @@ class Calendar {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
+  private _bindEventListeners(): void {
     const {
       fields,
       buttonApply,
@@ -100,54 +100,16 @@ class Calendar {
     } = this._elements;
 
     if (fields.length !== 0) {
-      document.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        const tcl = target.classList;
-
-        if (tcl.contains('datepicker--cell')
-          || tcl.contains('datepicker--nav-title')
-          || tcl.contains('material-icons')
-          || target.closest('.calendar') === this._root) {
-          return;
-        }
-
-        this._setDatepickerDates();
-        this._hideContainer();
-      });
-
-      fields[0].addEventListener('click', () => {
-        this._setDatepickerDates();
-        this._switchContainer();
-      });
+      document.addEventListener('click', this._handleDocumentClick.bind(this));
+      fields[0].addEventListener('click', this._handleFieldClick.bind(this));
 
       if (fields[1]) {
-        fields[1].addEventListener('click', () => {
-          this._setDatepickerDates();
-          this._switchContainer();
-        });
+        fields[1].addEventListener('click', this._handleFieldClick.bind(this));
       }
     }
 
-    buttonApply.addEventListener('click', () => {
-      switch (this._inst.selectedDates.length) {
-        case 0:
-          this._resetCalendar();
-          this._hideContainer();
-          break;
-        case 1:
-          this._animateContainer();
-          break;
-        default:
-          this._setInput();
-          this._setFields();
-          this._hideContainer();
-          break;
-      }
-    });
-
-    buttonReset.addEventListener('click', () => {
-      this._resetCalendar();
-    });
+    buttonApply.addEventListener('click', this._handleButtonApplyClick.bind(this));
+    buttonReset.addEventListener('click', this._handleButtonResetClick.bind(this));
   }
 
   // инициализирует начальный диапазон дат календаря
@@ -274,6 +236,51 @@ class Calendar {
     if (fields[1]) {
       fields[1].value = '';
     }
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleDocumentClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    const tcl = target.classList;
+
+    if (tcl.contains('datepicker--cell')
+      || tcl.contains('datepicker--nav-title')
+      || tcl.contains('material-icons')
+      || this._root.contains(target)) {
+      return;
+    }
+
+    this._setDatepickerDates();
+    this._hideContainer();
+  }
+
+  private _handleFieldClick(): void {
+    this._setDatepickerDates();
+    this._switchContainer();
+  }
+
+  private _handleButtonApplyClick(): void {
+    switch (this._inst.selectedDates.length) {
+      case 0:
+        this._resetCalendar();
+        this._hideContainer();
+        break;
+      case 1:
+        this._animateContainer();
+        break;
+      default:
+        this._setInput();
+        this._setFields();
+        this._hideContainer();
+        break;
+    }
+  }
+
+  private _handleButtonResetClick(): void {
+    this._resetCalendar();
   }
 }
 

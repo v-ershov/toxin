@@ -22,7 +22,7 @@ class Ecl {
     this._root = root;
     this._elements = this._findElements();
 
-    this._addEventListeners();
+    this._bindEventListeners();
     this._setListHeight();
   }
 
@@ -39,10 +39,8 @@ class Ecl {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
-    this._elements.button.addEventListener('click', () => {
-      this._switchEcl();
-    });
+  private _bindEventListeners(): void {
+    this._elements.button.addEventListener('click', this._handleButtonClick.bind(this));
   }
 
   // устанавливает максимальную высоту списка
@@ -55,6 +53,14 @@ class Ecl {
   // переключает состояние списка
   private _switchEcl(): void {
     this._root.classList.toggle('ecl--active');
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleButtonClick(): void {
+    this._switchEcl();
   }
 }
 

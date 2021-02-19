@@ -23,7 +23,7 @@ class Header {
     this._root = root;
     this._elements = this._findElements();
 
-    this._addEventListeners();
+    this._bindEventListeners();
     this._setNavHeight();
   }
 
@@ -41,24 +41,10 @@ class Header {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
-    window.addEventListener('resize', () => {
-      this._setNavHeight();
-    });
-
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-
-      if (target.closest('.header') === this._root) {
-        return;
-      }
-
-      this._hideHamburger();
-    });
-
-    this._elements.hamburger.addEventListener('click', () => {
-      this._switchHamburger();
-    });
+  private _bindEventListeners(): void {
+    window.addEventListener('resize', this._handleWindowResize.bind(this));
+    document.addEventListener('click', this._handleDocumentClick.bind(this));
+    this._elements.hamburger.addEventListener('click', this._handleHamburgerClick.bind(this));
   }
 
   // устанавливает максимальную высоту навигационного меню
@@ -79,6 +65,26 @@ class Header {
   // скрывает гамбургер-меню
   private _hideHamburger(): void {
     this._elements.hamburger.classList.remove('header__hamburger--active');
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleWindowResize(): void {
+    this._setNavHeight();
+  }
+
+  private _handleDocumentClick(event: MouseEvent): void {
+    if (this._root.contains(event.target as HTMLElement)) {
+      return;
+    }
+
+    this._hideHamburger();
+  }
+
+  private _handleHamburgerClick(): void {
+    this._switchHamburger();
   }
 }
 

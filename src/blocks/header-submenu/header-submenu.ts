@@ -22,7 +22,7 @@ class HeaderSubmenu {
     this._root = root;
     this._elements = this._findElements();
 
-    this._addEventListeners();
+    this._bindEventListeners();
     this._setListHeight();
   }
 
@@ -39,29 +39,10 @@ class HeaderSubmenu {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
-    window.addEventListener('resize', () => {
-      this._setListHeight();
-    });
-
-    document.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-
-      if (target.closest('.header-submenu') === this._root) {
-        return;
-      }
-
-      this._hideList();
-    });
-
-    this._elements.linkMain.addEventListener('click', (e) => {
-      if (!HeaderSubmenu._isLargeScreen()) {
-        return;
-      }
-
-      e.preventDefault();
-      this._switchList();
-    });
+  private _bindEventListeners(): void {
+    window.addEventListener('resize', this._handleWindowResize.bind(this));
+    document.addEventListener('click', this._handleDocumentClick.bind(this));
+    this._elements.linkMain.addEventListener('click', this._handleLinkMainClick.bind(this));
   }
 
   // устанавливает максимальную высоту списка
@@ -84,6 +65,31 @@ class HeaderSubmenu {
   // возвращает true, если ширина viewport'а больше 858px
   private static _isLargeScreen(): boolean {
     return window.innerWidth > 858;
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleWindowResize(): void {
+    this._setListHeight();
+  }
+
+  private _handleDocumentClick(event: MouseEvent): void {
+    if (this._root.contains(event.target as HTMLElement)) {
+      return;
+    }
+
+    this._hideList();
+  }
+
+  private _handleLinkMainClick(event: MouseEvent): void {
+    if (!HeaderSubmenu._isLargeScreen()) {
+      return;
+    }
+
+    event.preventDefault();
+    this._switchList();
   }
 }
 

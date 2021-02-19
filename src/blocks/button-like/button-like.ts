@@ -25,7 +25,7 @@ class ButtonLike {
     this._duration = this._getDuration();
     this._isReady = true;
 
-    this._addEventListeners();
+    this._bindEventListeners();
   }
 
   // -----------------------
@@ -45,10 +45,8 @@ class ButtonLike {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
-    this._root.addEventListener('click', () => {
-      this._switchButton();
-    });
+  private _bindEventListeners(): void {
+    this._root.addEventListener('click', this._handleRootClick.bind(this));
   }
 
   // переключает состояние кнопки
@@ -117,6 +115,14 @@ class ButtonLike {
         ncl.remove('button-like__numbers--anim-decrease');
       }
     }, this._duration);
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleRootClick(): void {
+    this._switchButton();
   }
 }
 

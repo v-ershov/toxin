@@ -21,7 +21,7 @@ class MainSearch {
     this._root = root;
     this._elements = this._findElements();
 
-    this._addEventListeners();
+    this._bindEventListeners();
     this._observe();
   }
 
@@ -37,10 +37,8 @@ class MainSearch {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
-    this._elements.button.addEventListener('click', () => {
-      this._switchSidebar();
-    });
+  private _bindEventListeners(): void {
+    this._elements.button.addEventListener('click', this._handleButtonClick.bind(this));
   }
 
   // создаёт Intersection Observer для последующего переключения состояния кнопки «Фильтры»
@@ -81,6 +79,14 @@ class MainSearch {
       body.removeProperty('margin-right');
       body.removeProperty('overflow-y');
     }
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleButtonClick(): void {
+    this._switchSidebar();
   }
 }
 

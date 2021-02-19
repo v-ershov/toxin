@@ -47,7 +47,7 @@ class Chart {
     this._duration = this._getDuration();
     this._sections = this._getSections();
 
-    this._addEventListeners();
+    this._bindEventListeners();
   }
 
   // -----------------------
@@ -104,47 +104,24 @@ class Chart {
   }
 
   // регистрирует обработчики событий
-  private _addEventListeners(): void {
+  private _bindEventListeners(): void {
     const {
-      buttons,
       circles,
+      buttons,
     } = this._elements;
 
-    window.addEventListener('load', () => {
-      this._activeDiagram();
-      this._animateSum();
+    window.addEventListener('load', this._handleWindowLoad.bind(this));
+
+    circles.forEach((circle, i) => {
+      circle.addEventListener('mouseover', this._handleCircleMouseOver.bind(this, i));
+      circle.addEventListener('mousemove', this._handleCircleMouseMove.bind(this));
+      circle.addEventListener('mouseout', this._handleCircleMouseOut.bind(this));
     });
 
     buttons.forEach((button, i) => {
-      button.addEventListener('mouseover', () => {
-        this._highlightCircle(i);
-      });
-
-      button.addEventListener('mouseout', () => {
-        this._dehighlightCircles();
-      });
-
-      button.addEventListener('click', () => {
-        this._switchButton(i);
-        this._animateSum();
-        this._redrawDiagram();
-      });
-    });
-
-    circles.forEach((circle, i) => {
-      circle.addEventListener('mouseover', () => {
-        this._highlightCircle(i);
-        this._showTooltip(i);
-      });
-
-      circle.addEventListener('mousemove', (e) => {
-        this._setTooltipPosition(e);
-      });
-
-      circle.addEventListener('mouseout', () => {
-        this._dehighlightCircles();
-        this._hideTooltip();
-      });
+      button.addEventListener('mouseover', this._handleButtonMouseOver.bind(this, i));
+      button.addEventListener('mouseout', this._handleButtonMouseOut.bind(this));
+      button.addEventListener('click', this._handleButtonClick.bind(this, i));
     });
   }
 
@@ -290,6 +267,43 @@ class Chart {
   // возвращает true, если указанная кнопка диаграммы активна
   private _isButtonActive(i: number): boolean {
     return this._elements.buttons[i].classList.contains('chart__button--active');
+  }
+
+  // ----------------------
+  // --- EVENT HANDLERS ---
+  // ----------------------
+
+  private _handleWindowLoad(): void {
+    this._activeDiagram();
+    this._animateSum();
+  }
+
+  private _handleCircleMouseOver(index: number): void {
+    this._highlightCircle(index);
+    this._showTooltip(index);
+  }
+
+  private _handleCircleMouseMove(event: MouseEvent): void {
+    this._setTooltipPosition(event);
+  }
+
+  private _handleCircleMouseOut(): void {
+    this._dehighlightCircles();
+    this._hideTooltip();
+  }
+
+  private _handleButtonMouseOver(index: number): void {
+    this._highlightCircle(index);
+  }
+
+  private _handleButtonMouseOut(): void {
+    this._dehighlightCircles();
+  }
+
+  private _handleButtonClick(index: number): void {
+    this._switchButton(index);
+    this._animateSum();
+    this._redrawDiagram();
   }
 }
 
