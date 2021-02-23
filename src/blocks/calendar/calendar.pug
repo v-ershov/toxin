@@ -29,7 +29,7 @@ mixin calendar(options)
       attrsFieldSecond,
     } = Object.assign(defaults, options);
 
-  - const isFields = type === 'fields' || type === 'field';
+  - const isFields = type !== 'inline';
 
   .calendar(data-dates=dates || false)
     input._input(type='hidden')
@@ -51,6 +51,7 @@ mixin calendar(options)
               modifiers: ['dropdown'],
               attrs: Object.assign(attrsFieldSecond, {
                 placeholder: 'ДД.ММ.ГГГГ',
+                tabindex: '-1',
                 readonly: true,
               }),
             })
@@ -64,22 +65,26 @@ mixin calendar(options)
                 readonly: true,
               }),
             })
+    else
+      //- горячие клавиши работают только в том случае,
+      //- если air-datepicker привязан к текстовому полю
+      input._fake
     ._container(class=getModifiers('calendar__container', isFields ? ['hidden'] : []))
       ._datepicker
       ._buttons
-        ._button
-          +button({
-            text: 'Применить',
-            modifiers: ['bodyless'],
-            attrs: {
-              name: 'apply',
-            },
-          })
         ._button
           +button({
             text: 'Очистить',
             modifiers: ['bodyless', 'text-gray'],
             attrs: {
               name: 'reset',
+            },
+          })
+        ._button
+          +button({
+            text: 'Применить',
+            modifiers: ['bodyless'],
+            attrs: {
+              name: 'apply',
             },
           })

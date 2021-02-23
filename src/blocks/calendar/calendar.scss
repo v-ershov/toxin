@@ -15,6 +15,12 @@
     }
   }
 
+  &__fake {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+  }
+
   &__container {
     z-index: 20;
     width: 100%;
@@ -24,6 +30,7 @@
     background-color: $color-white;
     box-shadow: $shadow-primary;
     animation-duration: $time-primary * 3;
+    transition: border-color $time-primary;
 
     &--hidden {
       position: absolute;
@@ -36,24 +43,27 @@
         opacity $time-primary;
     }
 
-    &--active {
-      position: absolute;
+    &--animated {
+      animation-name: shakeX;
+    }
+  }
+
+  &:focus-within &__container {
+    border-color: $color-gray-50p;
+
+    &--hidden {
       top: calc(100% + #{rem(10)});
+      border-color: $color-gray-25p;
       visibility: visible;
       opacity: 1;
       transition:
         top $time-primary,
         opacity $time-primary;
     }
-
-    &--animated {
-      animation-name: shakeX;
-    }
   }
 
   &__buttons {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
     margin-top: rem(20);
   }
@@ -137,7 +147,7 @@ $datepicker-color-background: rgba($color-primary, 0.25);
     font-family: $font-family-primary;
     user-select: none;
     background: $color-white;
-    transition: all 0ms ease 0ms;
+    transition: none;
     box-sizing: border-box;
   }
 }
