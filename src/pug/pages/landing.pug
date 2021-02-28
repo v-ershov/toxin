@@ -4,6 +4,7 @@ include /blocks/body/body.pug
 include /blocks/footer/footer.pug
 include /blocks/header/header.pug
 include /blocks/main-landing/main-landing.pug
+include /blocks/preloader/preloader.pug
 
 block vars
   - lang = 'ru';
@@ -13,6 +14,7 @@ block vars
 
 block body
   +body
+    +preloader
     +header
     +main-landing
     +footer
