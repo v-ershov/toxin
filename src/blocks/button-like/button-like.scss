@@ -44,14 +44,14 @@
 
   &::after {
     content: 'favorite';
-    color: $color-primary;
+    color: $color-primary-1;
     opacity: 0;
     transition: opacity $time-primary;
   }
 
   &--active {
     border-color: transparent;
-    color: $color-primary;
+    color: $color-primary-1;
 
     &::after {
       opacity: 1;

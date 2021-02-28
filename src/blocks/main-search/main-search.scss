@@ -206,7 +206,7 @@
 
 @keyframes blink {
   0% {
-    box-shadow: 0 0 rem(15) $color-primary;
+    box-shadow: 0 0 rem(15) $color-primary-1;
     transform: scale(1.1);
   }
 
@@ -216,7 +216,7 @@
   }
 
   100% {
-    box-shadow: 0 0 rem(15) $color-primary;
+    box-shadow: 0 0 rem(15) $color-primary-1;
     transform: scale(1.1);
   }
 }

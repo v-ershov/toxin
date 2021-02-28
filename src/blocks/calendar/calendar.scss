@@ -95,7 +95,7 @@
 // -------------------------
 // --- Datepicker config ---
 // -------------------------
-$datepicker-color-background: rgba($color-primary, 0.25);
+$datepicker-color-background: rgba($color-primary-1, 0.25);
 
 // Objects
 // -------------------------------------------------
@@ -287,7 +287,7 @@ $datepicker-color-background: rgba($color-primary, 0.25);
       bottom: 0;
       left: 0;
       z-index: -1;
-      border: 2px solid $color-primary;
+      border: 2px solid $color-primary-1;
       border-radius: 50%;
     }
   }
@@ -341,7 +341,7 @@ $datepicker-color-background: rgba($color-primary, 0.25);
   height: 0;
   padding-top: 7.2%;
   padding-bottom: 7.2%;
-  color: $color-primary;
+  color: $color-primary-1;
   font-weight: bold;
   font-size: rem(12);
   text-transform: capitalize;

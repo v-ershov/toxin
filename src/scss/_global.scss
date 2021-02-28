@@ -53,5 +53,5 @@ html {
 }
 
 .material-icons {
-  @include material-icons($font-size-primary, $color-primary);
+  @include material-icons($font-size-primary, $color-primary-1);
 }

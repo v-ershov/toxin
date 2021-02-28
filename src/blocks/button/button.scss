@@ -16,7 +16,7 @@
   background-origin:
     padding-box,
     border-box;
-  color: $color-primary;
+  color: $color-primary-1;
   font-weight: bold;
   font-size: rem(12);
   font-family: $font-family-primary;
@@ -95,7 +95,7 @@
     border: 0;
     border-radius: 0;
     background-image: none;
-    color: $color-primary;
+    color: $color-primary-1;
     transition: opacity $time-primary;
 
     &::before,
