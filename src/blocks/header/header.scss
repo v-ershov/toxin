@@ -151,23 +151,6 @@
     }
   }
 
-  &__link {
-    color: $color-gray-50p;
-    text-decoration: none;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: color $time-primary;
-
-    &:hover {
-      color: $color-gray-100p;
-    }
-
-    &--bold {
-      color: $color-gray-75p;
-      font-weight: bold;
-    }
-  }
-
   &__buttons {
     display: flex;
     margin-left: rem(20);

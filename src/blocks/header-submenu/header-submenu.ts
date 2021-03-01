@@ -33,7 +33,7 @@ class HeaderSubmenu {
   // находит и возвращает элементы подменю
   private _findElements(): IHeaderSubmenuElements {
     return {
-      linkMain: this._root.querySelector('.header-submenu__link--main') as HTMLAnchorElement,
+      linkMain: this._root.querySelector('.link--submenu') as HTMLAnchorElement,
       list: this._root.querySelector('.header-submenu__list') as HTMLUListElement,
     };
   }
@@ -54,12 +54,12 @@ class HeaderSubmenu {
 
   // переключает состояние списка
   private _switchList(): void {
-    this._elements.linkMain.classList.toggle('header-submenu__link--active');
+    this._root.classList.toggle('header-submenu--active');
   }
 
   // скрывает список
   private _hideList(): void {
-    this._elements.linkMain.classList.remove('header-submenu__link--active');
+    this._root.classList.remove('header-submenu--active');
   }
 
   // возвращает true, если ширина viewport'а больше 858px

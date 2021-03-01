@@ -4,6 +4,8 @@
 //-   🞂 [1]: string - значение атрибута «href» пункта списка (тогда пункт автоматически становится ссылкой)
 //-   ]]
 
+include /blocks/link/link.pug
+
 mixin list-bullet(options)
   -
     const defaults = {
@@ -23,7 +25,12 @@ mixin list-bullet(options)
     each item in list
       li._item
         if item[1]
-          a._link(href=item[1])
-            | #{item[0]}
+          +link({
+            text: item[0],
+            modifiers: ['moving'],
+            attrs: {
+              href: item[1],
+            },
+          })
         else
           | #{item[0]}

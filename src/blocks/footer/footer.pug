@@ -2,6 +2,7 @@
 //- 🞂 modifiers: string[] - модификаторы блока
 
 include /blocks/form-field/form-field.pug
+include /blocks/link/link.pug
 include /blocks/logo/logo.pug
 include /blocks/socials/socials.pug
 
@@ -28,46 +29,101 @@ mixin footer(options)
           | Навигация
         ul._list
           li._item
-            a._link(href='/change-me')
-              | О нас
+            +link({
+              text: 'О нас',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Новости
+            +link({
+              text: 'Новости',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Служба поддержки
+            +link({
+              text: 'Служба поддержки',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Услуги
+            +link({
+              text: 'Услуги',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
       section._section
         h3._h3
           | О нас
         ul._list
           li._item
-            a._link(href='/change-me')
-              | О сервисе
+            +link({
+              text: 'О сервисе',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Наша команда
+            +link({
+              text: 'Наша команда',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Вакансии
+            +link({
+              text: 'Вакансии',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Инвесторы
+            +link({
+              text: 'Инвесторы',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
       section._section
         h3._h3
           | Служба поддержки
         ul._list
           li._item
-            a._link(href='/change-me')
-              | Соглашения
+            +link({
+              text: 'Соглашения',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Сообщества
+            +link({
+              text: 'Сообщества',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Связь с нами
+            +link({
+              text: 'Связь с нами',
+              modifiers: ['moving'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
       section._section
         h3._h3
           | Подписка

@@ -6,6 +6,8 @@
 //-   🞂 [1]: string - значение атрибута «href» пункта списка
 //-   ]]
 
+include /blocks/link/link.pug
+
 mixin header-submenu(options)
   -
     const defaults = {
@@ -26,10 +28,19 @@ mixin header-submenu(options)
     } = Object.assign(defaults, options);
 
   .header-submenu
-    a._link.-main(href=href)
-      | #{text}
+    +link({
+      text,
+      modifiers: ['submenu'],
+      attrs: {
+        href,
+      },
+    })
     ul._list(style='--height: 100vh;')
       each item in list
         li._item
-          a._link(href=item[1])
-            | #{item[0]}
+          +link({
+            text: item[0],
+            attrs: {
+              href: item[1],
+            },
+          })

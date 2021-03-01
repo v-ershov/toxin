@@ -3,6 +3,7 @@
 
 include /blocks/button/button.pug
 include /blocks/header-submenu/header-submenu.pug
+include /blocks/link/link.pug
 include /blocks/logo/logo.pug
 
 mixin header(options)
@@ -31,8 +32,13 @@ mixin header(options)
       nav._nav(style='--height: 100vh;')
         ul._list
           li._item
-            a._link.-bold(href='/change-me')
-              | О нас
+            +link({
+              text: 'О нас',
+              modifiers: ['bold'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
             +header-submenu({
               text: 'Услуги',
@@ -44,11 +50,19 @@ mixin header(options)
               ],
             })
           li._item
-            a._link(href='/change-me')
-              | Вакансии
+            +link({
+              text: 'Вакансии',
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
-            a._link(href='/change-me')
-              | Новости
+            +link({
+              text: 'Новости',
+              attrs: {
+                href: '/change-me',
+              },
+            })
           li._item
             +header-submenu({
               text: 'Соглашения',
@@ -60,8 +74,12 @@ mixin header(options)
             })
       if isLogin
         ._user
-          a._link(href='/change-me')
-            | Юлий Цезарь
+          +link({
+            text: 'Юлий Цезарь',
+            attrs: {
+              href: '/change-me',
+            },
+          })
       else
         ._buttons
           ._button

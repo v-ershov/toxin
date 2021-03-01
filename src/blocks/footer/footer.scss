@@ -139,17 +139,6 @@
     }
   }
 
-  &__link {
-    color: $color-gray-50p;
-    text-decoration: none;
-    cursor: pointer;
-    transition: color $time-primary;
-
-    &:hover {
-      color: $color-gray-100p;
-    }
-  }
-
   &__form {
     margin-top: rem(20);
   }

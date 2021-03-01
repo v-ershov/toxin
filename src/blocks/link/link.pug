@@ -1,0 +1,22 @@
+//- Options:
+//- 🞂 text: string        - текст ссылки
+//- 🞂 modifiers: string[] - модификаторы блока
+//- 🞂 attrs: object       - атрибуты ссылки
+
+mixin link(options)
+  -
+    const defaults = {
+      text: 'undefined',
+      modifiers: [],
+      attrs: {},
+    };
+
+  -
+    const {
+      text,
+      modifiers,
+      attrs,
+    } = Object.assign(defaults, options);
+
+  a.link(class=getModifiers('link', modifiers))&attributes(attrs)
+    | #{text}
