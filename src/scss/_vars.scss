@@ -34,8 +34,10 @@ $gradient-secondary : linear-gradient($color-secondary-1, $color-secondary-2);
 $gradient-white     : linear-gradient($color-white, $color-white);
 
 // Shadows
-$shadow-primary   : 0 rem(10) rem(20) rgba($color-gray-100p, 0.05);
-$shadow-secondary : 0 rem(10) rem(20) rgba($color-gray-100p, 0.1);
+$shadow-primary         : 0 rem(10) rem(20) rgba($color-gray-100p, 0.05);
+$shadow-secondary       : 0 rem(10) rem(20) rgba($color-gray-100p, 0.1);
+$shadow-focus-primary   : 0 0 rem(6) 1px $color-primary-1;
+$shadow-focus-secondary : 0 0 rem(6) 1px $color-secondary-1;
 
 // Time
 $time-primary : 200ms;
