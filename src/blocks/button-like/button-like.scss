@@ -26,7 +26,8 @@
   user-select: none;
   transition:
     border-color $time-primary,
-    color $time-primary;
+    color $time-primary,
+    box-shadow $time-primary;
 
   &::before,
   &::after {
@@ -47,6 +48,11 @@
     color: $color-primary-1;
     opacity: 0;
     transition: opacity $time-primary;
+  }
+
+  &:focus {
+    box-shadow: $shadow-focus-primary;
+    outline: 0;
   }
 
   &--active {
