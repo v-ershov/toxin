@@ -6,7 +6,9 @@
   }
 
   &__input {
-    display: none;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
   }
 
   &__box {
@@ -16,7 +18,9 @@
     height: rem(20);
     border: 1px solid $color-gray-25p;
     border-radius: 25% / 50%;
-    transition: border-color $time-primary;
+    transition:
+      border-color $time-primary,
+      box-shadow $time-primary;
 
     &::before,
     &::after {
@@ -38,6 +42,11 @@
       background-image: $gradient-primary;
       opacity: 0;
     }
+  }
+
+  &__input:focus + &__box,
+  &__input:active + &__box {
+    box-shadow: $shadow-focus-primary;
   }
 
   &__input:checked + &__box {
