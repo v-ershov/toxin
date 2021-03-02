@@ -45,7 +45,10 @@
   }
 
   &:hover,
+  &:focus,
   &--hover {
+    outline: 0;
+
     &::before {
       opacity: 0.5;
     }
@@ -103,7 +106,8 @@
       content: none;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       opacity: 0.5;
     }
   }
