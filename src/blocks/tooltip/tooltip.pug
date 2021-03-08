@@ -12,6 +12,6 @@ mixin tooltip(options)
       text,
     } = Object.assign(defaults, options);
 
-  .tooltip
+  .tooltip(tabindex='0')
     ._text
       | #{text}
