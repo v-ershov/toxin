@@ -26,9 +26,11 @@
       cursor: not-allowed;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: $color-primary-1;
       color: $color-gray-75p;
+      outline: 0;
     }
 
     &--prev,
@@ -60,7 +62,8 @@
         @include material-icons(rem(24), $color-white);
       }
 
-      &:hover {
+      &:hover,
+      &:focus {
         &::before {
           opacity: 0.5;
         }
@@ -84,7 +87,8 @@
       color: $color-white;
       font-weight: bold;
 
-      &:hover {
+      &:hover,
+      &:focus {
         color: $color-white;
       }
     }
