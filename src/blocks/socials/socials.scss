@@ -27,7 +27,9 @@
       background-repeat: no-repeat;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: 0;
       opacity: 0.5;
     }
 
