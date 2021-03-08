@@ -24,6 +24,13 @@
     border-radius: 50%;
     background-image: $gradient-secondary;
     cursor: pointer;
+    transition: box-shadow $time-primary;
+
+    &:hover,
+    &:focus {
+      box-shadow: $shadow-focus-secondary;
+      outline: 0;
+    }
   }
 
   .ui-slider-range {
