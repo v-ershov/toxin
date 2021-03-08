@@ -5,7 +5,9 @@
   border: 1px solid $color-gray-25p;
   border-radius: 50%;
   cursor: help;
-  transition: border-color $time-primary;
+  transition:
+    border-color $time-primary,
+    box-shadow $time-primary;
 
   &::before {
     content: 'i';
@@ -17,6 +19,17 @@
     font-size: rem(10);
     transform: translate(-50%, -50%);
     transition: color $time-primary;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: $color-primary-1;
+    box-shadow: $shadow-focus-primary;
+    outline: 0;
+
+    &::before {
+      color: $color-primary-1;
+    }
   }
 
   &__text {
@@ -39,15 +52,8 @@
     @include tooltip;
   }
 
-  &:hover {
-    border-color: $color-primary-1;
-
-    &::before {
-      color: $color-primary-1;
-    }
-  }
-
-  &:hover &__text {
+  &:hover &__text,
+  &:focus &__text {
     visibility: visible;
     transform: translate(-50%, rem(-5));
     opacity: 1;
