@@ -7,8 +7,10 @@
     box-shadow $time-primary,
     transform $time-primary;
 
-  &:hover {
+  &:hover,
+  &:focus {
     box-shadow: $shadow-secondary;
+    outline: 0;
     transform: translateY(-3px);
 
     @include screen-xl {
@@ -17,7 +19,6 @@
   }
 
   &__slider {
-    height: rem(150);
     background-color: $color-gray-10p;
   }
 
@@ -68,6 +69,10 @@
     cursor: pointer;
 
     @include hidden-text;
+
+    &:focus {
+      outline: 0;
+    }
   }
 }
 
@@ -76,12 +81,11 @@
   top: 0;
   bottom: 0;
   z-index: 1;
-  display: block;
   width: rem(42);
   padding: 0;
   border: 0;
   background-color: transparent;
-  background-image: linear-gradient(90deg, rgba($color-black, 0.5) 0%, transparent 100%);
+  background-image: linear-gradient(90deg, rgba($color-black, 0.5), transparent);
   cursor: pointer;
   opacity: 0;
   transition: opacity $time-primary;
@@ -91,19 +95,17 @@
   &::before {
     content: 'expand_more';
     transform: rotate(90deg);
-    transition: transform $time-primary;
 
     @include material-icons(rem(24), $color-white);
   }
 
-  &:hover {
-    &::before {
-      transform: rotate(90deg) scale(1.5);
-    }
+  &:focus {
+    outline: 0;
   }
 }
 
-.room:hover .slick-arrow {
+.room:hover .slick-arrow,
+.room:focus .slick-arrow {
   opacity: 1;
 }
 
@@ -129,8 +131,11 @@
   li {
     margin-left: rem(3.75);
 
+    &:first-child {
+      margin-left: 0;
+    }
+
     button {
-      display: block;
       width: rem(7.5);
       height: rem(7.5);
       padding: 0;
@@ -144,6 +149,10 @@
         background-color 1ms;
 
       @include hidden-text;
+
+      &:focus {
+        outline: 0;
+      }
     }
 
     &.slick-active button {
@@ -151,7 +160,7 @@
       background-color: $color-white;
       transition:
         border-width $time-primary,
-        background-color 1ms #{$time-primary * 0.85};
+        background-color 1ms $time-primary;
     }
   }
 }
