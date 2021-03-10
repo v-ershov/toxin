@@ -38,6 +38,7 @@
     &:hover,
     &:focus {
       border-color: $color-gray-50p;
+      outline: 0;
     }
   }
 
