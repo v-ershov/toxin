@@ -4,12 +4,12 @@
     display: block;
     width: 100%;
     padding: 0;
+    padding-right: rem(40);
     border: 0;
     background-color: transparent;
+    font-size: 0;
     text-align: left;
     cursor: pointer;
-
-    @include heading('h3');
 
     &::before {
       content: 'expand_more';
@@ -21,6 +21,10 @@
 
       @include material-icons(rem(24), $color-gray-50p);
     }
+
+    &:focus {
+      outline: 0;
+    }
   }
 
   &--active &__button {
@@ -31,23 +35,58 @@
     }
   }
 
-  &__list {
+  &__text {
+    position: relative;
+    display: inline-block;
     overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include heading('h3');
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-image: linear-gradient(0.25turn, $color-primary-1, $color-primary-2);
+      transition: width $time-primary;
+    }
+  }
+
+  &__button:focus &__text {
+    &::before {
+      width: 100%;
+    }
+  }
+
+  &__list {
     max-height: 0;
     margin: 0;
     padding: 0;
     list-style-type: none;
+    visibility: hidden;
     opacity: 0;
     transition:
-      margin-top $time-primary,
       max-height $time-primary,
+      margin-top $time-primary,
+      visibility 1ms $time-primary,
       opacity $time-primary;
   }
 
   &--active &__list {
     max-height: var(--height);
-    margin-top: rem(15);
+    margin-top: rem(10);
+    visibility: visible;
     opacity: 1;
+    transition:
+      max-height $time-primary,
+      margin-top $time-primary,
+      visibility 1ms,
+      opacity $time-primary;
   }
 
   &__item:not(:first-child) {
