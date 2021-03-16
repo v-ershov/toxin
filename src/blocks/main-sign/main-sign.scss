@@ -9,7 +9,7 @@
 
   &__background {
     position: absolute;
-    top: #{$height-header * -1};
+    top: -$height-header;
     right: 0;
     bottom: 0;
     left: 0;
