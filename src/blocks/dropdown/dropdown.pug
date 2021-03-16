@@ -75,6 +75,7 @@ mixin dropdown(options)
       labelSecondary,
       modifiers: ['dropdown'],
       attrs: Object.assign(attrsField, {
+        tabindex: '-1',
         readonly: true,
         'data-words': `${words[0]}, ${words[1]}, ${words[2]}`,
       }),
@@ -86,26 +87,26 @@ mixin dropdown(options)
             ._name
               | #{item.name}
             ._controls
-              button._spinner(type='button', name='decrement')
+              button._spinner(type='button', name='decrement', tabindex='-1')
                 | &minus;
               input._number(type='number', value=item.values[0], min=item.values[1], max=item.values[2], readonly)
-              button._spinner(type='button', name='increment')
+              button._spinner(type='button', name='increment', tabindex='-1')
                 | +
       if isButtons
         ._buttons
-          ._button
-            +button({
-              text: 'Применить',
-              modifiers: ['bodyless'],
-              attrs: {
-                name: 'apply',
-              },
-            })
           ._button.-reset.-hidden
             +button({
               text: 'Очистить',
               modifiers: ['bodyless', 'text-gray'],
               attrs: {
                 name: 'reset',
+              },
+            })
+          ._button
+            +button({
+              text: 'Применить',
+              modifiers: ['bodyless'],
+              attrs: {
+                name: 'apply',
               },
             })

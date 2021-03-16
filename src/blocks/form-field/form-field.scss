@@ -28,7 +28,9 @@
       @include material-icons(rem(24), transparent);
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: 0;
       opacity: 0.5;
     }
   }
