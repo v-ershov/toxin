@@ -29,9 +29,52 @@
     margin-right: auto;
   }
 
+  &__buttons {
+    display: flex;
+    order: 1;
+    margin-left: rem(20);
+  }
+
+  &__button {
+    margin-left: rem(20);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &--adaptive {
+      @include screen-xl {
+        display: none;
+      }
+
+      @include screen-lg {
+        display: block;
+      }
+
+      @include screen-sm {
+        display: none;
+      }
+    }
+  }
+
+  &__user {
+    order: 1;
+    overflow: hidden;
+    max-width: rem(160);
+    margin-left: rem(20);
+    padding: rem(3) 0 rem(3) rem(20);
+    border-left: 1px solid $color-gray-10p;
+    text-overflow: ellipsis;
+
+    @include screen-lg {
+      padding: 0;
+      border: 0;
+    }
+  }
+
   &__hamburger {
     display: none;
-    order: 1;
+    order: 2;
     width: rem(36);
     height: rem(28);
     margin-left: rem(20);
@@ -39,11 +82,18 @@
     border: 0;
     background-color: transparent;
     cursor: pointer;
+    transition: opacity $time-primary;
 
     @include hidden-text;
 
     @include screen-lg {
       display: block;
+    }
+
+    &:hover,
+    &:focus {
+      outline: 0;
+      opacity: 0.5;
     }
   }
 
@@ -96,7 +146,7 @@
   &__nav {
     @include screen-lg {
       position: absolute;
-      top: 100%;
+      top: calc(100% - 1px);
       right: 0;
       left: 0;
       z-index: -2;
@@ -106,13 +156,18 @@
       max-height: 0;
       background-color: $color-white;
       box-shadow: $shadow-primary;
-      transition: max-height $time-primary;
+      visibility: hidden;
+      transition:
+        max-height $time-primary,
+        visibility 1ms $time-primary;
     }
   }
 
   &__hamburger--active + &__nav {
     @include screen-lg {
       max-height: var(--height);
+      visibility: visible;
+      transition: max-height $time-primary;
     }
   }
 
@@ -148,47 +203,6 @@
 
     &:first-child {
       margin: 0;
-    }
-  }
-
-  &__buttons {
-    display: flex;
-    margin-left: rem(20);
-  }
-
-  &__button {
-    margin-left: rem(20);
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &--adaptive {
-      @include screen-xl {
-        display: none;
-      }
-
-      @include screen-lg {
-        display: block;
-      }
-
-      @include screen-sm {
-        display: none;
-      }
-    }
-  }
-
-  &__user {
-    overflow: hidden;
-    max-width: rem(160);
-    margin-left: rem(20);
-    padding: rem(3) 0 rem(3) rem(20);
-    border-left: 1px solid $color-gray-10p;
-    text-overflow: ellipsis;
-
-    @include screen-lg {
-      padding: 0;
-      border: 0;
     }
   }
 }

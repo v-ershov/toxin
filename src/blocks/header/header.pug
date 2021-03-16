@@ -23,6 +23,32 @@ mixin header(options)
         +logo({
           modifiers: ['adaptive'],
         })
+      if isLogin
+        ._user
+          +link({
+            text: 'Юлий Цезарь',
+            attrs: {
+              href: '/change-me',
+            },
+          })
+      else
+        ._buttons
+          ._button
+            +button({
+              text: 'Войти',
+              modifiers: ['compact'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
+          ._button.-adaptive
+            +button({
+              text: 'Зарегистрироваться',
+              modifiers: ['compact', 'fill'],
+              attrs: {
+                href: '/change-me',
+              },
+            })
       button._hamburger(type='button')
         | Гамбургер-меню
         span._icon-layers
@@ -71,30 +97,4 @@ mixin header(options)
                 ['Польз. соглашение', '/change-me'],
                 ['Политика конф-ти', '/change-me'],
               ],
-            })
-      if isLogin
-        ._user
-          +link({
-            text: 'Юлий Цезарь',
-            attrs: {
-              href: '/change-me',
-            },
-          })
-      else
-        ._buttons
-          ._button
-            +button({
-              text: 'Войти',
-              modifiers: ['compact'],
-              attrs: {
-                href: '/change-me',
-              },
-            })
-          ._button.-adaptive
-            +button({
-              text: 'Зарегистрироваться',
-              modifiers: ['compact', 'fill'],
-              attrs: {
-                href: '/change-me',
-              },
             })
