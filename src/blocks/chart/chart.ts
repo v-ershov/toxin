@@ -71,7 +71,7 @@ class Chart {
 
   // возвращает размер пробела между секциями диаграммы
   private _getGap(): number {
-    return Math.abs(+this._elements.circles[0].style.getPropertyValue('--offset') * 2);
+    return +(this._root.dataset.gap as string);
   }
 
   // возвращает продолжительность анимации диаграммы
@@ -119,6 +119,8 @@ class Chart {
     });
 
     buttons.forEach((button, i) => {
+      button.addEventListener('focus', this._handleButtonFocus.bind(this, i));
+      button.addEventListener('blur', this._handleButtonBlur.bind(this));
       button.addEventListener('mouseover', this._handleButtonMouseOver.bind(this, i));
       button.addEventListener('mouseout', this._handleButtonMouseOut.bind(this));
       button.addEventListener('click', this._handleButtonClick.bind(this, i));
@@ -186,17 +188,16 @@ class Chart {
   private _redrawDiagram(): void {
     const gap = this._gap;
 
-    let offset = -gap / 2;
+    let offset = -100 - gap / 2;
 
     this._elements.circles.forEach((circle, i) => {
       if (this._isButtonActive(i)) {
         const percent = (this._sections[i].value / this._getSum()) * 100 || 0;
         const array = `${Math.max(0, percent - gap)} 100`;
+        offset += percent;
 
         circle.style.setProperty('--array', array);
         circle.style.setProperty('--offset', `${offset}`);
-
-        offset -= percent;
       } else {
         circle.style.setProperty('--array', '0 100');
         circle.style.setProperty('--offset', `${offset + gap / 2}`);
@@ -290,6 +291,14 @@ class Chart {
   private _handleCircleMouseOut(): void {
     this._dehighlightCircles();
     this._hideTooltip();
+  }
+
+  private _handleButtonFocus(index: number): void {
+    this._highlightCircle(index);
+  }
+
+  private _handleButtonBlur(): void {
+    this._dehighlightCircles();
   }
 
   private _handleButtonMouseOver(index: number): void {

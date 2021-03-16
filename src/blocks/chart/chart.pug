@@ -45,7 +45,7 @@ mixin chart(options)
       sections,
     } = Object.assign(defaults, options);
 
-  .chart
+  .chart(data-gap=gap)
     ._container
       ._diagram
         svg._svg(viewbox='0 0 33 33')
@@ -56,12 +56,12 @@ mixin chart(options)
                 stop._stop(offset='1', stop-color=item.gradient[2])
 
           - const sum = sections.reduce((sum , current) => sum + current.value, 0);
-          - let offset = -gap / 2;
+          - let offset = -100 - gap / 2;
           each item in sections
             - const percent = (item.value / sum) * 100 || 0;
             - const array = `${Math.max(0, percent - gap)} 100`;
+            - offset += percent;
             circle._circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
-            - offset -= percent;
         ._title
           span._sum
             | 0
@@ -76,5 +76,5 @@ mixin chart(options)
     ul._legend
       each item in sections
         li._item
-          button._button.-active(type='button', style=`--gradient: linear-gradient(${item.gradient[1]}, ${item.gradient[2]});`)
+          button._button.-active(type='button', style=`--shadow-color: ${item.gradient[1]}; --gradient: linear-gradient(${item.gradient[1]}, ${item.gradient[2]});`)
             | #{item.name}

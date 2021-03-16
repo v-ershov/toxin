@@ -17,6 +17,7 @@
     border-radius: 50%;
     fill: none;
     transform: rotate(-90deg);
+    clip-path: circle(rem(120) at center);
   }
 
   &__circle {
@@ -114,7 +115,8 @@
 
   &__legend {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-end;
     margin: rem(15) 0 0;
     padding: 0;
     list-style-type: none;
@@ -146,6 +148,7 @@
 
     &::before {
       background-color: $color-gray-25p;
+      transition: box-shadow $time-primary;
     }
 
     &::after {
@@ -154,15 +157,30 @@
       transition: opacity $time-primary;
     }
 
+    &:hover,
+    &:focus {
+      color: $color-gray-50p;
+      outline: 0;
+
+      &::before {
+        box-shadow: 0 0 rem(6) 1px $color-gray-25p;
+      }
+    }
+
     &--active {
       color: $color-gray-75p;
 
-      &:hover {
-        color: $color-gray-100p;
-      }
-
       &::after {
         opacity: 1;
+      }
+
+      &:hover,
+      &:focus {
+        color: $color-gray-100p;
+
+        &::before {
+          box-shadow: 0 0 rem(6) 1px var(--shadow-color);
+        }
       }
     }
   }
