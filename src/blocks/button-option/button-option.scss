@@ -44,8 +44,7 @@
     }
   }
 
-  &__input:focus + &__box,
-  &__input:active + &__box {
+  &__input:focus + &__box {
     box-shadow: $shadow-focus-primary;
   }
 
