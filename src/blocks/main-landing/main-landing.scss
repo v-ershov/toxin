@@ -14,7 +14,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
   }
 
   &__slideshow {
-    top: #{$height-header * -1};
+    top: -$height-header;
     z-index: -1;
     overflow: hidden;
     transform: translateY(var(--translateY));
@@ -52,7 +52,6 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    animation: slide $time-full linear infinite;
     opacity: 0;
 
     &::before {
@@ -65,7 +64,6 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
       font-size: 3.15vw;
       text-align: center;
       text-shadow: 0.325vw 0.325vw 0.4vw $mainlanding-color-shadow;
-      animation: text $time-full linear infinite;
 
       @include screen-xxl {
         font-size: rem(46);
@@ -82,6 +80,14 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
 
       @include screen-sm {
         display: none;
+      }
+    }
+
+    &--active {
+      animation: slide $time-full linear infinite;
+
+      &::before {
+        animation: text $time-full linear infinite;
       }
     }
   }
@@ -109,7 +115,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
   &__text {
     display: none;
     margin-top: rem(50);
-    color: $color-white;
+    color: $mainlanding-color-text;
     font-weight: bold;
     font-size: rem(19);
     text-align: center;
