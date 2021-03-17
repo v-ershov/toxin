@@ -1,5 +1,6 @@
 interface IMainLandingElements {
   slideshow: HTMLDivElement;
+  slides: NodeListOf<HTMLDivElement>;
 }
 
 class MainLanding {
@@ -30,12 +31,21 @@ class MainLanding {
   private _findElements(): IMainLandingElements {
     return {
       slideshow: this._root.querySelector('.main-landing__slideshow') as HTMLDivElement,
+      slides: this._root.querySelectorAll('.main-landing__slide') as NodeListOf<HTMLDivElement>,
     };
   }
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
+    window.addEventListener('load', this._handleWindowLoad.bind(this));
     window.addEventListener('scroll', this._handleWindowScroll.bind(this));
+  }
+
+  // активирует слайды
+  private _activeSlides(): void {
+    this._elements.slides.forEach((slide) => {
+      slide.classList.add('main-landing__slide--active');
+    });
   }
 
   // создаёт параллакс-эффект для слайдшоу
@@ -46,6 +56,10 @@ class MainLanding {
   // ------------------------------------
   // ---------- EVENT HANDLERS ----------
   // ------------------------------------
+
+  private _handleWindowLoad(): void {
+    this._activeSlides();
+  }
 
   private _handleWindowScroll(): void {
     this._createParallax();
