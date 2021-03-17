@@ -1,7 +1,7 @@
 .header-submenu {
   position: relative;
 
-  &--active .link--submenu {
+  &:focus-within .link--submenu {
     color: $color-gray-100p;
 
     &::after {
@@ -34,7 +34,7 @@
     }
   }
 
-  &--active &__list {
+  &:focus-within &__list {
     max-height: var(--height);
   }
 
