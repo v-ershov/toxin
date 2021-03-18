@@ -10,11 +10,11 @@
   .field__input {
     transition:
       border-color $time-primary,
-      border-radius $time-primary #{$time-primary * 2},
+      border-radius $time-primary $time-primary,
       box-shadow $time-primary;
   }
 
-  &--active,
+  &:focus-within,
   &--expanded {
     .field {
       &::before {
@@ -54,7 +54,12 @@
       box-shadow $time-primary;
   }
 
-  &--active &__menu,
+  &:hover .field__input,
+  &:hover &__menu {
+    border-color: $color-gray-50p;
+  }
+
+  &:focus-within &__menu,
   &--expanded &__menu {
     max-height: var(--height);
     border-color: $color-gray-50p;
@@ -71,11 +76,6 @@
     z-index: 1;
   }
 
-  &:hover .field__input,
-  &:hover &__menu {
-    border-color: $color-gray-50p;
-  }
-
   &__list {
     margin: 0;
     padding: rem(6) rem(6) rem(6) rem(14);
@@ -87,6 +87,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: rem(7);
+    user-select: none;
 
     &:first-child {
       margin-top: 0;
@@ -120,16 +121,21 @@
     font-size: rem(18);
     font-family: $font-family-primary;
     cursor: pointer;
+    transition: border-color $time-primary;
 
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: $color-gray-50p;
+      outline: 0;
     }
 
     &[disabled] {
       cursor: not-allowed;
       opacity: 0.38;
+      transition: none;
 
-      &:hover {
+      &:hover,
+      &:focus {
         border-color: $color-gray-25p;
       }
     }
@@ -154,7 +160,6 @@
 
   &__buttons {
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-between;
     padding: rem(15) rem(6) rem(12) rem(14);
   }
@@ -165,7 +170,11 @@
     }
 
     &--hidden {
+      visibility: hidden;
       transform: translateX(rem(-90));
+      transition:
+        visibility 1ms $time-primary,
+        transform $time-primary;
     }
   }
 }

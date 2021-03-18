@@ -55,7 +55,7 @@ class Dropdown {
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
     const {
-      input,
+      menu,
       items,
       numbers,
       increments,
@@ -64,8 +64,7 @@ class Dropdown {
       buttonReset,
     } = this._elements;
 
-    document.addEventListener('click', this._handleDocumentClick.bind(this));
-    input.addEventListener('click', this._handleInputClick.bind(this));
+    menu.addEventListener('mousedown', (e) => e.preventDefault());
 
     items.forEach((_item, i) => {
       if (buttonApply && buttonReset) {
@@ -74,6 +73,7 @@ class Dropdown {
         numbers[i].addEventListener('input', this._handleNumberInput.bind(this, i));
       }
 
+      numbers[i].addEventListener('keydown', this._handleNumberKeydown.bind(this, i));
       increments[i].addEventListener('click', this._handleIncrementClick.bind(this, i));
       decrements[i].addEventListener('click', this._handleDecrementClick.bind(this, i));
     });
@@ -106,6 +106,10 @@ class Dropdown {
   // устанавливает новое значение для указанного пункта меню
   private _setNumber(i: number, value: number): void {
     const number = this._elements.numbers[i];
+
+    if (value < +number.min || value > +number.max) {
+      return;
+    }
 
     number.value = `${value}`;
     number.dispatchEvent(new Event('input'));
@@ -147,16 +151,6 @@ class Dropdown {
     }
 
     input.value = text.join(', ');
-  }
-
-  // переключает состояние дропдауна
-  private _switchDropdown(): void {
-    this._root.classList.toggle('dropdown--active');
-  }
-
-  // скрывает дропдаун
-  private _hideDropdown(): void {
-    this._root.classList.remove('dropdown--active');
   }
 
   // переключает состояния кнопок указанного пункта меню в зависимости от текущего значения
@@ -204,8 +198,8 @@ class Dropdown {
     }
   }
 
-  // сбрасывает значения всех пунктов меню
-  private _resetNumbers(): void {
+  // сбрасывает дропдаун
+  private _resetDropdown(): void {
     const {
       input,
       items,
@@ -216,6 +210,22 @@ class Dropdown {
     items.forEach((_item, i) => {
       this._setNumber(i, 0);
     });
+  }
+
+  // снимает фокус с ключевых элементов дропдауна
+  private _blurDropdown(): void {
+    const {
+      input,
+      buttonApply,
+      buttonReset,
+    } = this._elements;
+
+    input.blur();
+
+    if (buttonApply && buttonReset) {
+      buttonApply.blur();
+      buttonReset.blur();
+    }
   }
 
   // возвращает сумму значений всех пунктов меню
@@ -233,16 +243,9 @@ class Dropdown {
   // ---------- EVENT HANDLERS ----------
   // ------------------------------------
 
-  private _handleDocumentClick(event: MouseEvent): void {
-    if (this._root.contains(event.target as HTMLElement)) {
-      return;
-    }
-
-    this._hideDropdown();
-  }
-
-  private _handleInputClick(): void {
-    this._switchDropdown();
+  private _handleNumberInput(index: number): void {
+    this._switchSpinners(index);
+    this._setText();
   }
 
   private _handleNumberInputWithButtons(index: number): void {
@@ -250,9 +253,21 @@ class Dropdown {
     this._switchButtonReset();
   }
 
-  private _handleNumberInput(index: number): void {
-    this._switchSpinners(index);
-    this._setText();
+  private _handleNumberKeydown(index: number, event: KeyboardEvent): void {
+    const { numbers } = this._elements;
+
+    switch (event.key) {
+      case 'ArrowLeft':
+        event.preventDefault();
+        this._setNumber(index, +numbers[index].value - 1);
+        break;
+      case 'ArrowRight':
+        event.preventDefault();
+        this._setNumber(index, +numbers[index].value + 1);
+        break;
+      default:
+        break;
+    }
   }
 
   private _handleIncrementClick(index: number): void {
@@ -265,11 +280,13 @@ class Dropdown {
 
   private _handleButtonApplyClick(): void {
     this._setText();
-    this._hideDropdown();
+    this._blurDropdown();
   }
 
   private _handleButtonResetClick(): void {
-    this._resetNumbers();
+    this._resetDropdown();
+    this._blurDropdown();
+    this._elements.input.focus();
   }
 }
 
