@@ -31,10 +31,12 @@
     /* Linter Checks */
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
 
-    /* Advanced Options */
+    /* Advanced */
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
@@ -42,5 +44,8 @@
     "@types/**/*.ts",
     "src/**/*.ts",
     "webpack/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
