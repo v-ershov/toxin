@@ -37,16 +37,6 @@ const config: webpack.Configuration = merge(common, {
               sourceMap: true,
             },
           },
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: [
-                paths.src.scss._functions,
-                paths.src.scss._vars,
-                paths.src.scss._mixins,
-              ],
-            },
-          },
         ],
       },
       {

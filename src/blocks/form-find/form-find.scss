@@ -1,3 +1,6 @@
+@import '~/scss/_functions';
+@import '~/scss/_mixins';
+
 .form-find {
   @include form;
 

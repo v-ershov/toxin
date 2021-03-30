@@ -70,7 +70,6 @@
     "pug-lint": "^2.6.0",
     "pug-loader": "^2.4.0",
     "sass-loader": "^10.1.1",
-    "sass-resources-loader": "^2.1.1",
     "stylelint": "^13.10.0",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-order": "^4.1.0",

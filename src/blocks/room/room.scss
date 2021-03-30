@@ -1,3 +1,7 @@
+@import '~/scss/_functions';
+@import '~/scss/_vars';
+@import '~/scss/_mixins';
+
 .room {
   overflow: hidden;
   border-radius: $radius-primary;

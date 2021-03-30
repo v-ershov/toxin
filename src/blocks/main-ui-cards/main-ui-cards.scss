@@ -1,3 +1,6 @@
+@import '~/scss/_functions';
+@import '~/scss/_mixins';
+
 .main-ui-cards {
   &__container {
     @include container;

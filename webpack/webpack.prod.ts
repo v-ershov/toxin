@@ -31,16 +31,6 @@ const config: webpack.Configuration = merge(common, {
             },
           },
           'sass-loader',
-          {
-            loader: 'sass-resources-loader',
-            options: {
-              resources: [
-                paths.src.scss._functions,
-                paths.src.scss._vars,
-                paths.src.scss._mixins,
-              ],
-            },
-          },
         ],
       },
       {
