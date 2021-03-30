@@ -1,23 +1,22 @@
 {
   "name": "toxin",
   "version": "1.0.0",
-  "description": "FSD Frontend Education Program: Task 2",
+  "description": "MetaLamp Front-end Education Program: Stage 2",
   "keywords": [
-    "starter-kit",
-    "starter-project",
+    "starter",
     "boilerplate",
     "webpack",
     "typescript",
+    "babel",
     "pug",
-    "sass",
-    "eslint",
-    "pug-lint",
-    "stylelint"
+    "sass"
   ],
   "homepage": "https://github.com/v-ershov/toxin",
-  "bugs": "https://github.com/v-ershov/toxin/issues",
+  "bugs": {
+    "url": "https://github.com/v-ershov/toxin/issues"
+  },
   "license": "MIT",
-  "person": "Vladimir Ershov <hi@ershov.dev> (https://ershov.dev)",
+  "author": "Vladimir Ershov <hi@ershov.dev> (https://ershov.dev)",
   "repository": "github:v-ershov/toxin",
   "scripts": {
     "dev": "webpack serve --config ./webpack/webpack.dev.ts",
