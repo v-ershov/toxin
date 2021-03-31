@@ -3,6 +3,11 @@
 @import '~/scss/_mixins';
 
 .ecl {
+  &--absolute {
+    position: relative;
+    padding-bottom: var(--padding);
+  }
+
   &__button {
     position: relative;
     display: block;
@@ -79,6 +84,12 @@
       margin-top $time-primary,
       visibility 1ms $time-primary,
       opacity $time-primary;
+  }
+
+  &--absolute &__list {
+    position: absolute;
+    right: 0;
+    left: 0;
   }
 
   &--active &__list {

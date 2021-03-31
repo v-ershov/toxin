@@ -23,6 +23,7 @@ class Ecl {
     this._elements = this._findElements();
 
     this._bindEventListeners();
+    this._setRootPadding();
     this._setListHeight();
   }
 
@@ -41,6 +42,15 @@ class Ecl {
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
     this._elements.button.addEventListener('click', this._handleButtonClick.bind(this));
+  }
+
+  // устанавливает величину нижнего поля корневого html-элемент списка
+  private _setRootPadding(): void {
+    const root = this._root;
+
+    if (root.classList.contains('ecl--absolute')) {
+      root.style.setProperty('--padding', helpers.getHeight(this._root));
+    }
   }
 
   // устанавливает максимальную высоту списка
