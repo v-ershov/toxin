@@ -2,10 +2,7 @@
 
 import webpack from 'webpack';
 import fs from 'fs';
-
-// @ts-ignore
 import pugBem from 'pug-bem';
-
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import paths from './paths';
