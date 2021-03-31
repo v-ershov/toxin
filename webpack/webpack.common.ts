@@ -79,7 +79,8 @@ const config: webpack.Configuration = {
           name: '[name].[ext]',
           outputPath: (url: string, resourcePath: string): string => {
             const split = resourcePath.split('\\');
-            return `modules-files/${split[split.indexOf('node_modules') + 1]}/${url}`;
+            const moduleName = split[split.indexOf('node_modules') + 1] as string;
+            return `module-files/${moduleName}/${url}`;
           },
         },
       },
