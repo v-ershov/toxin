@@ -247,7 +247,7 @@ class Calendar {
     this._inst.selectDate(Calendar._getRange(value));
   }
 
-  // снимает фокус со всех элементов календаря
+  // снимает фокус с интерактивных элементов календаря
   private _blurCalendar(): void {
     if (!this._elements.fields.length) {
       return;
