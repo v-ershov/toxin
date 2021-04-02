@@ -13,13 +13,9 @@ interface Configuration extends WebpackConfiguration {
 
 const config: Configuration = {
   entry: {
-    app: [
-      '@babel/polyfill',
-      paths.src._index,
-    ],
+    app: ['@babel/polyfill', paths.src._index],
   },
   output: {
-    path: paths.dist,
     publicPath: '/',
     clean: true,
   },
