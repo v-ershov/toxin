@@ -77,8 +77,8 @@ const config: webpack.Configuration = merge(common, {
     }),
     new FaviconsWebpackPlugin({
       logo: paths.src.assets.favicons._fav,
-      outputPath: 'assets/favicons',
-      prefix: 'assets/favicons',
+      outputPath: 'assets/favicons/',
+      prefix: 'assets/favicons/',
     }),
   ],
 });
