@@ -95,6 +95,7 @@ const config: Configuration = {
     ...fs.readdirSync(paths.src.pug.pages).map((page) => new HtmlWebpackPlugin({
       filename: `${page.replace(/\.pug/, '.html')}`,
       template: `${paths.src.pug.pages}/${page}`,
+      inject: 'body',
     })),
   ],
 };
