@@ -31,7 +31,7 @@ class MainLanding {
   private _findElements(): IMainLandingElements {
     return {
       slideshow: this._root.querySelector('.main-landing__slideshow') as HTMLDivElement,
-      slides: this._root.querySelectorAll('.main-landing__slide') as NodeListOf<HTMLDivElement>,
+      slides: this._root.querySelectorAll('.main-landing__slide'),
     };
   }
 

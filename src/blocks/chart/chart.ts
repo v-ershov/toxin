@@ -58,14 +58,14 @@ class Chart {
   private _findElements(): IChartElements {
     return {
       svg: this._root.querySelector('.chart__svg') as HTMLElement,
-      gradients: this._root.querySelectorAll('.chart__gradient') as NodeListOf<HTMLElement>,
-      circles: this._root.querySelectorAll('.chart__circle') as NodeListOf<HTMLElement>,
+      gradients: this._root.querySelectorAll('.chart__gradient'),
+      circles: this._root.querySelectorAll('.chart__circle'),
       sum: this._root.querySelector('.chart__sum') as HTMLSpanElement,
       tooltip: this._root.querySelector('.chart__tooltip') as HTMLDivElement,
       tooltipName: this._root.querySelector('.chart__name') as HTMLDivElement,
       tooltipDetails: this._root.querySelector('.chart__details') as HTMLDivElement,
       tooltipValue: this._root.querySelector('.chart__value') as HTMLSpanElement,
-      buttons: this._root.querySelectorAll('.chart__button') as NodeListOf<HTMLButtonElement>,
+      buttons: this._root.querySelectorAll('.chart__button'),
     };
   }
 

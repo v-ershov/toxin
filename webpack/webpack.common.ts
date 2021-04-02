@@ -83,7 +83,7 @@ const config: Configuration = {
           name: '[name].[ext]',
           outputPath: (url: string, resourcePath: string): string => {
             const split = resourcePath.split('\\');
-            const moduleName = split[split.indexOf('node_modules') + 1] as string;
+            const moduleName = split[split.indexOf('node_modules') + 1];
             return `module-files/${moduleName}/${url}`;
           },
         },

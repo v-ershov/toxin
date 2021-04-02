@@ -56,7 +56,7 @@ class Calendar {
   private _findElements(): ICalendarElements {
     return {
       input: this._root.querySelector('.calendar__input') as HTMLInputElement,
-      fields: this._root.querySelectorAll('.field__input') as NodeListOf<HTMLInputElement>,
+      fields: this._root.querySelectorAll('.field__input'),
       fake: this._root.querySelector('.calendar__fake') as HTMLInputElement,
       container: this._root.querySelector('.calendar__container') as HTMLDivElement,
       datepicker: this._root.querySelector('.calendar__datepicker') as HTMLDivElement,

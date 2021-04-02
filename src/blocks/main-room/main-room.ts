@@ -32,7 +32,7 @@ class MainRoom {
   // находит и возвращает элементы блока
   private _findElements(): IMainRoomElements {
     return {
-      images: this._root.querySelectorAll('[data-fancybox="gallery"]') as NodeListOf<HTMLAnchorElement>,
+      images: this._root.querySelectorAll('[data-fancybox="gallery"]'),
     };
   }
 
