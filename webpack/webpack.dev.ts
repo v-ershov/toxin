@@ -6,6 +6,7 @@ import paths from './paths';
 
 const config: webpack.Configuration = merge(common, {
   mode: 'development',
+  target: 'web',
   output: {
     filename: 'js/[name].js',
   },

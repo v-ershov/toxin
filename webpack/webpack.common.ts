@@ -27,7 +27,6 @@ const config: Configuration = {
     open: true,
     overlay: true,
     port: 8095,
-    writeToDisk: true,
   },
   resolve: {
     alias: {
