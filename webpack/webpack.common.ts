@@ -1,28 +1,25 @@
 // https://webpack.js.org/configuration/configuration-languages/#typescript
 
-import webpack, { Configuration as WebpackConfiguration } from 'webpack';
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import webpack from 'webpack';
 import fs from 'fs';
 import pugBem from 'pug-bem';
+import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import paths from './paths';
 
-interface Configuration extends WebpackConfiguration {
-  devServer?: WebpackDevServerConfiguration;
-}
-
-const config: Configuration = {
+const config: webpack.Configuration = {
   entry: {
     app: ['@babel/polyfill', paths.src._index],
   },
   output: {
+    path: paths.dist,
     publicPath: '/',
-    clean: true,
   },
   devServer: {
     open: true,
     overlay: true,
     port: 8095,
+    writeToDisk: true,
   },
   resolve: {
     alias: {
@@ -92,6 +89,7 @@ const config: Configuration = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
+    new CleanWebpackPlugin(),
     ...fs.readdirSync(paths.src.pug.pages).map((page) => new HtmlWebpackPlugin({
       filename: `${page.replace(/\.pug/, '.html')}`,
       template: `${paths.src.pug.pages}/${page}`,

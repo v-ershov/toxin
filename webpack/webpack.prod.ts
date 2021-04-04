@@ -7,7 +7,6 @@ import paths from './paths';
 
 const config: webpack.Configuration = merge(common, {
   mode: 'production',
-  target: 'browserslist',
   output: {
     filename: 'js/[name].[contenthash].js',
   },
