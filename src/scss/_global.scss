@@ -45,13 +45,16 @@ html {
   }
 }
 
+// https://webaim.org/techniques/css/invisiblecontent/
 .visually-hidden {
   position: absolute;
-  clip: rect(0 0 0 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  visibility: hidden;
+  overflow: hidden;
+  clip: rect(2px, 2px, 2px, 2px);
+  width: 2px;
+  height: 2px;
+  margin: -2px;
+  padding: 0;
+  clip-path: inset(50%);
 }
 
 .material-icons {
