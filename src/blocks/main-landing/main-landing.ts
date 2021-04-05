@@ -42,7 +42,7 @@ class MainLanding {
   }
 
   // активирует слайды
-  private _activeSlides(): void {
+  private _activateSlides(): void {
     this._elements.slides.forEach((slide) => {
       slide.classList.add('main-landing__slide--active');
     });
@@ -58,7 +58,7 @@ class MainLanding {
   // ------------------------------------
 
   private _handleWindowLoad(): void {
-    this._activeSlides();
+    this._activateSlides();
   }
 
   private _handleWindowScroll(): void {

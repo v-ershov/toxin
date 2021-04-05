@@ -128,7 +128,7 @@ class Chart {
   }
 
   // активирует диаграмму
-  private _activeDiagram(): void {
+  private _activateDiagram(): void {
     this._elements.svg.classList.add('chart__svg--active');
   }
 
@@ -275,7 +275,7 @@ class Chart {
   // ------------------------------------
 
   private _handleWindowLoad(): void {
-    this._activeDiagram();
+    this._activateDiagram();
     this._animateSum();
   }
 
