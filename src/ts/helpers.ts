@@ -43,7 +43,7 @@ function getWord(value: number, words: [string, string, string]): string {
 }
 
 // возвращает true, если ширина viewport'а больше указанного значения
-function viewportIsWider(width: number): boolean {
+function isViewportWider(width: number): boolean {
   return window.innerWidth > width;
 }
 
@@ -53,5 +53,5 @@ export default {
   getHeight,
   getScrollbarWidth,
   getWord,
-  viewportIsWider,
+  isViewportWider,
 };

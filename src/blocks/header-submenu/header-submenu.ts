@@ -66,7 +66,7 @@ class HeaderSubmenu {
   }
 
   private static _handleLinkMainClick(event: MouseEvent): void {
-    if (!helpers.viewportIsWider(858)) {
+    if (!helpers.isViewportWider(858)) {
       return;
     }
 
