@@ -58,7 +58,7 @@
     &--hidden {
       top: calc(100% + #{rem(10)});
       border-color: $color-gray-25p;
-      visibility: visible;
+      visibility: inherit;
       opacity: 1;
       transition:
         top $time-primary,

@@ -58,7 +58,7 @@
 
   &:hover &__text,
   &:focus &__text {
-    visibility: visible;
+    visibility: inherit;
     transform: translate(-50%, rem(-5));
     opacity: 1;
     transition:

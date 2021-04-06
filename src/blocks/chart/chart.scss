@@ -85,7 +85,7 @@
     @include tooltip;
 
     &--active {
-      visibility: visible;
+      visibility: inherit;
       opacity: 1;
       transition: opacity $time-primary;
     }

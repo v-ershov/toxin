@@ -170,7 +170,7 @@
   &__hamburger--active + &__nav {
     @include screen-lg {
       max-height: var(--height);
-      visibility: visible;
+      visibility: inherit;
       transition: max-height $time-primary;
     }
   }

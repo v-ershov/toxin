@@ -23,7 +23,7 @@
     @include screen-xl {
       &::before {
         background-color: rgba($color-black, 0.55);
-        visibility: visible;
+        visibility: inherit;
         transition: background-color $time-primary;
       }
     }

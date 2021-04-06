@@ -84,7 +84,7 @@
   &--active &__list {
     max-height: var(--height);
     margin-top: rem(10);
-    visibility: visible;
+    visibility: inherit;
     opacity: 1;
     transition:
       max-height $time-primary,
