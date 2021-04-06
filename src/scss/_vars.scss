@@ -1,7 +1,9 @@
 @import '_functions';
 
 // Dimensions
-$height-header : rem(70);
+$height-header    : rem(70);
+$scrollbar-width  : 8px;
+$scrollbar-height : 8px;
 
 // Radius
 $radius-primary : rem(4);
@@ -42,4 +44,4 @@ $shadow-focus-primary   : 0 0 rem(6) 1px $color-primary-1;
 $shadow-focus-secondary : 0 0 rem(6) 1px $color-secondary-1;
 
 // Time
-$time-primary : 200ms;
+$time-primary : 250ms;
