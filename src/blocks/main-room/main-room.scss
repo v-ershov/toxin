@@ -69,7 +69,7 @@
     display: grid;
     grid-template-columns:
       1fr
-      1fr;
+      1.2fr;
     grid-gap: rem(30) rem(70);
 
     @include screen-xxl {
@@ -83,7 +83,7 @@
     @include screen-lg {
       grid-template-columns:
         1fr
-        1fr;
+        1.2fr;
     }
 
     @include screen-sm {
