@@ -13,10 +13,6 @@ html {
   font-family: $font-family-primary;
   line-height: $line-height-primary;
 
-  // custom scrollbar for Mozilla Firefox
-  scrollbar-color: $color-gray-15p transparent;
-  scrollbar-width: thin;
-
   @include screen-sm {
     font-size: 13px;
   }
@@ -24,15 +20,23 @@ html {
   @include screen-xs {
     font-size: 12px;
   }
+}
 
-  // custom scrollbar for webkit browsers
+// custom scrollbar
+/* stylelint-disable-next-line no-duplicate-selectors */
+html {
+  // for Mozilla Firefox
+  scrollbar-color: $color-gray-15p transparent;
+  scrollbar-width: thin;
+
+  // for webkit browsers
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: $scrollbar-width;
+    height: $scrollbar-height;
   }
 
   ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
+    border-radius: $radius-primary;
     background-color: $color-gray-15p;
 
     &:hover {
