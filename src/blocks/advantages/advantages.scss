@@ -8,6 +8,7 @@
 
   &__item {
     display: flex;
+    width: fit-content;
     margin-top: rem(18);
     padding: rem(2) rem(25) rem(20) 0;
     border-bottom: 1px solid $color-gray-10p;
