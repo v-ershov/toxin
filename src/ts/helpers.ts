@@ -1,10 +1,18 @@
+// возвращает размер шрифта на странице
+function getDocumentFontSize(): number {
+  return parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
+// возвращает rem, полученные путём конвертации переданного значения в px
+function getRem(pixels: number): number {
+  return pixels / getDocumentFontSize();
+}
+
 // возвращает реальную высоту указанного элемента (в rem)
 // https://bugs.chromium.org/p/chromium/issues/detail?id=411624
 function getHeight(element: HTMLElement): string {
-  const fontSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-
   element.style.setProperty('justify-content', 'flex-start');
-  const height = element.scrollHeight / fontSize;
+  const height = getRem(element.scrollHeight);
   element.style.removeProperty('justify-content');
 
   return `${height}rem`;
@@ -40,6 +48,8 @@ function viewportIsWider(width: number): boolean {
 }
 
 export default {
+  getDocumentFontSize,
+  getRem,
   getHeight,
   getScrollbarWidth,
   getWord,
