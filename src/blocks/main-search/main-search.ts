@@ -2,6 +2,8 @@ import helpers from '~/ts/helpers';
 
 interface IMainSearchElements {
   button: HTMLButtonElement;
+  section: HTMLElement;
+  asideLastChild: HTMLButtonElement;
 }
 
 class MainSearch {
@@ -13,6 +15,8 @@ class MainSearch {
 
   private _elements: IMainSearchElements; // элементы блока
 
+  private _isButtonActive: boolean; // если true, то кнопка «Фильтры» активна
+
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
@@ -20,6 +24,7 @@ class MainSearch {
   constructor(root: HTMLElement) {
     this._root = root;
     this._elements = this._findElements();
+    this._isButtonActive = false;
 
     this._bindEventListeners();
     this._observe();
@@ -33,23 +38,38 @@ class MainSearch {
   private _findElements(): IMainSearchElements {
     return {
       button: this._root.querySelector('.main-search__button') as HTMLButtonElement,
+      section: this._root.querySelector('.main-search__section') as HTMLElement,
+      asideLastChild: this._root.querySelector('.main-search__aside .ecl__button') as HTMLButtonElement,
     };
   }
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
-    this._elements.button.addEventListener('click', this._handleButtonClick.bind(this));
+    const {
+      button,
+      section,
+    } = this._elements;
+
+    const header = document.querySelector('.header') as HTMLElement;
+
+    button.addEventListener('click', this._handleButtonClick.bind(this));
+    header.addEventListener('focusin', this._handleHeaderFocusin.bind(this));
+    section.addEventListener('focusin', this._handleSectionFocusin.bind(this));
   }
 
   // создаёт Intersection Observer для последующего переключения состояния кнопки «Фильтры»
   private _observe(): void {
-    const observer = new IntersectionObserver((entries) => {
-      const bcl = this._elements.button.classList;
+    const {
+      button,
+    } = this._elements;
 
-      if (entries[0].isIntersecting) {
-        bcl.remove('main-search__button--hidden');
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) {
+        button.disabled = true;
+        button.classList.add('main-search__button--hidden');
       } else {
-        bcl.add('main-search__button--hidden');
+        button.disabled = false;
+        button.classList.remove('main-search__button--hidden');
       }
     }, {
       rootMargin: '-100% 0px 0px',
@@ -58,27 +78,22 @@ class MainSearch {
     observer.observe(this._root);
   }
 
-  // переключает состояние сайдбара
-  private _switchSidebar(): void {
-    const rcl = this._root.classList;
-    const bcl = this._elements.button.classList;
+  // отображает сайдбар
+  private _showSidebar(): void {
+    this._root.classList.add('main-search--filter');
+    this._elements.button.classList.add('main-search__button--active');
 
-    if (bcl.contains('main-search__button--hidden')) {
-      return;
-    }
+    document.body.style.setProperty('padding-right', `${helpers.getScrollbarWidth()}px`);
+    document.body.style.setProperty('overflow-y', 'hidden');
+  }
 
-    rcl.toggle('main-search--filter');
-    bcl.toggle('main-search__button--active');
+  // скрывает сайдбар
+  private _hideSidebar(): void {
+    this._root.classList.remove('main-search--filter');
+    this._elements.button.classList.remove('main-search__button--active');
 
-    const body = document.body.style;
-
-    if (bcl.contains('main-search__button--active')) {
-      body.setProperty('margin-right', `${helpers.getScrollbarWidth()}px`);
-      body.setProperty('overflow-y', 'hidden');
-    } else {
-      body.removeProperty('margin-right');
-      body.removeProperty('overflow-y');
-    }
+    document.body.style.removeProperty('padding-right');
+    document.body.style.removeProperty('overflow-y');
   }
 
   // ------------------------------------
@@ -86,7 +101,25 @@ class MainSearch {
   // ------------------------------------
 
   private _handleButtonClick(): void {
-    this._switchSidebar();
+    this._isButtonActive = !this._isButtonActive;
+
+    if (this._isButtonActive) {
+      this._showSidebar();
+    } else {
+      this._hideSidebar();
+    }
+  }
+
+  private _handleHeaderFocusin(): void {
+    if (this._isButtonActive) {
+      this._elements.asideLastChild.focus();
+    }
+  }
+
+  private _handleSectionFocusin(): void {
+    if (this._isButtonActive) {
+      this._elements.button.focus();
+    }
   }
 }
 
