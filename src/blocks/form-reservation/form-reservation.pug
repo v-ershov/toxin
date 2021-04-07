@@ -14,7 +14,7 @@ mixin form-reservation
         +room-info({
           number: 888,
           tag: 'Люкс',
-          modifiers: [],
+          mods: [],
         })
       ._price
         +room-price({
@@ -95,7 +95,7 @@ mixin form-reservation
     ._button
       +button({
         text: 'Забронировать',
-        modifiers: ['fill', 'wide'],
+        mods: ['fill', 'wide'],
         attrs: {
           type: 'submit',
         },

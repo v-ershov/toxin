@@ -39,7 +39,7 @@ mixin calendar(options)
           ._field
             +field({
               labelPrimary: labelFirst,
-              modifiers: ['dropdown'],
+              mods: ['dropdown'],
               attrs: Object.assign(attrsFieldFirst, {
                 placeholder: 'ДД.ММ.ГГГГ',
                 readonly: true,
@@ -48,7 +48,7 @@ mixin calendar(options)
           ._field
             +field({
               labelPrimary: labelSecond,
-              modifiers: ['dropdown'],
+              mods: ['dropdown'],
               attrs: Object.assign(attrsFieldSecond, {
                 placeholder: 'ДД.ММ.ГГГГ',
                 tabindex: '-1',
@@ -59,7 +59,7 @@ mixin calendar(options)
           ._field
             +field({
               labelPrimary: labelFirst,
-              modifiers: ['dropdown'],
+              mods: ['dropdown'],
               attrs: Object.assign(attrsFieldFirst, {
                 placeholder: 'ДД.ММ.ГГГГ',
                 readonly: true,
@@ -75,7 +75,7 @@ mixin calendar(options)
         ._button
           +button({
             text: 'Очистить',
-            modifiers: ['bodyless', 'text-gray'],
+            mods: ['bodyless', 'text-gray'],
             attrs: {
               name: 'reset',
             },
@@ -83,7 +83,7 @@ mixin calendar(options)
         ._button
           +button({
             text: 'Применить',
-            modifiers: ['bodyless'],
+            mods: ['bodyless'],
             attrs: {
               name: 'apply',
             },

@@ -1,15 +1,15 @@
 //- Options:
-//- 🞂 text: string        - текст кнопки
-//- 🞂 textRich: string    - дополнительный текст кнопки (если указан модификатор 'checkbox-rich')
-//- 🞂 modifiers: string[] - модификаторы блока
-//- 🞂 attrs: object       - атрибуты кнопки
+//- 🞂 text: string     - текст кнопки
+//- 🞂 textRich: string - дополнительный текст кнопки (если указан модификатор 'checkbox-rich')
+//- 🞂 mods: string[]   - модификаторы блока
+//- 🞂 attrs: object    - атрибуты кнопки
 
 mixin button-option(options)
   -
     const defaults = {
       text: 'undefined',
       textRich: 'undefined',
-      modifiers: [],
+      mods: [],
       attrs: {},
     };
 
@@ -17,16 +17,16 @@ mixin button-option(options)
     const {
       text,
       textRich,
-      modifiers,
+      mods,
       attrs,
     } = Object.assign(defaults, options);
 
-  .button-option(class=getModifiers('button-option', modifiers))
+  .button-option(class=getModifiers('button-option', mods))
     label._label
-      input._input(type=modifiers.includes('radio') ? 'radio' : 'checkbox')&attributes(attrs)
+      input._input(type=mods.includes('radio') ? 'radio' : 'checkbox')&attributes(attrs)
       span._box
       span._text
         | #{text}
-    if modifiers.includes('checkbox-rich')
+    if mods.includes('checkbox-rich')
       ._text-rich
         | #{textRich}

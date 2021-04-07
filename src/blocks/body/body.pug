@@ -1,19 +1,19 @@
 //- Options:
-//- 🞂 modifiers: string[] - модификаторы блока
+//- 🞂 mods: string[] - модификаторы блока
 
 mixin body(options)
   -
     const defaults = {
-      modifiers: [],
+      mods: [],
     };
 
   -
     const {
-      modifiers,
+      mods,
     } = Object.assign(defaults, options);
 
-  body.body(class=getModifiers('body', modifiers))
-    if modifiers.includes('ui')
+  body.body(class=getModifiers('body', mods))
+    if mods.includes('ui')
       a._link(href='/')
         | На главную
     block

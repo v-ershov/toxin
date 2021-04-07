@@ -24,7 +24,7 @@
 //- 🞂 labelPrimary: string   - лейбл поля дропдауна (первичный)
 //- 🞂 labelSecondary: string - лейбл поля дропдауна (вторичный)
 //- 🞂 isButtons: boolean     - если true, то у дропдауна доступны кнопки "Очистить" и "Применить"
-//- 🞂 modifiers: string[]    - модификаторы блока
+//- 🞂 mods: string[]         - модификаторы блока
 //- 🞂 attrsField: object     - атрибуты поля дропдауна
 
 include /blocks/button/button.pug
@@ -54,7 +54,7 @@ mixin dropdown(options)
       labelPrimary: '',
       labelSecondary: '',
       isButtons: false,
-      modifiers: [],
+      mods: [],
       attrsField: {},
     };
 
@@ -65,15 +65,15 @@ mixin dropdown(options)
       labelPrimary,
       labelSecondary,
       isButtons,
-      modifiers,
+      mods,
       attrsField,
     } = Object.assign(defaults, options);
 
-  .dropdown(class=getModifiers('dropdown', modifiers))
+  .dropdown(class=getModifiers('dropdown', mods))
     +field({
       labelPrimary,
       labelSecondary,
-      modifiers: ['dropdown'],
+      mods: ['dropdown'],
       attrs: Object.assign(attrsField, {
         tabindex: '-1',
         readonly: true,
@@ -97,7 +97,7 @@ mixin dropdown(options)
           ._button.-reset.-hidden
             +button({
               text: 'Очистить',
-              modifiers: ['bodyless', 'text-gray'],
+              mods: ['bodyless', 'text-gray'],
               attrs: {
                 name: 'reset',
               },
@@ -105,7 +105,7 @@ mixin dropdown(options)
           ._button
             +button({
               text: 'Применить',
-              modifiers: ['bodyless'],
+              mods: ['bodyless'],
               attrs: {
                 name: 'apply',
               },

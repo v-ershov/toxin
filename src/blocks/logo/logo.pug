@@ -1,16 +1,16 @@
 //- Options:
-//- 🞂 modifiers: string[] - модификаторы блока
+//- 🞂 mods: string[] - модификаторы блока
 
 mixin logo(options)
   -
     const defaults = {
-      modifiers: [],
+      mods: [],
     };
 
   -
     const {
-      modifiers,
+      mods,
     } = Object.assign(defaults, options);
 
-  a.logo(class=getModifiers('logo', modifiers), href='/')
+  a.logo(class=getModifiers('logo', mods), href='/')
     | На главную

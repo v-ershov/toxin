@@ -1,10 +1,10 @@
 //- Options:
-//- 🞂 text: string        - текст списка чекбоксов
-//- 🞂 list: [[            - список чекбоксов
-//-   🞂 [0]: string       - текст чекбокса
-//-   🞂 [1]: boolean      - если true, то чекбокс отмечен
+//- 🞂 text: string   - текст списка чекбоксов
+//- 🞂 list: [[       - список чекбоксов
+//-   🞂 [0]: string  - текст чекбокса
+//-   🞂 [1]: boolean - если true, то чекбокс отмечен
 //-   ]]
-//- 🞂 modifiers: string[] - модификаторы блока
+//- 🞂 mods: string[] - модификаторы блока
 
 include /blocks/button-option/button-option.pug
 
@@ -17,17 +17,17 @@ mixin ecl(options)
         ['undefined'],
         ['undefined'],
       ],
-      modifiers: [],
+      mods: [],
     };
 
   -
     const {
       text,
       list,
-      modifiers,
+      mods,
     } = Object.assign(defaults, options);
 
-  .ecl(class=getModifiers('ecl', modifiers))
+  .ecl(class=getModifiers('ecl', mods))
     button._button(type='button')
       span._text
         | #{text}
@@ -36,7 +36,7 @@ mixin ecl(options)
         li._item
           +button-option({
             text: item[0],
-            modifiers: ['checkbox'],
+            mods: ['checkbox'],
             attrs: {
               checked: item[1],
             },

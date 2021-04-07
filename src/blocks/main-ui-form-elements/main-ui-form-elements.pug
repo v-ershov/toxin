@@ -117,12 +117,12 @@ mixin main-ui-form-elements
             li._item.-width-230
               +button-option({
                 text: 'Можно курить',
-                modifiers: ['checkbox'],
+                mods: ['checkbox'],
               })
             li._item.-width-230.-margin-10
               +button-option({
                 text: 'Можно с питомцами',
-                modifiers: ['checkbox'],
+                mods: ['checkbox'],
                 attrs: {
                   checked: true,
                 },
@@ -130,7 +130,7 @@ mixin main-ui-form-elements
             li._item.-width-230.-margin-10
               +button-option({
                 text: 'Можно пригласить гостей (до 10 человек)',
-                modifiers: ['checkbox'],
+                mods: ['checkbox'],
                 attrs: {
                   checked: true,
                 },
@@ -142,7 +142,7 @@ mixin main-ui-form-elements
             li._item.-flex
               +button-option({
                 text: 'Мужчина',
-                modifiers: ['radio'],
+                mods: ['radio'],
                 attrs: {
                   name: 'gender',
                   checked: true,
@@ -151,7 +151,7 @@ mixin main-ui-form-elements
             li._item.-flex
               +button-option({
                 text: 'Женщина',
-                modifiers: ['radio'],
+                mods: ['radio'],
                 attrs: {
                   name: 'gender',
                 },
@@ -182,7 +182,7 @@ mixin main-ui-form-elements
             li._item.-button-like
               +button-like({
                 number: 12,
-                modifiers: ['active'],
+                mods: ['active'],
               })
         section._subsection
           h3._h3
@@ -222,40 +222,40 @@ mixin main-ui-form-elements
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    modifiers: ['fill'],
+                    mods: ['fill'],
                   })
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    modifiers: ['fill', 'hover'],
-                  })
-            li._item.-margin-30
-              ul._list.-flex
-                li._item.-flex
-                  +button({
-                    text: 'Click Me',
-                  })
-                li._item.-flex
-                  +button({
-                    text: 'Click Me',
-                    modifiers: ['hover'],
+                    mods: ['fill', 'hover'],
                   })
             li._item.-margin-30
               ul._list.-flex
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    modifiers: ['bodyless'],
                   })
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    modifiers: ['bodyless', 'text-gray', 'hover'],
+                    mods: ['hover'],
+                  })
+            li._item.-margin-30
+              ul._list.-flex
+                li._item.-flex
+                  +button({
+                    text: 'Click Me',
+                    mods: ['bodyless'],
+                  })
+                li._item.-flex
+                  +button({
+                    text: 'Click Me',
+                    mods: ['bodyless', 'text-gray', 'hover'],
                   })
             li._item.-margin-30
               +button({
                 text: 'Перейти к оплате',
-                modifiers: ['fill', 'wide'],
+                mods: ['fill', 'wide'],
               })
         section._subsection
           h3._h3
@@ -316,7 +316,7 @@ mixin main-ui-form-elements
                 ],
                 labelPrimary: 'Dropdown',
                 labelSecondary: 'Expanded',
-                modifiers: ['expanded'],
+                mods: ['expanded'],
                 attrsField: {
                   placeholder: 'Какие удобства',
                 },
@@ -347,7 +347,7 @@ mixin main-ui-form-elements
                 words: ['гость', 'гостя', 'гостей'],
                 labelPrimary: 'Dropdown',
                 isButtons: true,
-                modifiers: ['expanded'],
+                mods: ['expanded'],
                 attrsField: {
                   placeholder: 'Сколько гостей',
                 },
@@ -378,7 +378,7 @@ mixin main-ui-form-elements
                 words: ['гость', 'гостя', 'гостей'],
                 labelPrimary: 'Dropdown',
                 isButtons: true,
-                modifiers: ['expanded'],
+                mods: ['expanded'],
                 attrsField: {
                   placeholder: 'Сколько гостей',
                 },
@@ -410,7 +410,7 @@ mixin main-ui-form-elements
                 ['Телевизор'],
                 ['Шампунь'],
               ],
-              modifiers: ['active'],
+              mods: ['active'],
             })
       section._section
         h2._h2.visually-hidden
@@ -423,13 +423,13 @@ mixin main-ui-form-elements
               +button-option({
                 text: 'Широкий коридор',
                 textRich: 'Ширина коридоров в номере не менее 91 см.',
-                modifiers: ['checkbox-rich'],
+                mods: ['checkbox-rich'],
               })
             li._item.-width-266.-margin-10
               +button-option({
                 text: 'Помощник для инвалидов',
                 textRich: 'На 1 этаже вас встретит специалист и проводит до номера.',
-                modifiers: ['checkbox-rich'],
+                mods: ['checkbox-rich'],
               })
       section._section
         h2._h2.visually-hidden
@@ -456,7 +456,7 @@ mixin main-ui-form-elements
                 ['insert_emoticon', 'Комфорт', 'Шумопоглощающие стены'],
                 ['location_city', 'Удобство', 'Окно в каждой из спален'],
               ],
-              modifiers: ['ui'],
+              mods: ['ui'],
             })
       section._section.-reviews
         h2._h2.visually-hidden

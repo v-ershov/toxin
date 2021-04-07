@@ -61,12 +61,12 @@ mixin form-filter
         li._item
           +button-option({
             text: 'Можно курить',
-            modifiers: ['checkbox'],
+            mods: ['checkbox'],
           })
         li._item
           +button-option({
             text: 'Можно с питомцами',
-            modifiers: ['checkbox'],
+            mods: ['checkbox'],
             attrs: {
               checked: true,
             },
@@ -74,7 +74,7 @@ mixin form-filter
         li._item
           +button-option({
             text: 'Можно пригласить гостей (до 10 человек)',
-            modifiers: ['checkbox'],
+            mods: ['checkbox'],
             attrs: {
               checked: true,
             },
@@ -87,13 +87,13 @@ mixin form-filter
           +button-option({
             text: 'Широкий коридор',
             textRich: 'Ширина коридоров в номере не менее 91 см.',
-            modifiers: ['checkbox-rich'],
+            mods: ['checkbox-rich'],
           })
         li._item
           +button-option({
             text: 'Помощник для инвалидов',
             textRich: 'На 1 этаже вас встретит специалист и проводит до номера.',
-            modifiers: ['checkbox-rich'],
+            mods: ['checkbox-rich'],
           })
     fieldset._fieldset
       +dropdown({

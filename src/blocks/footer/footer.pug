@@ -1,5 +1,5 @@
 //- Options:
-//- 🞂 modifiers: string[] - модификаторы блока
+//- 🞂 mods: string[] - модификаторы блока
 
 include /blocks/form-field/form-field.pug
 include /blocks/link/link.pug
@@ -9,15 +9,15 @@ include /blocks/socials/socials.pug
 mixin footer(options)
   -
     const defaults = {
-      modifiers: [],
+      mods: [],
     };
 
   -
     const {
-      modifiers,
+      mods,
     } = Object.assign(defaults, options);
 
-  footer.footer(class=getModifiers('footer', modifiers))
+  footer.footer(class=getModifiers('footer', mods))
     ._container.-primary
       ._intro
         ._logo
@@ -31,7 +31,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'О нас',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -39,7 +39,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Новости',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -47,7 +47,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Служба поддержки',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -55,7 +55,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Услуги',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -67,7 +67,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'О сервисе',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -75,7 +75,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Наша команда',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -83,7 +83,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Вакансии',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -91,7 +91,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Инвесторы',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -103,7 +103,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Соглашения',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -111,7 +111,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Сообщества',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },
@@ -119,7 +119,7 @@ mixin footer(options)
           li._item
             +link({
               text: 'Связь с нами',
-              modifiers: ['moving'],
+              mods: ['moving'],
               attrs: {
                 href: '/change-me',
               },

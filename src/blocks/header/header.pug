@@ -21,7 +21,7 @@ mixin header(options)
     ._container
       ._logo
         +logo({
-          modifiers: ['adaptive'],
+          mods: ['adaptive'],
         })
       if isLogin
         ._user
@@ -36,7 +36,7 @@ mixin header(options)
           ._button
             +button({
               text: 'Войти',
-              modifiers: ['compact'],
+              mods: ['compact'],
               attrs: {
                 href: '/change-me',
               },
@@ -44,7 +44,7 @@ mixin header(options)
           ._button.-adaptive
             +button({
               text: 'Зарегистрироваться',
-              modifiers: ['compact', 'fill'],
+              mods: ['compact', 'fill'],
               attrs: {
                 href: '/change-me',
               },
@@ -60,7 +60,7 @@ mixin header(options)
           li._item
             +link({
               text: 'О нас',
-              modifiers: ['bold'],
+              mods: ['bold'],
               attrs: {
                 href: '/change-me',
               },

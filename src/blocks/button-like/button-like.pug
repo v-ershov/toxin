@@ -1,21 +1,21 @@
 //- Options:
-//- 🞂 number: number      - количество лайков в кнопке
-//- 🞂 modifiers: string[] - модификаторы блока
+//- 🞂 number: number - количество лайков в кнопке
+//- 🞂 mods: string[] - модификаторы блока
 
 mixin button-like(options)
   -
     const defaults = {
       number: 0,
-      modifiers: [],
+      mods: [],
     };
 
   -
     const {
       number,
-      modifiers,
+      mods,
     } = Object.assign(defaults, options);
 
-  button.button-like(class=getModifiers('button-like', modifiers), type='button')
+  button.button-like(class=getModifiers('button-like', mods), type='button')
     span._numbers
       span._number
         | #{number}
