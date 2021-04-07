@@ -88,10 +88,10 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
     }
 
     &--active {
-      animation: slide $time-full linear infinite;
+      animation: zoom-image $time-full linear infinite;
 
       &::before {
-        animation: text $time-full linear infinite;
+        animation: zoom-text $time-full linear infinite;
       }
     }
   }
@@ -131,7 +131,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
   }
 }
 
-@keyframes slide {
+@keyframes zoom-image {
   0% {
     transform: scale(1);
     opacity: 0;
@@ -156,7 +156,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
   }
 }
 
-@keyframes text {
+@keyframes zoom-text {
   0% {
     transform: scale(1);
   }

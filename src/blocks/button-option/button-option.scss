@@ -106,7 +106,7 @@
   &--checkbox-rich &__input:checked + &__box {
     &::before {
       left: 50%;
-      animation: checkbox $time-primary;
+      animation: draw-check-mark $time-primary;
       opacity: 1;
       transition: none;
     }
@@ -163,7 +163,7 @@
   }
 }
 
-@keyframes checkbox {
+@keyframes draw-check-mark {
   0% {
     clip-path: polygon(0 100%, 0 100%, 0 75%, 66.66% 75%, 66.66% 75%, 0 75%);
   }

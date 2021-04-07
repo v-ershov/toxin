@@ -48,7 +48,7 @@
     }
 
     &--animated {
-      animation-name: shakeX;
+      animation-name: shake;
     }
   }
 
@@ -74,7 +74,7 @@
 }
 
 // https://github.com/animate-css/animate.css/blob/main/source/attention_seekers/shakeX.css
-@keyframes shakeX {
+@keyframes shake {
   from,
   to {
     transform: translate3d(0, 0, 0);
