@@ -42,7 +42,7 @@ class Room {
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
-    this._root.addEventListener('keydown', this._handleRootKeydown.bind(this));
+    this._elements.link.addEventListener('keydown', this._handleLinkKeydown.bind(this));
   }
 
   // инициализирует экземпляр плагина slick-carousel
@@ -64,17 +64,10 @@ class Room {
   // ---------- EVENT HANDLERS ----------
   // ------------------------------------
 
-  private _handleRootKeydown(event: KeyboardEvent): void {
-    const {
-      slider,
-      link,
-    } = this._elements;
+  private _handleLinkKeydown(event: KeyboardEvent): void {
+    const { slider } = this._elements;
 
     switch (event.key) {
-      case 'Enter':
-        event.preventDefault();
-        link.click();
-        break;
       case 'ArrowLeft':
         event.preventDefault();
         $(slider).slick('slickPrev');

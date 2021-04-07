@@ -12,7 +12,7 @@
     transform $time-primary;
 
   &:hover,
-  &:focus {
+  &:focus-within {
     box-shadow: $shadow-secondary;
     outline: 0;
     transform: translateY(-3px);
@@ -109,7 +109,7 @@
 }
 
 .room:hover .slick-arrow,
-.room:focus .slick-arrow {
+.room:focus-within .slick-arrow {
   opacity: 1;
 }
 
