@@ -1,0 +1,9 @@
+@import '~/scss/_functions';
+
+.paragraph {
+  margin: rem(6) 0 0;
+
+  &:first-child {
+    margin: 0;
+  }
+}

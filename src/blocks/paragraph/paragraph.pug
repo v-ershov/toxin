@@ -1,0 +1,16 @@
+//- Options:
+//- 🞂 text: string - текст параграфа
+
+mixin paragraph(options)
+  -
+    const defaults = {
+      text: 'undefined',
+    };
+
+  -
+    const {
+      text,
+    } = Object.assign(defaults, options);
+
+  p.paragraph
+    | #{text}

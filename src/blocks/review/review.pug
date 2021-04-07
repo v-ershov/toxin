@@ -53,5 +53,7 @@ mixin review(options)
         })
       ._cell
         blockquote._blockquote
-          p._p
-            | #{text}
+          each p in text
+            +paragraph({
+              text: p,
+            })
