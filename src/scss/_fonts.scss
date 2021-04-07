@@ -7,9 +7,9 @@
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url('../assets/fonts/montserrat/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/montserrat/#{$name}.woff') format('woff'),
-    url('../assets/fonts/montserrat/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/montserrat/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/montserrat/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/montserrat/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
@@ -21,9 +21,9 @@
   font-family: 'Montserrat';
   src:
     local('Montserrat'),
-    url('../assets/fonts/montserrat/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/montserrat/#{$name}.woff') format('woff'),
-    url('../assets/fonts/montserrat/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/montserrat/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/montserrat/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/montserrat/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/montserrat/#{$name}.svg#Montserrat') format('svg');
 }
 
@@ -36,9 +36,9 @@
   font-family: 'Quicksand';
   src:
     local('Quicksand'),
-    url('../assets/fonts/quicksand/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/quicksand/#{$name}.woff') format('woff'),
-    url('../assets/fonts/quicksand/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/quicksand/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/quicksand/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/quicksand/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
@@ -50,9 +50,9 @@
   font-family: 'Quicksand';
   src:
     local('Quicksand'),
-    url('../assets/fonts/quicksand/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/quicksand/#{$name}.woff') format('woff'),
-    url('../assets/fonts/quicksand/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/quicksand/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/quicksand/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/quicksand/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/quicksand/#{$name}.svg#Quicksand') format('svg');
 }
 
@@ -65,9 +65,9 @@
   font-family: 'Open Sans';
   src:
     local('Open Sans'),
-    url('../assets/fonts/open-sans/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/open-sans/#{$name}.woff') format('woff'),
-    url('../assets/fonts/open-sans/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/open-sans/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/open-sans/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/open-sans/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
@@ -79,9 +79,9 @@
   font-family: 'Open Sans';
   src:
     local('Open Sans'),
-    url('../assets/fonts/open-sans/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/open-sans/#{$name}.woff') format('woff'),
-    url('../assets/fonts/open-sans/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/open-sans/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/open-sans/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/open-sans/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/open-sans/#{$name}.svg#OpenSans') format('svg');
 }
 
@@ -94,8 +94,8 @@
   font-family: 'Material Icons';
   src:
     local('Material Icons'),
-    url('../assets/fonts/material-icons/#{$name}.woff2') format('woff2'),
-    url('../assets/fonts/material-icons/#{$name}.woff') format('woff'),
-    url('../assets/fonts/material-icons/#{$name}.ttf') format('truetype'),
+    url('~/assets/fonts/material-icons/#{$name}.woff2') format('woff2'),
+    url('~/assets/fonts/material-icons/#{$name}.woff') format('woff'),
+    url('~/assets/fonts/material-icons/#{$name}.ttf') format('truetype'),
     url('../assets/fonts/material-icons/#{$name}.svg#MaterialIcons-Regular') format('svg');
 }

@@ -43,7 +43,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
       $delay: #{$i * $time-each - $time-each};
 
       &:nth-child(#{$i}) {
-        background-image: url('../../assets/content/backgrounds/#{$background}');
+        background-image: url('~/assets/content/backgrounds/#{$background}');
         animation-delay: $delay;
 
         &::before {
