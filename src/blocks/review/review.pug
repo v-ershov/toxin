@@ -3,11 +3,12 @@
 //- 🞂 author: string   - имя автора отзыва
 //- 🞂 time: string     - время отзыва (в свободной форме)
 //- 🞂 datetime: string - время отзыва (в формате ISO 8601)
-//- 🞂 text: string     - текст отзыва
+//- 🞂 text: string[]   - текст отзыва (каждый элемент массива является параграфом)
 //- 🞂 likes: number    - количество лайков у кнопки отзыва
 //- 🞂 isLike: boolean  - если true, то кнопка отзыва активна
 
 include /blocks/button-like/button-like.pug
+include /blocks/paragraph/paragraph.pug
 
 mixin review(options)
   -
@@ -16,7 +17,7 @@ mixin review(options)
       author: 'undefined',
       time: 'undefined',
       datetime: '0000-00-00T00:00:00',
-      text: 'undefined',
+      text: ['undefined'],
       likes: 0,
       isLike: false,
     };
