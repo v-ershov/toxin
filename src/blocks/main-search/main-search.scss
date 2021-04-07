@@ -24,7 +24,7 @@ $mainSearch-button-size: rem(50);
   &--filter {
     @include screen-lg {
       &::before {
-        background-color: rgba($color-black, 0.55);
+        background-color: rgba($color-black, 0.5);
         visibility: inherit;
         transition: background-color $time-primary;
       }
@@ -61,7 +61,8 @@ $mainSearch-button-size: rem(50);
       top 1ms $time-primary,
       right 1ms $time-primary,
       box-shadow $time-primary,
-      filter $time-primary;
+      filter $time-primary,
+      opacity $time-primary / 2;
 
     @include hidden-text;
 
