@@ -162,7 +162,8 @@ $mainSearch-button-size: rem(50);
     flex-shrink: 0;
     overflow-y: scroll;
     height: calc(100vh - #{$height-header});
-    padding-right: rem(30);
+    padding: 0 rem(20) 0 rem(10);
+    transform: translateX(rem(-10));
     scrollbar-width: none;
 
     @include screen-lg {
@@ -175,6 +176,7 @@ $mainSearch-button-size: rem(50);
       padding: 0 rem(30);
       background-color: $color-white;
       visibility: hidden;
+      transform: none;
       transition:
         box-shadow $time-primary $time-primary,
         visibility 1ms $time-primary,
