@@ -104,8 +104,8 @@ class Dropdown {
   }
 
   // устанавливает новое значение для указанного пункта меню
-  private _setNumber(i: number, value: number): void {
-    const number = this._elements.numbers[i];
+  private _setNumber(index: number, value: number): void {
+    const number = this._elements.numbers[index];
 
     if (value < +number.min || value > +number.max) {
       return;
@@ -154,10 +154,10 @@ class Dropdown {
   }
 
   // переключает состояния кнопок указанного пункта меню в зависимости от текущего значения
-  private _switchSpinners(i: number): void {
-    const number = this._elements.numbers[i];
-    const increment = this._elements.increments[i];
-    const decrement = this._elements.decrements[i];
+  private _switchSpinners(index: number): void {
+    const number = this._elements.numbers[index];
+    const increment = this._elements.increments[index];
+    const decrement = this._elements.decrements[index];
 
     if (number.min === number.max) {
       increment.disabled = true;

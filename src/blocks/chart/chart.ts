@@ -149,8 +149,8 @@ class Chart {
   }
 
   // выделяет указанную секцию диаграммы
-  private _highlightCircle(i: number): void {
-    if (!this._isButtonActive(i)) {
+  private _highlightCircle(index: number): void {
+    if (!this._isButtonActive(index)) {
       return;
     }
 
@@ -160,7 +160,7 @@ class Chart {
       circle.classList.add('chart__circle--semitransparent');
     });
 
-    const ccl = circles[i].classList;
+    const ccl = circles[index].classList;
 
     ccl.remove('chart__circle--semitransparent');
     ccl.add('chart__circle--wide');
@@ -177,11 +177,11 @@ class Chart {
   }
 
   // переключает состояние указанной кнопки диаграмммы
-  private _switchButton(i: number): void {
-    const button = this._elements.buttons[i];
+  private _switchButton(index: number): void {
+    const button = this._elements.buttons[index];
 
     button.classList.toggle('chart__button--active');
-    button.dispatchEvent(new Event(this._isButtonActive(i) ? 'mouseover' : 'mouseout'));
+    button.dispatchEvent(new Event(this._isButtonActive(index) ? 'mouseover' : 'mouseout'));
   }
 
   // перерисовывает диаграмму
@@ -206,7 +206,7 @@ class Chart {
   }
 
   // отображает всплывающую подсказку для указанной секции диаграммы
-  private _showTooltip(i: number): void {
+  private _showTooltip(index: number): void {
     const {
       tooltip,
       tooltipName,
@@ -217,12 +217,12 @@ class Chart {
     const {
       name,
       value,
-    } = this._sections[i];
+    } = this._sections[index];
 
     const {
       color1,
       color2,
-    } = this._sections[i].gradient;
+    } = this._sections[index].gradient;
 
     tooltip.classList.add('chart__tooltip--active');
 
@@ -266,8 +266,8 @@ class Chart {
   }
 
   // возвращает true, если указанная кнопка диаграммы активна
-  private _isButtonActive(i: number): boolean {
-    return this._elements.buttons[i].classList.contains('chart__button--active');
+  private _isButtonActive(index: number): boolean {
+    return this._elements.buttons[index].classList.contains('chart__button--active');
   }
 
   // ------------------------------------
