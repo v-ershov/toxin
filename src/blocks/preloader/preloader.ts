@@ -21,7 +21,7 @@ class Preloader {
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
-    $(window).on('load', this._handle$WindowLoad.bind(this));
+    window.addEventListener('load', this._handleWindowLoad.bind(this));
   }
 
   // переключает состояние прелоадера
@@ -33,7 +33,7 @@ class Preloader {
   // ---------- EVENT HANDLERS ----------
   // ------------------------------------
 
-  private _handle$WindowLoad(): void {
+  private _handleWindowLoad(): void {
     this._switchPreloader();
   }
 }
