@@ -129,7 +129,7 @@ class Dropdown {
     items.forEach((item, i) => {
       const num = +numbers[i].value;
 
-      if (num === 0) {
+      if (!num) {
         return;
       }
 
@@ -191,7 +191,7 @@ class Dropdown {
 
     const bcl = buttonResetWrapper.classList;
 
-    if (this._getNumbersSum() === 0) {
+    if (!this._getNumbersSum()) {
       bcl.add('dropdown__button--hidden');
     } else {
       bcl.remove('dropdown__button--hidden');
