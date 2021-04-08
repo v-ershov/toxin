@@ -149,8 +149,8 @@ class Chart {
   }
 
   // выделяет указанную секцию диаграммы
-  private _highlightCircle(index: number): void {
-    if (!this._isButtonActive(index)) {
+  private _highlightCircle(i: number): void {
+    if (!this._isButtonActive(i)) {
       return;
     }
 
@@ -160,7 +160,7 @@ class Chart {
       circle.classList.add('chart__circle--semitransparent');
     });
 
-    const ccl = circles[index].classList;
+    const ccl = circles[i].classList;
 
     ccl.remove('chart__circle--semitransparent');
     ccl.add('chart__circle--wide');
@@ -177,11 +177,11 @@ class Chart {
   }
 
   // переключает состояние указанной кнопки диаграмммы
-  private _switchButton(index: number): void {
-    const button = this._elements.buttons[index];
+  private _switchButton(i: number): void {
+    const button = this._elements.buttons[i];
 
     button.classList.toggle('chart__button--active');
-    button.dispatchEvent(new Event(this._isButtonActive(index) ? 'mouseover' : 'mouseout'));
+    button.dispatchEvent(new Event(this._isButtonActive(i) ? 'mouseover' : 'mouseout'));
   }
 
   // перерисовывает диаграмму
@@ -206,7 +206,7 @@ class Chart {
   }
 
   // отображает всплывающую подсказку для указанной секции диаграммы
-  private _showTooltip(index: number): void {
+  private _showTooltip(i: number): void {
     const {
       tooltip,
       tooltipName,
@@ -217,12 +217,12 @@ class Chart {
     const {
       name,
       value,
-    } = this._sections[index];
+    } = this._sections[i];
 
     const {
       color1,
       color2,
-    } = this._sections[index].gradient;
+    } = this._sections[i].gradient;
 
     tooltip.classList.add('chart__tooltip--active');
 
@@ -266,8 +266,8 @@ class Chart {
   }
 
   // возвращает true, если указанная кнопка диаграммы активна
-  private _isButtonActive(index: number): boolean {
-    return this._elements.buttons[index].classList.contains('chart__button--active');
+  private _isButtonActive(i: number): boolean {
+    return this._elements.buttons[i].classList.contains('chart__button--active');
   }
 
   // ------------------------------------
@@ -279,9 +279,9 @@ class Chart {
     this._animateSum();
   }
 
-  private _handleCircleMouseOver(index: number): void {
-    this._highlightCircle(index);
-    this._showTooltip(index);
+  private _handleCircleMouseOver(i: number): void {
+    this._highlightCircle(i);
+    this._showTooltip(i);
   }
 
   private _handleCircleMouseMove(event: MouseEvent): void {
@@ -293,24 +293,24 @@ class Chart {
     this._hideTooltip();
   }
 
-  private _handleButtonFocus(index: number): void {
-    this._highlightCircle(index);
+  private _handleButtonFocus(i: number): void {
+    this._highlightCircle(i);
   }
 
   private _handleButtonBlur(): void {
     this._dehighlightCircles();
   }
 
-  private _handleButtonMouseOver(index: number): void {
-    this._highlightCircle(index);
+  private _handleButtonMouseOver(i: number): void {
+    this._highlightCircle(i);
   }
 
   private _handleButtonMouseOut(): void {
     this._dehighlightCircles();
   }
 
-  private _handleButtonClick(index: number): void {
-    this._switchButton(index);
+  private _handleButtonClick(i: number): void {
+    this._switchButton(i);
     this._animateSum();
     this._redrawDiagram();
   }

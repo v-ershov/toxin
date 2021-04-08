@@ -104,8 +104,8 @@ class Dropdown {
   }
 
   // устанавливает новое значение для указанного пункта меню
-  private _setNumber(index: number, value: number): void {
-    const number = this._elements.numbers[index];
+  private _setNumber(i: number, value: number): void {
+    const number = this._elements.numbers[i];
 
     if (value < +number.min || value > +number.max) {
       return;
@@ -154,10 +154,10 @@ class Dropdown {
   }
 
   // переключает состояния кнопок указанного пункта меню в зависимости от текущего значения
-  private _switchSpinners(index: number): void {
-    const number = this._elements.numbers[index];
-    const increment = this._elements.increments[index];
-    const decrement = this._elements.decrements[index];
+  private _switchSpinners(i: number): void {
+    const number = this._elements.numbers[i];
+    const increment = this._elements.increments[i];
+    const decrement = this._elements.decrements[i];
 
     if (number.min === number.max) {
       increment.disabled = true;
@@ -243,39 +243,39 @@ class Dropdown {
   // ---------- EVENT HANDLERS ----------
   // ------------------------------------
 
-  private _handleNumberInput(index: number): void {
-    this._switchSpinners(index);
+  private _handleNumberInput(i: number): void {
+    this._switchSpinners(i);
     this._setText();
   }
 
-  private _handleNumberInputWithButtons(index: number): void {
-    this._switchSpinners(index);
+  private _handleNumberInputWithButtons(i: number): void {
+    this._switchSpinners(i);
     this._switchButtonReset();
   }
 
-  private _handleNumberKeydown(index: number, event: KeyboardEvent): void {
+  private _handleNumberKeydown(i: number, event: KeyboardEvent): void {
     const { numbers } = this._elements;
 
     switch (event.key) {
       case 'ArrowLeft':
         event.preventDefault();
-        this._setNumber(index, +numbers[index].value - 1);
+        this._setNumber(i, +numbers[i].value - 1);
         break;
       case 'ArrowRight':
         event.preventDefault();
-        this._setNumber(index, +numbers[index].value + 1);
+        this._setNumber(i, +numbers[i].value + 1);
         break;
       default:
         break;
     }
   }
 
-  private _handleIncrementClick(index: number): void {
-    this._setNumber(index, +this._elements.numbers[index].value + 1);
+  private _handleIncrementClick(i: number): void {
+    this._setNumber(i, +this._elements.numbers[i].value + 1);
   }
 
-  private _handleDecrementClick(index: number): void {
-    this._setNumber(index, +this._elements.numbers[index].value - 1);
+  private _handleDecrementClick(i: number): void {
+    this._setNumber(i, +this._elements.numbers[i].value - 1);
   }
 
   private _handleButtonApplyClick(): void {
