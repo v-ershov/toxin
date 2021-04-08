@@ -12,7 +12,7 @@ mixin body(options)
       mods,
     } = Object.assign(defaults, options);
 
-  body.body(class=getModifiers('body', mods))
+  body.body.-unanimated(class=getModifiers('body', mods))
     if mods.includes('ui')
       a._link(href='/')
         | На главную
