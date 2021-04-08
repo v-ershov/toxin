@@ -46,7 +46,7 @@
     color: $color-white;
     text-align: center;
     visibility: hidden;
-    transform: translate(-50%, 0);
+    transform: translate(-50%);
     opacity: 0;
     transition:
       visibility 1ms $time-primary,
