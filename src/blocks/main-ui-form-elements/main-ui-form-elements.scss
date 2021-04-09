@@ -4,19 +4,14 @@
 .main-ui-form-elements {
   &__container {
     display: grid;
-    grid-template-columns:
-      minmax(0, rem(374))
-      minmax(0, rem(320))
-      minmax(0, rem(322));
+    grid-template-columns: minmax(0, rem(374)) minmax(0, rem(320)) minmax(0, rem(322));
     grid-gap: rem(40);
     justify-content: space-between;
 
     @include container;
 
     @include screen-xl {
-      grid-template-columns:
-        minmax(0, rem(320))
-        minmax(0, rem(320));
+      grid-template-columns: minmax(0, rem(320)) minmax(0, rem(320));
       grid-gap: rem(40) rem(80);
       justify-content: center;
     }
@@ -50,10 +45,7 @@
 
     &--dropdowns {
       display: grid;
-      grid-template-columns:
-        minmax(0, rem(374))
-        minmax(0, rem(320))
-        minmax(0, rem(322));
+      grid-template-columns: minmax(0, rem(374)) minmax(0, rem(320)) minmax(0, rem(322));
       grid-column: 1 / 4;
       grid-gap: 0 rem(40);
       justify-content: space-between;

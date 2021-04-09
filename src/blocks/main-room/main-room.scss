@@ -5,13 +5,8 @@
 .main-room {
   &__gallery {
     display: grid;
-    grid-template-rows:
-      1fr
-      1fr;
-    grid-template-columns:
-      1fr
-      1fr
-      1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     height: 50vh;
     min-height: rem(485);
     background-color: $color-gray-5p;
@@ -67,9 +62,7 @@
 
   &__section {
     display: grid;
-    grid-template-columns:
-      1fr
-      1.2fr;
+    grid-template-columns: 1fr 1.2fr;
     grid-gap: rem(30) rem(70);
 
     @include screen-xxl {
@@ -81,9 +74,7 @@
     }
 
     @include screen-lg {
-      grid-template-columns:
-        1fr
-        1.2fr;
+      grid-template-columns: 1fr 1.2fr;
     }
 
     @include screen-sm {
