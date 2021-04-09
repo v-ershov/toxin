@@ -148,9 +148,7 @@
       background-color: transparent;
       box-shadow: 0 rem(5) rem(5) rgba($color-gray-100p, 0.3);
       cursor: pointer;
-      transition:
-        border-width $time-primary,
-        background-color 1ms;
+      transition: border-width $time-primary;
 
       @include hidden-text;
 
@@ -164,7 +162,7 @@
       background-color: $color-white;
       transition:
         border-width $time-primary,
-        background-color 1ms $time-primary;
+        background-color 1ms $time-primary * 0.75;
     }
   }
 }
