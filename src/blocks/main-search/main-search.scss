@@ -138,16 +138,12 @@ $mainSearch-button-size: rem(50);
 
     &:nth-child(2) {
       width: 100%;
-      transform:
-        translate(-50%, -50%)
-        rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
 
     &:nth-child(3) {
       width: 100%;
-      transform:
-        translate(-50%, -50%)
-        rotate(-45deg);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
 
     &:nth-child(4) {

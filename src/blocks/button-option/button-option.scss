@@ -89,9 +89,7 @@
       height: 45.675%;
       border-radius: 0;
       background-image: $gradient-primary;
-      transform:
-        translate(-50%, -50%)
-        rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
       opacity: 0;
       transition: opacity $time-primary;
       clip-path: polygon(0 100%, 100% 100%, 100% 0, 66.66% 0, 66.66% 75%, 0 75%);
