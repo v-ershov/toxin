@@ -10,6 +10,9 @@
     "src/scss/_vars.scss"
   ],
   "rules": {
+		"at-rule-no-unknown": null,
+    "no-descending-specificity": null,
+		"value-list-comma-newline-after": "always",
     "scss/dollar-variable-empty-line-before": [
       "always",
       {
@@ -285,9 +288,6 @@
       {
         "unspecified": "bottom"
       }
-    ],
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
-    "no-descending-specificity": null
+    ]
   }
 }
