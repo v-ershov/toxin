@@ -20,8 +20,6 @@ class Calendar {
 
   private _elements: ICalendarElements; // элементы календаря
 
-  private _duration: number; // продолжительность анимации контейнера календаря
-
   private _currentRange: string; // активный диапазон дат календаря в виде отформатированного текста
 
   private _target: HTMLInputElement; // инпут, к которому будет привязан плагин air-datepicker
@@ -37,7 +35,6 @@ class Calendar {
   constructor(root: HTMLElement) {
     this._root = root;
     this._elements = this._findElements();
-    this._duration = this._getDuration();
     this._currentRange = '';
 
     this._target = this._getTarget();
@@ -63,11 +60,6 @@ class Calendar {
       buttonApply: this._root.querySelector('.button[name="apply"]') as HTMLButtonElement,
       buttonReset: this._root.querySelector('.button[name="reset"]') as HTMLButtonElement,
     };
-  }
-
-  // возвращает продолжительность анимации контейнера календаря
-  private _getDuration(): number {
-    return parseFloat(getComputedStyle(this._elements.container).animationDuration) * 1000;
   }
 
   // возвращает инпут, к которому будет привязан плагин air-datepicker
@@ -270,7 +262,7 @@ class Calendar {
 
     setTimeout(() => {
       ccl.remove('calendar__container--animated');
-    }, this._duration);
+    }, this._getDuration());
   }
 
   // возвращает диапазон дат из строки вида 'YYYY-MM-DD/YYYY-MM-DD'
@@ -280,6 +272,11 @@ class Calendar {
     const to = new Date(split[1]);
 
     return [from, to];
+  }
+
+  // возвращает продолжительность анимации контейнера календаря
+  private _getDuration(): number {
+    return parseFloat(getComputedStyle(this._elements.container).animationDuration) * 1000;
   }
 
   // ------------------------------------
