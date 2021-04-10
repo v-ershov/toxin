@@ -11,8 +11,6 @@ class ButtonLike {
 
   private _elements: IButtonLikeElements; // элементы кнопки
 
-  private _duration: number; // продолжительность анимации кнопки
-
   private _isReady: boolean; // если true, то кнопка доступна для изменений
 
   // ---------------------------------
@@ -22,7 +20,6 @@ class ButtonLike {
   constructor(root: HTMLElement) {
     this._root = root;
     this._elements = this._findElements();
-    this._duration = this._getDuration();
     this._isReady = true;
 
     this._bindEventListeners();
@@ -37,11 +34,6 @@ class ButtonLike {
     return {
       numbers: this._root.querySelector('.button-like__numbers') as HTMLSpanElement,
     };
-  }
-
-  // возвращает продолжительность анимации кнопки
-  private _getDuration(): number {
-    return parseFloat(getComputedStyle(this._root).transitionDuration) * 1000;
   }
 
   // регистрирует обработчики событий
@@ -71,7 +63,7 @@ class ButtonLike {
 
     setTimeout(() => {
       this._isReady = true;
-    }, this._duration);
+    }, this._getDuration());
   }
 
   // устанавливает значение лайков в кнопке
@@ -114,7 +106,12 @@ class ButtonLike {
         (numbers.firstChild as ChildNode).remove();
         ncl.remove('button-like__numbers--anim-decrease');
       }
-    }, this._duration);
+    }, this._getDuration());
+  }
+
+  // возвращает продолжительность анимации кнопки
+  private _getDuration(): number {
+    return parseFloat(getComputedStyle(this._root).transitionDuration) * 1000;
   }
 
   // ------------------------------------
