@@ -110,6 +110,7 @@ class Calendar {
     } = this._elements;
 
     this._root.addEventListener('focusout', this._handleRootFocusout.bind(this));
+    this._target.addEventListener('keypress', Calendar._handleTargetKeypress.bind(this));
     container.addEventListener('mousedown', (e) => e.preventDefault());
     buttonApply.addEventListener('click', this._handleButtonApplyClick.bind(this));
     buttonReset.addEventListener('click', this._handleButtonResetClick.bind(this));
@@ -289,6 +290,12 @@ class Calendar {
     }
 
     this._setDatepickerRange();
+  }
+
+  private static _handleTargetKeypress(event: KeyboardEvent): void {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
   }
 
   private _handleButtonApplyClick(): void {
