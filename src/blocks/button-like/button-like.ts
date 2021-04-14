@@ -32,7 +32,7 @@ class ButtonLike {
   // находит и возвращает элементы кнопки
   private _findElements(): IButtonLikeElements {
     return {
-      numbers: this._root.querySelector('.button-like__numbers') as HTMLSpanElement,
+      numbers: this._root.querySelector('.js-button-like__numbers') as HTMLSpanElement,
     };
   }
 
@@ -124,7 +124,7 @@ class ButtonLike {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.button-like').forEach((el) => new ButtonLike(el as HTMLElement));
+  document.querySelectorAll('.js-button-like').forEach((el) => new ButtonLike(el as HTMLElement));
 }
 
 render();

@@ -15,7 +15,7 @@ mixin button-like(options)
       mods,
     } = Object.assign(defaults, options);
 
-  button.button-like(class=getModifiers('button-like', mods), type='button')
-    span._numbers
+  button.button-like.js-button-like(class=getModifiers('button-like', mods), type='button')
+    span._numbers.js-button-like__numbers
       span._number
         | #{number}
