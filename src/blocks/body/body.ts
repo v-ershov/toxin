@@ -39,7 +39,7 @@ class Body {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.body').forEach((el) => new Body(el as HTMLElement));
+  document.querySelectorAll('.js-body').forEach((el) => new Body(el as HTMLElement));
 }
 
 render();
