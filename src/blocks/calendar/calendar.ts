@@ -52,13 +52,13 @@ class Calendar {
   // находит и возвращает элементы календаря
   private _findElements(): ICalendarElements {
     return {
-      input: this._root.querySelector('.calendar__input') as HTMLInputElement,
-      fields: this._root.querySelectorAll('.field__input'),
-      fake: this._root.querySelector('.calendar__fake') as HTMLInputElement,
-      container: this._root.querySelector('.calendar__container') as HTMLDivElement,
-      datepicker: this._root.querySelector('.calendar__datepicker') as HTMLDivElement,
-      buttonApply: this._root.querySelector('.button[name="apply"]') as HTMLButtonElement,
-      buttonReset: this._root.querySelector('.button[name="reset"]') as HTMLButtonElement,
+      input: this._root.querySelector('.js-calendar__input') as HTMLInputElement,
+      fields: this._root.querySelectorAll('.js-field__input'),
+      fake: this._root.querySelector('.js-calendar__fake') as HTMLInputElement,
+      container: this._root.querySelector('.js-calendar__container') as HTMLDivElement,
+      datepicker: this._root.querySelector('.js-calendar__datepicker') as HTMLDivElement,
+      buttonApply: this._root.querySelector('.js-button[name="apply"]') as HTMLButtonElement,
+      buttonReset: this._root.querySelector('.js-button[name="reset"]') as HTMLButtonElement,
     };
   }
 
@@ -321,7 +321,7 @@ class Calendar {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.calendar').forEach((el) => new Calendar(el as HTMLElement));
+  document.querySelectorAll('.js-calendar').forEach((el) => new Calendar(el as HTMLElement));
 }
 
 render();

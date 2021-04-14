@@ -31,8 +31,8 @@ mixin calendar(options)
 
   - const isFields = type !== 'inline';
 
-  .calendar(data-dates=dates || false)
-    input._input(type='hidden')
+  .calendar.js-calendar(data-dates=dates || false)
+    input._input.js-calendar__input(type='hidden')
     if isFields
       ._fields
         if type === 'fields'
@@ -68,9 +68,9 @@ mixin calendar(options)
     else
       //- горячие клавиши работают только в том случае,
       //- если air-datepicker привязан к текстовому полю
-      input._fake
-    ._container(class=getModifiers('calendar__container', isFields ? ['hidden'] : []))
-      ._datepicker
+      input._fake.js-calendar__fake
+    ._container.js-calendar__container(class=getModifiers('calendar__container', isFields ? ['hidden'] : []))
+      ._datepicker.js-calendar__datepicker
       ._buttons
         ._button
           +button({

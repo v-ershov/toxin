@@ -19,8 +19,8 @@ mixin button(options)
     } = Object.assign(defaults, options);
 
   if attrs.href
-    a.button(class=getModifiers('button', mods))&attributes(attrs)
+    a.button.js-button(class=getModifiers('button', mods))&attributes(attrs)
       | #{text}
   else
-    button.button(class=getModifiers('button', mods), type='button')&attributes(attrs)
+    button.button.js-button(class=getModifiers('button', mods), type='button')&attributes(attrs)
       | #{text}
