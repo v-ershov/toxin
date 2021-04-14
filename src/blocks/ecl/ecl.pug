@@ -27,11 +27,11 @@ mixin ecl(options)
       mods,
     } = Object.assign(defaults, options);
 
-  .ecl(class=getModifiers('ecl', mods))
-    button._button(type='button')
+  .ecl.js-ecl(class=getModifiers('ecl', mods))
+    button._button.js-ecl__button(type='button')
       span._text
         | #{text}
-    ul._list(style='--height: 100vh;')
+    ul._list.js-ecl__list(style='--height: 100vh;')
       each item in list
         li._item
           +button-option({

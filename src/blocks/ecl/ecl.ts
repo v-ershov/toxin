@@ -34,8 +34,8 @@ class Ecl {
   // находит и возвращает элементы списка
   private _findElements(): IEclElements {
     return {
-      button: this._root.querySelector('.ecl__button') as HTMLButtonElement,
-      list: this._root.querySelector('.ecl__list') as HTMLUListElement,
+      button: this._root.querySelector('.js-ecl__button') as HTMLButtonElement,
+      list: this._root.querySelector('.js-ecl__list') as HTMLUListElement,
     };
   }
 
@@ -75,7 +75,7 @@ class Ecl {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.ecl').forEach((el) => new Ecl(el as HTMLElement));
+  document.querySelectorAll('.js-ecl').forEach((el) => new Ecl(el as HTMLElement));
 }
 
 render();
