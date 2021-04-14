@@ -40,15 +40,15 @@ class Dropdown {
   // находит и возвращает элементы дропдауна
   private _findElements(): IDropdownElements {
     return {
-      input: this._root.querySelector('.field__input') as HTMLInputElement,
-      menu: this._root.querySelector('.dropdown__menu') as HTMLDivElement,
-      items: this._root.querySelectorAll('.dropdown__item'),
-      numbers: this._root.querySelectorAll('.dropdown__number'),
-      increments: this._root.querySelectorAll('.dropdown__spinner[name="increment"]'),
-      decrements: this._root.querySelectorAll('.dropdown__spinner[name="decrement"]'),
-      buttonApply: this._root.querySelector('.button[name="apply"]') as HTMLButtonElement,
-      buttonReset: this._root.querySelector('.button[name="reset"]') as HTMLButtonElement,
-      buttonResetWrapper: this._root.querySelector('.dropdown__button--reset') as HTMLDivElement,
+      input: this._root.querySelector('.js-field__input') as HTMLInputElement,
+      menu: this._root.querySelector('.js-dropdown__menu') as HTMLDivElement,
+      items: this._root.querySelectorAll('.js-dropdown__item'),
+      numbers: this._root.querySelectorAll('.js-dropdown__number'),
+      increments: this._root.querySelectorAll('.js-dropdown__spinner[name="increment"]'),
+      decrements: this._root.querySelectorAll('.js-dropdown__spinner[name="decrement"]'),
+      buttonApply: this._root.querySelector('.js-button[name="apply"]') as HTMLButtonElement,
+      buttonReset: this._root.querySelector('.js-button[name="reset"]') as HTMLButtonElement,
+      buttonResetWrapper: this._root.querySelector('.js-dropdown__button--reset') as HTMLDivElement,
     };
   }
 
@@ -291,7 +291,7 @@ class Dropdown {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.dropdown').forEach((el) => new Dropdown(el as HTMLElement));
+  document.querySelectorAll('.js-dropdown').forEach((el) => new Dropdown(el as HTMLElement));
 }
 
 render();

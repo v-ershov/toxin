@@ -69,7 +69,7 @@ mixin dropdown(options)
       attrsField,
     } = Object.assign(defaults, options);
 
-  .dropdown(class=getModifiers('dropdown', mods))
+  .dropdown.js-dropdown(class=getModifiers('dropdown', mods))
     +field({
       labelPrimary,
       labelSecondary,
@@ -80,21 +80,21 @@ mixin dropdown(options)
         'data-words': `${words[0]}, ${words[1]}, ${words[2]}`,
       }),
     })
-    ._menu(style='--height: 100vh;')
+    ._menu.js-dropdown__menu(style='--height: 100vh;')
       ul._list
         each item in list
-          li._item(data-words=item.words.length ? `${item.words[0]}, ${item.words[1]}, ${item.words[2]}` : false)
+          li._item.js-dropdown__item(data-words=item.words.length ? `${item.words[0]}, ${item.words[1]}, ${item.words[2]}` : false)
             ._name
               | #{item.name}
             ._controls
-              button._spinner(type='button', name='decrement', tabindex='-1')
+              button._spinner.js-dropdown__spinner(type='button', name='decrement', tabindex='-1')
                 | &minus;
-              input._number(type='number', value=item.values[0], min=item.values[1], max=item.values[2], readonly)
-              button._spinner(type='button', name='increment', tabindex='-1')
+              input._number.js-dropdown__number(type='number', value=item.values[0], min=item.values[1], max=item.values[2], readonly)
+              button._spinner.js-dropdown__spinner(type='button', name='increment', tabindex='-1')
                 | +
       if isButtons
         ._buttons
-          ._button.-reset.-hidden
+          ._button.-reset.-hidden.js-dropdown__button--reset
             +button({
               text: 'Очистить',
               mods: ['bodyless', 'text-gray'],
