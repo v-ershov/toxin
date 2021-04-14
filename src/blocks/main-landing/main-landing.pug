@@ -1,12 +1,12 @@
 include /blocks/form-find/form-find.pug
 
 mixin main-landing
-  main.main-landing
-    ._slideshow(style='--translateY: 0;')
-      ._slide
-      ._slide
-      ._slide
-      ._slide
+  main.main-landing.js-main-landing
+    ._slideshow.js-main-landing__slideshow(style='--translateY: 0;')
+      - let i = 0;
+      while i < 4
+        ._slide.js-main-landing__slide
+        - i++;
     ._container
       h1._h1.visually-hidden
         | TOXIN

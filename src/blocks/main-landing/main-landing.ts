@@ -30,8 +30,8 @@ class MainLanding {
   // находит и возвращает элементы блока
   private _findElements(): IMainLandingElements {
     return {
-      slideshow: this._root.querySelector('.main-landing__slideshow') as HTMLDivElement,
-      slides: this._root.querySelectorAll('.main-landing__slide'),
+      slideshow: this._root.querySelector('.js-main-landing__slideshow') as HTMLDivElement,
+      slides: this._root.querySelectorAll('.js-main-landing__slide'),
     };
   }
 
@@ -67,7 +67,7 @@ class MainLanding {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.main-landing').forEach((el) => new MainLanding(el as HTMLElement));
+  document.querySelectorAll('.js-main-landing').forEach((el) => new MainLanding(el as HTMLElement));
 }
 
 render();
