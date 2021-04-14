@@ -17,7 +17,7 @@ mixin header(options)
       isLogin,
     } = Object.assign(defaults, options);
 
-  header.header
+  header.header.js-header
     ._container
       ._logo
         +logo({
@@ -49,14 +49,14 @@ mixin header(options)
                 href: '/change-me',
               },
             })
-      button._hamburger(type='button')
+      button._hamburger.js-header__hamburger(type='button')
         | Гамбургер-меню
         span._icon-layers
           span._icon-layer
           span._icon-layer
           span._icon-layer
-      nav._nav(style='--height: 100vh;')
-        ul._list
+      nav._nav.js-header__nav(style='--height: 100vh;')
+        ul._list.js-header__list
           li._item
             +link({
               text: 'О нас',

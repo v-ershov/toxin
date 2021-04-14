@@ -34,9 +34,9 @@ class Header {
   // находит и возвращает элементы хедера
   private _findElements(): IHeaderElements {
     return {
-      hamburger: this._root.querySelector('.header__hamburger') as HTMLButtonElement,
-      nav: this._root.querySelector('.header__nav') as HTMLElement,
-      list: this._root.querySelector('.header__list') as HTMLUListElement,
+      hamburger: this._root.querySelector('.js-header__hamburger') as HTMLButtonElement,
+      nav: this._root.querySelector('.js-header__nav') as HTMLElement,
+      list: this._root.querySelector('.js-header__list') as HTMLUListElement,
     };
   }
 
@@ -89,7 +89,7 @@ class Header {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.header').forEach((el) => new Header(el as HTMLElement));
+  document.querySelectorAll('.js-header').forEach((el) => new Header(el as HTMLElement));
 }
 
 render();
