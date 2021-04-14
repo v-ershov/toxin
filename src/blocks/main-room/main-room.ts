@@ -47,7 +47,7 @@ class MainRoom {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.main-room').forEach((el) => new MainRoom(el as HTMLElement));
+  document.querySelectorAll('.js-main-room').forEach((el) => new MainRoom(el as HTMLElement));
 }
 
 render();
