@@ -57,15 +57,15 @@ class Chart {
   // находит и возвращает элементы диаграммы
   private _findElements(): IChartElements {
     return {
-      svg: this._root.querySelector('.chart__svg') as HTMLElement,
-      gradients: this._root.querySelectorAll('.chart__gradient'),
-      circles: this._root.querySelectorAll('.chart__circle'),
-      sum: this._root.querySelector('.chart__sum') as HTMLSpanElement,
-      tooltip: this._root.querySelector('.chart__tooltip') as HTMLDivElement,
-      tooltipName: this._root.querySelector('.chart__name') as HTMLDivElement,
-      tooltipDetails: this._root.querySelector('.chart__details') as HTMLDivElement,
-      tooltipValue: this._root.querySelector('.chart__value') as HTMLSpanElement,
-      buttons: this._root.querySelectorAll('.chart__button'),
+      svg: this._root.querySelector('.js-chart__svg') as HTMLElement,
+      gradients: this._root.querySelectorAll('.js-chart__gradient'),
+      circles: this._root.querySelectorAll('.js-chart__circle'),
+      sum: this._root.querySelector('.js-chart__sum') as HTMLSpanElement,
+      tooltip: this._root.querySelector('.js-chart__tooltip') as HTMLDivElement,
+      tooltipName: this._root.querySelector('.js-chart__name') as HTMLDivElement,
+      tooltipDetails: this._root.querySelector('.js-chart__details') as HTMLDivElement,
+      tooltipValue: this._root.querySelector('.js-chart__value') as HTMLSpanElement,
+      buttons: this._root.querySelectorAll('.js-chart__button'),
     };
   }
 
@@ -317,7 +317,7 @@ class Chart {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.chart').forEach((el) => new Chart(el as HTMLElement));
+  document.querySelectorAll('.js-chart').forEach((el) => new Chart(el as HTMLElement));
 }
 
 render();

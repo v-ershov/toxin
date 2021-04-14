@@ -45,13 +45,13 @@ mixin chart(options)
       sections,
     } = Object.assign(defaults, options);
 
-  .chart(data-gap=gap)
+  .chart.js-chart(data-gap=gap)
     ._container
       ._diagram
-        svg._svg(viewbox='0 0 33 33')
+        svg._svg.js-chart__svg(viewbox='0 0 33 33')
           defs._defs
             each item in sections
-              lineargradient._gradient(id=item.gradient[0], x1='1', y1='1', x2='0', y2='0')
+              lineargradient._gradient.js-chart__gradient(id=item.gradient[0], x1='1', y1='1', x2='0', y2='0')
                 stop._stop(offset='0', stop-color=item.gradient[1])
                 stop._stop(offset='1', stop-color=item.gradient[2])
 
@@ -61,20 +61,20 @@ mixin chart(options)
             - const percent = (item.value / sum) * 100 || 0;
             - const array = `${Math.max(0, percent - gap)} 100`;
             - offset += percent;
-            circle._circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
+            circle._circle.js-chart__circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
         ._title
-          span._sum
+          span._sum.js-chart__sum
             | 0
           | #{title}
-        ._tooltip(style='--top: 0; --left: 0; --borderColor: #000000;')
-          ._name
+        ._tooltip.js-chart__tooltip(style='--top: 0; --left: 0; --borderColor: #000000;')
+          ._name.js-chart__name
             | #{sections[0].name}
-          ._details(style='--gradient: linear-gradient(#ffffff, #000000);')
+          ._details.js-chart__details(style='--gradient: linear-gradient(#ffffff, #000000);')
             | #{title}:
-            span._value
+            span._value.js-chart__value
               | #{sections[0].value}
     ul._legend
       each item in sections
         li._item
-          button._button.-active(type='button', style=`--shadow-color: ${item.gradient[1]}; --gradient: linear-gradient(${item.gradient[1]}, ${item.gradient[2]});`)
+          button._button.-active.js-chart__button(type='button', style=`--shadow-color: ${item.gradient[1]}; --gradient: linear-gradient(${item.gradient[1]}, ${item.gradient[2]});`)
             | #{item.name}
