@@ -33,8 +33,8 @@ class HeaderSubmenu {
   // находит и возвращает элементы подменю
   private _findElements(): IHeaderSubmenuElements {
     return {
-      linkMain: this._root.querySelector('.link--submenu') as HTMLAnchorElement,
-      list: this._root.querySelector('.header-submenu__list') as HTMLUListElement,
+      linkMain: this._root.querySelector('.js-link--submenu') as HTMLAnchorElement,
+      list: this._root.querySelector('.js-header-submenu__list') as HTMLUListElement,
     };
   }
 
@@ -75,7 +75,7 @@ class HeaderSubmenu {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.header-submenu').forEach((el) => new HeaderSubmenu(el as HTMLElement));
+  document.querySelectorAll('.js-header-submenu').forEach((el) => new HeaderSubmenu(el as HTMLElement));
 }
 
 render();

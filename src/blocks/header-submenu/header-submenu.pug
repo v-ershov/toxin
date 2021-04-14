@@ -27,7 +27,7 @@ mixin header-submenu(options)
       list,
     } = Object.assign(defaults, options);
 
-  .header-submenu
+  .header-submenu.js-header-submenu
     +link({
       text,
       mods: ['submenu'],
@@ -35,7 +35,7 @@ mixin header-submenu(options)
         href,
       },
     })
-    ul._list(style='--height: 100vh;')
+    ul._list.js-header-submenu__list(style='--height: 100vh;')
       each item in list
         li._item
           +link({

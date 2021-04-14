@@ -18,5 +18,5 @@ mixin link(options)
       attrs,
     } = Object.assign(defaults, options);
 
-  a.link(class=getModifiers('link', mods))&attributes(attrs)
+  a.link(class=`${getModifiers('link', mods)} ${mods.includes('submenu') ? 'js-link--submenu' : ''}`)&attributes(attrs)
     | #{text}
