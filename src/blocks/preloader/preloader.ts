@@ -39,7 +39,7 @@ class Preloader {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.preloader').forEach((el) => new Preloader(el as HTMLElement));
+  document.querySelectorAll('.js-preloader').forEach((el) => new Preloader(el as HTMLElement));
 }
 
 render();
