@@ -29,7 +29,7 @@ class MainSign {
   // находит и возвращает элементы блока
   private _findElements(): IMainSignElements {
     return {
-      background: this._root.querySelector('.main-sign__background') as HTMLDivElement,
+      background: this._root.querySelector('.js-main-sign__background') as HTMLDivElement,
     };
   }
 
@@ -53,7 +53,7 @@ class MainSign {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.main-sign').forEach((el) => new MainSign(el as HTMLElement));
+  document.querySelectorAll('.js-main-sign').forEach((el) => new MainSign(el as HTMLElement));
 }
 
 render();

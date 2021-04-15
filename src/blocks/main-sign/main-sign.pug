@@ -15,8 +15,8 @@ mixin main-sign(options)
       isSignUp,
     } = Object.assign(defaults, options);
 
-  main.main-sign
-    ._background(style='--translateY: 0;')
+  main.main-sign.js-main-sign
+    ._background.js-main-sign__background(style='--translateY: 0;')
     ._container
       h1._h1.visually-hidden
         | #{isSignUp ? 'Регистрация аккаунта' : 'Войти'}
