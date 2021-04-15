@@ -56,16 +56,18 @@ class Chart {
 
   // находит и возвращает элементы диаграммы
   private _findElements(): IChartElements {
+    const r = this._root;
+
     return {
-      svg: this._root.querySelector('.js-chart__svg') as HTMLElement,
-      gradients: this._root.querySelectorAll('.js-chart__gradient'),
-      circles: this._root.querySelectorAll('.js-chart__circle'),
-      sum: this._root.querySelector('.js-chart__sum') as HTMLSpanElement,
-      tooltip: this._root.querySelector('.js-chart__tooltip') as HTMLDivElement,
-      tooltipName: this._root.querySelector('.js-chart__name') as HTMLDivElement,
-      tooltipDetails: this._root.querySelector('.js-chart__details') as HTMLDivElement,
-      tooltipValue: this._root.querySelector('.js-chart__value') as HTMLSpanElement,
-      buttons: this._root.querySelectorAll('.js-chart__button'),
+      svg: r.querySelector('.js-chart__svg') as HTMLElement,
+      gradients: r.querySelectorAll('.js-chart__gradient'),
+      circles: r.querySelectorAll('.js-chart__circle'),
+      sum: r.querySelector('.js-chart__sum') as HTMLSpanElement,
+      tooltip: r.querySelector('.js-chart__tooltip') as HTMLDivElement,
+      tooltipName: r.querySelector('.js-chart__name') as HTMLDivElement,
+      tooltipDetails: r.querySelector('.js-chart__details') as HTMLDivElement,
+      tooltipValue: r.querySelector('.js-chart__value') as HTMLSpanElement,
+      buttons: r.querySelectorAll('.js-chart__button'),
     };
   }
 

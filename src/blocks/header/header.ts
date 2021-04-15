@@ -33,10 +33,12 @@ class Header {
 
   // находит и возвращает элементы хедера
   private _findElements(): IHeaderElements {
+    const r = this._root;
+
     return {
-      hamburger: this._root.querySelector('.js-header__hamburger') as HTMLButtonElement,
-      nav: this._root.querySelector('.js-header__nav') as HTMLElement,
-      list: this._root.querySelector('.js-header__list') as HTMLUListElement,
+      hamburger: r.querySelector('.js-header__hamburger') as HTMLButtonElement,
+      nav: r.querySelector('.js-header__nav') as HTMLElement,
+      list: r.querySelector('.js-header__list') as HTMLUListElement,
     };
   }
 

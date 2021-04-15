@@ -36,10 +36,12 @@ class MainSearch {
 
   // находит и возвращает элементы блока
   private _findElements(): IMainSearchElements {
+    const r = this._root;
+
     return {
-      button: this._root.querySelector('.js-main-search__button') as HTMLButtonElement,
-      section: this._root.querySelector('.js-main-search__section') as HTMLElement,
-      asideLastChild: this._root.querySelector('.js-main-search__aside .js-ecl__button') as HTMLButtonElement,
+      button: r.querySelector('.js-main-search__button') as HTMLButtonElement,
+      section: r.querySelector('.js-main-search__section') as HTMLElement,
+      asideLastChild: r.querySelector('.js-main-search__aside .js-ecl__button') as HTMLButtonElement,
     };
   }
 

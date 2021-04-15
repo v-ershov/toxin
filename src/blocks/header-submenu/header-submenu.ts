@@ -32,9 +32,11 @@ class HeaderSubmenu {
 
   // находит и возвращает элементы подменю
   private _findElements(): IHeaderSubmenuElements {
+    const r = this._root;
+
     return {
-      linkMain: this._root.querySelector('.js-link--submenu') as HTMLAnchorElement,
-      list: this._root.querySelector('.js-header-submenu__list') as HTMLUListElement,
+      linkMain: r.querySelector('.js-link--submenu') as HTMLAnchorElement,
+      list: r.querySelector('.js-header-submenu__list') as HTMLUListElement,
     };
   }
 

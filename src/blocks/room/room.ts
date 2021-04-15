@@ -34,9 +34,11 @@ class Room {
 
   // находит и возвращает элементы карточки
   private _findElements(): IRoomElements {
+    const r = this._root;
+
     return {
-      slider: this._root.querySelector('.js-room__slider') as HTMLDivElement,
-      link: this._root.querySelector('.js-room__link') as HTMLAnchorElement,
+      slider: r.querySelector('.js-room__slider') as HTMLDivElement,
+      link: r.querySelector('.js-room__link') as HTMLAnchorElement,
     };
   }
 

@@ -34,10 +34,12 @@ class SliderRange {
 
   // находит и возвращает элементы слайдера
   private _findElements(): ISliderRangeElements {
+    const r = this._root;
+
     return {
-      label: this._root.querySelector('.js-label__secondary') as HTMLLabelElement,
-      input: this._root.querySelector('.js-slider-range__input') as HTMLInputElement,
-      slider: this._root.querySelector('.js-slider-range__slider') as HTMLDivElement,
+      label: r.querySelector('.js-label__secondary') as HTMLLabelElement,
+      input: r.querySelector('.js-slider-range__input') as HTMLInputElement,
+      slider: r.querySelector('.js-slider-range__slider') as HTMLDivElement,
     };
   }
 

@@ -51,14 +51,16 @@ class Calendar {
 
   // находит и возвращает элементы календаря
   private _findElements(): ICalendarElements {
+    const r = this._root;
+
     return {
-      input: this._root.querySelector('.js-calendar__input') as HTMLInputElement,
-      fields: this._root.querySelectorAll('.js-field__input'),
-      fake: this._root.querySelector('.js-calendar__fake') as HTMLInputElement,
-      container: this._root.querySelector('.js-calendar__container') as HTMLDivElement,
-      datepicker: this._root.querySelector('.js-calendar__datepicker') as HTMLDivElement,
-      buttonApply: this._root.querySelector('.js-button[name="apply"]') as HTMLButtonElement,
-      buttonReset: this._root.querySelector('.js-button[name="reset"]') as HTMLButtonElement,
+      input: r.querySelector('.js-calendar__input') as HTMLInputElement,
+      fields: r.querySelectorAll('.js-field__input'),
+      fake: r.querySelector('.js-calendar__fake') as HTMLInputElement,
+      container: r.querySelector('.js-calendar__container') as HTMLDivElement,
+      datepicker: r.querySelector('.js-calendar__datepicker') as HTMLDivElement,
+      buttonApply: r.querySelector('.js-button[name="apply"]') as HTMLButtonElement,
+      buttonReset: r.querySelector('.js-button[name="reset"]') as HTMLButtonElement,
     };
   }
 

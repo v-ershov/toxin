@@ -33,9 +33,11 @@ class Ecl {
 
   // находит и возвращает элементы списка
   private _findElements(): IEclElements {
+    const r = this._root;
+
     return {
-      button: this._root.querySelector('.js-ecl__button') as HTMLButtonElement,
-      list: this._root.querySelector('.js-ecl__list') as HTMLUListElement,
+      button: r.querySelector('.js-ecl__button') as HTMLButtonElement,
+      list: r.querySelector('.js-ecl__list') as HTMLUListElement,
     };
   }
 

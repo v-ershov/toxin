@@ -29,9 +29,11 @@ class MainLanding {
 
   // находит и возвращает элементы блока
   private _findElements(): IMainLandingElements {
+    const r = this._root;
+
     return {
-      slideshow: this._root.querySelector('.js-main-landing__slideshow') as HTMLDivElement,
-      slides: this._root.querySelectorAll('.js-main-landing__slide'),
+      slideshow: r.querySelector('.js-main-landing__slideshow') as HTMLDivElement,
+      slides: r.querySelectorAll('.js-main-landing__slide'),
     };
   }
 
