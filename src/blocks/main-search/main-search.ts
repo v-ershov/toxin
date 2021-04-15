@@ -55,8 +55,8 @@ class MainSearch {
     const header = document.querySelector('.js-header') as HTMLElement;
 
     button.addEventListener('click', this._handleButtonClick.bind(this));
-    header.addEventListener('focusin', this._handleHeaderFocusin.bind(this));
     section.addEventListener('focusin', this._handleSectionFocusin.bind(this));
+    header.addEventListener('focusin', this._handleHeaderFocusin.bind(this));
   }
 
   // создаёт Intersection Observer для последующего переключения состояния кнопки «Фильтры»
@@ -112,15 +112,15 @@ class MainSearch {
     }
   }
 
-  private _handleHeaderFocusin(): void {
-    if (this._isButtonActive) {
-      this._elements.asideLastChild.focus();
-    }
-  }
-
   private _handleSectionFocusin(): void {
     if (this._isButtonActive) {
       this._elements.button.focus();
+    }
+  }
+
+  private _handleHeaderFocusin(): void {
+    if (this._isButtonActive) {
+      this._elements.asideLastChild.focus();
     }
   }
 }
