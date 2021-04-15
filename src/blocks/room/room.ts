@@ -35,8 +35,8 @@ class Room {
   // находит и возвращает элементы карточки
   private _findElements(): IRoomElements {
     return {
-      slider: this._root.querySelector('.room__slider') as HTMLDivElement,
-      link: this._root.querySelector('.room__link') as HTMLAnchorElement,
+      slider: this._root.querySelector('.js-room__slider') as HTMLDivElement,
+      link: this._root.querySelector('.js-room__link') as HTMLAnchorElement,
     };
   }
 
@@ -83,7 +83,7 @@ class Room {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.room').forEach((el) => new Room(el as HTMLElement));
+  document.querySelectorAll('.js-room').forEach((el) => new Room(el as HTMLElement));
 }
 
 render();
