@@ -26,16 +26,18 @@ function getScrollbarWidth(): number {
 // возвращает одно из указанных слов в зависимости от последней
 // цифры указанного числа для правильного склонения слова
 function getWord(value: number, words: [string, string, string]): string {
+  const isInRange = (num: number, from: number, to: number) => num >= from && num <= to;
+
   const lastDigit = value % 10;
   const lastTwoDigits = value % 100;
 
-  if (lastDigit === 0
-    || (lastDigit >= 5 && lastDigit <= 9)
-    || (lastTwoDigits >= 10 && lastTwoDigits <= 19)) {
+  if (isInRange(lastDigit, 0, 0)
+    || isInRange(lastDigit, 5, 9)
+    || isInRange(lastTwoDigits, 10, 19)) {
     return words[2];
   }
 
-  if (lastDigit >= 2 && lastDigit <= 4) {
+  if (isInRange(lastDigit, 2, 4)) {
     return words[1];
   }
 

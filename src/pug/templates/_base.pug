@@ -1,6 +1,8 @@
 -
   function getModifiers(classMain, mods) {
-    if (!classMain || !mods || !mods.length) {
+    const isArgsValid = classMain && mods && mods.length;
+
+    if (!isArgsValid) {
       return;
     }
 

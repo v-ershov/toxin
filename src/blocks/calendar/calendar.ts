@@ -121,15 +121,17 @@ class Calendar {
   // инициализирует начальный диапазон дат календаря
   private _initDates(): void {
     const { dates } = this._root.dataset;
+    const isDatesValid = dates && dates.length === 21;
 
-    if (!dates || dates.length !== 21) {
+    if (!isDatesValid) {
       return;
     }
 
     const inst = this._inst;
-    const range = Calendar._getRange(dates);
+    const range = Calendar._getRange(dates as string);
+    const isRangeValid = inst.minDate ? range[0] >= inst.minDate : true;
 
-    if (inst.minDate && inst.minDate > range[0]) {
+    if (!isRangeValid) {
       return;
     }
 

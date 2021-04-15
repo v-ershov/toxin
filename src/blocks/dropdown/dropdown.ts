@@ -108,8 +108,9 @@ class Dropdown {
   // устанавливает новое значение для указанного пункта меню
   private _setNumber(i: number, value: number): void {
     const number = this._elements.numbers[i];
+    const isValueValid = value >= +number.min && value <= +number.max;
 
-    if (value < +number.min || value > +number.max) {
+    if (!isValueValid) {
       return;
     }
 
