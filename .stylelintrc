@@ -7,7 +7,7 @@
     "stylelint-scss"
   ],
   "ignoreFiles": [
-    "src/scss/_vars.scss"
+    "src/scss/vars.scss"
   ],
   "rules": {
 		"at-rule-no-unknown": null,
