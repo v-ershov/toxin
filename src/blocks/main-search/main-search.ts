@@ -37,9 +37,9 @@ class MainSearch {
   // находит и возвращает элементы блока
   private _findElements(): IMainSearchElements {
     return {
-      button: this._root.querySelector('.main-search__button') as HTMLButtonElement,
-      section: this._root.querySelector('.main-search__section') as HTMLElement,
-      asideLastChild: this._root.querySelector('.main-search__aside .ecl__button') as HTMLButtonElement,
+      button: this._root.querySelector('.js-main-search__button') as HTMLButtonElement,
+      section: this._root.querySelector('.js-main-search__section') as HTMLElement,
+      asideLastChild: this._root.querySelector('.js-main-search__aside .js-ecl__button') as HTMLButtonElement,
     };
   }
 
@@ -50,7 +50,7 @@ class MainSearch {
       section,
     } = this._elements;
 
-    const header = document.querySelector('.header') as HTMLElement;
+    const header = document.querySelector('.js-header') as HTMLElement;
 
     button.addEventListener('click', this._handleButtonClick.bind(this));
     header.addEventListener('focusin', this._handleHeaderFocusin.bind(this));
@@ -124,7 +124,7 @@ class MainSearch {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.main-search').forEach((el) => new MainSearch(el as HTMLElement));
+  document.querySelectorAll('.js-main-search').forEach((el) => new MainSearch(el as HTMLElement));
 }
 
 render();

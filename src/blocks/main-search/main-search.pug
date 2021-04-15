@@ -3,19 +3,19 @@ include /blocks/pagination/pagination.pug
 include /blocks/room/room.pug
 
 mixin main-search
-  main.main-search
+  main.main-search.js-main-search
     ._container
-      button._button(type='button')
+      button._button.js-main-search__button(type='button')
         | Фильтры
         span._icon-layers
           span._icon-layer
           span._icon-layer
           span._icon-layer
           span._icon-layer
-      aside._aside
+      aside._aside.js-main-search__aside
         ._filter
           +form-filter
-      section._section
+      section._section.js-main-search__section
         h1._h1
           | Номера, которые мы для вас подобрали
         ._rooms
