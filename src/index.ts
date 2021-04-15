@@ -1,5 +1,5 @@
-import '~/scss/_fonts.scss';
-import '~/scss/_global.scss';
+import '~/scss/fonts.scss';
+import '~/scss/global.scss';
 
 // https://webpack.js.org/guides/dependency-management/
 function importAll(r: __WebpackModuleApi.RequireContext) {
