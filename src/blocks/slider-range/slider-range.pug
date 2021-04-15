@@ -37,13 +37,13 @@ mixin slider-range(options)
 
   - const labelSecondary = `${start.toLocaleString('ru')}${unit} - ${end.toLocaleString('ru')}${unit}`;
 
-  .slider-range
+  .slider-range.js-slider-range
     +label({
       primary: labelPrimary || 'undefined',
       secondary: labelSecondary,
     })
-      input._input(type='hidden', value=labelSecondary)
-    ._slider(data-min=min, data-max=max, data-start=start, data-end=end, data-step=step, data-unit=unit)
+      input._input.js-slider-range__input(type='hidden', value=labelSecondary)
+    ._slider.js-slider-range__slider(data-min=min, data-max=max, data-start=start, data-end=end, data-step=step, data-unit=unit)
     if text
       ._text
         | #{text}

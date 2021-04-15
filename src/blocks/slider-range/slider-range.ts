@@ -35,9 +35,9 @@ class SliderRange {
   // находит и возвращает элементы слайдера
   private _findElements(): ISliderRangeElements {
     return {
-      label: this._root.querySelector('.label__secondary') as HTMLLabelElement,
-      input: this._root.querySelector('.slider-range__input') as HTMLInputElement,
-      slider: this._root.querySelector('.slider-range__slider') as HTMLDivElement,
+      label: this._root.querySelector('.js-label__secondary') as HTMLLabelElement,
+      input: this._root.querySelector('.js-slider-range__input') as HTMLInputElement,
+      slider: this._root.querySelector('.js-slider-range__slider') as HTMLDivElement,
     };
   }
 
@@ -83,7 +83,7 @@ class SliderRange {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.slider-range').forEach((el) => new SliderRange(el as HTMLElement));
+  document.querySelectorAll('.js-slider-range').forEach((el) => new SliderRange(el as HTMLElement));
 }
 
 render();
