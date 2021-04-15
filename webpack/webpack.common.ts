@@ -5,6 +5,7 @@ import fs from 'fs';
 import pugBem from 'pug-bem';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 import paths from './paths';
 
 const config: webpack.Configuration = {
