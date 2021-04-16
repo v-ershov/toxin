@@ -3,7 +3,7 @@ import 'jquery-ui/themes/base/slider.css';
 import 'jquery-ui-touch-punch/jquery.ui.touch-punch.min';
 
 interface ISliderRangeElements {
-  label?: HTMLLabelElement;
+  label: HTMLLabelElement;
   input: HTMLInputElement;
   slider: HTMLDivElement;
 }
@@ -13,7 +13,7 @@ class SliderRange {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент слайдера
+  private _root: HTMLDivElement; // корневой html-элемент слайдера
 
   private _elements: ISliderRangeElements; // элементы слайдера
 
@@ -21,7 +21,7 @@ class SliderRange {
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLDivElement) {
     this._root = root;
     this._elements = this._findElements();
 
@@ -74,18 +74,15 @@ class SliderRange {
         const end = `${values[1].toLocaleString('ru-RU')}${unit}`;
         const value = `${start} - ${end}`;
 
+        label.textContent = value;
         input.value = value;
-
-        if (label) {
-          label.textContent = value;
-        }
       },
     });
   }
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-slider-range').forEach((el) => new SliderRange(el as HTMLElement));
+  document.querySelectorAll('.js-slider-range').forEach((el) => new SliderRange(el as HTMLDivElement));
 }
 
 render();
