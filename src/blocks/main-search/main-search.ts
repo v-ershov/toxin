@@ -61,9 +61,7 @@ class MainSearch {
 
   // создаёт Intersection Observer для последующего переключения состояния кнопки «Фильтры»
   private _observe(): void {
-    const {
-      button,
-    } = this._elements;
+    const { button } = this._elements;
 
     const observer = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) {
