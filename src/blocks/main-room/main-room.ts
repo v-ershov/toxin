@@ -2,7 +2,7 @@ import '@fancyapps/fancybox/dist/jquery.fancybox.min';
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 
 interface IMainRoomElements {
-  images: NodeListOf<HTMLAnchorElement>;
+  links: NodeListOf<HTMLAnchorElement>;
 }
 
 class MainRoom {
@@ -32,13 +32,13 @@ class MainRoom {
   // находит и возвращает элементы блока
   private _findElements(): IMainRoomElements {
     return {
-      images: this._root.querySelectorAll('[data-fancybox="gallery"]'),
+      links: this._root.querySelectorAll('[data-fancybox="gallery"]'),
     };
   }
 
   // инициализирует экземпляр плагина fancybox
   private _initFancybox(): void {
-    $(this._elements.images).fancybox({
+    $(this._elements.links).fancybox({
       animationEffect: 'fade',
       loop: true,
       transitionEffect: 'slide',
