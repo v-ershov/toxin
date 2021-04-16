@@ -38,7 +38,7 @@ class MainSign {
     window.addEventListener('scroll', this._handleWindowScroll.bind(this));
   }
 
-  // создаёт параллакс-эффект для фонового изображения
+  // создаёт параллакс-эффект для фонового изображения блока
   private _createParallax(): void {
     this._elements.background.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
