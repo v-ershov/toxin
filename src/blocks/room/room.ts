@@ -11,7 +11,7 @@ class Room {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент карточки
+  private _root: HTMLDivElement; // корневой html-элемент карточки
 
   private _elements: IRoomElements; // элементы карточки
 
@@ -19,7 +19,7 @@ class Room {
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLDivElement) {
     this._root = root;
     this._elements = this._findElements();
 
@@ -55,7 +55,7 @@ class Room {
     });
   }
 
-  // устанавливает атрибут tabindex со значением '-1' для внутренних элементов карточки
+  // отключает табулирование для интерактивных элементов плагина slick-carousel
   private _disableTabing(): void {
     this._elements.slider.querySelectorAll('.slick-arrow, .slick-dots button').forEach((el) => {
       el.setAttribute('tabindex', '-1');
@@ -67,16 +67,16 @@ class Room {
   // ------------------------------------
 
   private _handleLinkKeydown(event: KeyboardEvent): void {
-    const { slider } = this._elements;
+    const $slider = $(this._elements.slider);
 
     switch (event.key) {
       case 'ArrowLeft':
         event.preventDefault();
-        $(slider).slick('slickPrev');
+        $slider.slick('slickPrev');
         break;
       case 'ArrowRight':
         event.preventDefault();
-        $(slider).slick('slickNext');
+        $slider.slick('slickNext');
         break;
       default:
         break;
@@ -85,7 +85,7 @@ class Room {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-room').forEach((el) => new Room(el as HTMLElement));
+  document.querySelectorAll('.js-room').forEach((el) => new Room(el as HTMLDivElement));
 }
 
 render();
