@@ -43,14 +43,14 @@ class MainLanding {
     window.addEventListener('scroll', this._handleWindowScroll.bind(this));
   }
 
-  // активирует слайды
-  private _activateSlides(): void {
+  // включает слайды блока
+  private _enableSlides(): void {
     this._elements.slides.forEach((slide) => {
-      slide.classList.add('main-landing__slide--active');
+      slide.classList.remove('main-landing__slide--disabled');
     });
   }
 
-  // создаёт параллакс-эффект для слайдшоу
+  // создаёт параллакс-эффект для слайдшоу блока
   private _createParallax(): void {
     this._elements.slideshow.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
@@ -60,7 +60,7 @@ class MainLanding {
   // ------------------------------------
 
   private _handleWindowLoad(): void {
-    this._activateSlides();
+    this._enableSlides();
   }
 
   private _handleWindowScroll(): void {
