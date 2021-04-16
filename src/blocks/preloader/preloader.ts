@@ -3,13 +3,13 @@ class Preloader {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент прелоадера
+  private _root: HTMLDivElement; // корневой html-элемент прелоадера
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLDivElement) {
     this._root = root;
 
     this._bindEventListeners();
@@ -24,9 +24,9 @@ class Preloader {
     window.addEventListener('load', this._handleWindowLoad.bind(this));
   }
 
-  // переключает состояние прелоадера
-  private _switchPreloader(): void {
-    this._root.classList.toggle('preloader--hidden');
+  // отключает прелоадер
+  private _disablePreloader(): void {
+    this._root.classList.add('preloader--disabled');
   }
 
   // ------------------------------------
@@ -34,12 +34,12 @@ class Preloader {
   // ------------------------------------
 
   private _handleWindowLoad(): void {
-    this._switchPreloader();
+    this._disablePreloader();
   }
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-preloader').forEach((el) => new Preloader(el as HTMLElement));
+  document.querySelectorAll('.js-preloader').forEach((el) => new Preloader(el as HTMLDivElement));
 }
 
 render();
