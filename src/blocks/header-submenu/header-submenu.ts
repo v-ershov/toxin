@@ -10,7 +10,7 @@ class HeaderSubmenu {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент подменю
+  private _root: HTMLDivElement; // корневой html-элемент подменю
 
   private _elements: IHeaderSubmenuElements; // элементы подменю
 
@@ -18,7 +18,7 @@ class HeaderSubmenu {
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLDivElement) {
     this._root = root;
     this._elements = this._findElements();
 
@@ -52,7 +52,7 @@ class HeaderSubmenu {
     list.addEventListener('mousedown', (e) => e.preventDefault());
   }
 
-  // устанавливает максимальную высоту списка
+  // устанавливает максимальную высоту списка подменю
   private _setListHeight(): void {
     const { list } = this._elements;
 
@@ -68,16 +68,14 @@ class HeaderSubmenu {
   }
 
   private static _handleLinkMainClick(event: MouseEvent): void {
-    if (!helpers.isViewportWider(858)) {
-      return;
+    if (helpers.isViewportWider(858)) {
+      event.preventDefault();
     }
-
-    event.preventDefault();
   }
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-header-submenu').forEach((el) => new HeaderSubmenu(el as HTMLElement));
+  document.querySelectorAll('.js-header-submenu').forEach((el) => new HeaderSubmenu(el as HTMLDivElement));
 }
 
 render();
