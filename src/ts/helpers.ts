@@ -44,6 +44,11 @@ function getWord(value: number, words: [string, string, string]): string {
   return words[0];
 }
 
+// возвращает true, если переданная дата валидна
+function isValidDate(date: Date): boolean {
+  return date instanceof Date && !Number.isNaN(date);
+}
+
 // возвращает true, если ширина viewport'а больше указанного значения
 function isViewportWider(width: number): boolean {
   return window.innerWidth > width;
@@ -55,5 +60,6 @@ export default {
   getHeight,
   getScrollbarWidth,
   getWord,
+  isValidDate,
   isViewportWider,
 };

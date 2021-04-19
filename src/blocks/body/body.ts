@@ -3,13 +3,13 @@ class Body {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент тела
+  private _root: HTMLBodyElement; // корневой html-элемент блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLBodyElement) {
     this._root = root;
 
     this._bindEventListeners();
@@ -24,7 +24,7 @@ class Body {
     window.addEventListener('load', this._handleWindowLoad.bind(this));
   }
 
-  // включает анимации
+  // включает анимации на странице
   private _enableAnimations(): void {
     this._root.classList.remove('body--unanimated');
   }
@@ -39,7 +39,7 @@ class Body {
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-body').forEach((el) => new Body(el as HTMLElement));
+  document.querySelectorAll('.js-body').forEach((el) => new Body(el as HTMLBodyElement));
 }
 
 render();

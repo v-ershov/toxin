@@ -1,7 +1,9 @@
 import 'air-datepicker/dist/js/datepicker.min';
 import 'air-datepicker/dist/css/datepicker.min.css';
 
-interface ICalendarElements {
+import helpers from '~/ts/helpers';
+
+interface IElements {
   input: HTMLInputElement;
   fields: NodeListOf<HTMLInputElement>;
   fake?: HTMLInputElement;
@@ -16,41 +18,36 @@ class Calendar {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент календаря
+  private _root: HTMLDivElement; // корневой html-элемент блока
 
-  private _elements: ICalendarElements; // элементы календаря
-
-  private _currentRange: string; // активный диапазон дат календаря в виде отформатированного текста
+  private _elements: IElements; // элементы блока
 
   private _target: HTMLInputElement; // инпут, к которому будет привязан плагин air-datepicker
 
   private _inst: AirDatepickerInstance; // экземпляр плагина air-datepicker
 
-  private _formattedDate: string; // значение formattedDate события onSelect плагина air-datepicker
+  private _formattedDate = ''; // значение formattedDate события onSelect плагина air-datepicker
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLDivElement) {
     this._root = root;
     this._elements = this._findElements();
-    this._currentRange = '';
-
     this._target = this._getTarget();
-    this._inst = this._initDatepicker();
-    this._formattedDate = '';
+    this._inst = this._initAirDatepicker();
 
-    this._bindEventListeners();
     this._initDates();
+    this._bindEventListeners();
   }
 
   // -------------------------------------
   // ---------- PRIVATE METHODS ----------
   // -------------------------------------
 
-  // находит и возвращает элементы календаря
-  private _findElements(): ICalendarElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -66,18 +63,12 @@ class Calendar {
 
   // возвращает инпут, к которому будет привязан плагин air-datepicker
   private _getTarget(): HTMLInputElement {
-    const {
-      fields,
-      fake,
-    } = this._elements;
-
-    return fields[0] || fake;
+    return this._elements.fields[0] || this._elements.fake;
   }
 
   // инициализирует и возвращает экземпляр плагина air-datepicker
-  private _initDatepicker(): AirDatepickerInstance {
+  private _initAirDatepicker(): AirDatepickerInstance {
     const $target = $(this._target);
-    const $datepicker = $(this._elements.datepicker);
 
     $target.datepicker({
       dateFormat: 'd M',
@@ -98,9 +89,26 @@ class Calendar {
       },
     });
 
-    $datepicker.append($target.next('.datepicker-inline'));
+    $(this._elements.datepicker).append($target.next('.datepicker-inline'));
 
     return $target.data('datepicker');
+  }
+
+  // инициализирует начальный диапазон дат
+  private _initDates(): void {
+    const inst = this._inst;
+    const range = Calendar._getRange(this._root.dataset.dates);
+
+    if (range === null) {
+      return;
+    }
+
+    const isValidRange = inst.minDate ? range[0] >= inst.minDate : true;
+
+    if (isValidRange) {
+      inst.selectDate(range);
+      this._update();
+    }
   }
 
   // регистрирует обработчики событий
@@ -118,50 +126,28 @@ class Calendar {
     buttonReset.addEventListener('click', this._handleButtonResetClick.bind(this));
   }
 
-  // инициализирует начальный диапазон дат календаря
-  private _initDates(): void {
-    const { dates } = this._root.dataset;
-    const isDatesValid = dates && dates.length === 21;
-
-    if (!isDatesValid) {
-      return;
-    }
-
-    const inst = this._inst;
-    const range = Calendar._getRange(dates as string);
-    const isRangeValid = inst.minDate ? range[0] >= inst.minDate : true;
-
-    if (!isRangeValid) {
-      return;
-    }
-
-    inst.selectDate(range);
-    this._updateCalendar();
-  }
-
   // сохраняет значение formattedDate события onSelect плагина air-datepicker
   private _saveFormattedDate(formattedDate: string): void {
     this._formattedDate = formattedDate.toLowerCase();
   }
 
-  // обновляет календарь
-  private _updateCalendar(): void {
+  // обновляет блок
+  private _update(): void {
     this._setInput();
-    this._setCurrentRange();
     this._setFields();
   }
 
-  // устанавливает значение скрытого инпута календаря
+  // устанавливает значение скрытого инпута
   private _setInput(): void {
     const { input } = this._elements;
     const { selectedDates } = this._inst;
 
-    if (selectedDates.length === 1) {
+    if (!selectedDates.length) {
+      input.value = '';
       return;
     }
 
-    if (!selectedDates.length) {
-      input.value = '';
+    if (selectedDates.length === 1) {
       return;
     }
 
@@ -177,8 +163,8 @@ class Calendar {
     input.value = `${fromStr}/${toStr}`;
   }
 
-  // устанавливает активный диапазон дат календаря в виде отформатированного текста
-  private _setCurrentRange(): void {
+  // устанавливает значения полей
+  private _setFields(): void {
     const {
       input,
       fields,
@@ -188,31 +174,9 @@ class Calendar {
       return;
     }
 
-    if (!input.value) {
-      this._currentRange = '';
-      return;
-    }
+    const range = Calendar._getRange(input.value);
 
-    if (fields[1]) {
-      const range = Calendar._getRange(input.value);
-
-      this._currentRange = `${range[0].toLocaleDateString()}/${range[1].toLocaleDateString()}`;
-    } else {
-      this._currentRange = this._formattedDate;
-    }
-  }
-
-  // устанавливает значения полей календаря
-  private _setFields(): void {
-    const { fields } = this._elements;
-
-    if (!fields.length) {
-      return;
-    }
-
-    const range = this._currentRange;
-
-    if (!range) {
+    if (range === null) {
       fields.forEach((_field, i) => {
         fields[i].value = '';
       });
@@ -221,41 +185,26 @@ class Calendar {
     }
 
     if (fields[1]) {
-      const split = range.split('/');
-
-      fields.forEach((_field, i) => {
-        fields[i].value = split[i];
-      });
+      fields[0].value = `${range[0].toLocaleDateString()}`;
+      fields[1].value = `${range[1].toLocaleDateString()}`;
     } else {
-      fields[0].value = range;
+      fields[0].value = this._formattedDate;
     }
   }
 
-  // устанавливает в плагине air-datepicker такой же диапазон дат, как и в скрытом инпуте календаря
-  private _setDatepickerRange(): void {
-    const { value } = this._elements.input;
+  // устанавливает в плагине air-datepicker такой же диапазон дат, как в скрытом инпуте
+  private _setAirDatepickerRange(): void {
+    const inst = this._inst;
+    const range = Calendar._getRange(this._elements.input.value);
 
-    this._inst.clear();
+    inst.clear();
 
-    if (!value) {
-      return;
+    if (range !== null) {
+      inst.selectDate(range);
     }
-
-    this._inst.selectDate(Calendar._getRange(value));
   }
 
-  // снимает фокус с интерактивных элементов календаря
-  private _blurCalendar(): void {
-    if (!this._elements.fields.length) {
-      return;
-    }
-
-    this._target.blur();
-    this._elements.buttonApply.blur();
-    this._elements.buttonReset.blur();
-  }
-
-  // анимирует контейнер календаря
+  // анимирует контейнер
   private _animateContainer(): void {
     const ccl = this._elements.container.classList;
 
@@ -267,21 +216,48 @@ class Calendar {
 
     setTimeout(() => {
       ccl.remove('calendar__container--animated');
-    }, this._getDuration());
+    }, this._getContainerDuration());
+  }
+
+  // снимает фокус с интерактивных элементов
+  private _blurElements(): void {
+    const {
+      buttonApply,
+      buttonReset,
+    } = this._elements;
+
+    this._target.blur();
+    buttonApply.blur();
+    buttonReset.blur();
+  }
+
+  // возвращает продолжительность анимации контейнера
+  private _getContainerDuration(): number {
+    return parseFloat(getComputedStyle(this._elements.container).animationDuration) * 1000;
   }
 
   // возвращает диапазон дат из строки вида 'YYYY-MM-DD/YYYY-MM-DD'
-  private static _getRange(range: string): [Date, Date] {
-    const split = range.split('/');
+  private static _getRange(dates: string | undefined): [Date, Date] | null {
+    if (!dates || dates.length !== 21) {
+      return null;
+    }
+
+    const split = dates.split('/');
+
+    if (split.length !== 2) {
+      return null;
+    }
+
     const from = new Date(split[0]);
     const to = new Date(split[1]);
 
-    return [from, to];
-  }
+    const isValidDates = helpers.isValidDate(from) && helpers.isValidDate(to);
 
-  // возвращает продолжительность анимации контейнера календаря
-  private _getDuration(): number {
-    return parseFloat(getComputedStyle(this._elements.container).animationDuration) * 1000;
+    if (!isValidDates) {
+      return null;
+    }
+
+    return [from, to];
   }
 
   // ------------------------------------
@@ -289,11 +265,9 @@ class Calendar {
   // ------------------------------------
 
   private _handleRootFocusout(event: FocusEvent): void {
-    if (this._root.contains(event.relatedTarget as HTMLElement)) {
-      return;
+    if (!this._root.contains(event.relatedTarget as Node)) {
+      this._setAirDatepickerRange();
     }
-
-    this._setDatepickerRange();
   }
 
   private static _handleTargetKeypress(event: KeyboardEvent): void {
@@ -303,29 +277,29 @@ class Calendar {
   }
 
   private _handleButtonApplyClick(): void {
-    const { length } = this._inst.selectedDates;
+    const { selectedDates } = this._inst;
 
-    if (length === 1) {
+    if (selectedDates.length === 1) {
       this._animateContainer();
       return;
     }
 
-    if (!length) {
+    if (!selectedDates.length) {
       this._inst.clear();
     }
 
-    this._updateCalendar();
-    this._blurCalendar();
+    this._update();
+    this._blurElements();
   }
 
   private _handleButtonResetClick(): void {
     this._inst.clear();
-    this._updateCalendar();
+    this._update();
   }
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-calendar').forEach((el) => new Calendar(el as HTMLElement));
+  document.querySelectorAll('.js-calendar').forEach((el) => new Calendar(el as HTMLDivElement));
 }
 
 render();
