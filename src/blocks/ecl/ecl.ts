@@ -1,6 +1,6 @@
 import helpers from '~/ts/helpers';
 
-interface IEclElements {
+interface IElements {
   button: HTMLButtonElement;
   list: HTMLUListElement;
 }
@@ -10,29 +10,28 @@ class Ecl {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент списка
+  private _root: HTMLDivElement; // корневой html-элемент блока
 
-  private _elements: IEclElements; // элементы списка
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
   // ---------------------------------
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLDivElement) {
     this._root = root;
     this._elements = this._findElements();
 
-    this._bindEventListeners();
-    this._setRootPadding();
     this._setListHeight();
+    this._bindEventListeners();
   }
 
   // -------------------------------------
   // ---------- PRIVATE METHODS ----------
   // -------------------------------------
 
-  // находит и возвращает элементы списка
-  private _findElements(): IEclElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -43,28 +42,19 @@ class Ecl {
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
-    this._elements.button.addEventListener('click', this._handleButtonClick.bind(this));
+    const { button } = this._elements;
+
+    button.addEventListener('click', this._handleButtonClick.bind(this));
   }
 
-  // устанавливает величину нижнего поля корневого html-элемент списка
-  private _setRootPadding(): void {
-    const root = this._root;
-
-    if (root.classList.contains('ecl--absolute')) {
-      root.style.setProperty('--padding', helpers.getHeight(this._root));
-    }
-  }
-
-  // устанавливает максимальную высоту списка
-  private _setListHeight(): void {
-    const { list } = this._elements;
-
-    list.style.setProperty('--height', helpers.getHeight(list));
-  }
-
-  // переключает состояние списка
-  private _switchEcl(): void {
+  // переключает состояние блока
+  private _switch(): void {
     this._root.classList.toggle('ecl--active');
+  }
+
+  // устанавливает высоту списка
+  private _setListHeight(): void {
+    this._elements.list.style.setProperty('--height', helpers.getHeight(this._elements.list));
   }
 
   // ------------------------------------
@@ -72,12 +62,12 @@ class Ecl {
   // ------------------------------------
 
   private _handleButtonClick(): void {
-    this._switchEcl();
+    this._switch();
   }
 }
 
 export default function render(): void {
-  document.querySelectorAll('.js-ecl').forEach((el) => new Ecl(el as HTMLElement));
+  document.querySelectorAll('.js-ecl').forEach((el) => new Ecl(el as HTMLDivElement));
 }
 
 render();

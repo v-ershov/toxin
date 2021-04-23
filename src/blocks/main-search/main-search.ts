@@ -1,6 +1,6 @@
 import helpers from '~/ts/helpers';
 
-interface IMainSearchElements {
+interface IElements {
   button: HTMLButtonElement;
   section: HTMLElement;
   asideLastChild: HTMLButtonElement;
@@ -13,9 +13,9 @@ class MainSearch {
 
   private _root: HTMLElement; // корневой html-элемент блока
 
-  private _elements: IMainSearchElements; // элементы блока
+  private _elements: IElements; // элементы блока
 
-  private _isButtonActive: boolean; // если true, то кнопка «Фильтры» активна
+  private _isButtonActive = false; // если true, то кнопка 'Фильтры' активна
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -24,10 +24,9 @@ class MainSearch {
   constructor(root: HTMLElement) {
     this._root = root;
     this._elements = this._findElements();
-    this._isButtonActive = false;
 
-    this._bindEventListeners();
     this._observe();
+    this._bindEventListeners();
   }
 
   // -------------------------------------
@@ -35,7 +34,7 @@ class MainSearch {
   // -------------------------------------
 
   // находит и возвращает элементы блока
-  private _findElements(): IMainSearchElements {
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -59,17 +58,18 @@ class MainSearch {
     header.addEventListener('focusin', this._handleHeaderFocusin.bind(this));
   }
 
-  // создаёт Intersection Observer для последующего переключения состояния кнопки «Фильтры»
+  // создаёт IntersectionObserver для последующего переключения состояния кнопки 'Фильтры'
   private _observe(): void {
     const { button } = this._elements;
+    const bcl = button.classList;
 
     const observer = new IntersectionObserver((entries) => {
       if (!entries[0].isIntersecting) {
         button.disabled = true;
-        button.classList.add('main-search__button--hidden');
+        bcl.add('main-search__button--hidden');
       } else {
         button.disabled = false;
-        button.classList.remove('main-search__button--hidden');
+        bcl.remove('main-search__button--hidden');
       }
     }, {
       rootMargin: '-100% 0px 0px',
@@ -78,8 +78,8 @@ class MainSearch {
     observer.observe(this._root);
   }
 
-  // отображает сайдбар
-  private _showSidebar(): void {
+  // отображает фильтры
+  private _showFilters(): void {
     this._root.classList.add('main-search--filter');
     this._elements.button.classList.add('main-search__button--active');
 
@@ -87,8 +87,8 @@ class MainSearch {
     document.body.style.setProperty('overflow-y', 'hidden');
   }
 
-  // скрывает сайдбар
-  private _hideSidebar(): void {
+  // скрывает фильтры
+  private _hideFilters(): void {
     this._root.classList.remove('main-search--filter');
     this._elements.button.classList.remove('main-search__button--active');
 
@@ -104,9 +104,9 @@ class MainSearch {
     this._isButtonActive = !this._isButtonActive;
 
     if (this._isButtonActive) {
-      this._showSidebar();
+      this._showFilters();
     } else {
-      this._hideSidebar();
+      this._hideFilters();
     }
   }
 

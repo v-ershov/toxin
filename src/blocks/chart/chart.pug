@@ -61,12 +61,12 @@ mixin chart(options)
             - const percent = (item.value / sum) * 100 || 0;
             - const array = `${Math.max(0, percent - gap)} 100`;
             - offset += percent;
-            circle._circle.js-chart__circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
+            circle._circle.-disabled.js-chart__circle(r='15.9', cx='50%', cy='50%', style=`--duration: ${duration}ms; --stroke: url(#${item.gradient[0]}); --array:${array}; --offset:${offset};`, data-value=item.value)
         ._title
           span._sum.js-chart__sum
             | 0
           | #{title}
-        ._tooltip.js-chart__tooltip(style='--top: 0; --left: 0; --borderColor: #000000;')
+        ._tooltip.js-chart__tooltip(style='--top: 0; --left: 0; --border-color: #000000;')
           ._name.js-chart__name
             | #{sections[0].name}
           ._details.js-chart__details(style='--gradient: linear-gradient(#ffffff, #000000);')

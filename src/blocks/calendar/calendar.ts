@@ -35,7 +35,7 @@ class Calendar {
   constructor(root: HTMLDivElement) {
     this._root = root;
     this._elements = this._findElements();
-    this._target = this._getTarget();
+    this._target = this._initTarget();
     this._inst = this._initAirDatepicker();
 
     this._initDates();
@@ -61,14 +61,30 @@ class Calendar {
     };
   }
 
-  // возвращает инпут, к которому будет привязан плагин air-datepicker
-  private _getTarget(): HTMLInputElement {
+  // регистрирует обработчики событий
+  private _bindEventListeners(): void {
+    const {
+      container,
+      buttonApply,
+      buttonReset,
+    } = this._elements;
+
+    this._root.addEventListener('focusout', this._handleRootFocusout.bind(this));
+    this._target.addEventListener('keypress', Calendar._handleTargetKeypress.bind(this));
+    container.addEventListener('mousedown', Calendar._handleContainerMousedown.bind(this));
+    buttonApply.addEventListener('click', this._handleButtonApplyClick.bind(this));
+    buttonReset.addEventListener('click', this._handleButtonResetClick.bind(this));
+  }
+
+  // инициализирует и возвращает инпут, к которому будет привязан плагин air-datepicker
+  private _initTarget(): HTMLInputElement {
     return this._elements.fields[0] || this._elements.fake;
   }
 
   // инициализирует и возвращает экземпляр плагина air-datepicker
   private _initAirDatepicker(): AirDatepickerInstance {
     const $target = $(this._target);
+    const $datepicker = $(this._elements.datepicker);
 
     $target.datepicker({
       dateFormat: 'd M',
@@ -89,7 +105,7 @@ class Calendar {
       },
     });
 
-    $(this._elements.datepicker).append($target.next('.datepicker-inline'));
+    $datepicker.append($target.next('.datepicker-inline'));
 
     return $target.data('datepicker');
   }
@@ -97,33 +113,18 @@ class Calendar {
   // инициализирует начальный диапазон дат
   private _initDates(): void {
     const inst = this._inst;
-    const range = Calendar._getRange(this._root.dataset.dates);
+    const dates = Calendar._getDates(this._root.dataset.dates || '');
 
-    if (range === null) {
+    if (!dates) {
       return;
     }
 
-    const isValidRange = inst.minDate ? range[0] >= inst.minDate : true;
+    const isValidDates = inst.minDate ? dates[0] >= inst.minDate : true;
 
-    if (isValidRange) {
-      inst.selectDate(range);
+    if (isValidDates) {
+      inst.selectDate(dates);
       this._update();
     }
-  }
-
-  // регистрирует обработчики событий
-  private _bindEventListeners(): void {
-    const {
-      container,
-      buttonApply,
-      buttonReset,
-    } = this._elements;
-
-    this._root.addEventListener('focusout', this._handleRootFocusout.bind(this));
-    this._target.addEventListener('keypress', Calendar._handleTargetKeypress.bind(this));
-    container.addEventListener('mousedown', (e) => e.preventDefault());
-    buttonApply.addEventListener('click', this._handleButtonApplyClick.bind(this));
-    buttonReset.addEventListener('click', this._handleButtonResetClick.bind(this));
   }
 
   // сохраняет значение formattedDate события onSelect плагина air-datepicker
@@ -174,9 +175,9 @@ class Calendar {
       return;
     }
 
-    const range = Calendar._getRange(input.value);
+    const dates = Calendar._getDates(input.value);
 
-    if (range === null) {
+    if (!dates) {
       fields.forEach((_field, i) => {
         fields[i].value = '';
       });
@@ -185,23 +186,35 @@ class Calendar {
     }
 
     if (fields[1]) {
-      fields[0].value = `${range[0].toLocaleDateString()}`;
-      fields[1].value = `${range[1].toLocaleDateString()}`;
+      fields[0].value = `${dates[0].toLocaleDateString()}`;
+      fields[1].value = `${dates[1].toLocaleDateString()}`;
     } else {
       fields[0].value = this._formattedDate;
     }
   }
 
   // устанавливает в плагине air-datepicker такой же диапазон дат, как в скрытом инпуте
-  private _setAirDatepickerRange(): void {
+  private _setAirDatepickerDates(): void {
     const inst = this._inst;
-    const range = Calendar._getRange(this._elements.input.value);
+    const dates = Calendar._getDates(this._elements.input.value);
 
     inst.clear();
 
-    if (range !== null) {
-      inst.selectDate(range);
+    if (dates) {
+      inst.selectDate(dates);
     }
+  }
+
+  // снимает фокус с интерактивных элементов
+  private _blurElements(): void {
+    const {
+      buttonApply,
+      buttonReset,
+    } = this._elements;
+
+    this._target.blur();
+    buttonApply.blur();
+    buttonReset.blur();
   }
 
   // анимирует контейнер
@@ -219,30 +232,18 @@ class Calendar {
     }, this._getContainerDuration());
   }
 
-  // снимает фокус с интерактивных элементов
-  private _blurElements(): void {
-    const {
-      buttonApply,
-      buttonReset,
-    } = this._elements;
-
-    this._target.blur();
-    buttonApply.blur();
-    buttonReset.blur();
-  }
-
   // возвращает продолжительность анимации контейнера
   private _getContainerDuration(): number {
     return parseFloat(getComputedStyle(this._elements.container).animationDuration) * 1000;
   }
 
   // возвращает диапазон дат из строки вида 'YYYY-MM-DD/YYYY-MM-DD'
-  private static _getRange(dates: string | undefined): [Date, Date] | null {
-    if (!dates || dates.length !== 21) {
+  private static _getDates(text: string): [Date, Date] | null {
+    if (text.length !== 21) {
       return null;
     }
 
-    const split = dates.split('/');
+    const split = text.split('/');
 
     if (split.length !== 2) {
       return null;
@@ -266,7 +267,7 @@ class Calendar {
 
   private _handleRootFocusout(event: FocusEvent): void {
     if (!this._root.contains(event.relatedTarget as Node)) {
-      this._setAirDatepickerRange();
+      this._setAirDatepickerDates();
     }
   }
 
@@ -274,6 +275,10 @@ class Calendar {
     if (event.key === 'Enter') {
       event.preventDefault();
     }
+  }
+
+  private static _handleContainerMousedown(event: MouseEvent): void {
+    event.preventDefault();
   }
 
   private _handleButtonApplyClick(): void {

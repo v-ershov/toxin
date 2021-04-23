@@ -27,12 +27,18 @@
   &__circle {
     stroke: var(--stroke);
     stroke-width: 1.25;
-    stroke-dasharray: 0 100;
+    stroke-dasharray: var(--array);
+    stroke-dashoffset: var(--offset);
     transition:
       opacity $time-primary,
       stroke-width $time-primary,
       stroke-dasharray var(--duration),
       stroke-dashoffset var(--duration);
+
+    &--disabled {
+      stroke-dasharray: 0 100;
+      stroke-dashoffset: 0;
+    }
 
     &--semitransparent {
       opacity: 0.2;
@@ -41,11 +47,6 @@
     &--wide {
       stroke-width: 5;
     }
-  }
-
-  &__svg--active &__circle {
-    stroke-dasharray: var(--array);
-    stroke-dashoffset: var(--offset);
   }
 
   &__title {
@@ -74,7 +75,7 @@
     top: var(--top);
     left: var(--left);
     z-index: 30;
-    border: 1px solid var(--borderColor);
+    border: 1px solid var(--border-color);
     visibility: hidden;
     transform: translate(-5%, -125%);
     opacity: 0;

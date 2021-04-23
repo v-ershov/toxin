@@ -1,7 +1,7 @@
 import 'slick-carousel/slick/slick.min';
 import 'slick-carousel/slick/slick.css';
 
-interface IRoomElements {
+interface IElements {
   slider: HTMLDivElement;
   link: HTMLAnchorElement;
 }
@@ -11,9 +11,9 @@ class Room {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLDivElement; // корневой html-элемент карточки
+  private _root: HTMLDivElement; // корневой html-элемент блока
 
-  private _elements: IRoomElements; // элементы карточки
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -23,17 +23,17 @@ class Room {
     this._root = root;
     this._elements = this._findElements();
 
-    this._bindEventListeners();
     this._initSlickCarousel();
     this._disableTabing();
+    this._bindEventListeners();
   }
 
   // -------------------------------------
   // ---------- PRIVATE METHODS ----------
   // -------------------------------------
 
-  // находит и возвращает элементы карточки
-  private _findElements(): IRoomElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -44,7 +44,9 @@ class Room {
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
-    this._elements.link.addEventListener('keydown', this._handleLinkKeydown.bind(this));
+    const { link } = this._elements;
+
+    link.addEventListener('keydown', this._handleLinkKeydown.bind(this));
   }
 
   // инициализирует экземпляр плагина slick-carousel
@@ -70,13 +72,13 @@ class Room {
     const $slider = $(this._elements.slider);
 
     switch (event.key) {
-      case 'ArrowLeft':
-        event.preventDefault();
-        $slider.slick('slickPrev');
-        break;
       case 'ArrowRight':
         event.preventDefault();
         $slider.slick('slickNext');
+        break;
+      case 'ArrowLeft':
+        event.preventDefault();
+        $slider.slick('slickPrev');
         break;
       default:
         break;

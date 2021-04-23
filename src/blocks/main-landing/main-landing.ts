@@ -1,4 +1,4 @@
-interface IMainLandingElements {
+interface IElements {
   slideshow: HTMLDivElement;
   slides: NodeListOf<HTMLDivElement>;
 }
@@ -10,7 +10,7 @@ class MainLanding {
 
   private _root: HTMLElement; // корневой html-элемент блока
 
-  private _elements: IMainLandingElements; // элементы блока
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -28,7 +28,7 @@ class MainLanding {
   // -------------------------------------
 
   // находит и возвращает элементы блока
-  private _findElements(): IMainLandingElements {
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -43,15 +43,15 @@ class MainLanding {
     window.addEventListener('scroll', this._handleWindowScroll.bind(this));
   }
 
-  // включает слайды блока
+  // включает слайды слайдшоу
   private _enableSlides(): void {
     this._elements.slides.forEach((slide) => {
       slide.classList.remove('main-landing__slide--disabled');
     });
   }
 
-  // создаёт параллакс-эффект для слайдшоу блока
-  private _createParallax(): void {
+  // создаёт параллакс-эффект для слайдшоу
+  private _makeParallax(): void {
     this._elements.slideshow.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 
@@ -64,7 +64,7 @@ class MainLanding {
   }
 
   private _handleWindowScroll(): void {
-    this._createParallax();
+    this._makeParallax();
   }
 }
 

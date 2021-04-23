@@ -3,7 +3,7 @@ class Preloader {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLDivElement; // корневой html-элемент прелоадера
+  private _root: HTMLDivElement; // корневой html-элемент блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -24,8 +24,8 @@ class Preloader {
     window.addEventListener('load', this._handleWindowLoad.bind(this));
   }
 
-  // отключает прелоадер
-  private _disablePreloader(): void {
+  // отключает блок
+  private _disable(): void {
     this._root.classList.add('preloader--disabled');
   }
 
@@ -34,7 +34,7 @@ class Preloader {
   // ------------------------------------
 
   private _handleWindowLoad(): void {
-    this._disablePreloader();
+    this._disable();
   }
 }
 

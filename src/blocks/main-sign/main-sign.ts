@@ -1,4 +1,4 @@
-interface IMainSignElements {
+interface IElements {
   background: HTMLDivElement;
 }
 
@@ -9,7 +9,7 @@ class MainSign {
 
   private _root: HTMLElement; // корневой html-элемент блока
 
-  private _elements: IMainSignElements; // элементы блока
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -27,9 +27,11 @@ class MainSign {
   // -------------------------------------
 
   // находит и возвращает элементы блока
-  private _findElements(): IMainSignElements {
+  private _findElements(): IElements {
+    const r = this._root;
+
     return {
-      background: this._root.querySelector('.js-main-sign__background') as HTMLDivElement,
+      background: r.querySelector('.js-main-sign__background') as HTMLDivElement,
     };
   }
 
@@ -38,8 +40,8 @@ class MainSign {
     window.addEventListener('scroll', this._handleWindowScroll.bind(this));
   }
 
-  // создаёт параллакс-эффект для фонового изображения блока
-  private _createParallax(): void {
+  // создаёт параллакс-эффект для фонового изображения
+  private _makeParallax(): void {
     this._elements.background.style.setProperty('--translateY', `${window.pageYOffset / 2}px`);
   }
 
@@ -48,7 +50,7 @@ class MainSign {
   // ------------------------------------
 
   private _handleWindowScroll(): void {
-    this._createParallax();
+    this._makeParallax();
   }
 }
 

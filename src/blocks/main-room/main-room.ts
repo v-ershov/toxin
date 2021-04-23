@@ -1,7 +1,7 @@
 import '@fancyapps/fancybox/dist/jquery.fancybox.min';
 import '@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 
-interface IMainRoomElements {
+interface IElements {
   links: NodeListOf<HTMLAnchorElement>;
 }
 
@@ -12,7 +12,7 @@ class MainRoom {
 
   private _root: HTMLElement; // корневой html-элемент блока
 
-  private _elements: IMainRoomElements; // элементы блока
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -30,9 +30,11 @@ class MainRoom {
   // -------------------------------------
 
   // находит и возвращает элементы блока
-  private _findElements(): IMainRoomElements {
+  private _findElements(): IElements {
+    const r = this._root;
+
     return {
-      links: this._root.querySelectorAll('[data-fancybox="gallery"]'),
+      links: r.querySelectorAll('[data-fancybox="gallery"]'),
     };
   }
 

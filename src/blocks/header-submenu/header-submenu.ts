@@ -1,6 +1,6 @@
 import helpers from '~/ts/helpers';
 
-interface IHeaderSubmenuElements {
+interface IElements {
   linkMain: HTMLAnchorElement;
   list: HTMLUListElement;
 }
@@ -10,9 +10,9 @@ class HeaderSubmenu {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLDivElement; // корневой html-элемент подменю
+  private _root: HTMLDivElement; // корневой html-элемент блока
 
-  private _elements: IHeaderSubmenuElements; // элементы подменю
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -22,16 +22,16 @@ class HeaderSubmenu {
     this._root = root;
     this._elements = this._findElements();
 
-    this._bindEventListeners();
     this._setListHeight();
+    this._bindEventListeners();
   }
 
   // -------------------------------------
   // ---------- PRIVATE METHODS ----------
   // -------------------------------------
 
-  // находит и возвращает элементы подменю
-  private _findElements(): IHeaderSubmenuElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -49,14 +49,12 @@ class HeaderSubmenu {
 
     window.addEventListener('resize', this._handleWindowResize.bind(this));
     linkMain.addEventListener('click', HeaderSubmenu._handleLinkMainClick.bind(this));
-    list.addEventListener('mousedown', (e) => e.preventDefault());
+    list.addEventListener('mousedown', HeaderSubmenu._handleListMousedown.bind(this));
   }
 
-  // устанавливает максимальную высоту списка подменю
+  // устанавливает высоту списка
   private _setListHeight(): void {
-    const { list } = this._elements;
-
-    list.style.setProperty('--height', helpers.getHeight(list));
+    this._elements.list.style.setProperty('--height', helpers.getHeight(this._elements.list));
   }
 
   // ------------------------------------
@@ -71,6 +69,10 @@ class HeaderSubmenu {
     if (helpers.isViewportWider(858)) {
       event.preventDefault();
     }
+  }
+
+  private static _handleListMousedown(event: MouseEvent): void {
+    event.preventDefault();
   }
 }
 

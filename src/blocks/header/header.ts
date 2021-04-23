@@ -1,6 +1,6 @@
 import helpers from '~/ts/helpers';
 
-interface IHeaderElements {
+interface IElements {
   hamburger: HTMLButtonElement;
   nav: HTMLElement;
   list: HTMLUListElement;
@@ -11,9 +11,9 @@ class Header {
   // ---------- FIELDS ----------
   // ----------------------------
 
-  private _root: HTMLElement; // корневой html-элемент хедера
+  private _root: HTMLElement; // корневой html-элемент блока
 
-  private _elements: IHeaderElements; // элементы хедера
+  private _elements: IElements; // элементы блока
 
   // ---------------------------------
   // ---------- CONSTRUCTOR ----------
@@ -23,16 +23,16 @@ class Header {
     this._root = root;
     this._elements = this._findElements();
 
-    this._bindEventListeners();
     this._setNavHeight();
+    this._bindEventListeners();
   }
 
   // -------------------------------------
   // ---------- PRIVATE METHODS ----------
   // -------------------------------------
 
-  // находит и возвращает элементы хедера
-  private _findElements(): IHeaderElements {
+  // находит и возвращает элементы блока
+  private _findElements(): IElements {
     const r = this._root;
 
     return {
@@ -44,28 +44,25 @@ class Header {
 
   // регистрирует обработчики событий
   private _bindEventListeners(): void {
+    const { hamburger } = this._elements;
+
     window.addEventListener('resize', this._handleWindowResize.bind(this));
     document.addEventListener('click', this._handleDocumentClick.bind(this));
-    this._elements.hamburger.addEventListener('click', this._handleHamburgerClick.bind(this));
+    hamburger.addEventListener('click', this._handleHamburgerClick.bind(this));
   }
 
-  // устанавливает максимальную высоту навигационного меню
+  // устанавливает высоту навигационного меню
   private _setNavHeight(): void {
-    const {
-      nav,
-      list,
-    } = this._elements;
-
-    nav.style.setProperty('--height', helpers.getHeight(list));
+    this._elements.nav.style.setProperty('--height', helpers.getHeight(this._elements.list));
   }
 
   // переключает состояние гамбургер-меню
-  private _switchHamburger(): void {
+  private _switchHamburgerMenu(): void {
     this._elements.hamburger.classList.toggle('header__hamburger--active');
   }
 
   // скрывает гамбургер-меню
-  private _hideHamburger(): void {
+  private _hideHamburgerMenu(): void {
     this._elements.hamburger.classList.remove('header__hamburger--active');
   }
 
@@ -78,15 +75,13 @@ class Header {
   }
 
   private _handleDocumentClick(event: MouseEvent): void {
-    if (this._root.contains(event.target as HTMLElement)) {
-      return;
+    if (!this._root.contains(event.target as Node)) {
+      this._hideHamburgerMenu();
     }
-
-    this._hideHamburger();
   }
 
   private _handleHamburgerClick(): void {
-    this._switchHamburger();
+    this._switchHamburgerMenu();
   }
 }
 

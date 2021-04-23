@@ -31,14 +31,11 @@ class ButtonLike {
 
   // находит и возвращает элементы блока
   private _findElements(): IElements {
-    return {
-      numbers: this._root.querySelector('.js-button-like__numbers') as HTMLSpanElement,
-    };
-  }
+    const r = this._root;
 
-  // инициализирует и возвращает текущее количество лайков
-  private _initLikes(): number {
-    return +((this._elements.numbers.firstChild as ChildNode).textContent as string);
+    return {
+      numbers: r.querySelector('.js-button-like__numbers') as HTMLSpanElement,
+    };
   }
 
   // регистрирует обработчики событий
@@ -46,13 +43,22 @@ class ButtonLike {
     this._root.addEventListener('click', this._handleRootClick.bind(this));
   }
 
+  // инициализирует и возвращает текущее количество лайков
+  private _initLikes(): number {
+    return +((this._elements.numbers.firstChild as ChildNode).textContent as string);
+  }
+
   // переключает состояние блока
   private _switch(): void {
     const rcl = this._root.classList;
 
-    rcl.toggle('button-like--active');
-
-    this._setLikes(this._likes + (rcl.contains('button-like--active') ? 1 : -1));
+    if (!rcl.contains('button-like--active')) {
+      rcl.add('button-like--active');
+      this._setLikes(this._likes + 1);
+    } else {
+      rcl.remove('button-like--active');
+      this._setLikes(this._likes - 1);
+    }
   }
 
   // устанавливает текущее количество лайков
@@ -75,7 +81,7 @@ class ButtonLike {
     const { numbers } = this._elements;
     const ncl = numbers.classList;
 
-    numbers.prepend(ButtonLike._createElement(likes));
+    numbers.prepend(ButtonLike._createNumber(likes));
     ncl.add('button-like__numbers--increase');
 
     setTimeout(() => {
@@ -96,7 +102,7 @@ class ButtonLike {
     const { numbers } = this._elements;
     const ncl = numbers.classList;
 
-    numbers.append(ButtonLike._createElement(likes));
+    numbers.append(ButtonLike._createNumber(likes));
 
     setTimeout(() => {
       ncl.add('button-like__numbers--anim-decrease');
@@ -113,8 +119,8 @@ class ButtonLike {
     return parseFloat(getComputedStyle(this._root).transitionDuration) * 1000;
   }
 
-  // создаёт элемент с указанным количеством лайков
-  private static _createElement(likes: number): HTMLSpanElement {
+  // создаёт и возвращает элемент 'number' с указанным количеством лайков
+  private static _createNumber(likes: number): HTMLSpanElement {
     const el = document.createElement('span');
 
     el.classList.add('button-like__number');
