@@ -8,12 +8,12 @@
   min-height: rem(700);
 
   @include screen-sm {
-    min-height: calc(100vh - #{$height-header * 2});
+    min-height: calc(100vh - #{$header-height * 2});
   }
 
   &__background {
     position: absolute;
-    top: -$height-header;
+    top: -$header-height;
     right: 0;
     bottom: 0;
     left: 0;

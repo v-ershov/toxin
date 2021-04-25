@@ -132,10 +132,10 @@
 
   &__form {
     position: sticky;
-    top: calc(#{$height-header} + #{rem(70)});
+    top: calc(#{$header-height} + #{rem(70)});
 
     @include screen-xxl {
-      top: calc(#{$height-header} + #{rem(50)});
+      top: calc(#{$header-height} + #{rem(50)});
     }
   }
 }

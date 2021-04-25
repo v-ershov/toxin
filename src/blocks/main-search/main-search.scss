@@ -154,10 +154,10 @@ $mainSearch-button-size: rem(50);
 
   &__aside {
     position: sticky;
-    top: $height-header;
+    top: $header-height;
     flex-shrink: 0;
     overflow-y: scroll;
-    max-height: calc(100vh - #{$height-header});
+    max-height: calc(100vh - #{$header-height});
     padding: 0 rem(20) 0 rem(10);
     transform: translateX(rem(-10));
     scrollbar-width: none;
@@ -208,7 +208,7 @@ $mainSearch-button-size: rem(50);
     padding: rem(30) 0 rem(70);
 
     @include screen-lg {
-      min-height: calc(100vh - #{$height-header});
+      min-height: calc(100vh - #{$header-height});
       margin-left: 0;
     }
   }

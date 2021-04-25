@@ -18,7 +18,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
   }
 
   &__slideshow {
-    top: -$height-header;
+    top: -$header-height;
     z-index: -1;
     overflow: hidden;
     transform: translateY(var(--translateY));
@@ -110,7 +110,7 @@ $mainlanding-color-shadow: rgba($color-black, 0.5);
 
     @include screen-sm {
       max-width: rem(420);
-      min-height: calc(100vh - #{$height-header * 2});
+      min-height: calc(100vh - #{$header-height * 2});
     }
   }
 
