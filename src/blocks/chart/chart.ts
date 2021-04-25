@@ -275,8 +275,10 @@ class Chart {
   // ------------------------------------
 
   private _handleWindowLoad(): void {
-    this._enableCircles();
-    this._redrawActiveSum();
+    setTimeout(() => {
+      this._enableCircles();
+      this._redrawActiveSum();
+    }, this._getDuration() / 2);
   }
 
   private _handleCircleMouseOver(i: number): void {
