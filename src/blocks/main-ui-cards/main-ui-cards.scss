@@ -16,9 +16,10 @@
     flex-wrap: wrap;
     align-content: space-between;
     max-height: rem(1200);
-    margin: rem(-40) 0 0;
+    margin: 0;
     padding: 0;
     list-style-type: none;
+    transform: translateY(rem(-40));
 
     @include screen-xxl {
       max-height: rem(1800);
