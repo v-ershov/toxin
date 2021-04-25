@@ -11,7 +11,7 @@ mixin form-filter
         li._item.-field
           +calendar({
             type: 'field',
-            dates: '2021-03-22/2021-03-26',
+            dates: '2021-08-19/2021-08-23',
             labelFirst: 'Даты пребывания в отеле',
             attrsFieldFirst: {
               required: true,
@@ -47,7 +47,7 @@ mixin form-filter
       +slider-range({
         labelPrimary: 'Диапазон цены',
         min: 0,
-        max: 15000,
+        max: 16000,
         start: 5000,
         end: 10000,
         step: 100,
@@ -56,7 +56,7 @@ mixin form-filter
       })
     fieldset._fieldset
       legend._legend
-        | Checkbox Buttons
+        | Правила дома
       ul._list
         li._item
           +button-option({

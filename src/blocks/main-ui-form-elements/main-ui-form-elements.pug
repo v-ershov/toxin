@@ -64,7 +64,6 @@ mixin main-ui-form-elements
                 ],
                 words: ['гость', 'гостя', 'гостей'],
                 labelPrimary: 'Dropdown',
-                labelSecondary: 'Default',
                 attrsField: {
                   placeholder: 'Сколько гостей',
                 },
@@ -72,7 +71,6 @@ mixin main-ui-form-elements
             li._item
               +field({
                 labelPrimary: 'Masked Text Field',
-                labelSecondary: 'Default',
                 attrs: {
                   placeholder: 'ДД.ММ.ГГГГ',
                   'data-mask': '00.00.0000',
@@ -85,14 +83,14 @@ mixin main-ui-form-elements
             li._item
               +calendar({
                 type: 'fields',
-                dates: '2021-03-22/2021-03-26',
+                dates: '2021-08-19/2021-08-23',
                 labelFirst: 'Date Dropdown',
                 labelSecond: 'Date Dropdown',
               })
             li._item.-width-266.-margin-40
               +calendar({
                 type: 'field',
-                dates: '2021-03-22/2021-03-26',
+                dates: '2021-08-19/2021-08-23',
                 labelFirst: 'Filter Date Dropdown',
               })
         section._subsection
@@ -207,7 +205,7 @@ mixin main-ui-form-elements
               +slider-range({
                 labelPrimary: 'Range Slider',
                 min: 0,
-                max: 15000,
+                max: 16000,
                 start: 5000,
                 end: 10000,
                 step: 100,

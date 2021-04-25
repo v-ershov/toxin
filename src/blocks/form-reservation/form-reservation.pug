@@ -23,7 +23,7 @@ mixin form-reservation
     ._row
       +calendar({
         type: 'fields',
-        dates: '2021-03-22/2021-03-26',
+        dates: '2021-08-19/2021-08-23',
         labelFirst: 'Прибытие',
         labelSecond: 'Выезд',
         attrsFieldFirst: {
@@ -64,25 +64,27 @@ mixin form-reservation
         tr._tr
           td._td
             | 9&nbsp;990₽ х 4 суток
-          td._td.-tooltip
+          td._td
           td._td.-price
             | 39&nbsp;960₽
         tr._tr
           td._td
             | Сбор за услуги: скидка 2&nbsp;179₽
-          td._td.-tooltip
-            +tooltip({
-              text: 'Скидка на первую бронь за подписку',
-            })
+          td._td
+            span._tooltip
+              +tooltip({
+                text: 'Скидка на первую бронь за подписку',
+              })
           td._td.-price
             | 0₽
         tr._tr
           td._td
-            | Сбор за дополнительные услуги
-          td._td.-tooltip
-            +tooltip({
-              text: 'Чаевые для персонала уже включены в счёт',
-            })
+            | Сбор за доп. услуги
+          td._td
+            span._tooltip
+              +tooltip({
+                text: 'Чаевые для персонала уже включены в счёт',
+              })
           td._td.-price
             | 300₽
       tfoot._tfoot

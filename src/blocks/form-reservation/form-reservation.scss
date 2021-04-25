@@ -19,26 +19,27 @@
   &__table {
     width: 100%;
     margin-top: rem(6);
-    border-spacing: 0 rem(14);
+    border-spacing: 0 rem(10);
   }
 
   &__td {
     vertical-align: top;
-    line-height: $line-height-secondary;
-
-    &--tooltip {
-      padding: 0 rem(5);
-    }
+    line-height: 1.6;
 
     &--price {
       text-align: right;
     }
 
     &--total {
-      padding-top: rem(14);
+      padding-top: rem(36);
 
       @include heading('h2');
     }
+  }
+
+  &__tooltip {
+    display: inline-flex;
+    vertical-align: top;
   }
 
   &__dots {
@@ -53,6 +54,6 @@
   }
 
   &__button {
-    margin-top: rem(6);
+    margin-top: rem(10);
   }
 }

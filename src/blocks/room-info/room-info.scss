@@ -4,7 +4,6 @@
 .room-info {
   color: $color-black;
   font-weight: bold;
-  font-family: $font-family-secondary;
   line-height: $line-height-secondary;
 
   &__number {
@@ -16,6 +15,7 @@
   }
 
   &__tag {
+    margin-left: rem(8);
     color: $color-primary-1;
     font-size: rem(12);
     font-family: $font-family-primary;

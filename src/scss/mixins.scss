@@ -62,17 +62,14 @@
 @mixin heading($tag) {
   @if $tag == 'h1' {
     font-size: rem(24);
-    font-family: $font-family-secondary;
   }
 
   @if $tag == 'h2' {
     font-size: rem(19);
-    font-family: $font-family-secondary;
   }
 
   @if $tag == 'h3' {
     font-size: rem(12);
-    font-family: $font-family-primary;
     text-transform: uppercase;
   }
 

@@ -4,6 +4,7 @@
 
 .tooltip {
   position: relative;
+  display: inline-flex;
   width: rem(20);
   height: rem(20);
   border: 1px solid $color-gray-25p;
@@ -41,6 +42,7 @@
     bottom: rem(26);
     left: 50%;
     z-index: 30;
+    display: inline-flex;
     width: rem(160);
     background-image: $gradient-primary;
     color: $color-white;

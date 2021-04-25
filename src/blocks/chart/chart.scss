@@ -12,6 +12,7 @@
 
   &__diagram {
     position: relative;
+    padding-bottom: rem(3);
     font-size: 0;
   }
 
@@ -51,7 +52,7 @@
 
   &__title {
     position: absolute;
-    top: 47.5%;
+    top: 46.5%;
     left: 50%;
     display: flex;
     flex-direction: column;
@@ -67,7 +68,7 @@
 
   &__sum {
     font-size: rem(24);
-    font-family: $font-family-secondary;
+    font-family: $font-family-mono;
   }
 
   &__tooltip {
