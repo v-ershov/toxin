@@ -19,7 +19,7 @@
     }
   }
 
-  &--ui {
+  &--theme-ui {
     padding: rem(150) 0;
 
     @include screen-sm {
@@ -31,7 +31,7 @@
     }
   }
 
-  &--gray {
+  &--background-gray {
     background-color: $color-gray-5p;
   }
 

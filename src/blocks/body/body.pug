@@ -13,7 +13,7 @@ mixin body(options)
     } = Object.assign(defaults, options);
 
   body.body.-unanimated.js-body(class=getModifiers('body', mods))
-    if mods.includes('ui')
+    if mods.includes('theme-ui')
       a._link(href='/')
         | На главную
     block
