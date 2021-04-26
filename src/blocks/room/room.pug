@@ -39,7 +39,7 @@ mixin room(options)
       each image in images
         img._img(src=require(`~/assets/content/rooms/${image[0]}`).default, alt=image[1])
     ._info
-      ._row.-baseline
+      ._row.-alignment--baseline
         ._cell
           +room-info({
             number,
