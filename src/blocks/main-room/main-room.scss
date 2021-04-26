@@ -40,6 +40,12 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
+    transition: transform $time-primary;
+  }
+
+  &__link:hover &__img,
+  &__link:focus &__img {
+    transform: scale(1.015);
   }
 
   &__container {
