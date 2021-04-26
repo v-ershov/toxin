@@ -19,7 +19,7 @@ mixin ui-color(options)
     } = Object.assign(defaults, options);
 
   .ui-color
-    ._color(class=`ui-color__color--${color}`)
+    ._color(class=`ui-color__color--background--${color}`)
     ._info
       ._name
         | #{name}
