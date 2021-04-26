@@ -37,20 +37,20 @@
       opacity: 0.5;
     }
 
-    &--twitter {
+    &--image--twitter {
       &::before {
         padding: 0;
         background-image: url('./img/socials-twitter.svg');
       }
     }
 
-    &--facebook {
+    &--image--facebook {
       &::before {
         background-image: url('./img/socials-facebook.svg');
       }
     }
 
-    &--instagram {
+    &--image--instagram {
       &::before {
         background-image: url('./img/socials-instagram.svg');
       }
