@@ -16,17 +16,17 @@
       min-width: rem(60);
     }
 
-    &--h1 {
+    &--theme--h1 {
       font-size: rem(24);
       line-height: $line-height-secondary;
     }
 
-    &--h2 {
+    &--theme--h2 {
       font-size: rem(19);
       line-height: $line-height-secondary;
     }
 
-    &--h3 {
+    &--theme--h3 {
       font-size: rem(12);
       line-height: $line-height-secondary;
     }
@@ -35,15 +35,15 @@
   &__text {
     margin-left: rem(30);
 
-    &--h1 {
+    &--theme--h1 {
       @include heading('h1');
     }
 
-    &--h2 {
+    &--theme--h2 {
       @include heading('h2');
     }
 
-    &--h3 {
+    &--theme--h3 {
       @include heading('h3');
     }
   }
