@@ -220,40 +220,40 @@ mixin main-ui-form-elements
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    mods: ['fill'],
+                    mods: ['filled'],
                   })
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    mods: ['fill', 'hover'],
-                  })
-            li._item.-margin-30
-              ul._list.-flex
-                li._item.-flex
-                  +button({
-                    text: 'Click Me',
-                  })
-                li._item.-flex
-                  +button({
-                    text: 'Click Me',
-                    mods: ['hover'],
+                    mods: ['filled', 'state-hover'],
                   })
             li._item.-margin-30
               ul._list.-flex
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    mods: ['bodyless'],
                   })
                 li._item.-flex
                   +button({
                     text: 'Click Me',
-                    mods: ['bodyless', 'text-gray', 'hover'],
+                    mods: ['state-hover'],
+                  })
+            li._item.-margin-30
+              ul._list.-flex
+                li._item.-flex
+                  +button({
+                    text: 'Click Me',
+                    mods: ['bodiless'],
+                  })
+                li._item.-flex
+                  +button({
+                    text: 'Click Me',
+                    mods: ['bodiless', 'color-gray'],
                   })
             li._item.-margin-30
               +button({
                 text: 'Перейти к оплате',
-                mods: ['fill', 'wide'],
+                mods: ['filled', 'wide'],
               })
         section._subsection
           h3._h3

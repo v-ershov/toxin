@@ -50,7 +50,7 @@
 
   &:hover,
   &:focus,
-  &--hover {
+  &--state-hover {
     outline: 0;
 
     &::before {
@@ -58,14 +58,14 @@
     }
   }
 
-  &--fill {
+  &--filled {
     background-image: $gradient-primary;
     background-clip: border-box;
     background-origin: border-box;
     color: $color-white;
   }
 
-  &--compact {
+  &--thin {
     min-width: auto;
     padding: rem(7.5) rem(18);
   }
@@ -88,13 +88,13 @@
     }
   }
 
-  &--fill#{&}--wide {
+  &--filled#{&}--wide {
     &::after {
       background-image: $gradient-white;
     }
   }
 
-  &--bodyless {
+  &--bodiless {
     width: auto;
     min-width: auto;
     padding: 0;
@@ -115,7 +115,7 @@
     }
   }
 
-  &--text-gray {
+  &--color-gray {
     color: $color-gray-50p;
   }
 }
