@@ -122,6 +122,10 @@
     margin-top: rem(20);
   }
 
+  &__p {
+    @include paragraph;
+  }
+
   &__aside {
     flex-shrink: 0;
     max-width: rem(380);

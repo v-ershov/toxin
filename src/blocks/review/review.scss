@@ -1,5 +1,6 @@
 @import '~/scss/functions';
 @import '~/scss/vars';
+@import '~/scss/mixins';
 
 .review {
   &__row {
@@ -46,5 +47,9 @@
 
   &__blockquote {
     margin: 0;
+  }
+
+  &__p {
+    @include paragraph;
   }
 }

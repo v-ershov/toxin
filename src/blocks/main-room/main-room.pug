@@ -2,7 +2,6 @@ include /blocks/advantages/advantages.pug
 include /blocks/chart/chart.pug
 include /blocks/form-reservation/form-reservation.pug
 include /blocks/list-bullet/list-bullet.pug
-include /blocks/paragraph/paragraph.pug
 include /blocks/review/review.pug
 
 mixin main-room
@@ -100,9 +99,8 @@ mixin main-room
         article._article
           h2._h2
             | Отмена
-          +paragraph({
-            text: 'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.',
-          })
+          p._p
+            | Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
       aside._aside
         ._form
           +form-reservation

@@ -8,7 +8,6 @@
 //- 🞂 isLike: boolean  - если true, то кнопка отзыва активна
 
 include /blocks/button-like/button-like.pug
-include /blocks/paragraph/paragraph.pug
 
 mixin review(options)
   -
@@ -47,13 +46,12 @@ mixin review(options)
           | #{time}
     ._row
       ._cell.-small.-margin
-        +button-like({
-          number: likes,
-          mods: isLike ? ['active'] : [],
-        })
+      +button-like({
+        number: likes,
+        mods: isLike ? ['active'] : [],
+      })
       ._cell
         blockquote._blockquote
           each p in text
-            +paragraph({
-              text: p,
-            })
+            p._p
+              | #{p}
