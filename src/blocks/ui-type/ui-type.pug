@@ -15,8 +15,8 @@ mixin ui-type(options)
       text,
     } = Object.assign(defaults, options);
 
-  .ui-type
-    ._tag(class=`ui-type__tag--theme--${tag.toLowerCase()}`)
+  .ui-type(class=`ui-type--theme--${tag.toLowerCase()}`)
+    ._tag
       | #{tag}
-    ._text(class=`ui-type__text--theme--${tag.toLowerCase()}`)
+    ._text
       | #{text}
