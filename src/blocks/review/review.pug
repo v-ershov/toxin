@@ -45,11 +45,11 @@ mixin review(options)
         time._time(datetime=datetime)
           | #{time}
     ._row
-      ._cell.-small.-margin
-      +button-like({
-        number: likes,
-        mods: isLike ? ['active'] : [],
-      })
+      ._cell.-small
+        +button-like({
+          number: likes,
+          mods: isLike ? ['active'] : [],
+        })
       ._cell
         blockquote._blockquote
           each p in text
