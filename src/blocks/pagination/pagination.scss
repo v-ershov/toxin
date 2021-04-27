@@ -37,8 +37,8 @@
       outline: 0;
     }
 
-    &--prev,
-    &--next {
+    &--theme--back,
+    &--theme--forward {
       background-image: $gradient-secondary;
 
       @include hidden-text;
@@ -74,19 +74,19 @@
       }
     }
 
-    &--prev {
+    &--theme--back {
       &::after {
         content: 'arrow_back';
       }
     }
 
-    &--next {
+    &--theme--forward {
       &::after {
         content: 'arrow_forward';
       }
     }
 
-    &--current {
+    &--theme--current {
       background-image: $gradient-primary;
       color: $color-white;
       font-weight: bold;
