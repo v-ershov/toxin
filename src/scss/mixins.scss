@@ -78,6 +78,15 @@
   line-height: $line-height-secondary;
 }
 
+// Paragraph
+@mixin paragraph {
+  margin: rem(6) 0 0;
+
+  &:first-child {
+    margin: 0;
+  }
+}
+
 // Form
 @mixin form {
   padding: rem(40) rem(30) rem(30);
