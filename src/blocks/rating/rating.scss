@@ -16,7 +16,7 @@
       @include material-icons(rem(24), transparent);
     }
 
-    &--border {
+    &--bordered {
       &::before {
         content: 'star_border';
       }
