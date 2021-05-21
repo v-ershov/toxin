@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="important, keywords">
+    <meta name="description" content="short description">
+    <title>UI Form Elements | TOXIN</title>
+  <link href="./css/app.css" rel="stylesheet"></head>
+  <body class="body body--unanimated js-body body--theme-ui"><a class="body__link" href="./">На главную</a>
+    <main class="main-ui-form-elements">
+      <div class="main-ui-form-elements__container">
+        <h1 class="main-ui-form-elements__h1 visually-hidden">Form Elements</h1>
+        <section class="main-ui-form-elements__section">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Fields</h2>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">Text Fields</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <label class="label"><span class="label__container"><span class="label__primary">Text Field </span><span class="label__secondary js-label__secondary">Default</span></span><span class="field">
+                    <input class="field__input js-field__input" type="email" placeholder="Email"></span>
+                </label>
+              </li>
+              <li class="main-ui-form-elements__item">
+                <label class="label"><span class="label__container"><span class="label__primary">Text Field </span><span class="label__secondary js-label__secondary">Hover / Focus</span></span><span class="field">
+                    <input class="field__input js-field__input" placeholder="Enter text" value="This is pretty awesome"></span>
+                </label>
+              </li>
+              <li class="main-ui-form-elements__item">
+                <div class="dropdown js-dropdown">
+                  <label class="label"><span class="label__primary">Dropdown</span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Сколько гостей" tabindex="-1" readonly data-words="гость, гостя, гостей"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">взрослые</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">дети</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="младенец, младенца, младенцев">
+                        <div class="dropdown__name">младенцы</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item">
+                <label class="label"><span class="label__primary">Masked Text Field</span><span class="field">
+                    <input class="field__input js-field__input" placeholder="ДД.ММ.ГГГГ" data-mask="00.00.0000"></span>
+                </label>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">Date Dropdowns</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <div class="calendar js-calendar" data-dates="2021-08-19/2021-08-23">
+                  <input class="calendar__input js-calendar__input" type="hidden">
+                  <div class="calendar__fields">
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Date Dropdown</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" placeholder="ДД.ММ.ГГГГ" readonly></span>
+                      </label>
+                    </div>
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Date Dropdown</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" placeholder="ДД.ММ.ГГГГ" tabindex="-1" readonly></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="calendar__container js-calendar__container calendar__container--hidden">
+                    <div class="calendar__datepicker js-calendar__datepicker"></div>
+                    <div class="calendar__buttons">
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                      </div>
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266 main-ui-form-elements__item--margin-40">
+                <div class="calendar js-calendar" data-dates="2021-08-19/2021-08-23">
+                  <input class="calendar__input js-calendar__input" type="hidden">
+                  <div class="calendar__fields">
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Filter Date Dropdown</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" placeholder="ДД.ММ.ГГГГ" readonly></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="calendar__container js-calendar__container calendar__container--hidden">
+                    <div class="calendar__datepicker js-calendar__datepicker"></div>
+                    <div class="calendar__buttons">
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                      </div>
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">One Field Forms</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+                <form class="form-field" method="post">
+                  <label class="label"><span class="label__primary">Subscription Text Field</span><span class="field">
+                      <input class="field__input js-field__input" type="email" placeholder="Email" required></span>
+                  </label>
+                  <button class="form-field__button" type="submit">Отправить</button>
+                </form>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main-ui-form-elements__section">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Buttons (Checkbox, Radio, Toggle, Like, Rate)</h2>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Checkbox Buttons</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-230">
+                <div class="button-option button-option--checkbox">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Можно курить</span>
+                  </label>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-230 main-ui-form-elements__item--margin-10">
+                <div class="button-option button-option--checkbox">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Можно с питомцами</span>
+                  </label>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-230 main-ui-form-elements__item--margin-10">
+                <div class="button-option button-option--checkbox">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Можно пригласить гостей (до 10 человек)</span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Radio Buttons</h3>
+            <ul class="main-ui-form-elements__list main-ui-form-elements__list--flex">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                <div class="button-option button-option--radio">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="radio" name="gender" checked><span class="button-option__box"></span><span class="button-option__text">Мужчина</span>
+                  </label>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                <div class="button-option button-option--radio">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="radio" name="gender"><span class="button-option__box"></span><span class="button-option__text">Женщина</span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Toggle</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <div class="button-option">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Получать спецпредложения</span>
+                  </label>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--margin-10">
+                <div class="button-option">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Получать спецпредложения</span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Like Button</h3>
+            <ul class="main-ui-form-elements__list main-ui-form-elements__list--flex">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--button-like">
+                <button class="button-like js-button-like" type="button"><span class="button-like__numbers js-button-like__numbers"><span class="button-like__number">2</span></span></button>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--button-like">
+                <button class="button-like js-button-like button-like--active" type="button"><span class="button-like__numbers js-button-like__numbers"><span class="button-like__number">12</span></span></button>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Rate Button</h3>
+            <ul class="main-ui-form-elements__list main-ui-form-elements__list--flex">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                <div class="rating"><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star rating__star--bordered">☆</span>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                <div class="rating"><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main-ui-form-elements__section">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Sliders, Buttons, Pagination</h2>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">Sliders</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+                <div class="slider-range js-slider-range">
+                  <label class="label"><span class="label__container"><span class="label__primary">Range Slider </span><span class="label__secondary js-label__secondary">5 000₽ - 10 000₽</span></span>
+                    <input class="slider-range__input js-slider-range__input" type="hidden" value="5 000₽ - 10 000₽">
+                  </label>
+                  <div class="slider-range__slider js-slider-range__slider" data-min="0" data-max="16000" data-start="5000" data-end="10000" data-step="100" data-unit="₽"></div>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Buttons</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <ul class="main-ui-form-elements__list main-ui-form-elements__list--flex">
+                  <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                    <button class="button js-button button--filled" type="button">Click Me</button>
+                  </li>
+                  <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                    <button class="button js-button button--filled button--state-hover" type="button">Click Me</button>
+                  </li>
+                </ul>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--margin-30">
+                <ul class="main-ui-form-elements__list main-ui-form-elements__list--flex">
+                  <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                    <button class="button js-button" type="button">Click Me</button>
+                  </li>
+                  <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                    <button class="button js-button button--state-hover" type="button">Click Me</button>
+                  </li>
+                </ul>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--margin-30">
+                <ul class="main-ui-form-elements__list main-ui-form-elements__list--flex">
+                  <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                    <button class="button js-button button--bodiless" type="button">Click Me</button>
+                  </li>
+                  <li class="main-ui-form-elements__item main-ui-form-elements__item--flex">
+                    <button class="button js-button button--bodiless button--color-gray" type="button">Click Me</button>
+                  </li>
+                </ul>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--margin-30">
+                <button class="button js-button button--filled button--wide" type="button">Перейти к оплате</button>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Pagination</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <div class="pagination">
+                  <div class="pagination__buttons">
+                    <button class="pagination__button pagination__button--theme--current" type="button" disabled>1</button>
+                    <button class="pagination__button" type="button">2</button>
+                    <button class="pagination__button" type="button">3</button><span class="pagination__dots">...</span>
+                    <button class="pagination__button" type="button">15</button>
+                    <button class="pagination__button pagination__button--theme--forward" type="button">Вперёд</button>
+                  </div>
+                  <div class="pagination__text">1 – 12 из 100+ вариантов аренды</div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main-ui-form-elements__section main-ui-form-elements__section--dropdowns">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Dropdowns</h2>
+          <section class="main-ui-form-elements__subsection main-ui-form-elements__subsection--dropdowns">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">Dropdown (Default)</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+                <div class="dropdown js-dropdown">
+                  <label class="label"><span class="label__container"><span class="label__primary">Dropdown </span><span class="label__secondary js-label__secondary">Default</span></span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Какие удобства" tabindex="-1" readonly data-words="undefined, undefined, undefined"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item" data-words="спальня, спальни, спален">
+                        <div class="dropdown__name">спальни</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="2" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="кровать, кровати, кроватей">
+                        <div class="dropdown__name">кровати</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="2" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="ванная комната, ванные комнаты, ванных комнат">
+                        <div class="dropdown__name">ванные комнаты</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+                <div class="dropdown js-dropdown dropdown--expanded">
+                  <label class="label"><span class="label__container"><span class="label__primary">Dropdown </span><span class="label__secondary js-label__secondary">Expanded</span></span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Какие удобства" tabindex="-1" readonly data-words="undefined, undefined, undefined"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item" data-words="спальня, спальни, спален">
+                        <div class="dropdown__name">спальни</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="2" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="кровать, кровати, кроватей">
+                        <div class="dropdown__name">кровати</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="2" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="ванная комната, ванные комнаты, ванных комнат">
+                        <div class="dropdown__name">ванные комнаты</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection main-ui-form-elements__subsection--dropdowns">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">Dropdown (Buttons)</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <div class="dropdown js-dropdown dropdown--expanded">
+                  <label class="label"><span class="label__primary">Dropdown</span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Сколько гостей" tabindex="-1" readonly data-words="гость, гостя, гостей"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">взрослые</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">дети</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="младенец, младенца, младенцев">
+                        <div class="dropdown__name">младенцы</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="dropdown__buttons">
+                      <div class="dropdown__button dropdown__button--reset dropdown__button--hidden js-dropdown__button--reset">
+                        <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                      </div>
+                      <div class="dropdown__button">
+                        <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <section class="main-ui-form-elements__subsection main-ui-form-elements__subsection--dropdowns">
+            <h3 class="main-ui-form-elements__h3 visually-hidden">Dropdown (Buttons / Filled)</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item">
+                <div class="dropdown js-dropdown dropdown--expanded">
+                  <label class="label"><span class="label__primary">Dropdown</span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Сколько гостей" tabindex="-1" readonly data-words="гость, гостя, гостей"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">взрослые</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="2" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">дети</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="1" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="младенец, младенца, младенцев">
+                        <div class="dropdown__name">младенцы</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="dropdown__buttons">
+                      <div class="dropdown__button dropdown__button--reset dropdown__button--hidden js-dropdown__button--reset">
+                        <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                      </div>
+                      <div class="dropdown__button">
+                        <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main-ui-form-elements__section">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Expandable Checkbox List</h2>
+          <ul class="main-ui-form-elements__list">
+            <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+              <div class="ecl js-ecl">
+                <button class="ecl__button js-ecl__button" type="button"><span class="ecl__text">Expandable Checkbox List</span></button>
+                <ul class="ecl__list js-ecl__list" style="--height: 100vh;">
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Завтрак</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Письменный стол</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Стул для кормления</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Кроватка</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Телевизор</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Шампунь</span>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266 main-ui-form-elements__item--margin-50">
+              <div class="ecl js-ecl ecl--active">
+                <button class="ecl__button js-ecl__button" type="button"><span class="ecl__text">Expandable Checkbox List</span></button>
+                <ul class="ecl__list js-ecl__list" style="--height: 100vh;">
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Завтрак</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Письменный стол</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Стул для кормления</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox" checked><span class="button-option__box"></span><span class="button-option__text">Кроватка</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Телевизор</span>
+                      </label>
+                    </div>
+                  </li>
+                  <li class="ecl__item">
+                    <div class="button-option button-option--checkbox">
+                      <label class="button-option__label">
+                        <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Шампунь</span>
+                      </label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </section>
+        <section class="main-ui-form-elements__section">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Additional Buttons</h2>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Rich Checkbox Buttons</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+                <div class="button-option button-option--checkbox-rich">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Широкий коридор</span>
+                  </label>
+                  <div class="button-option__text-rich">Ширина коридоров в номере не менее 91 см.</div>
+                </div>
+              </li>
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266 main-ui-form-elements__item--margin-10">
+                <div class="button-option button-option--checkbox-rich">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Помощник для инвалидов</span>
+                  </label>
+                  <div class="button-option__text-rich">На 1 этаже вас встретит специалист и проводит до номера.</div>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main-ui-form-elements__section">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Lists</h2>
+          <section class="main-ui-form-elements__subsection">
+            <h3 class="main-ui-form-elements__h3">Bullet List</h3>
+            <ul class="main-ui-form-elements__list">
+              <li class="main-ui-form-elements__item main-ui-form-elements__item--width-266">
+                <ul class="list-bullet">
+                  <li class="list-bullet__item">Нельзя с питомцами
+                  </li>
+                  <li class="list-bullet__item">Без вечеринок и мероприятий
+                  </li>
+                  <li class="list-bullet__item">Время прибытия — после 13:00, а выезд до 12:00
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+        <section class="main-ui-form-elements__section main-ui-form-elements__section--advantages">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Advantages</h2>
+          <ul class="main-ui-form-elements__list">
+            <li class="main-ui-form-elements__item main-ui-form-elements__item--width-280">
+              <ul class="advantages">
+                <li class="advantages__item"><i class="advantages__icon material-icons">insert_emoticon</i>
+                  <div class="advantages__info">
+                    <div class="advantages__title">Комфорт</div>
+                    <div class="advantages__description">Шумопоглощающие стены</div>
+                  </div>
+                </li>
+                <li class="advantages__item"><i class="advantages__icon material-icons">location_city</i>
+                  <div class="advantages__info">
+                    <div class="advantages__title">Удобство</div>
+                    <div class="advantages__description">Окно в каждой из спален</div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section class="main-ui-form-elements__section main-ui-form-elements__section--reviews">
+          <h2 class="main-ui-form-elements__h2 visually-hidden">Reviews</h2>
+          <ul class="main-ui-form-elements__list">
+            <li class="main-ui-form-elements__item">
+              <div class="review">
+                <div class="review__row">
+                  <div class="review__cell review__cell--small"><img class="review__img" src="./assets/images/content/reviewers/sarafanov-murad.jpg" alt="Мурад Сарафанов">
+                  </div>
+                  <div class="review__cell">
+                    <div class="review__author">Мурад Сарафанов</div>
+                    <time class="review__time" datetime="2020-10-30">5 дней назад</time>
+                  </div>
+                </div>
+                <div class="review__row">
+                  <div class="review__cell review__cell--small">
+                    <button class="button-like js-button-like button-like--active" type="button"><span class="button-like__numbers js-button-like__numbers"><span class="button-like__number">12</span></span></button>
+                  </div>
+                  <div class="review__cell">
+                    <blockquote class="review__blockquote">
+                      <p class="review__p">Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.</p>
+                    </blockquote>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+  <script src="./js/app.js"></script></body>
+</html>

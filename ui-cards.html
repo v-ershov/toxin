@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="important, keywords">
+    <meta name="description" content="short description">
+    <title>UI Cards | TOXIN</title>
+  <link href="./css/app.css" rel="stylesheet"></head>
+  <body class="body body--unanimated js-body body--theme-ui body--background-gray"><a class="body__link" href="./">На главную</a>
+    <main class="main-ui-cards">
+      <div class="main-ui-cards__container">
+        <h1 class="main-ui-cards__h1 visually-hidden">Cards</h1>
+        <ul class="main-ui-cards__list">
+          <li class="main-ui-cards__item">
+            <form class="form-find" method="post">
+              <header class="form-find__header">
+                <h2 class="form-find__h2">Найдём номера под ваши пожелания</h2>
+              </header>
+              <div class="form-find__row">
+                <div class="calendar js-calendar">
+                  <input class="calendar__input js-calendar__input" type="hidden">
+                  <div class="calendar__fields">
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Прибытие</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" required placeholder="ДД.ММ.ГГГГ" readonly></span>
+                      </label>
+                    </div>
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Выезд</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" required placeholder="ДД.ММ.ГГГГ" tabindex="-1" readonly></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="calendar__container js-calendar__container calendar__container--hidden">
+                    <div class="calendar__datepicker js-calendar__datepicker"></div>
+                    <div class="calendar__buttons">
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                      </div>
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-find__row">
+                <div class="dropdown js-dropdown">
+                  <label class="label"><span class="label__primary">Гости</span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Сколько гостей" required tabindex="-1" readonly data-words="гость, гостя, гостей"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">взрослые</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">дети</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="младенец, младенца, младенцев">
+                        <div class="dropdown__name">младенцы</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="form-find__button">
+                <button class="button js-button button--filled button--wide" type="submit">Подобрать номер</button>
+              </div>
+            </form>
+          </li>
+          <li class="main-ui-cards__item">
+            <form class="form-sign-up" method="post">
+              <header class="form-sign-up__header">
+                <h2 class="form-sign-up__h2">Регистрация аккаунта</h2>
+              </header>
+              <div class="form-sign-up__row"><span class="field">
+                  <input class="field__input js-field__input" placeholder="Имя" required></span>
+              </div>
+              <div class="form-sign-up__row"><span class="field">
+                  <input class="field__input js-field__input" placeholder="Фамилия" required></span>
+              </div>
+              <div class="form-sign-up__row form-sign-up__row--flex">
+                <div class="form-sign-up__radio">
+                  <div class="button-option button-option--radio">
+                    <label class="button-option__label">
+                      <input class="button-option__input" type="radio" name="gender" checked><span class="button-option__box"></span><span class="button-option__text">Мужчина</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-sign-up__radio">
+                  <div class="button-option button-option--radio">
+                    <label class="button-option__label">
+                      <input class="button-option__input" type="radio" name="gender"><span class="button-option__box"></span><span class="button-option__text">Женщина</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-sign-up__row form-sign-up__row--margin-20">
+                <label class="label"><span class="label__primary">Дата рождения</span><span class="field">
+                    <input class="field__input js-field__input" placeholder="ДД.ММ.ГГГГ" required data-mask="00.00.0000"></span>
+                </label>
+              </div>
+              <div class="form-sign-up__row form-sign-up__row--margin-20">
+                <label class="label"><span class="label__primary">Данные для входа в сервис</span><span class="field">
+                    <input class="field__input js-field__input" type="email" placeholder="Email" required></span>
+                </label>
+              </div>
+              <div class="form-sign-up__row"><span class="field">
+                  <input class="field__input js-field__input" type="password" placeholder="Пароль" required></span>
+              </div>
+              <div class="form-sign-up__row">
+                <div class="button-option">
+                  <label class="button-option__label">
+                    <input class="button-option__input" type="checkbox"><span class="button-option__box"></span><span class="button-option__text">Получать спецпредложения</span>
+                  </label>
+                </div>
+              </div>
+              <div class="form-sign-up__button">
+                <button class="button js-button button--filled button--wide" type="submit">Зарегистрироваться</button>
+              </div>
+              <footer class="form-sign-up__footer">Уже есть аккаунт на Toxin?
+                <div class="form-sign-up__button form-sign-up__button--flex"><a class="button js-button" href="./change-me">Войти</a>
+                </div>
+              </footer>
+            </form>
+          </li>
+          <li class="main-ui-cards__item">
+            <form class="form-reservation" method="post">
+              <header class="form-reservation__header">
+                <h2 class="form-reservation__h2 visually-hidden">Забронировать номер</h2>
+                <div class="form-reservation__info">
+                  <div class="room-info">№&nbsp;<span class="room-info__number">888</span><span class="room-info__tag">Люкс</span>
+                  </div>
+                </div>
+                <div class="form-reservation__price">
+                  <div class="room-price"><span class="room-price__price">9 990₽</span>&nbsp;в&nbsp;сутки</div>
+                </div>
+              </header>
+              <div class="form-reservation__row">
+                <div class="calendar js-calendar" data-dates="2021-08-19/2021-08-23">
+                  <input class="calendar__input js-calendar__input" type="hidden">
+                  <div class="calendar__fields">
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Прибытие</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" required placeholder="ДД.ММ.ГГГГ" readonly></span>
+                      </label>
+                    </div>
+                    <div class="calendar__field">
+                      <label class="label"><span class="label__primary">Выезд</span><span class="field field--dropdown">
+                          <input class="field__input js-field__input" required placeholder="ДД.ММ.ГГГГ" tabindex="-1" readonly></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="calendar__container js-calendar__container calendar__container--hidden">
+                    <div class="calendar__datepicker js-calendar__datepicker"></div>
+                    <div class="calendar__buttons">
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                      </div>
+                      <div class="calendar__button">
+                        <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-reservation__row">
+                <div class="dropdown js-dropdown">
+                  <label class="label"><span class="label__primary">Гости</span><span class="field field--dropdown">
+                      <input class="field__input js-field__input" placeholder="Сколько гостей" required tabindex="-1" readonly data-words="гость, гостя, гостей"></span>
+                  </label>
+                  <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                    <ul class="dropdown__list">
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">взрослые</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="2" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item">
+                        <div class="dropdown__name">дети</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="1" min="0" max="3" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                      <li class="dropdown__item js-dropdown__item" data-words="младенец, младенца, младенцев">
+                        <div class="dropdown__name">младенцы</div>
+                        <div class="dropdown__controls">
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                          <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                          <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <table class="form-reservation__table">
+                <tbody class="form-reservation__tbody">
+                  <tr class="form-reservation__tr">
+                    <td class="form-reservation__td">9&nbsp;990₽ х 4 суток</td>
+                    <td class="form-reservation__td"></td>
+                    <td class="form-reservation__td form-reservation__td--price">39&nbsp;960₽</td>
+                  </tr>
+                  <tr class="form-reservation__tr">
+                    <td class="form-reservation__td">Сбор за услуги: скидка 2&nbsp;179₽</td>
+                    <td class="form-reservation__td"><span class="form-reservation__tooltip"><span class="tooltip" tabindex="0"><span class="tooltip__text">Скидка на первую бронь за подписку</span></span></span></td>
+                    <td class="form-reservation__td form-reservation__td--price">0₽</td>
+                  </tr>
+                  <tr class="form-reservation__tr">
+                    <td class="form-reservation__td">Сбор за доп. услуги</td>
+                    <td class="form-reservation__td"><span class="form-reservation__tooltip"><span class="tooltip" tabindex="0"><span class="tooltip__text">Чаевые для персонала уже включены в счёт</span></span></span></td>
+                    <td class="form-reservation__td form-reservation__td--price">300₽</td>
+                  </tr>
+                </tbody>
+                <tfoot class="form-reservation__tfoot">
+                  <tr class="form-reservation__tr">
+                    <td class="form-reservation__td form-reservation__td--total" colspan="2"><span class="form-reservation__dots">Итого</span></td>
+                    <td class="form-reservation__td form-reservation__td--total form-reservation__td--price">38&nbsp;081₽</td>
+                  </tr>
+                </tfoot>
+              </table>
+              <div class="form-reservation__button">
+                <button class="button js-button button--filled button--wide" type="submit">Забронировать</button>
+              </div>
+            </form>
+          </li>
+          <li class="main-ui-cards__item">
+            <form class="form-sign-in" method="post">
+              <header class="form-sign-in__header">
+                <h2 class="form-sign-in__h2">Войти</h2>
+              </header>
+              <div class="form-sign-in__row"><span class="field">
+                  <input class="field__input js-field__input" type="email" placeholder="Email" required></span>
+              </div>
+              <div class="form-sign-in__row"><span class="field">
+                  <input class="field__input js-field__input" type="password" placeholder="Пароль" required></span>
+              </div>
+              <div class="form-sign-in__button">
+                <button class="button js-button button--filled button--wide" type="submit">Войти</button>
+              </div>
+              <footer class="form-sign-in__footer">Нет аккаунта на Toxin?
+                <div class="form-sign-in__button form-sign-in__button--flex"><a class="button js-button" href="./change-me">Создать</a>
+                </div>
+              </footer>
+            </form>
+          </li>
+          <li class="main-ui-cards__item main-ui-cards__item--calendar">
+            <div class="calendar js-calendar">
+              <input class="calendar__input js-calendar__input" type="hidden">
+              <input class="calendar__fake js-calendar__fake">
+              <div class="calendar__container js-calendar__container">
+                <div class="calendar__datepicker js-calendar__datepicker"></div>
+                <div class="calendar__buttons">
+                  <div class="calendar__button">
+                    <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                  </div>
+                  <div class="calendar__button">
+                    <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="main-ui-cards__item main-ui-cards__item--room">
+            <div class="room js-room">
+              <div class="room__slider js-room__slider"><img class="room__img" src="./assets/images/content/rooms/888-1-small.jpg" alt="Номер 888 (1)"><img class="room__img" src="./assets/images/content/rooms/888-2-small.jpg" alt="Номер 888 (2)"><img class="room__img" src="./assets/images/content/rooms/888-3-small.jpg" alt="Номер 888 (3)"><img class="room__img" src="./assets/images/content/rooms/888-3-small.jpg" alt="Номер 888 (4)">
+              </div>
+              <div class="room__info">
+                <div class="room__row room__row--alignment--baseline">
+                  <div class="room__cell">
+                    <div class="room-info room-info--size--small">№&nbsp;<span class="room-info__number">888</span><span class="room-info__tag">Люкс</span>
+                    </div>
+                  </div>
+                  <div class="room__cell">
+                    <div class="room-price"><span class="room-price__price">9 990₽</span>&nbsp;в&nbsp;сутки</div>
+                  </div>
+                </div>
+                <div class="room__row">
+                  <div class="room__cell">
+                    <div class="rating"><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span>
+                    </div>
+                  </div>
+                  <div class="room__cell"><span class="room__reviews">145</span>&nbsp;Отзывов</div>
+                </div><a class="room__link js-room__link" href="./change-me" target="_blank" rel="noopener noreferrer">Детали</a>
+              </div>
+            </div>
+          </li>
+          <li class="main-ui-cards__item main-ui-cards__item--room">
+            <div class="room js-room">
+              <div class="room__slider js-room__slider"><img class="room__img" src="./assets/images/content/rooms/840-1-small.jpg" alt="Номер 840 (1)"><img class="room__img" src="./assets/images/content/rooms/840-1-small.jpg" alt="Номер 840 (2)"><img class="room__img" src="./assets/images/content/rooms/840-1-small.jpg" alt="Номер 840 (3)"><img class="room__img" src="./assets/images/content/rooms/840-1-small.jpg" alt="Номер 840 (4)">
+              </div>
+              <div class="room__info">
+                <div class="room__row room__row--alignment--baseline">
+                  <div class="room__cell">
+                    <div class="room-info room-info--size--small">№&nbsp;<span class="room-info__number">840</span>
+                    </div>
+                  </div>
+                  <div class="room__cell">
+                    <div class="room-price"><span class="room-price__price">9 990₽</span>&nbsp;в&nbsp;сутки</div>
+                  </div>
+                </div>
+                <div class="room__row">
+                  <div class="room__cell">
+                    <div class="rating"><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star">★</span><span class="rating__star rating__star--bordered">☆</span>
+                    </div>
+                  </div>
+                  <div class="room__cell"><span class="room__reviews">65</span>&nbsp;Отзывов</div>
+                </div><a class="room__link js-room__link" href="./change-me" target="_blank" rel="noopener noreferrer">Детали</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+  <script src="./js/app.js"></script></body>
+</html>

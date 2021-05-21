@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="important, keywords">
+    <meta name="description" content="short description">
+    <title>Landing Page | TOXIN</title>
+  <link href="./css/app.css" rel="stylesheet"></head>
+  <body class="body body--unanimated js-body">
+    <div class="preloader js-preloader">
+      <div class="preloader__loader"></div>
+    </div>
+    <header class="header js-header">
+      <div class="header__container">
+        <div class="header__logo"><a class="logo logo--adaptive" href="./">На главную</a>
+        </div>
+        <div class="header__buttons">
+          <div class="header__button"><a class="button js-button button--thin" href="./change-me">Войти</a>
+          </div>
+          <div class="header__button header__button--adaptive"><a class="button js-button button--thin button--filled" href="./change-me">Зарегистрироваться</a>
+          </div>
+        </div>
+        <button class="header__hamburger js-header__hamburger" type="button">Гамбургер-меню<span class="header__icon-layers"><span class="header__icon-layer"></span><span class="header__icon-layer"></span><span class="header__icon-layer"></span></span></button>
+        <nav class="header__nav js-header__nav" style="--height: 100vh;">
+          <ul class="header__list js-header__list">
+            <li class="header__item"><a class="link link--bold " href="./change-me">О нас</a>
+            </li>
+            <li class="header__item">
+              <div class="header-submenu js-header-submenu"><a class="link link--submenu js-link--submenu" href="./change-me">Услуги</a>
+                <ul class="header-submenu__list js-header-submenu__list" style="--height: 100vh;">
+                  <li class="header-submenu__item"><a class="link undefined " href="./change-me">Оформление виз</a>
+                  </li>
+                  <li class="header-submenu__item"><a class="link undefined " href="./change-me">Заказ экскурсий</a>
+                  </li>
+                  <li class="header-submenu__item"><a class="link undefined " href="./change-me">Конференц-залы</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="header__item"><a class="link undefined " href="./change-me">Вакансии</a>
+            </li>
+            <li class="header__item"><a class="link undefined " href="./change-me">Новости</a>
+            </li>
+            <li class="header__item">
+              <div class="header-submenu js-header-submenu"><a class="link link--submenu js-link--submenu" href="./change-me">Соглашения</a>
+                <ul class="header-submenu__list js-header-submenu__list" style="--height: 100vh;">
+                  <li class="header-submenu__item"><a class="link undefined " href="./change-me">Польз. соглашение</a>
+                  </li>
+                  <li class="header-submenu__item"><a class="link undefined " href="./change-me">Политика конф-ти</a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main-landing js-main-landing">
+      <div class="main-landing__slideshow js-main-landing__slideshow" style="--translateY: 0;">
+        <div class="main-landing__slide main-landing__slide--disabled js-main-landing__slide"></div>
+        <div class="main-landing__slide main-landing__slide--disabled js-main-landing__slide"></div>
+        <div class="main-landing__slide main-landing__slide--disabled js-main-landing__slide"></div>
+        <div class="main-landing__slide main-landing__slide--disabled js-main-landing__slide"></div>
+      </div>
+      <div class="main-landing__container">
+        <h1 class="main-landing__h1 visually-hidden">TOXIN</h1>
+        <div class="main-landing__form">
+          <form class="form-find" method="post">
+            <header class="form-find__header">
+              <h2 class="form-find__h2">Найдём номера под ваши пожелания</h2>
+            </header>
+            <div class="form-find__row">
+              <div class="calendar js-calendar">
+                <input class="calendar__input js-calendar__input" type="hidden">
+                <div class="calendar__fields">
+                  <div class="calendar__field">
+                    <label class="label"><span class="label__primary">Прибытие</span><span class="field field--dropdown">
+                        <input class="field__input js-field__input" required placeholder="ДД.ММ.ГГГГ" readonly></span>
+                    </label>
+                  </div>
+                  <div class="calendar__field">
+                    <label class="label"><span class="label__primary">Выезд</span><span class="field field--dropdown">
+                        <input class="field__input js-field__input" required placeholder="ДД.ММ.ГГГГ" tabindex="-1" readonly></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="calendar__container js-calendar__container calendar__container--hidden">
+                  <div class="calendar__datepicker js-calendar__datepicker"></div>
+                  <div class="calendar__buttons">
+                    <div class="calendar__button">
+                      <button class="button js-button button--bodiless button--color-gray" type="button" name="reset">Очистить</button>
+                    </div>
+                    <div class="calendar__button">
+                      <button class="button js-button button--bodiless" type="button" name="apply">Применить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-find__row">
+              <div class="dropdown js-dropdown">
+                <label class="label"><span class="label__primary">Гости</span><span class="field field--dropdown">
+                    <input class="field__input js-field__input" placeholder="Сколько гостей" required tabindex="-1" readonly data-words="гость, гостя, гостей"></span>
+                </label>
+                <div class="dropdown__menu js-dropdown__menu" style="--height: 100vh;">
+                  <ul class="dropdown__list">
+                    <li class="dropdown__item js-dropdown__item">
+                      <div class="dropdown__name">взрослые</div>
+                      <div class="dropdown__controls">
+                        <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                        <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                        <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                      </div>
+                    </li>
+                    <li class="dropdown__item js-dropdown__item">
+                      <div class="dropdown__name">дети</div>
+                      <div class="dropdown__controls">
+                        <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                        <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="3" readonly>
+                        <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                      </div>
+                    </li>
+                    <li class="dropdown__item js-dropdown__item" data-words="младенец, младенца, младенцев">
+                      <div class="dropdown__name">младенцы</div>
+                      <div class="dropdown__controls">
+                        <button class="dropdown__spinner js-dropdown__spinner" type="button" name="decrement" tabindex="-1">&minus;</button>
+                        <input class="dropdown__number js-dropdown__number" type="number" value="0" min="0" max="1" readonly>
+                        <button class="dropdown__spinner js-dropdown__spinner" type="button" name="increment" tabindex="-1">+</button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="form-find__button">
+              <button class="button js-button button--filled button--wide" type="submit">Подобрать номер</button>
+            </div>
+          </form>
+        </div>
+        <div class="main-landing__text">Лучшие номера для вашей работы, отдыха и просто вдохновения!</div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__container footer__container--primary">
+        <div class="footer__intro">
+          <div class="footer__logo"><a class="logo" href="./">На главную</a>
+          </div>
+          <div class="footer__text">Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»</div>
+        </div>
+        <section class="footer__section">
+          <h3 class="footer__h3">Навигация</h3>
+          <ul class="footer__list">
+            <li class="footer__item"><a class="link link--moving " href="./change-me">О нас</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Новости</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Служба поддержки</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Услуги</a>
+            </li>
+          </ul>
+        </section>
+        <section class="footer__section">
+          <h3 class="footer__h3">О нас</h3>
+          <ul class="footer__list">
+            <li class="footer__item"><a class="link link--moving " href="./change-me">О сервисе</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Наша команда</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Вакансии</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Инвесторы</a>
+            </li>
+          </ul>
+        </section>
+        <section class="footer__section">
+          <h3 class="footer__h3">Служба поддержки</h3>
+          <ul class="footer__list">
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Соглашения</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Сообщества</a>
+            </li>
+            <li class="footer__item"><a class="link link--moving " href="./change-me">Связь с нами</a>
+            </li>
+          </ul>
+        </section>
+        <section class="footer__section">
+          <h3 class="footer__h3">Подписка</h3>
+          <div class="footer__text">Получайте специальные предложения и новости сервиса</div>
+          <div class="footer__form">
+            <form class="form-field" method="post"><span class="field">
+                <input class="field__input js-field__input" type="email" placeholder="Email" required></span>
+              <button class="form-field__button" type="submit">Отправить</button>
+            </form>
+          </div>
+        </section>
+      </div>
+      <div class="footer__container footer__container--secondary">
+        <div class="footer__logo footer__logo--adaptive"><a class="logo" href="./">На главную</a>
+        </div>
+        <div class="footer__text footer__text--center">Copyright&nbsp;©&nbsp;2018&nbsp;Toxin&nbsp;отель. Все&nbsp;права&nbsp;защищены.</div>
+        <div class="footer__socials">
+          <ul class="socials">
+            <li class="socials__item"><a class="socials__link socials__link--image--twitter" href="https://twitter.com" title="Наш Twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            <li class="socials__item"><a class="socials__link socials__link--image--facebook" href="https://www.facebook.com" title="Наш Facebook" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+            <li class="socials__item"><a class="socials__link socials__link--image--instagram" href="https://www.instagram.com" title="Наш Instagram" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  <script src="./js/app.js"></script></body>
+</html>
